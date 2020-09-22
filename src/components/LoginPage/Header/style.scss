@@ -1,0 +1,17 @@
+@import 'src/styles/vars';
+
+.loginPage-header-title {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 1em;
+  & h1 {
+    color: #f55d38;
+    font-size: 2em;
+  }
+}
+
+.loginPage-header img {
+  max-width: 100%;
+}
