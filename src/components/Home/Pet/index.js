@@ -11,10 +11,11 @@ const PetCard = ({
   /*picture*/
   deletePets,
 }) => {
-  console.log(_id);
+  const petId = _id;
+  console.log(petId);
   const handleDelete = () => {
-    console.log('je veux supprimer cet animal');
-    deletePets(_id);
+    console.log('je veux supprimer cet animal' + petId);
+    deletePets(petId);
   };
 
   return (

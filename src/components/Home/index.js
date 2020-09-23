@@ -7,20 +7,20 @@ import AddPetForm from '../../containers/AddPetForm';
 
 import './style.scss';
 
-const Home = ({ fetchPets }) => {
-  useEffect(fetchPets, []);
+const Home = ({ getPetsList }) => {
+  useEffect(getPetsList, []);
   return (
     <div className="home">
       <div className="pets-list">
         <Pets />
-        {/*<AddPetForm />*/}
+        <AddPetForm />
       </div>
     </div>
   );
 };
 
 Home.propTypes = {
-  fetchPets: PropTypes.func.isRequired,
+  getPetsList: PropTypes.func.isRequired,
 };
 
 export default Home;

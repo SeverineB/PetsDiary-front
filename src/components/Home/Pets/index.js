@@ -4,11 +4,11 @@ import { Card } from 'semantic-ui-react';
 
 import Pet from '../../../containers/Pet';
 
-const Pets = ({ pets }) => {
+const Pets = ({ petsList }) => {
   return (
     <div className="pets-list">
       <Card.Group itemsPerRow={2}>
-        {pets.map((pet) => (
+        {petsList.map((pet) => (
           <Pet key={pet._id} {...pet} />
         ))}
       </Card.Group>
@@ -17,7 +17,7 @@ const Pets = ({ pets }) => {
 };
 
 Pets.propTypes = {
-  pets: PropTypes.arrayOf(
+  petsList: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
     }),

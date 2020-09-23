@@ -1,20 +1,29 @@
 // ACTION TYPES
-export const FETCH_PETS = 'FETCH_PETS';
-export const SAVE_PETS = 'SAVE_PETS';
+export const GET_PETS_LIST = 'GET_PETS_LIST';
+export const SAVE_PETS_LIST = 'SAVE_PETS_LIST';
 export const ADD_PETS = 'ADD_PETS';
 export const DELETE_PETS = 'DELETE_PETS';
 export const OPEN_MODAL = 'OPEN_MODAL';
-export const CHANGE_VALUE = 'CHANGE_VALUE';
+export const CHANGE_FIELD = 'CHANGE_FIELD';
+export const CLEAR_NEW_PET = 'CLEAR_NEW_PET';
 
 // ACTION CREATOR
 
-export const fetchPets = () => ({
-  type: FETCH_PETS,
+export const getPetsList = () => ({
+  type: GET_PETS_LIST,
 });
 
-export const savePets = (pets) => ({
-  type: SAVE_PETS,
-  pets,
+export const savePetsList = (petsList) => ({
+  type: SAVE_PETS_LIST,
+  petsList,
+});
+
+export const addPets = () => ({
+  type: ADD_PETS,
+});
+
+export const clearNewPet = () => ({
+  type: CLEAR_NEW_PET,
 });
 
 export const deletePets = (id) => ({
@@ -26,8 +35,8 @@ export const openModal = () => ({
   type: OPEN_MODAL,
 });
 
-export const changeValue = (key, value) => ({
-  type: CHANGE_VALUE,
-  key,
+export const changeField = (value, name) => ({
+  type: CHANGE_FIELD,
   value,
+  name,
 });

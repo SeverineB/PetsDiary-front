@@ -1,20 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Header, Icon, Modal, Form } from 'semantic-ui-react';
-
-import Field from '../../../containers/AddPetForm/Field';
+import {
+  Button,
+  Header,
+  Icon,
+  Modal,
+  Form,
+} from 'semantic-ui-react';
 
 const AddPetForm = ({
   open,
-  toggleOpen,
+  openModal,
   name,
   age,
   species,
   breed,
   changeField,
+  addPets,
+  clearNewPet,
 }) => {
-  const handleSubmit = () => {
-    console.log('Je soumets les infos saisies');
+  const handleChange = (evt) => {
+    changeField(evt.target.value, evt.target.name);
+  };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    addPets();
+    clearNewPet();
   };
 
   return (
@@ -23,34 +35,34 @@ const AddPetForm = ({
         closeIcon
         open={open}
         trigger={<Button className="add-pet-button"><Icon name="plus" /></Button>}
-        onClose={toggleOpen}
-        onOpen={toggleOpen}
+        onClose={openModal}
+        onOpen={openModal}
       >
         <Header content="Ajouter votre nouvel animal" />
         <Modal.Content>
           <Form onSubmit={handleSubmit}>
-            <Field
+            <Form.Input
               name="name"
               placeholder="Nom de votre animal"
-              onChange={changeField}
+              onChange={handleChange}
               value={name}
             />
-            <Field
+            <Form.Input
               name="age"
               placeholder="Age de votre animal"
-              onChange={changeField}
+              onChange={handleChange}
               value={age}
             />
-            <Field
+            <Form.Input
               name="species"
               placeholder="Espèce de votre animal"
-              onChange={changeField}
+              onChange={handleChange}
               value={species}
             />
-            <Field
+            <Form.Input
               name="breed"
               placeholder="Race de votre animal"
-              onChange={changeField}
+              onChange={handleChange}
               value={breed}
             />
             <Button type="submit">Submit</Button>
@@ -64,11 +76,13 @@ const AddPetForm = ({
 AddPetForm.propTypes = {
   open: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
-  age: PropTypes.number.isRequired,
+  age: PropTypes.string.isRequired,
   species: PropTypes.string.isRequired,
   breed: PropTypes.string.isRequired,
-  toggleOpen: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
+  addPets: PropTypes.func.isRequired,
+  clearNewPet: PropTypes.func.isRequired,
 };
 
 export default AddPetForm;

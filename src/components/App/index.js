@@ -2,7 +2,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import NavBar from '../NavBar';
 import Home from '../../containers/Home';
 import LoginPage from '../LoginPage';
 import Login from '../LoginPage/Forms/LoginForm';
@@ -20,7 +19,6 @@ const App = () => (
   <div className="app">
     <Switch>
       <Route path="/" exact>
-        <NavBar />
         <LoginPage />
       </Route>
 

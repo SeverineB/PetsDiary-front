@@ -2,8 +2,7 @@ import { connect } from 'react-redux';
 
 import {
   openModal,
-  changeValue,
-  fetchPets,
+  getPetsList,
 } from '../../actions';
 
 import Home from '../../components/Home';
@@ -13,16 +12,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchPets: () => {
-    const action = fetchPets();
+  getPetsList: () => {
+    const action = getPetsList();
     dispatch(action);
   },
   openModal: () => {
     const action = openModal();
-    dispatch(action);
-  },
-  onChange: () => {
-    const action = changeValue();
     dispatch(action);
   },
 });

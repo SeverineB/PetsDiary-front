@@ -1,21 +1,50 @@
-import { v4 as uuidv4 } from 'uuid';
-import { ADD_PETS, DELETE_PETS, OPEN_MODAL, CHANGE_VALUE, SAVE_PETS } from '../actions';
+import {
+  DELETE_PETS,
+  OPEN_MODAL,
+  GET_PETS_LIST,
+  SAVE_PETS_LIST,
+  CHANGE_FIELD,
+  ADD_PETS,
+  CLEAR_NEW_PET,
+} from '../actions';
 
 const initialState = {
   petsList: [],
+  id: null,
   name: '',
   age: '',
   species: '',
   breed: '',
   open: false,
+  isPetsLoading: false,
+  errorOnField: false,
 };
 
 const petReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case SAVE_PETS:
+    case GET_PETS_LIST:
       return {
         ...state,
-        petsList: action.pets,
+        isPetsLoading: !state.isPetsLoading,
+      };
+    case SAVE_PETS_LIST:
+      return {
+        ...state,
+        isPetsLoading: !state.isPetsLoading,
+        petsList: action.petsList,
+      };
+    case ADD_PETS:
+      return {
+        ...state,
+      };
+    case CLEAR_NEW_PET:
+      return {
+        ...state,
+        name: '',
+        age: '',
+        species: '',
+        breed: '',
+        open: false,
       };
     case DELETE_PETS:
       return {
@@ -27,7 +56,7 @@ const petReducer = (state = initialState, action = {}) => {
         ...state,
         open: !state.open,
       };
-    case CHANGE_VALUE:
+    case CHANGE_FIELD:
       return {
         ...state,
         [action.name]: action.value,

@@ -9,7 +9,7 @@ import Pets from '../../components/Home/Pets';
 const mapStateToProps = (state) => {
   console.log(`Container Pets: j'affiche le state ${state.pets}`);
   return ({
-    pets: state.pets.petsList,
+    petsList: state.pets.petsList,
   });
 };
 
