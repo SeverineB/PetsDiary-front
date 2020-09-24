@@ -6,7 +6,7 @@ import {
   CHANGE_FIELD,
   ADD_PETS,
   CLEAR_NEW_PET,
-} from '../actions';
+} from '../actions/pets';
 
 const initialState = {
   petsList: [],

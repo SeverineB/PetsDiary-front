@@ -1,7 +1,12 @@
 import { connect } from 'react-redux';
 
 import AddPetForm from '../../components/Home/AddPetForm';
-import { openModal, changeField, addPets, clearNewPet } from '../../actions';
+import {
+  openModal,
+  changeField,
+  addPets,
+  clearNewPet,
+} from '../../actions/pets';
 
 const mapStateToProps = (state) => {
   return ({

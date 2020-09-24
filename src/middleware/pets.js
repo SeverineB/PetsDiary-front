@@ -1,8 +1,16 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 
-import { GET_PETS_LIST, getPetsList, DELETE_PETS, savePetsList, ADD_PETS, clearNewPet } from '../actions';
+import {
+  GET_PETS_LIST,
+  getPetsList,
+  DELETE_PETS,
+  savePetsList,
+  ADD_PETS,
+  clearNewPet
+} from '../actions/pets';
 
-const api = (store) => (next) => (action) => {
+const pets = (store) => (next) => (action) => {
   switch (action.type) {
     case ADD_PETS: {
       const state = store.getState();
@@ -47,12 +55,6 @@ const api = (store) => (next) => (action) => {
       console.log('je lance la requête pour récupérer les animaux');
       axios.get('http://localhost:3000/api/pets/')
         .then((response) => {
-          // je recup mes data
-          // je veux les afficher
-          // ce qui est affichée dans l'appli dépend de la source de vérité : le state
-          // donc toi la data go dans le state
-          // j'ai une intention : modifier le state
-          // intention = modification du state ? dispatch d'une action et traduction dans le reducer
           store.dispatch(savePetsList(response.data, false));
         })
         .catch((error) => {
@@ -60,9 +62,8 @@ const api = (store) => (next) => (action) => {
         });
       break;
     default:
-      // je laisse passer l'action au middleware/reducer suivant
       next(action);
   }
 };
 
-export default api;
+export default pets;
