@@ -6,7 +6,7 @@ import {
   changeField,
   addPets,
   clearNewPet,
-} from '../../actions/pets';
+} from '../../actions';
 
 const mapStateToProps = (state) => {
   return ({

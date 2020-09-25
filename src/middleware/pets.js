@@ -8,7 +8,7 @@ import {
   savePetsList,
   ADD_PETS,
   clearNewPet
-} from '../actions/pets';
+} from '../actions';
 
 const pets = (store) => (next) => (action) => {
   switch (action.type) {
@@ -29,7 +29,7 @@ const pets = (store) => (next) => (action) => {
         .then((response) => {
           console.log('Middleware API response ', response.data);
           store.dispatch(getPetsList());
-          /*store.dispatch(clearNewPet());*/
+          /* store.dispatch(clearNewPet()); */
         })
         .catch((error) => {
           console.error('erreur est survenue ', error);

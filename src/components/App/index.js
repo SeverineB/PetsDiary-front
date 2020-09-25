@@ -3,9 +3,9 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Home from '../../containers/Home';
-import LoginPage from '../LoginPage';
-import Login from '../LoginPage/Forms/LoginForm';
-import Register from '../LoginPage/Forms/RegisterForm';
+import LoginPage from '../../components/LoginPage';
+import Login from '../../containers/LoginPage/LoginForm';
+import Register from '../../containers/LoginPage/RegisterForm';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'semantic-ui-css/semantic.min.css';
