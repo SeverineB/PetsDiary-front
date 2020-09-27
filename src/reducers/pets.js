@@ -55,6 +55,7 @@ const petReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         open: !state.open,
+        dimmer: action.dimmer,
       };
     case CHANGE_FIELD:
       return {

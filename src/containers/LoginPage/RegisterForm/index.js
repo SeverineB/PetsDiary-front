@@ -1,11 +1,14 @@
 import { connect } from 'react-redux';
 
-import RegisterForm from '../../../components/LoginPage/Forms/RegisterForm';
+import RegisterForm from '../../../components/LoginPage/RegisterForm';
 
 import { registerUser, changeUserField } from '../../../actions/users';
+import { openModal } from '../../../actions';
 
 const mapStateToProps = (state) => {
   return ({
+    open: state.pets.open,
+    dimmer: state.pets.dimmer,
     email: state.users.email,
     password: state.users.password,
     username: state.users.username,
@@ -13,6 +16,10 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  openModal: () => {
+    const action = openModal();
+    dispatch(action);
+  },
   changeUserField: (value, name) => {
     dispatch(changeUserField(value, name));
   },
