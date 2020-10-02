@@ -3,6 +3,15 @@
 button.btn.btn-primary.login-button {
   background-color: #bb97c3;
   border: none;
+  font-family: "Quicksand";
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 5em;
+  padding: 0.5em 1em;
+  @include m1200() {
+    background-color: #ffffff;
+    color: #bb97c3;
+   };
 
   &:focus {
     box-shadow: none;
@@ -11,4 +20,35 @@ button.btn.btn-primary.login-button {
   &:hover {
     background-color: #7a5383;
   }
+}
+
+button.btn.btn-primary.login-button-submit {
+  background-color: #bb97c3;
+  border: none;
+  border-radius: 5em;
+  padding: 0.5em 1em;
+  &:focus {
+    box-shadow: none;
+  }
+
+  &:hover {
+    background-color: #7a5383;
+  }
+}
+
+.modal-login-form {
+  margin: 2em 0;
+}
+
+.form-label {
+  font-family: "Quicksand";
+}
+
+.modal-title {
+  color: #bb97c3;
+  font-weight: bold;
+}
+
+.modal-register-form {
+  margin: 2em 0;
 }

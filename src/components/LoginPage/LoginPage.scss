@@ -2,16 +2,16 @@
 
 .login-page {
   display: flex;
-  justify-content: center;
-}
-
-@import 'src/styles/vars';
-
-.login-page {
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   width: 100vw;
+  top: 20%;
+  height: 100vh;
   margin: 0 auto;
+  padding: 1em;
+  @include m1200() {
+    padding: 2em;
+    align-items: flex-start;
+   };
 }

@@ -2,11 +2,10 @@
 
 .login-page-header {
   width: 100vw;
-  height: 10vh;
+  height: 15vh;
+  margin-bottom: 4em;
 
   &-title {
-    position: absolute;
-    top: 20%;
     display: inline-block;
     width: 100%;
     text-align: center;
@@ -17,7 +16,6 @@
       font-family: "Adventure";
       font-size: 4em;
       color: #22929d;
-      
     }
   }
 
@@ -26,7 +24,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    height: 20vh;
+    height: 15vh;
     @include m1200() {
       background-image: url('../../../assets/img/header-img.jpg');
       background-size: contain;

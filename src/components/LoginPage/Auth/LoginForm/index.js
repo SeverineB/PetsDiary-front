@@ -64,15 +64,12 @@ const LoginForm = ({
                 onChange={handleChange}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className="login-button-submit">
               Valider
             </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
         </Modal.Footer>
       </Modal>
     </div>

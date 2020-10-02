@@ -1,24 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Header from './Header';
-/* import LoginForm from '../../containers/LoginForm'; */
-/* import RegisterForm from '../../containers/RegisterForm'; */
+import About from './About';
 import Auth from '../../containers/Auth';
 
-import './style.scss';
+import './LoginPage.scss';
 
 const LoginPage = () => (
   <div className="login-page">
     <Header />
-    {/* <div className="login-page-forms"> */}
+    <About />
     <Auth />
-    {/* <LoginForm /> */}
-    {/* <RegisterForm /> */}
   </div>
-  /* </div> */
 );
 
 LoginPage.propTypes = {
+ 
 };
 
 export default LoginPage;

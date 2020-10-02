@@ -7,6 +7,7 @@ import Pet from '../../../containers/Pet';
 import './pets.scss';
 
 const Pets = ({ petsList }) => {
+  console.log(petsList);
   return (
     <div className="pets-list">
       <Card.Group itemsPerRow={2}>

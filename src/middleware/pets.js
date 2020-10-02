@@ -58,6 +58,7 @@ const pets = (store) => (next) => (action) => {
       console.log('je lance la requête pour récupérer les animaux');
       axios.get('http://localhost:3000/api/pets/')
         .then((response) => {
+          console.log('middleware GET PETSLIST response vaut ', response);
           store.dispatch(savePetsList(response.data, false));
         })
         .catch((error) => {

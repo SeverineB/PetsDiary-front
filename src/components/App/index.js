@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Home from '../../containers/Home';
 import LoginPage from '../LoginPage';
@@ -28,7 +28,9 @@ const App = ({ checkIsLogged, check }) => {
         </Route>
 
         <Route path="/home" exact>
+          {checkIsLogged && (
           <Home />
+          )}
         </Route>
       </Switch>
     </div>

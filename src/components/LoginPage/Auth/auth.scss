@@ -3,49 +3,17 @@
 .auth {
   font-family: 'Nunito';
   width: 80%;
-  height: 20em;
+  height: 15em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  background-color: #b5dfb7;
-  background: rgb(29,187,156);
-  background: linear-gradient(0deg, rgb(152, 223, 230) 0%, rgb(34,146,157) 100%);
+  justify-content: center;
   border-radius: 0.5em;
   padding: 1em;
-  position: absolute;
-  top: 30%;
+  /*position: absolute;
+  top: 30%;*/
   @include m1200() {
+    top: 20%;
     width: 15%;
    };
-  &-login {
-    padding: 1em;
-    &-button {
-      font-family: 'Nunito';
-      border: none;
-      height: 3em;
-      width: 8em;
-      border-radius: 0.3em;
-      background-color: #f6af39;
-      color: white;
-
-      &:hover {
-        background-color: #31644c;
-      }
-    }
-  }
-  &-register {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    &-button {
-      font-family: 'Nunito';
-      border: none;
-      height: 3em;
-      width: 8em;
-      border-radius: 0.3em;
-      background-color:#f6af39;
-      color: white;
-    }
-  }
 }

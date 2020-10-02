@@ -27,12 +27,10 @@ const petReducer = (state = initialState, action = {}) => {
     case GET_PETS_LIST:
       return {
         ...state,
-        isPetsLoading: !state.isPetsLoading,
       };
     case SAVE_PETS_LIST:
       return {
         ...state,
-        isPetsLoading: !state.isPetsLoading,
         petsList: action.petsList,
       };
     case ADD_PETS:
