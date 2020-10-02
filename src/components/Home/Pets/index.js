@@ -4,6 +4,8 @@ import { Card } from 'semantic-ui-react';
 
 import Pet from '../../../containers/Pet';
 
+import './pets.scss';
+
 const Pets = ({ petsList }) => {
   return (
     <div className="pets-list">

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Icon, Image, Button } from 'semantic-ui-react';
 
+import './pet.scss';
+
 const PetCard = ({
   _id,
   name,

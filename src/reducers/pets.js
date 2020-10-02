@@ -1,6 +1,7 @@
 import {
   DELETE_PETS,
   OPEN_MODAL,
+  OPEN_MODAL_LOGIN,
   GET_PETS_LIST,
   SAVE_PETS_LIST,
   CHANGE_FIELD,
@@ -18,6 +19,7 @@ const initialState = {
   open: false,
   isPetsLoading: false,
   errorOnField: false,
+  userId: '',
 };
 
 const petReducer = (state = initialState, action = {}) => {
@@ -55,7 +57,11 @@ const petReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         open: !state.open,
-        dimmer: action.dimmer,
+      };
+    case OPEN_MODAL_LOGIN:
+      return {
+        ...state,
+        openLogin: !state.openLogin,
       };
     case CHANGE_FIELD:
       return {

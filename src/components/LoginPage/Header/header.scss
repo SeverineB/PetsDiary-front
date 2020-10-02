@@ -1,0 +1,38 @@
+@import 'src/styles/vars';
+
+.login-page-header {
+  width: 100vw;
+  height: 10vh;
+
+  &-title {
+    position: absolute;
+    top: 20%;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    @include m1200() {
+      top: 0;
+     };
+    & h1 {
+      font-family: "Adventure";
+      font-size: 4em;
+      color: #22929d;
+      
+    }
+  }
+
+  &-img {
+    background-image: url('../../../assets/img/header-img-crop.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 20vh;
+    @include m1200() {
+      background-image: url('../../../assets/img/header-img.jpg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100vh;
+     };
+  }
+}

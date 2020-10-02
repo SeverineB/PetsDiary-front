@@ -3,6 +3,7 @@ export const GET_PETS_LIST = 'GET_PETS_LIST';
 export const SAVE_PETS_LIST = 'SAVE_PETS_LIST';
 export const ADD_PETS = 'ADD_PETS';
 export const DELETE_PETS = 'DELETE_PETS';
+export const OPEN_MODAL_LOGIN = 'OPEN_MODAL_LOGIN';
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLEAR_NEW_PET = 'CLEAR_NEW_PET';
 
@@ -32,4 +33,8 @@ export const deletePets = (id) => ({
 
 export const openModal = () => ({
   type: OPEN_MODAL,
+});
+
+export const openModalLogin = () => ({
+  type: OPEN_MODAL_LOGIN,
 });

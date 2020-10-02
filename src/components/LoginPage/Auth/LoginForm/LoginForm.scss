@@ -1,0 +1,14 @@
+@import 'src/styles/vars';
+
+button.btn.btn-primary.login-button {
+  background-color: #bb97c3;
+  border: none;
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  &:hover {
+    background-color: #7a5383;
+  }
+}

@@ -1,0 +1,10 @@
+@import 'src/styles/vars';
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  @include m1200() {
+    background-color: #bb97c3;
+   };
+}
+

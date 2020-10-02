@@ -3,6 +3,8 @@
 
 body {
   font-family: sans-serif;
+  background-color: #bb97c3;
+
 }
 
 /* 
@@ -15,3 +17,17 @@ body {
     font-family: 'Roboto', sans-serif;
   }
 */
+
+@font-face {
+  font-family: "Adventure";
+  src: url("../../src/assets/fonts/Adventure.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: "Bangers";
+  src: url("../../src/assets/fonts/Bangers-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}

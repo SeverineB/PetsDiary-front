@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import AddPetForm from '../../components/Home/AddPetForm';
+import AddPetForm from '../../components/Home/AddPetForm/AddPetForm';
 import {
   openModal,
   changeField,

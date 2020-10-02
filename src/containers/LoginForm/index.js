@@ -1,23 +1,24 @@
 import { connect } from 'react-redux';
 
-import LoginForm from '../../../components/LoginPage/LoginForm';
+import LoginForm from '../../components/LoginPage/Auth/LoginForm';
 
-import { changeUserField } from '../../../actions/users';
-import { openModal } from '../../../actions';
+import { toggleShowLogin, changeUserField, login } from '../../actions';
 
 const mapStateToProps = (state) => ({
-  open: state.pets.open,
+  showLogin: state.auth.showLogin,
   email: state.users.email,
   password: state.users.password,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  openModal: () => {
-    const action = openModal();
-    dispatch(action);
+  toggleShowLogin: () => {
+    dispatch(toggleShowLogin());
   },
   changeUserField: (value, name) => {
     dispatch(changeUserField(value, name));
+  },
+  login: () => {
+    dispatch(login());
   },
 });
 

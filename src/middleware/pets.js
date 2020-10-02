@@ -20,11 +20,14 @@ const pets = (store) => (next) => (action) => {
         species,
         breed,
       } = state.pets;
-      axios.post('http://localhost:3000/api/pets/', {
+      const { id } = state.auth.session;
+      console.log('middleware pets id vaut ', id);
+      axios.post('http://localhost:3000/api/pets/add', {
         name,
         age,
         species,
         breed,
+        user_id: id,
       })
         .then((response) => {
           console.log('Middleware API response ', response.data);

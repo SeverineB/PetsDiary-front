@@ -5,16 +5,13 @@
   justify-content: center;
 }
 
-.auth-forms {
+@import 'src/styles/vars';
+
+.login-page {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
-  background-color: rgb(164, 90, 194);
-  border-radius: 3em;
-  width: 30em;
-  height: 30em;
-  position: absolute;
-  top: 30%;
-  left: 40%;
+  justify-content: space-between;
+  width: 100vw;
+  margin: 0 auto;
 }
