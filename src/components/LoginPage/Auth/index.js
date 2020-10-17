@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Redirect } from 'react-router-dom';
+
 import LoginForm from '../../../containers/LoginForm';
 import RegisterForm from '../../../containers/RegisterForm';
+
+import HomeIcon from '../../../assets/icons/pet-house.png';
 
 import './auth.scss';
 
@@ -17,19 +21,15 @@ const Auth = ({ checkIsLogged, logout }) => {
         <>
           <LoginForm />
           <RegisterForm />
-          {/* <div className="auth-register">
-            <p className="auth-register-meta">Pas encore de compte ?</p>
-            <button type="button" className="auth-register-button" onClick={showRegister}>Inscription</button>
-          </div> */}
         </>
       )}
-      {/* {checkIsLogged && (
-        { <Link to="/home">Vos animaux</Link> }
-      )} */}
       {checkIsLogged && (
       <div className="logout">
         <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
       </div>
+      )}
+      {checkIsLogged && (
+        <Redirect to="/home" />
       )}
     </div>
   );

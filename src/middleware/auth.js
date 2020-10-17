@@ -12,7 +12,7 @@ import {
   LOGOUT,
 } from '../actions';
 
-const serverURL = 'http://localhost:3000/api/users/';
+const serverURL = 'http://localhost:3001/api/user/';
 
 const users = (store) => (next) => (action) => {
   switch (action.type) {
@@ -43,11 +43,14 @@ const users = (store) => (next) => (action) => {
       axios.post(`${serverURL}login`, {
         email,
         password,
+      },
+      {
+        withCredentials: true,
       })
         .then((response) => {
           console.log('dans login token vaut ', response.data.token);
-          localStorage.setItem('token', response.data.token);
-          localStorage.setItem('id', response.data.session._id);
+/*           localStorage.setItem('token', response.data.token);
+          localStorage.setItem('id', response.data.session._id); */
           store.dispatch(saveUser({ ...response.data }));
           store.dispatch(getUsers());
         })

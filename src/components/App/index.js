@@ -1,34 +1,36 @@
-// == Import npm
+/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Home from '../../containers/Home';
+import NavBar from '../../containers/NavBar';
 import LoginPage from '../LoginPage';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'semantic-ui-css/semantic.min.css';
 
-// == Import
 import './app.scss';
 
-
 // == Composant
-const App = ({ checkIsLogged, check }) => {
+
+const App = ({ isLogged, check }) => {
   useEffect(() => {
     check();
   }, []);
-  console.log('dans app checkIsLogged vaut ', checkIsLogged);
+  console.log('dans app checkIsLogged vaut ', isLogged);
   return (
     <div className="app">
+      <NavBar />
       <Switch>
         <Route path="/" exact>
           <LoginPage />
         </Route>
 
         <Route path="/home" exact>
+          {isLogged && (
           <Home />
+          )}
         </Route>
       </Switch>
     </div>
@@ -36,9 +38,11 @@ const App = ({ checkIsLogged, check }) => {
 };
 
 App.propTypes = {
-  checkIsLogged: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  // loggedOut: PropTypes.bool.isRequired,
   check: PropTypes.func.isRequired,
 };
 
 // == Export
+
 export default App;

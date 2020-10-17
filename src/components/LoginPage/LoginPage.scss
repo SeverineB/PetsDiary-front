@@ -1,0 +1,29 @@
+@import 'src/styles/vars';
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  top: 20%;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 1em;
+  @include m1200() {
+    flex-direction: row;
+    padding: 1em;
+    align-items: center;
+    justify-content: center;
+   };
+
+   &-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    @include m1200() {
+      width: 30%;
+     };
+   }
+}

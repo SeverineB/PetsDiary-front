@@ -1,21 +1,19 @@
 import { connect } from 'react-redux';
 
-import App from '../../components/App';
+import NavBar from '../../components/Navbar';
 
-import { check } from '../../actions';
+import { logout } from '../../actions';
 
 const mapStateToProps = (state) => ({
-  isLogged: state.auth.isLogged,
-  session: state.auth.session,
+  checkIsLogged: state.auth.isLogged,
 });
-
 const mapDispatchToProps = (dispatch) => ({
-  check: () => {
-    dispatch(check());
+  logout: () => {
+    dispatch(logout());
   },
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(App);
+)(NavBar);
