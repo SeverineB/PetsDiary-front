@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Navbar, Nav } from 'react-bootstrap';
 
@@ -13,6 +14,12 @@ const NavBar = ({ checkIsLogged, logout }) => {
   };
   return (
     <Navbar bg="light" expand="lg">
+      <Navbar.Brand href="#home">Pets Diary</Navbar.Brand>
+      {checkIsLogged && (
+        <div className="logout">
+          <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
+        </div>
+      )}
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">

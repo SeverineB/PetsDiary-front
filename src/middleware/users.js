@@ -14,6 +14,7 @@ const users = (store) => (next) => (action) => {
       console.log('je lance la requête pour récupérer les users');
       axios.get(`${serverURL}`)
         .then((response) => {
+          console.log('dans middleware users response vaut ', response);
           store.dispatch(saveUsers(response.data, false));
         })
         .catch((error) => {

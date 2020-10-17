@@ -4,10 +4,13 @@
   width: 100vw;
   height: 15vh;
   margin-bottom: 4em;
+<<<<<<< HEAD
   @include m1200() {
     width: 50vw;
     height: 90vh;
     }
+=======
+>>>>>>> 17b0ac981221f1cc4ed9338e200a3cb8f3eb4bdb
 
   &-title {
     display: inline-block;

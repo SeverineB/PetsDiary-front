@@ -11,6 +11,7 @@
   margin: 0 auto;
   padding: 1em;
   @include m1200() {
+<<<<<<< HEAD
     flex-direction: row;
     padding: 1em;
     align-items: center;
@@ -26,4 +27,9 @@
       width: 30%;
      };
    }
+=======
+    padding: 2em;
+    align-items: flex-start;
+   };
+>>>>>>> 17b0ac981221f1cc4ed9338e200a3cb8f3eb4bdb
 }

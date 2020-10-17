@@ -6,18 +6,24 @@ import PropTypes from 'prop-types';
 
 import Pets from '../../containers/Pets';
 import AddPetForm from '../../containers/AddPetForm';
+import NavBar from '../Navbar';
+
+import HomeIcon from '../../assets/icons/pet-house.png';
 
 import './home.scss';
 
-const Home = ({
-  getPetsList,
-  loggedOut,
-}) => {
+const Home = ({ getPetsList, checkIsLogged, logout }) => {
   useEffect(getPetsList, []);
 
-  console.log('loggedOut dans component Home vaut ', loggedOut);
+  const handleLogout = () => {
+    logout();
+  };
   return (
     <>
+      <NavBar />
+      <Link to="/">
+        <img src={HomeIcon} alt="pets house" className="home-icon" />
+      </Link>
       <div className="home">
         <div className="pets-list">
           <Link to="/pets">Mes animaux</Link>
@@ -28,8 +34,10 @@ const Home = ({
             </Route>
           </Switch>
         </div>
-        {loggedOut && (
-        <Redirect to="/" />
+        {checkIsLogged && (
+          <div className="logout">
+            <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
+          </div>
         )}
       </div>
     </>
@@ -38,7 +46,8 @@ const Home = ({
 
 Home.propTypes = {
   getPetsList: PropTypes.func.isRequired,
-  loggedOut: PropTypes.bool.isRequired,
+  checkIsLogged: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 export default Home;
