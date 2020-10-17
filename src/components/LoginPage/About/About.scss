@@ -5,16 +5,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 90%;
-  height: 15em;
-  background: linear-gradient(0deg, rgb(241, 56, 87) 0%, rgb(238, 146, 59) 25%, rgb(82, 206, 77) 50%, rgb(72, 112, 221) 75%, rgb(110, 46, 146) 100%);
+  width: 50%;
+  height: 12em;
+  /*background: linear-gradient(0deg, rgb(241, 56, 87) 0%, rgb(238, 146, 59) 25%, rgb(82, 206, 77) 50%, rgb(72, 112, 221) 75%, rgb(110, 46, 146) 100%);*/
+  /*background-color: #bcdf9b;*/
   border-radius: 0.5em;
   padding: 1em;
+  margin-top: 7em;
   font-family: "Quicksand";
-  font-size: 1em;
+  font-size: 1.1em;
+  font-weight: bold;
   color: white;
   @include m1200() {
     // position: absolute;
     // top: 8em;
+    background-color: #bcdf9b;
+    width: 30em;
    };
 }

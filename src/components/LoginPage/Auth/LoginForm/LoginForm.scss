@@ -1,7 +1,8 @@
 @import 'src/styles/vars';
 
 button.btn.btn-primary.login-button {
-  background: linear-gradient(0deg, rgb(187,151,195) 0%, rgb(107,190,198) 100%);
+  /* background: linear-gradient(0deg, rgb(187,151,195) 0%, rgb(107,190,198) 100%); */
+  background-color: #80c044;
   border: none;
   font-family: "Quicksand";
   font-size: 1.2em;
@@ -9,14 +10,8 @@ button.btn.btn-primary.login-button {
   border-radius: 5em;
   padding: 0.5em 1em;
   @include m1200() {
-<<<<<<< HEAD
-    // background-color: #ffffff;
-    background-color: #bb97c3;
+    width: 8em;
     color: #ffffff;
-=======
-    background-color: #ffffff;
-    color: #bb97c3;
->>>>>>> 17b0ac981221f1cc4ed9338e200a3cb8f3eb4bdb
    };
 
   &:focus {
@@ -29,7 +24,7 @@ button.btn.btn-primary.login-button {
 }
 
 button.btn.btn-primary.login-button-submit {
-  background-color: #bb97c3;
+  background-color: #80c044;
   border: none;
   border-radius: 5em;
   padding: 0.5em 1em;

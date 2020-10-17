@@ -36,12 +36,12 @@ const RegisterForm = ({
   return (
     <div className="modal-register-form">
       <Button className="login-button" variant="primary" onClick={handleShow}>
-        Créer un compte
+        Inscription
       </Button>
 
       <Modal show={showRegister} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Créer un compte</Modal.Title>
+          <Modal.Title>Inscription</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
