@@ -1,14 +1,11 @@
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
-import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Pets from '../../containers/Pets';
 import AddPetForm from '../../containers/AddPetForm';
-import NavBar from '../Navbar';
-
-import HomeIcon from '../../assets/icons/pet-house.png';
 
 import './home.scss';
 
@@ -20,10 +17,6 @@ const Home = ({ getPetsList, checkIsLogged, logout }) => {
   };
   return (
     <>
-      <NavBar />
-      <Link to="/">
-        <img src={HomeIcon} alt="pets house" className="home-icon" />
-      </Link>
       <div className="home">
         <div className="pets-list">
           <Link to="/pets">Mes animaux</Link>

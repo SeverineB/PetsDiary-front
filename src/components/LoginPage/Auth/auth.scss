@@ -3,18 +3,13 @@
 .auth {
   font-family: 'Nunito';
   width: 80%;
-  height: 15em;
+  height: 8em;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   border-radius: 0.5em;
   padding: 1em;
-  margin-top: 2em;
-  /*position: absolute;
-  top: 30%;*/
   @include m1200() {
-    top: 20%;
-    width: 15%;
+    width: 30%;
    };
 }

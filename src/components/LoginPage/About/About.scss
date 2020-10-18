@@ -5,21 +5,31 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%;
-  height: 12em;
+  width: 100vw;
+  height: 25em;
+  background-image: url('../../../assets/img/blob.svg');
+  background-position: center;
+  background-size: 100%;
   /*background: linear-gradient(0deg, rgb(241, 56, 87) 0%, rgb(238, 146, 59) 25%, rgb(82, 206, 77) 50%, rgb(72, 112, 221) 75%, rgb(110, 46, 146) 100%);*/
   /*background-color: #bcdf9b;*/
   border-radius: 0.5em;
   padding: 1em;
-  margin-top: 7em;
   font-family: "Quicksand";
-  font-size: 1.1em;
+  font-size: 0.9em;
   font-weight: bold;
   color: white;
+  &-infos {
+    width: 60vw;
+    @include m1200() {
+ 
+     };
+  }
   @include m1200() {
-    // position: absolute;
-    // top: 8em;
-    background-color: #bcdf9b;
-    width: 30em;
+    font-size: 1.1em;
+ /*    width: 50vw;
+    height: 60vh; */
+    width: 50%;
+    background-size: 60%;
+    background-repeat: no-repeat;
    };
 }

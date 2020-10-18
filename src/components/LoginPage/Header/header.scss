@@ -2,11 +2,11 @@
 
 .login-page-header {
   width: 100vw;
-  height: 30vh;
-  margin-bottom: 4em;
+  height: 10vh;
+  /* margin-bottom: 4em; */
   @include m1200() {
     width: 50vw;
-    height: 90vh;
+    height: 60vh;
     }
 
   &-title {
@@ -29,12 +29,12 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    height: 30vh;
+    height: 100%;
     @include m1200() {
       background-image: url('../../../assets/img/Cat1.jpg');
       background-size: contain;
       background-repeat: no-repeat;
-      height: 80%;
+      height: 100%;
       align-self: center;
      };
   }
