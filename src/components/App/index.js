@@ -22,6 +22,9 @@ const App = ({ isLogged, check }) => {
   return (
     <div className="app">
       <NavBar />
+      <div className="login-page-header-title">
+        <h1>Pets Notes</h1>
+      </div>
       <Switch>
         <Route path="/" exact>
           <LoginPage />

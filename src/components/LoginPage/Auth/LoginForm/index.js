@@ -70,8 +70,6 @@ const LoginForm = ({
             </Button>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-        </Modal.Footer>
       </Modal>
     </div>
   );
