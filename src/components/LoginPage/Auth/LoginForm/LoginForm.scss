@@ -9,14 +9,8 @@ button.btn.btn-primary.login-button {
   border-radius: 5em;
   padding: 0.5em 1em;
   @include m1200() {
-<<<<<<< HEAD
-    // background-color: #ffffff;
-    background-color: #bb97c3;
-    color: #ffffff;
-=======
     background-color: #ffffff;
     color: #bb97c3;
->>>>>>> 17b0ac981221f1cc4ed9338e200a3cb8f3eb4bdb
    };
 
   &:focus {

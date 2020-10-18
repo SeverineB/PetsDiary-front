@@ -70,11 +70,8 @@ const LoginForm = ({
             </Button>
           </Form>
         </Modal.Body>
-<<<<<<< HEAD
-=======
         <Modal.Footer>
         </Modal.Footer>
->>>>>>> 17b0ac981221f1cc4ed9338e200a3cb8f3eb4bdb
       </Modal>
     </div>
   );
