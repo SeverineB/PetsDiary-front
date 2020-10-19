@@ -1,7 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
-import axios from 'axios';
-
 import {
   getUsers,
   saveUsers,
@@ -12,7 +10,7 @@ import {
   LOGOUT,
 } from '../actions';
 
-const serverURL = 'http://localhost:3001/api/user/';
+import api from '../services/api';
 
 const users = (store) => (next) => (action) => {
   switch (action.type) {
@@ -23,7 +21,7 @@ const users = (store) => (next) => (action) => {
         password,
         username,
       } = state.users;
-      axios.post(`${serverURL}register`, {
+      api.post('user/register', {
         email,
         password,
         username,
@@ -33,14 +31,15 @@ const users = (store) => (next) => (action) => {
           store.dispatch(saveUser({ ...response.data }));
         })
         .catch((error) => {
-          console.error('une putain de fuck d\'erreur est survenue', error);
+          console.error('Il y a une erreur', error.message);
         });
       break;
     }
+
     case LOGIN: {
       const state = store.getState();
       const { email, password } = state.users;
-      axios.post(`${serverURL}login`, {
+      api.post('user/login', {
         email,
         password,
       },
@@ -49,8 +48,6 @@ const users = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log('dans login token vaut ', response.data.token);
-/*           localStorage.setItem('token', response.data.token);
-          localStorage.setItem('id', response.data.session._id); */
           store.dispatch(saveUser({ ...response.data }));
           store.dispatch(getUsers());
         })
@@ -59,32 +56,28 @@ const users = (store) => (next) => (action) => {
         });
       break;
     }
+
     case LOGOUT: {
       const state = store.getState();
-      axios.post(`${serverURL}logout`, {})
+      api.get('user/logout', {})
         .then((response) => {
-          localStorage.removeItem('token');
-          localStorage.removeItem('id');
         })
         .catch((error) => {
           console.log('Mais noooon c\'est pas bon !', error.message);
         });
       break;
     }
+
     case CHECK: {
       const state = store.getState();
-      const { id } = state.auth.session;
 
-      const idToken = typeof id === 'undefined' ? localStorage.getItem('id') : id;
-
-      axios.post(`${serverURL}isLogged`, {
-        token: localStorage.getItem('token'),
-        id: idToken,
-      })
+      api.post('user/isLogged',
+        {
+          withCredentials: true,
+        })
         .then((response) => {
           console.log('dans middleware check response data vaut ', response.data);
           store.dispatch(saveUser(response.data));
-          localStorage.setItem('id', response?.data.session?._id);
         })
         .catch((error) => {
           console.log('error', error.message);

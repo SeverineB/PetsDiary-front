@@ -4,7 +4,7 @@ import {
   deletePets,
 } from '../../actions';
 
-import Pet from '../../components/Home/Pet';
+import Pet from '../../components/Home/Pets/Pet';
 
 const mapStateToProps = (state) => ({
 });

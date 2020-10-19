@@ -8,36 +8,34 @@ import HomeIcon from '../../assets/icons/pet-house.png';
 
 import './Navbar.scss';
 
-const NavBar = ({ checkIsLogged, logout }) => {
+const NavBar = ({ isLogged, logout }) => {
   const handleLogout = () => {
     logout();
   };
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand href="#home">Pets Diary</Navbar.Brand>
-      {checkIsLogged && (
-        <div className="logout">
-          <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
-        </div>
+      {isLogged && (
+        <>
+          <div className="logout">
+            <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
+          </div>
+          <Link to="/pets">Mes animaux</Link>
+        </>
       )}
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/"><img src={HomeIcon} alt="pets house" className="home-icon" />
-          </Nav.Link>
+          <Link to="/"><img src={HomeIcon} alt="pets house" className="home-icon" />
+          </Link>
         </Nav>
-        {checkIsLogged && (
-        <div className="logout">
-          <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
-        </div>
-        )}
       </Navbar.Collapse>
     </Navbar>
   );
 };
 
 NavBar.propTypes = {
-  checkIsLogged: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
 };
 

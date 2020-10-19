@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import axios from 'axios';
+import api from '../services/api';
 
 import {
   GET_PETS_LIST,
@@ -22,7 +22,7 @@ const pets = (store) => (next) => (action) => {
       } = state.pets;
       const { id } = state.auth.session;
       console.log('middleware pets id vaut ', id);
-      axios.post('http://localhost:3000/api/pets/add', {
+      api.post('pets/add', {
         name,
         age,
         species,
@@ -44,7 +44,10 @@ const pets = (store) => (next) => (action) => {
       const state = store.getState();
       const petId = state.pets.petsList.id;
       console.log('je lance la requête pour supprimer un animal');
-      axios.delete(`http://localhost:3000/api/pets/${petId}`)
+      api.delete(`pets/${petId}`,
+        {
+          withCredentials: true,
+        })
         .then((response) => {
           console.log(response.data);
         })
@@ -54,17 +57,19 @@ const pets = (store) => (next) => (action) => {
       break;
     }
 
-    case GET_PETS_LIST:
-      console.log('je lance la requête pour récupérer les animaux');
-      axios.get('http://localhost:3000/api/pets/')
+    case GET_PETS_LIST: {
+      const state = store.getState();
+      console.log('je lance la requête pour récupérer les animaux par user');
+      const userId = state.auth.session.id;
+      api.get(`user/${userId}/pets`)
         .then((response) => {
           console.log('middleware GET PETSLIST response vaut ', response);
-          store.dispatch(savePetsList(response.data, false));
+          store.dispatch(savePetsList(response.data));
         })
         .catch((error) => {
           console.error(error);
         });
-      break;
+      break;}
     default:
       next(action);
   }
