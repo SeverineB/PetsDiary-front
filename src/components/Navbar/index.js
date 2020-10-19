@@ -13,7 +13,7 @@ const NavBar = ({ isLogged, logout }) => {
     logout();
   };
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="lg" id="navbar-custom">
       <Navbar.Brand href="#home">Pets Diary</Navbar.Brand>
       {isLogged && (
         <>

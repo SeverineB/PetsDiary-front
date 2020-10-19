@@ -49,7 +49,6 @@ const users = (store) => (next) => (action) => {
         .then((response) => {
           console.log('dans login token vaut ', response.data.token);
           store.dispatch(saveUser({ ...response.data }));
-          store.dispatch(getUsers());
         })
         .catch((error) => {
           console.log('Mais noooon c\'est pas bon !', error.message);

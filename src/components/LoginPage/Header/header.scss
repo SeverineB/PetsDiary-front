@@ -2,11 +2,10 @@
 
 .login-page-header {
   width: 100vw;
-  height: 10vh;
-  /* margin-bottom: 4em; */
-  @include m1200() {
-    width: 50vw;
-    height: 60vh;
+  height: 20vh;
+  @include m1024() {
+    width: 100vw;
+    height: 20vh; 
     }
 
   &-title {
@@ -17,23 +16,15 @@
       top: 0;
       margin-bottom: 4em;
      };
-    & h1 {
-      font-family: "Adventure";
-      font-size: 4em;
-      color: #bcdf9b;
-    }
   }
 
   &-img {
-    background-image: url('../../../assets/img/Cat1.jpg');
+    background-image: url('../../../assets/img/breathe.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     height: 100%;
     @include m1200() {
-      background-image: url('../../../assets/img/Cat1.jpg');
-      background-size: contain;
-      background-repeat: no-repeat;
       height: 100%;
       align-self: center;
      };

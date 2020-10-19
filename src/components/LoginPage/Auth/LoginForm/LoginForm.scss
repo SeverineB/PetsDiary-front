@@ -2,8 +2,7 @@
 
 button.btn.btn-primary.login-button {
   /* background: linear-gradient(0deg, rgb(187,151,195) 0%, rgb(107,190,198) 100%); */
-  background-color: #80c044;
-  background: linear-gradient(0deg, rgb(188,223,155) 0%, rgb(128,192,68) 100%);
+  background-color: #BEEADB;
   border: none;
   font-family: "Quicksand";
   font-size: 1.1em;
@@ -11,7 +10,7 @@ button.btn.btn-primary.login-button {
   border-radius: 5em;
   padding: 0.5em 1em;
   @include m1200() {
-    background-color: #80c044;
+    background-color: #BEEADB;
    };
 
   &:focus {
@@ -24,8 +23,7 @@ button.btn.btn-primary.login-button {
 }
 
 button.btn.btn-primary.login-button-submit {
-  background: linear-gradient(0deg, rgb(188,223,155) 0%, rgb(128,192,68) 100%);
-  /* background-color: #80c044; */
+  background-color:#BEEADB;
   border: none;
   border-radius: 5em;
   padding: 0.5em 1em;
@@ -47,7 +45,7 @@ button.btn.btn-primary.login-button-submit {
 }
 
 .modal-title {
-  color: #80c044;
+  color: #20A6A7;
   font-weight: bold;
 }
 

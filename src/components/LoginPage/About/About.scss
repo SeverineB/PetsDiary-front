@@ -10,26 +10,36 @@
   background-image: url('../../../assets/img/blob.svg');
   background-position: center;
   background-size: 100%;
-  /*background: linear-gradient(0deg, rgb(241, 56, 87) 0%, rgb(238, 146, 59) 25%, rgb(82, 206, 77) 50%, rgb(72, 112, 221) 75%, rgb(110, 46, 146) 100%);*/
-  /*background-color: #bcdf9b;*/
   border-radius: 0.5em;
   padding: 1em;
   font-family: "Quicksand";
-  font-size: 0.9em;
+  font-size: 1em;
   font-weight: bold;
   color: white;
-  &-infos {
-    width: 60vw;
-    @include m1200() {
- 
-     };
-  }
   @include m1200() {
     font-size: 1.1em;
- /*    width: 50vw;
-    height: 60vh; */
-    width: 50%;
-    background-size: 60%;
+    width: 60vw;
+    background-size: 80%;
     background-repeat: no-repeat;
    };
+   @include m1600() {
+    width: 60vw;
+    background-size: 70%;
+   };
+
+  &-infos {
+    width: 55vw;
+    margin-top: 0.4em;
+    @include m1024() {
+      width: 30vw;
+     };
+     @include m1200() {
+     };
+     @include m1600() {
+      width: 25vw;
+      font-size: 1.1em;
+     };
+  }
+
+  
 }
