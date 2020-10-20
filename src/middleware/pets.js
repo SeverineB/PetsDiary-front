@@ -61,7 +61,10 @@ const pets = (store) => (next) => (action) => {
       const state = store.getState();
       console.log('je lance la requête pour récupérer les animaux par user');
       const userId = state.auth.session.id;
-      api.get(`user/${userId}/pets`)
+      api.get(`user/${userId}/pets`,
+        {
+          withCredentials: true,
+        })
         .then((response) => {
           console.log('middleware GET PETSLIST response vaut ', response);
           store.dispatch(savePetsList(response.data));
@@ -69,7 +72,8 @@ const pets = (store) => (next) => (action) => {
         .catch((error) => {
           console.error(error);
         });
-      break;}
+      break;
+    }
     default:
       next(action);
   }

@@ -9,8 +9,10 @@ import AddPetForm from '../../containers/AddPetForm';
 
 import './home.scss';
 
-const Home = ({ getPetsList, checkIsLogged, logout }) => {
+const Home = ({ getPetsList, isLogged, logout }) => {
   useEffect(getPetsList, []);
+
+  console.log('ISLOGGED DANS HOME ', isLogged);
 
   const handleLogout = () => {
     logout();
@@ -27,7 +29,7 @@ const Home = ({ getPetsList, checkIsLogged, logout }) => {
             </Route>
           </Switch>
         </div>
-        {checkIsLogged && (
+        {isLogged && (
           <div className="logout">
             <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
           </div>
@@ -39,7 +41,7 @@ const Home = ({ getPetsList, checkIsLogged, logout }) => {
 
 Home.propTypes = {
   getPetsList: PropTypes.func.isRequired,
-  checkIsLogged: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
 };
 

@@ -6,10 +6,9 @@
   align-items: center;
   justify-content: center;
   width: 100vw;
+  height: 100vh;
   margin: 0 auto;
-  padding: 1em;
   @include m1024() {
-    padding: 1em;
     height: 90vh;
     align-items: center;
     justify-content: center;
@@ -18,12 +17,13 @@
    &-infos {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     margin: 0 auto;
     @include m1024() {
+      flex-direction: row;
       width: 100vw;
-      height: 60vh;
+      height: 50vh;
      };
      @include m1200() {
 

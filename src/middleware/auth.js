@@ -4,17 +4,18 @@ import {
   getUsers,
   saveUsers,
   saveUser,
-  REGISTER_USER,
+  REGISTER,
   LOGIN,
   CHECK,
   LOGOUT,
+  userConnected,
 } from '../actions';
 
 import api from '../services/api';
 
 const users = (store) => (next) => (action) => {
   switch (action.type) {
-    case REGISTER_USER: {
+    case REGISTER: {
       const state = store.getState();
       const {
         email,
@@ -49,6 +50,7 @@ const users = (store) => (next) => (action) => {
         .then((response) => {
           console.log('dans login token vaut ', response.data.token);
           store.dispatch(saveUser({ ...response.data }));
+          store.dispatch(userConnected(true));
         })
         .catch((error) => {
           console.log('Mais noooon c\'est pas bon !', error.message);
@@ -57,26 +59,29 @@ const users = (store) => (next) => (action) => {
     }
 
     case LOGOUT: {
-      const state = store.getState();
-      api.get('user/logout', {})
+      api.get('user/logout',
+        {
+          withCredentials: true,
+        })
         .then((response) => {
+          store.dispatch(userConnected(false));
         })
         .catch((error) => {
           console.log('Mais noooon c\'est pas bon !', error.message);
         });
+      next(action);
       break;
     }
 
     case CHECK: {
-      const state = store.getState();
-
-      api.post('user/isLogged',
+      api.post('user/isLogged', {},
         {
           withCredentials: true,
         })
         .then((response) => {
           console.log('dans middleware check response data vaut ', response.data);
           store.dispatch(saveUser(response.data));
+          store.dispatch(userConnected(true));
         })
         .catch((error) => {
           console.log('error', error.message);

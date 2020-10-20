@@ -1,7 +1,6 @@
 @import 'src/styles/vars';
 
 button.btn.btn-primary.login-button {
-  /* background: linear-gradient(0deg, rgb(187,151,195) 0%, rgb(107,190,198) 100%); */
   background-color: #BEEADB;
   border: none;
   font-family: "Quicksand";
@@ -9,16 +8,22 @@ button.btn.btn-primary.login-button {
   font-weight: bold;
   border-radius: 5em;
   padding: 0.5em 1em;
+  @include m767() {
+    margin: 0 1em;
+  };
   @include m1200() {
-    background-color: #BEEADB;
-   };
+    font-size: 1.2em;
+  };
+  @include m1600() {
+    font-size: 1.4em;
+  };
 
   &:focus {
     box-shadow: none;
   }
 
   &:hover {
-    background-color: #7a5383;
+    background-color: #0f9d9f;
   }
 }
 
@@ -32,12 +37,13 @@ button.btn.btn-primary.login-button-submit {
   }
 
   &:hover {
-    background-color: #7a5383;
+    background-color: #0f9d9f;
   }
 }
 
-.modal-login-form {
- /*  margin: 2em 1em; */
+.modal-dialog {
+  margin: 0;
+  width: 95vw;
 }
 
 .form-label {
@@ -47,8 +53,4 @@ button.btn.btn-primary.login-button-submit {
 .modal-title {
   color: #20A6A7;
   font-weight: bold;
-}
-
-.modal-register-form {
- /*  margin: 2em 0; */
 }

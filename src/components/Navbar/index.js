@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, NavLink } from 'react-bootstrap';
 
 import HomeIcon from '../../assets/icons/pet-house.png';
 
@@ -14,13 +14,13 @@ const NavBar = ({ isLogged, logout }) => {
   };
   return (
     <Navbar bg="light" expand="lg" id="navbar-custom">
-      <Navbar.Brand href="#home">Pets Diary</Navbar.Brand>
       {isLogged && (
         <>
           <div className="logout">
             <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
           </div>
           <Link to="/pets">Mes animaux</Link>
+          <NavLink href="/pets">Mes animaux</NavLink>
         </>
       )}
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
