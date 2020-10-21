@@ -9,76 +9,89 @@
   height: 25em;
   border-radius: 0.5em;
   font-family: "Nunito";
-  font-size: 1em;
+  background-image: url('../../../assets/img/blob_grey.svg');
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
   @include m767() {
-    font-size: 1.2em;
     height: 30em;
   };
   @include m1024() {
-    font-size: 1.3em;
     height: 35em;
   };
   @include m1200() {
-    font-size: 1.4em;
     width: 60vw;
     background-size: 80%;
     background-repeat: no-repeat;
    };
   @include m1600() {
-    width: 60vw;
+    width: 40vw;
     background-size: 70%;
   };
 
   &-infos {
     display: inline-block;
-    width: 55vw;
+    width: 50vw;
     margin-top: 0.4em;
-    align-self: flex-start;
-    margin-left: 5em;
+    align-self: center;
+    margin-left: 2em;
+    font-size: 0.9em;
     z-index: 30;
     @include m400() {
       width: 50vw;
-      margin-left: 6em;
      };
     @include m767() {
-      width: 32vw;
-      margin-left: 10em;
+      font-size: 1.2em;
+      width: 34vw;
+      margin-left: -2em;
     };
     @include m1024() {
-      width: 35vw;
-      margin-left: 6em;
+      font-size: 1.1em;
+      width: 25vw;
+      margin-left: 4em;
      };
     @include m1200() {
-      width: 30vw;
-      margin-left: 10em;
+      font-size: 1.2em;
+      width: 20vw;
+      margin-left: -6em;
     };
     @include m1600() {
-      width: 20vw;
-      margin-left: 10em;
+      width: 18vw;
+      margin-left: -18em;
+    };
+    @include m1900() {
+      width: 16vw;
+      margin-left: -18em;
     };
   }
 
-  &-image-blue {
+  /* &-image-grey {
     width: 100%;
     position: absolute;
     margin-left: 1em;
     z-index: 20;
+    @include m400() {
+      width: 90%;
+     };
     @include m767() {
-      width: 60%;
-      left: 4em;
+      width: 70%;
+      left: 6em;
     };
     @include m1024() {
-      width: 60%;
+      width: 40%;
       margin-left: 2em;
     };
     @include m1200() {
       width: 40%;
       margin-left: 0;
     };
-  }
+    @include m1600() {
+      width: 30%;
+      margin-left: 6em;
+    };
+  } */
 
-  &-image-yellow {
+  /* &-image-yellow {
     width: 100%;
     position: absolute;
     margin-top: 2em;
@@ -95,5 +108,5 @@
       width: 50%;
       margin-left: 0;
     };
-  }
+  } */
 }

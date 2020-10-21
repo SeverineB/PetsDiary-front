@@ -1,7 +1,7 @@
 @import 'src/styles/vars';
 
 button.btn.btn-primary.login-button {
-  background-color: #BEEADB;
+  background-color: #ff7362;
   border: none;
   font-family: "Quicksand";
   font-size: 1.1em;
@@ -23,12 +23,12 @@ button.btn.btn-primary.login-button {
   }
 
   &:hover {
-    background-color: #0f9d9f;
+    background-color: #3a49cd;
   }
 }
 
 button.btn.btn-primary.login-button-submit {
-  background-color:#BEEADB;
+  background-color:#3a49cd;
   border: none;
   border-radius: 5em;
   padding: 0.5em 1em;
@@ -37,7 +37,7 @@ button.btn.btn-primary.login-button-submit {
   }
 
   &:hover {
-    background-color: #0f9d9f;
+    background-color: #ff7362;
   }
 }
 
@@ -51,6 +51,6 @@ button.btn.btn-primary.login-button-submit {
 }
 
 .modal-title {
-  color: #20A6A7;
+  color: #5f89d3;
   font-weight: bold;
 }
