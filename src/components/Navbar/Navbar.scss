@@ -5,10 +5,21 @@
   background: linear-gradient(90deg, rgba(55,73,201,1) 0%, rgba(95,137,210,1) 66%, rgba(253,114,101,1) 100%) !important;
 }
 
-.logout-button {
+.navbar-nav {
+  a {
+    color: #ffffff;
+    margin: 0 1em;
+
+    &:hover {
+      color: #a8d9f2;
+    }
+  }
+}
+
+/* .logout-button {
   border: none;
   background-color:#6bbec6;
   color: white;
   padding: 0.5em 1em;
   border-radius: 5em;
-}
+} */

@@ -1,14 +1,35 @@
 @import 'src/styles/vars';
 
-.home {
+.home-container {
+  height: 90vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  padding: 1em;
+
+  &-logo {
+    align-self: flex-start;
+    width: 4em;
+  }
 }
 
+.pets-section {
+  width: 100%;
+  height: 40vh;
+
+  & h2 {
+    font-family: 'Nunito';
+    color: #3749c9;
+    display: inline-block;
+  }
+}
+
+// Pets list on home page
 .pets-list {
   margin: 4em 1em;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -23,6 +44,14 @@
     font-size: 3em;
     margin: 0 0;
   }
+}
+
+.logout-button {
+  border: none;
+  background-color:#3749c9;
+  color: white;
+  padding: 0.5em 1em;
+  border-radius: 5em;
 }
 
 .ui.modal {

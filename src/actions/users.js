@@ -28,8 +28,6 @@ export const saveUsers = (users) => ({
   users,
 });
 
-
-
 export const changeUserField = (value, name) => ({
   type: CHANGE_USER_FIELD,
   value,

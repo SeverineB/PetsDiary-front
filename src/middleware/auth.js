@@ -1,8 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 import {
-  getUsers,
-  saveUsers,
   saveUser,
   REGISTER,
   LOGIN,
@@ -13,7 +11,7 @@ import {
 
 import api from '../services/api';
 
-const users = (store) => (next) => (action) => {
+const auth = (store) => (next) => (action) => {
   switch (action.type) {
     case REGISTER: {
       const state = store.getState();
@@ -48,7 +46,7 @@ const users = (store) => (next) => (action) => {
         withCredentials: true,
       })
         .then((response) => {
-          console.log('dans login token vaut ', response.data.token);
+          localStorage.setItem('id', response.data.session._id);
           store.dispatch(saveUser({ ...response.data }));
           store.dispatch(userConnected(true));
         })
@@ -79,8 +77,9 @@ const users = (store) => (next) => (action) => {
           withCredentials: true,
         })
         .then((response) => {
-          console.log('dans middleware check response data vaut ', response.data);
-          store.dispatch(saveUser(response.data));
+          console.log('je suis bien connecté');
+          console.log('response dans check front ', response);
+          /* store.dispatch(saveUser(response.data)); */
           store.dispatch(userConnected(true));
         })
         .catch((error) => {
@@ -93,4 +92,4 @@ const users = (store) => (next) => (action) => {
   }
 };
 
-export default users;
+export default auth;

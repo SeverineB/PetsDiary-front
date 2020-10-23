@@ -2,7 +2,7 @@
 import api from '../services/api';
 
 import {
-  GET_PETS_LIST,
+  GET_PETSLIST,
   getPetsList,
   DELETE_PETS,
   savePetsList,
@@ -57,16 +57,15 @@ const pets = (store) => (next) => (action) => {
       break;
     }
 
-    case GET_PETS_LIST: {
-      const state = store.getState();
+    case GET_PETSLIST: {
       console.log('je lance la requête pour récupérer les animaux par user');
-      const userId = state.auth.session.id;
+      const userId = localStorage.getItem('id');
       api.get(`user/${userId}/pets`,
         {
           withCredentials: true,
         })
         .then((response) => {
-          console.log('middleware GET PETSLIST response vaut ', response);
+          console.log('middleware GET PETSLIST response.data vaut ', response.data);
           store.dispatch(savePetsList(response.data));
         })
         .catch((error) => {

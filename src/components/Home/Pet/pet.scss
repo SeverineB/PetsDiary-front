@@ -1,0 +1,19 @@
+@import 'src/styles/vars';
+
+.pet-container {
+  /* width: 20vw;
+  height: 20vh; */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e2f3ff;
+  border-radius: 0.5em;
+  margin: 0.2em;
+  padding: 0.2em;
+
+  .pet-name {
+    font-family: 'Nunito';
+    font-weight: bold;
+  }
+}

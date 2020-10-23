@@ -4,10 +4,9 @@ import {
   deletePets,
 } from '../../actions';
 
-import Pets from '../../components/Home/Pets';
+import Pets from '../../components/Home/Pets/pets';
 
 const mapStateToProps = (state) => {
-  console.log(`Container Pets: j'affiche le state ${state.pets}`);
   return ({
     petsList: state.pets.petsList,
   });

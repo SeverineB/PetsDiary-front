@@ -2,8 +2,8 @@ import {
   DELETE_PETS,
   OPEN_MODAL,
   OPEN_MODAL_LOGIN,
-  GET_PETS_LIST,
-  SAVE_PETS_LIST,
+  GET_PETSLIST,
+  SAVE_PETSLIST,
   CHANGE_FIELD,
   ADD_PETS,
   CLEAR_NEW_PET,
@@ -24,11 +24,11 @@ const initialState = {
 
 const petReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case GET_PETS_LIST:
+    case GET_PETSLIST:
       return {
         ...state,
       };
-    case SAVE_PETS_LIST:
+    case SAVE_PETSLIST:
       return {
         ...state,
         petsList: action.petsList,

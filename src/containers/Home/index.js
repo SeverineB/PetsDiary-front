@@ -11,6 +11,8 @@ import Home from '../../components/Home';
 const mapStateToProps = (state) => ({
   open: state.pets.open,
   isLogged: state.auth.isLogged,
+  session: state.auth.session,
+  petsList: state.pets.petsList,
 });
 
 const mapDispatchToProps = (dispatch) => ({

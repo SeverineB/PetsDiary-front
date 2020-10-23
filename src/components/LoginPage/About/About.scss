@@ -39,29 +39,26 @@
     z-index: 30;
     @include m400() {
       width: 50vw;
-     };
+    };
     @include m767() {
-      font-size: 1.2em;
-      width: 34vw;
-      margin-left: -2em;
+      font-size: 1.1em;
+      width: 32vw;
     };
     @include m1024() {
       font-size: 1.1em;
       width: 25vw;
       margin-left: 4em;
-     };
+    };
     @include m1200() {
       font-size: 1.2em;
       width: 20vw;
-      margin-left: -6em;
+      margin-left: 0;
     };
     @include m1600() {
       width: 18vw;
-      margin-left: -18em;
     };
     @include m1900() {
       width: 16vw;
-      margin-left: -18em;
     };
   }
 

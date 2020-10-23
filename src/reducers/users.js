@@ -10,6 +10,7 @@ const initialState = {
   email: '',
   password: '',
   username: '',
+  loading: false,
 };
 
 const userReducer = (state = initialState, action = {}) => {

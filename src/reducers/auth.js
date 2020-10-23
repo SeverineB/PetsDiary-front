@@ -2,6 +2,7 @@ import {
   SAVE_USER,
   LOGIN,
   REGISTER,
+  CHECK,
   LOGOUT,
   USER_CONNECTED,
   TOGGLE_SHOW_LOGIN,
@@ -11,6 +12,7 @@ import {
 const initialState = {
   openLogin: false,
   isLogged: false,
+  loading: false,
   session: {},
   showLogin: false,
   showRegister: false,
@@ -49,6 +51,11 @@ const authReducer = (state = initialState, action = {}) => {
         ...state,
         isLogged: true,
         loading: true,
+      };
+    case CHECK:
+      return {
+        ...state,
+        isLogged: true,
       };
     case LOGOUT:
       return {
