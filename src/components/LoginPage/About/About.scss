@@ -10,6 +10,7 @@
   border-radius: 0.5em;
   font-family: "Nunito";
   background-image: url('../../../assets/img/blob_grey.svg');
+  background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
   color: white;
@@ -35,7 +36,7 @@
     margin-top: 0.4em;
     align-self: center;
     margin-left: 2em;
-    font-size: 0.9em;
+    font-size: 1em;
     z-index: 30;
     @include m400() {
       width: 50vw;
