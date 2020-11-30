@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import LoginForm from '../../components/LoginPage/Auth/LoginForm';
+import LoginForm from '../../components/LoginPage/Auth/LoginForm/LoginForm';
 
 import { toggleShowLogin, changeUserField, login } from '../../actions';
 

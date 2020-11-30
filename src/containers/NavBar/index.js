@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import NavBar from '../../components/Navbar';
+import NavBar from '../../components/Navbar/NavBar';
 
 import { toggleShowLogin, changeUserField, logout } from '../../actions';
 

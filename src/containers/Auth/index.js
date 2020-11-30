@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Auth from '../../components/LoginPage/Auth';
+import Auth from '../../components/LoginPage/Auth/Auth';
 
 /* import { toggleLogin, logout } from '../../actions'; */
 import { toggleLogin, logout } from '../../actions/auth';

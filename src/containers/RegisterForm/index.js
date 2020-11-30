@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import RegisterForm from '../../components/LoginPage/Auth/RegisterForm';
+import RegisterForm from '../../components/LoginPage/Auth/RegisterForm/RegisterForm';
 
 import { registerUser, changeUserField, toggleShowRegister } from '../../actions';
 

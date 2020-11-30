@@ -1,51 +1,44 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Form, Button } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
 
-import './AddPetForm.scss';
+import './EditPetForm.scss';
 
-const AddPetForm = ({
-  name,
+const EditPetForm = ({
+  pet,
+  currentPet,
+/*   name,
   age,
   species,
-  breed,
-  avatarUrl,
+  breed, */
   changeField,
-  changeFile,
-  changeUrl,
-  addPets,
-  clearNewPet,
+  updatePet,
 }) => {
-  const history = useHistory();
+  const params = useParams();
+
+  console.log('CURRENT PET IN EDIT FORM', currentPet);
+
   const handleChange = (evt) => {
+    console.log(evt.target.value);
     changeField(evt.target.value, evt.target.name);
   };
 
-  const handleFileChange = (evt) => {
-    const avatarToUpload = evt.target.files[0];
-    const newAvatarUrl = URL.createObjectURL(evt.target.files[0]);
-    changeFile(avatarToUpload);
-    changeUrl(newAvatarUrl);
-  };
-
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    addPets();
-    clearNewPet();
-    history.push('/home');
+  const handleSubmit = () => {
+    console.log('je soumets le formulaire');
+    updatePet();
   };
 
   return (
-    <div className="add-pet">
-      <h2 className="add-pet-title">Ajouter un animal</h2>
-      <Form onSubmit={handleSubmit} className="add-pet-form">
+    <div className="edit-pet">
+      <h2>Editer les informations</h2>
+      <Form onSubmit={handleSubmit} className="edit-pet-form">
         <Form.Label>Nom</Form.Label>
         <Form.Control
           type="text"
           placeholder="Nom"
           name="name"
-          value={name}
+          value={currentPet.name}
           onChange={handleChange}
         />
 
@@ -54,7 +47,7 @@ const AddPetForm = ({
           type="text"
           placeholder="Age"
           name="age"
-          value={age}
+          value={currentPet.age}
           onChange={handleChange}
         />
         <Form.Label>Espèce</Form.Label>
@@ -62,7 +55,7 @@ const AddPetForm = ({
           type="text"
           placeholder="Espèce"
           name="species"
-          value={species}
+          value={currentPet.species}
           onChange={handleChange}
         />
         <Form.Label>Race</Form.Label>
@@ -70,7 +63,7 @@ const AddPetForm = ({
           type="text"
           placeholder="Race"
           name="breed"
-          value={breed}
+          value={currentPet.breed}
           onChange={handleChange}
         />
         <Form.Group>
@@ -78,36 +71,38 @@ const AddPetForm = ({
             id="avatar"
             name="avatar"
             label="Ajouter un avatar"
-            onChange={handleFileChange}
+           /*  onChange={handleFileChange} */
           />
         </Form.Group>
-        <div className="avatar-preview">
-          {avatarUrl && <img src={avatarUrl} alt="avatar" />}
-        </div>
-        <div className="buttons">
-          <Button variant="primary" type="submit">
-            Valider
-          </Button>
-          <Button variant="primary" type="submit">
-            <Link to="/home">Annuler</Link>
-          </Button>
-        </div>
       </Form>
     </div>
   );
 };
 
-AddPetForm.propTypes = {
+EditPetForm.propTypes = {
   name: PropTypes.string.isRequired,
   age: PropTypes.string.isRequired,
   species: PropTypes.string.isRequired,
   breed: PropTypes.string.isRequired,
-  avatarUrl: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
+  currentPet: PropTypes.shape({
+    avatarUrl: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    age: PropTypes.string,
+    species: PropTypes.string.isRequired,
+    breed: PropTypes.string.isRequired,
+    pet_details: PropTypes.arrayOf(
+      PropTypes.shape({
+        birthdate: PropTypes.string.isRequired,
+      }),
+    ),
+  }).isRequired,
+  updatePet: PropTypes.func.isRequired,
+  /* avatarUrl: PropTypes.string.isRequired,
   changeFile: PropTypes.func.isRequired,
   changeUrl: PropTypes.func.isRequired,
   addPets: PropTypes.func.isRequired,
-  clearNewPet: PropTypes.func.isRequired,
+  clearNewPet: PropTypes.func.isRequired, */
 };
 
-export default AddPetForm;
+export default EditPetForm;

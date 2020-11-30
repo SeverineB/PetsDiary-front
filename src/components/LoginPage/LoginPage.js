@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import Header from './Header';
-import About from './About';
+import Header from './Header/Header';
+import About from './About/About';
 import Auth from '../../containers/Auth';
 
 import './LoginPage.scss';
@@ -16,9 +15,5 @@ const LoginPage = () => (
     </div>
   </div>
 );
-
-LoginPage.propTypes = {
- 
-};
 
 export default LoginPage;

@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import App from '../../components/App';
+import App from '../../components/App/App';
 
-import { check } from '../../actions';
+import { check, getPetsList } from '../../actions';
 
 const mapStateToProps = (state) => ({
   isLogged: state.auth.isLogged,
@@ -12,6 +12,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   check: () => {
     dispatch(check());
+  },
+  getPetsList: () => {
+    const action = getPetsList();
+    dispatch(action);
   },
 });
 

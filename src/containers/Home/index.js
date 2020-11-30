@@ -6,7 +6,7 @@ import {
   logout,
 } from '../../actions';
 
-import Home from '../../components/Home';
+import Home from '../../components/Home/Home';
 
 const mapStateToProps = (state) => ({
   open: state.pets.open,

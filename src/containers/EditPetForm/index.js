@@ -1,24 +1,20 @@
 import { connect } from 'react-redux';
 
-import AddPetForm from '../../components/Home/AddPetForm/AddPetForm';
+import EditPetForm from '../../components/Home/EditPetForm/EditPetForm';
 import {
   openModal,
   changeField,
   changeFile,
   changeUrl,
   addPets,
+  updatePet,
   clearNewPet,
 } from '../../actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return ({
-    open: state.pets.open,
-    name: state.pets.name,
-    age: state.pets.age,
-    species: state.pets.species,
-    breed: state.pets.breed,
-    avatar: state.pets.avatar,
-    avatarUrl: state.pets.avatarUrl,
+    pet: state.pets.petsList.find((pet) => pet._id === ownProps.match.params.petId),
+    currentPet: state.pets.currentPet,
   });
 };
 
@@ -39,6 +35,9 @@ const mapDispatchToProps = (dispatch) => ({
   addPets: () => {
     dispatch(addPets());
   },
+  updatePet: () => {
+    dispatch(updatePet());
+  },
   clearNewPet: () => {
     dispatch(clearNewPet());
   },
@@ -47,4 +46,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(AddPetForm);
+)(EditPetForm);

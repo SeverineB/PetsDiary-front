@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './footer.scss';
+import './Footer.scss';
 
 const Footer = () => (
   <div className="footer-container">Développé par Séverine Bianchi - 2020</div>

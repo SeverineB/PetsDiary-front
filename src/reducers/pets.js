@@ -1,21 +1,27 @@
 import {
   DELETE_PETS,
-  OPEN_MODAL,
   OPEN_MODAL_LOGIN,
   GET_PETSLIST,
   SAVE_PETSLIST,
+  SAVE_CURRENT_PET,
   CHANGE_FIELD,
+  CHANGE_FILE,
+  CHANGE_URL,
   ADD_PETS,
+  UPDATE_PET,
   CLEAR_NEW_PET,
 } from '../actions';
 
 const initialState = {
   petsList: [],
+  currentPet: {},
   id: null,
   name: '',
   age: '',
   species: '',
   breed: '',
+  avatar: {},
+  avatarUrl: '',
   open: false,
   isPetsLoading: false,
   errorOnField: false,
@@ -33,7 +39,16 @@ const petReducer = (state = initialState, action = {}) => {
         ...state,
         petsList: action.petsList,
       };
+    case SAVE_CURRENT_PET:
+      return {
+        ...state,
+        currentPet: action.currentPet,
+      };
     case ADD_PETS:
+      return {
+        ...state,
+      };
+    case UPDATE_PET:
       return {
         ...state,
       };
@@ -45,16 +60,12 @@ const petReducer = (state = initialState, action = {}) => {
         species: '',
         breed: '',
         open: false,
+        avatarUrl: '',
       };
     case DELETE_PETS:
       return {
         ...state,
         petsList: state.petsList.filter((pet) => pet.id !== action.id),
-      };
-    case OPEN_MODAL:
-      return {
-        ...state,
-        open: !state.open,
       };
     case OPEN_MODAL_LOGIN:
       return {
@@ -65,6 +76,16 @@ const petReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.name]: action.value,
+      };
+    case CHANGE_FILE:
+      return {
+        ...state,
+        avatar: action.avatar,
+      };
+    case CHANGE_URL:
+      return {
+        ...state,
+        avatarUrl: action.avatarUrl,
       };
     default:
       return state;

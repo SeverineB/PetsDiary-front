@@ -1,0 +1,13 @@
+@import 'src/styles/vars';
+
+.pet-details {
+  border: 0.2em solid grey;
+
+  &-avatar {
+    width: 30%;
+
+    img {
+      width: 100%;
+    }
+  }
+}

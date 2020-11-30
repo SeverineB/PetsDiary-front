@@ -3,6 +3,8 @@
 .app {
   width: 100vw;
   height: 100vh;
+  margin-bottom: 2em;
+  font-family: 'Montserrat';
   @include m1200() {
     background-color: #ffffff;
    };

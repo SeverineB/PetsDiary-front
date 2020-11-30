@@ -24,11 +24,9 @@ const NavBar = ({ isLogged, logout }) => {
           {isLogged && (
             <>
               <Link to="/home">Home</Link>
-              <Link to="/pets">Mes animaux</Link>
+              {/* <Link to="/pets">Mes animaux</Link> */}
+              <Link to="/appointments">Mes rendez-vous</Link>
               <Link to="/logout" onClick={handleLogout}>Déconnexion</Link>
-             {/*  <div className="logout">
-                <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
-              </div> */}
             </>
           )}
         </Nav>
