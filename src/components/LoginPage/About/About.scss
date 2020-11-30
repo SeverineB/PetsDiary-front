@@ -9,6 +9,7 @@
   height: 25em;
   border-radius: 0.5em;
   background-image: url('../../../assets/img/blob_grey.svg');
+  background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
   color: white;
@@ -34,7 +35,11 @@
     margin-top: 0.4em;
     align-self: center;
     margin-left: 2em;
+<<<<<<< HEAD
     font-size: 0.8em;
+=======
+    font-size: 1em;
+>>>>>>> f8e46f5a34f9166f34c1077c873ea4ea9e758746
     z-index: 30;
     @include m400() {
       width: 50vw;
