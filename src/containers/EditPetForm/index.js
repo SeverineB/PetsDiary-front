@@ -15,7 +15,6 @@ import {
 
 const mapStateToProps = (state, ownProps) => {
   return ({
-  /*   pet: state.pets.petsList.find((pet) => pet._id === ownProps.match.params.petId), */
     currentPet: state.pets.petsList.find((pet) => pet._id === ownProps.match.params.petId),
     avatarUrl: state.pets.avatarUrl,
   });

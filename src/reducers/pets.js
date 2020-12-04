@@ -5,10 +5,9 @@ import {
   SAVE_PETSLIST,
   SAVE_CURRENT_PET,
   CHANGE_FIELD,
+  CHANGE_EDIT_FIELD,
   CHANGE_FILE,
   CHANGE_URL,
-  CHANGE_EDIT_FIELD,
-  CHANGE_EDIT_ARRAY_FIELD,
   ADD_PETS,
   UPDATE_PET,
   UPDATE_PET_DETAILS,
@@ -33,14 +32,30 @@ const initialState = {
     isPetsLoading: true,
     errorOnField: false,
     userId: '',
-    /* pet_details: {
-      ide: '',
-      birthdate: '',
-      weight: [{
-        date: '',
-        value: null,
-      }],
-    }, */
+    weight: [
+      {
+        weightDate: '',
+        weightValue: null,
+      },
+    ],
+    vaccine: [
+      {
+        vaccineDate: '',
+        vaccineName: '',
+      },
+    ],
+    deworming: [
+      {
+        dewormingDate: '',
+        dewormingName: '',
+      },
+    ],
+    antiflea: [
+      {
+        antifleaDate: '',
+        antifleaName: '',
+      },
+    ],
   },
   //! find a solution to delete this part of state
   id: null,
@@ -51,6 +66,30 @@ const initialState = {
   sex: 'mâle',
   birthdate: '',
   ide: '',
+  weight: [
+    {
+      weightDate: '',
+      weightValue: null,
+    },
+  ],
+  vaccine: [
+    {
+      vaccineDate: '',
+      vaccineName: '',
+    },
+  ],
+  deworming: [
+    {
+      dewormingDate: '',
+      dewormingName: '',
+    },
+  ],
+  antiflea: [
+    {
+      antifleaDate: '',
+      antifleaName: '',
+    },
+  ],
   avatar: {},
   avatarUrl: '',
   open: false,
@@ -116,11 +155,6 @@ const petReducer = (state = initialState, action = {}) => {
         [action.name]: action.value,
       };
     case CHANGE_EDIT_FIELD:
-      return {
-        ...state,
-        [action.name]: action.value,
-      };
-    case CHANGE_EDIT_ARRAY_FIELD:
       return {
         ...state,
         [action.name]: action.value,

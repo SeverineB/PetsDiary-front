@@ -2,6 +2,7 @@
 
 .pet-details {
   border: 0.2em solid grey;
+  min-height: 90%;
 
   &-avatar {
     width: 30%;
@@ -21,5 +22,12 @@
   &-name, &-age, &-species, &-breed {
     width: 50%;
     /* flex: 1; */
+  }
+
+  .edit-link {
+    width: 100%;
+    height: 2em;
+    margin-top: 1em;
+    padding-left: 0.5em;
   }
 }

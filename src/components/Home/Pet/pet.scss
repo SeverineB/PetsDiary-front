@@ -5,13 +5,13 @@
   height: 18vh;
   /* flex: 1; */
   background: #fafafa;
-  box-shadow:  10px 10px 60px #d5d5d5, 
-             -10px -10px 60px #ffffff;
+  box-shadow:  10px 10px 20px #dbdada, 
+             -10px -10px 20px #e6e4e4;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 0.5em;
-  margin: 0.2em;
+  margin: 0.4em;
   padding: 0.2em;
 
   .pet-name {
@@ -27,5 +27,11 @@
       width: 100%;
       height: auto;
     }
+  }
+
+  &:hover {
+    transform: translateX(-0.4em) translateY(-0.4em);
+    box-shadow:  10px 10px 60px #d5d5d5, 
+                -10px -10px 60px #ffffff;
   }
 }

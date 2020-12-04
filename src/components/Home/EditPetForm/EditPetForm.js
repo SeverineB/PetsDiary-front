@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-restricted-syntax */
 import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
@@ -12,11 +13,9 @@ const EditPetForm = ({
   changeFile,
   changeUrl,
   changeEditField,
-  changeEditArrayField,
   updatePet,
   updatePetDetails,
   avatarUrl,
-  petDetails,
 }) => {
   const params = useParams();
   const history = useHistory();
@@ -26,39 +25,29 @@ const EditPetForm = ({
     age,
     species,
     breed,
-  } = currentPet;
-
-  const {
     ide,
+    sex,
     birthdate,
     weight,
     vaccine,
     deworming,
-    antiflea,
-  } = petDetails;
+    antiflea
+  } = currentPet;
 
-  /* console.log('CURRENT PET IN EDIT FORM', currentPet); */
   console.log('CURRENT PET IN EDIT FORM', currentPet);
   console.log('CURRENT WEIGHT IN EDIT FORM', weight);
-  weight.map((info) => {
-    console.log(Object.keys(info)[0]);
+  weight.map((info, index) => {
+   /*  console.log(index[info.weightValue]); */
+    console.log('INDEX ', index, 'INFO ', info);
+    console.log('INFO ', Object.keys(info)[2]);
   });
 
   const newBirthdate = dayjs(birthdate).format('YYYY-MM-DD');
   console.log('NEW BIRTHDATE', newBirthdate);
-  /* pet_details.weight.map((info) => (
-    console.log(Object.keys(info)[1], info.date, Object.keys(info)[0], info.value)
-  )); */
 
   const handleChange = (evt) => {
     changeEditField(evt.target.value, evt.target.name);
   };
-
-  const handleChangeArray = (evt) => {
-    const arrayIndex = evt.target.dataset.item;
-    changeEditArrayField(evt.target.value, evt.target.name);
-  };
-
 
   const handleFileChange = (evt) => {
     const avatarToUpload = evt.target.files[0];
@@ -72,7 +61,6 @@ const EditPetForm = ({
     evt.preventDefault();
     console.log('je soumets le formulaire');
     updatePet();
-    updatePetDetails();
     history.push('/home');
   };
 
@@ -145,22 +133,20 @@ const EditPetForm = ({
           />
           <h3>Mesures</h3>
           <Form.Label>Poids</Form.Label>
-          {weight.map((info, index) => (
-            <div className="health-infos-weight" key={info}>
+          {weight.map((item) => (
+            <div className="health-infos-weight" key={item._id}>
               <Form.Control
                 type="date"
                 placeholder="Date"
-                name={Object.keys(info)[0]}
-                data-item={index}
-                defaultValue={dayjs(info.date).format('YYYY-MM-DD')}
-                onChange={handleChangeArray}
+                name="weightDate"
+                defaultValue={dayjs(item.weightDate).format('YYYY-MM-DD')}
+                onChange={handleChange}
               />
               <Form.Control
                 type="number"
                 placeholder="Poids"
-                name="value"
-                data-item={index}
-                defaultValue={info.value}
+                name={Object.keys(item)[2]}
+                defaultValue={item.weightValue}
                 onChange={handleChange}
               />
             </div>
@@ -188,6 +174,33 @@ EditPetForm.propTypes = {
     age: PropTypes.string,
     species: PropTypes.string.isRequired,
     breed: PropTypes.string.isRequired,
+    birthdate: PropTypes.string,
+    ide: PropTypes.number,
+    sex: PropTypes.string,
+    weight: PropTypes.arrayOf(
+      PropTypes.shape({
+        weightDate: PropTypes.string.isRequired,
+        weightValue: PropTypes.number.isRequired,
+      }),
+    ),
+    vaccine: PropTypes.arrayOf(
+      PropTypes.shape({
+        date: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
+    ),
+    deworming: PropTypes.arrayOf(
+      PropTypes.shape({
+        date: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
+    ),
+    antiflea: PropTypes.arrayOf(
+      PropTypes.shape({
+        date: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
+    ),
   }).isRequired,
   petDetails: PropTypes.shape({
     birthdate: PropTypes.string,

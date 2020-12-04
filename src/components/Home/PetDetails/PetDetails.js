@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 import { Link, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import BarChart from '../../../containers/BarChart';
+import WeightChart from './WeightChart/WeightChart';
 
 import './PetDetails.scss';
 
@@ -66,8 +66,8 @@ const PetDetails = ({
               {pet.ide}
             </div>
             <div className="info-weight">
-              <BarChart petWeight={pet.weight} />
-              <h4>Poids</h4>
+              <WeightChart petWeight={pet.weight} />
+              {/* <h4>Poids</h4>
               <h5>Date :</h5>
               <div className="pet-weight-list" key={pet._id}>
                 {pet.weight.map((item) => (
@@ -81,7 +81,7 @@ const PetDetails = ({
                     {item.weightValue}
                   </div>
                 ))}
-              </div>
+              </div> */}
             </div>
             {/* 
             <div className="info-vaccine">
@@ -116,7 +116,9 @@ const PetDetails = ({
             </div> */}
           </div>
         </div>
-        <Link to={`/pet/edit/${params.petId}`}>Editer les infos</Link>
+        <div className="edit-link">
+          <Link to={`/pet/edit/${params.petId}`}>Editer les infos</Link>
+        </div>
       </div>
     </div>
   );
