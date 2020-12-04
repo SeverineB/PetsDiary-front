@@ -1,0 +1,11 @@
+@import 'src/styles/vars';
+
+.avatar-preview {
+  border-radius: 0.5em;
+  display: flex;
+  justify-content: center;
+  img {
+    width: 40%;
+    margin: 0.5em 0;
+  }
+}

@@ -17,6 +17,9 @@ const mapStateToProps = (state) => {
     age: state.pets.age,
     species: state.pets.species,
     breed: state.pets.breed,
+    sex: state.pets.sex,
+    birthdate: state.pets.birthdate,
+    ide: state.pets.ide,
     avatar: state.pets.avatar,
     avatarUrl: state.pets.avatarUrl,
   });
@@ -27,7 +30,7 @@ const mapDispatchToProps = (dispatch) => ({
     const action = openModal();
     dispatch(action);
   },
-  changeField: (value, name) => {
+  changeField: (name, value) => {
     dispatch(changeField(value, name));
   },
   changeFile: (avatar) => {

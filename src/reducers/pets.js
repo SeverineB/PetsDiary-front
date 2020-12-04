@@ -7,26 +7,59 @@ import {
   CHANGE_FIELD,
   CHANGE_FILE,
   CHANGE_URL,
+  CHANGE_EDIT_FIELD,
+  CHANGE_EDIT_ARRAY_FIELD,
   ADD_PETS,
   UPDATE_PET,
+  UPDATE_PET_DETAILS,
   CLEAR_NEW_PET,
+  FINISH_LOADING,
 } from '../actions';
 
 const initialState = {
   petsList: [],
-  currentPet: {},
+  currentPet: {
+    _id: null,
+    name: '',
+    age: '',
+    species: '',
+    breed: '',
+    sex: '',
+    birthdate: '',
+    ide: '',
+    avatar: {},
+    avatarUrl: '',
+    open: false,
+    isPetsLoading: true,
+    errorOnField: false,
+    userId: '',
+    /* pet_details: {
+      ide: '',
+      birthdate: '',
+      weight: [{
+        date: '',
+        value: null,
+      }],
+    }, */
+  },
+  //! find a solution to delete this part of state
   id: null,
   name: '',
   age: '',
   species: '',
   breed: '',
+  sex: 'mâle',
+  birthdate: '',
+  ide: '',
   avatar: {},
   avatarUrl: '',
   open: false,
   isPetsLoading: false,
+  isPetsLoaded: false,
   errorOnField: false,
   userId: '',
 };
+
 
 const petReducer = (state = initialState, action = {}) => {
   switch (action.type) {
@@ -38,6 +71,7 @@ const petReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         petsList: action.petsList,
+        isPetsLoaded: true,
       };
     case SAVE_CURRENT_PET:
       return {
@@ -49,6 +83,10 @@ const petReducer = (state = initialState, action = {}) => {
         ...state,
       };
     case UPDATE_PET:
+      return {
+        ...state,
+      };
+    case UPDATE_PET_DETAILS:
       return {
         ...state,
       };
@@ -77,6 +115,16 @@ const petReducer = (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
+    case CHANGE_EDIT_FIELD:
+      return {
+        ...state,
+        [action.name]: action.value,
+      };
+    case CHANGE_EDIT_ARRAY_FIELD:
+      return {
+        ...state,
+        [action.name]: action.value,
+      };
     case CHANGE_FILE:
       return {
         ...state,
@@ -86,6 +134,11 @@ const petReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         avatarUrl: action.avatarUrl,
+      };
+    case FINISH_LOADING:
+      return {
+        ...state,
+        isPetsLoading: false,
       };
     default:
       return state;

@@ -33,15 +33,8 @@ const PetCard = ({
 PetCard.propTypes = {
   _id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  species: PropTypes.string.isRequired,
-  breed: PropTypes.string.isRequired,
   avatarUrl: PropTypes.string.isRequired,
   deletePets: PropTypes.func.isRequired,
-  getPetDetails: PropTypes.func.isRequired,
-  pet_details: PropTypes.arrayOf(
-    PropTypes.shape({
-    }),
-  ).isRequired,
 };
 
 export default PetCard;

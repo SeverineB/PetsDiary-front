@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Card } from 'semantic-ui-react';
@@ -16,9 +16,13 @@ import './Home.scss';
 const Home = ({
   isLogged,
   logout,
+  getPetsList,
   petsList,
 }) => {
   console.log('ISLOGGED DANS HOME ', isLogged);
+  useEffect(() => {
+    getPetsList();
+  }, []);
 
   const handleLogout = () => {
     logout();
@@ -38,11 +42,9 @@ const Home = ({
           <div className="pets-list">
             <Card.Group itemsPerRow={2}>
               {petsList.map((pet) => (
-                <>
-                  <Link to={`/pet/${pet._id}`} className="pet-name">
-                    <Pet key={pet._id} {...pet} />
-                  </Link>
-                </>
+                <Link to={`/pet/${pet._id}`} className="pet-name" key={pet._id}>
+                  <Pet {...pet} />
+                </Link>
               ))}
             </Card.Group>
           </div>

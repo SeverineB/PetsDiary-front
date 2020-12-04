@@ -10,6 +10,9 @@ const AddPetForm = ({
   age,
   species,
   breed,
+  sex,
+  birthdate,
+  ide,
   avatarUrl,
   changeField,
   changeFile,
@@ -19,7 +22,7 @@ const AddPetForm = ({
 }) => {
   const history = useHistory();
   const handleChange = (evt) => {
-    changeField(evt.target.value, evt.target.name);
+    changeField(evt.target.name, evt.target.value);
   };
 
   const handleFileChange = (evt) => {
@@ -57,6 +60,14 @@ const AddPetForm = ({
           value={age}
           onChange={handleChange}
         />
+        <Form.Label>Date de naissance</Form.Label>
+        <Form.Control
+          type="date"
+          placeholder="Date de naissance"
+          name="birthdate"
+          value={birthdate}
+          onChange={handleChange}
+        />
         <Form.Label>Espèce</Form.Label>
         <Form.Control
           type="text"
@@ -73,6 +84,33 @@ const AddPetForm = ({
           value={breed}
           onChange={handleChange}
         />
+        <Form.Label>Numéro d'identification</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Numéro d'identification à 15 chiffres"
+          name="ide"
+          value={ide}
+          onChange={handleChange}
+        />
+        <Form.Label>Sexe</Form.Label>
+        {['checkbox'].map((type) => (
+          <div key={`inline-${type}`} className="mb-3">
+            <Form.Check
+              inline
+              label="Femelle"
+              type={type}
+              value={sex}
+              id={`inline-${type}-1`}
+            />
+            <Form.Check
+              inline
+              label="Mâle"
+              type={type}
+              value={sex}
+              id={`inline-${type}-2`}
+            />
+          </div>
+        ))}
         <Form.Group>
           <Form.File
             id="avatar"
@@ -102,6 +140,9 @@ AddPetForm.propTypes = {
   age: PropTypes.string.isRequired,
   species: PropTypes.string.isRequired,
   breed: PropTypes.string.isRequired,
+  sex: PropTypes.string.isRequired,
+  birthdate: PropTypes.string.isRequired,
+  ide: PropTypes.string.isRequired,
   avatarUrl: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   changeFile: PropTypes.func.isRequired,

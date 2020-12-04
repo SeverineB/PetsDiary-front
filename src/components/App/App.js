@@ -21,11 +21,10 @@ import './app.scss';
 
 // == Composant
 
-const App = ({ isLogged, check, getPetsList }) => {
+const App = ({ isLogged, check }) => {
   useEffect(() => {
     console.log('je check si le user est bien connecté');
     check();
-    getPetsList();
   }, []);
 
   console.log('dans app checkIsLogged vaut ', isLogged);
@@ -46,7 +45,6 @@ const App = ({ isLogged, check, getPetsList }) => {
 };
 
 App.propTypes = {
-  getPetsList: PropTypes.func.isRequired,
   isLogged: PropTypes.bool.isRequired,
   check: PropTypes.func.isRequired,
 };

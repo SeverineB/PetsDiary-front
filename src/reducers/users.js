@@ -7,6 +7,7 @@ import {
 
 const initialState = {
   users: [],
+  currentUser: {},
   email: '',
   password: '',
   username: '',

@@ -2,16 +2,18 @@
 export const GET_PETSLIST = 'GET_PETSLIST';
 export const SAVE_PETSLIST = 'SAVE_PETSLIST';
 export const GET_PET_DETAILS_BY_PET_ID = 'GET_PET_DETAILS_BY_PET_ID';
-export const SAVE_PET_DETAILS = 'SAVE_PET_DETAILS';
 export const SAVE_CURRENT_PET = 'SAVE_CURRENT_PET';
+export const SAVE_CURRENT_PET_DETAILS = 'SAVE_CURRENT_PET_DETAILS';
 export const ADD_PETS = 'ADD_PETS';
 export const UPDATE_PET = 'UPDATE_PET';
+export const UPDATE_PET_DETAILS = 'UPDATE_PET_DETAILS';
 export const CHANGE_FILE = 'CHANGE_FILE';
 export const CHANGE_URL = 'CHANGE_URL';
 export const DELETE_PETS = 'DELETE_PETS';
 export const OPEN_MODAL_LOGIN = 'OPEN_MODAL_LOGIN';
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLEAR_NEW_PET = 'CLEAR_NEW_PET';
+export const FINISH_LOADING = 'FINISH_LOADING';
 
 // ACTION CREATOR
 
@@ -28,8 +30,8 @@ export const getPetDetailsByPetId = () => ({
   type: GET_PET_DETAILS_BY_PET_ID,
 });
 
-export const savePetDetails = (petDetails) => ({
-  type: SAVE_PET_DETAILS,
+export const saveCurrentPetDetails = (petDetails) => ({
+  type: SAVE_CURRENT_PET_DETAILS,
   petDetails,
 });
 
@@ -44,6 +46,10 @@ export const addPets = () => ({
 
 export const updatePet = () => ({
   type: UPDATE_PET,
+});
+
+export const updatePetDetails = () => ({
+  type: UPDATE_PET_DETAILS,
 });
 
 export const changeFile = (avatar) => ({
@@ -71,4 +77,8 @@ export const openModal = () => ({
 
 export const openModalLogin = () => ({
   type: OPEN_MODAL_LOGIN,
+});
+
+export const finishLoading = () => ({
+  type: FINISH_LOADING,
 });

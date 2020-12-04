@@ -3,18 +3,21 @@ import { connect } from 'react-redux';
 import EditPetForm from '../../components/Home/EditPetForm/EditPetForm';
 import {
   openModal,
-  changeField,
+  changeEditField,
+  changeEditArrayField,
   changeFile,
   changeUrl,
   addPets,
   updatePet,
+  updatePetDetails,
   clearNewPet,
 } from '../../actions';
 
 const mapStateToProps = (state, ownProps) => {
   return ({
-    pet: state.pets.petsList.find((pet) => pet._id === ownProps.match.params.petId),
-    currentPet: state.pets.currentPet,
+  /*   pet: state.pets.petsList.find((pet) => pet._id === ownProps.match.params.petId), */
+    currentPet: state.pets.petsList.find((pet) => pet._id === ownProps.match.params.petId),
+    avatarUrl: state.pets.avatarUrl,
   });
 };
 
@@ -23,8 +26,11 @@ const mapDispatchToProps = (dispatch) => ({
     const action = openModal();
     dispatch(action);
   },
-  changeField: (value, name) => {
-    dispatch(changeField(value, name));
+  changeEditField: (value, name) => {
+    dispatch(changeEditField(value, name));
+  },
+  changeEditArrayField: (value, name) => {
+    dispatch(changeEditArrayField(value, name));
   },
   changeFile: (avatar) => {
     dispatch(changeFile(avatar));
@@ -37,6 +43,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   updatePet: () => {
     dispatch(updatePet());
+  },
+  updatePetDetails: () => {
+    dispatch(updatePetDetails());
   },
   clearNewPet: () => {
     dispatch(clearNewPet());

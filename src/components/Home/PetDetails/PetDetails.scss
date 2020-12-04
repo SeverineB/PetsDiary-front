@@ -10,4 +10,16 @@
       width: 100%;
     }
   }
+
+  &-general {
+    border: 1px solid black;
+    width: 100%;
+    height: 5em;
+    display: flex;
+  }
+
+  &-name, &-age, &-species, &-breed {
+    width: 50%;
+    /* flex: 1; */
+  }
 }

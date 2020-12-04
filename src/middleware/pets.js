@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 import api from '../services/api';
@@ -9,8 +10,11 @@ import {
   savePetsList,
   ADD_PETS,
   UPDATE_PET,
+  UPDATE_PET_DETAILS,
   saveCurrentPet,
+  saveCurrentPetDetails,
   clearNewPet,
+  finishLoading,
 } from '../actions';
 
 const pets = (store) => (next) => (action) => {
@@ -22,6 +26,9 @@ const pets = (store) => (next) => (action) => {
         age,
         species,
         breed,
+        sex,
+        birthdate,
+        ide,
       } = state.pets;
       const { id } = state.auth.session;
       const formData = new FormData();
@@ -30,6 +37,9 @@ const pets = (store) => (next) => (action) => {
       formData.append('age', age);
       formData.append('species', species);
       formData.append('breed', breed);
+      formData.append('sex', sex);
+      formData.append('birthdate', birthdate);
+      formData.append('ide', ide);
       formData.append('user_id', id);
       api.post('pet/add', formData,
         {
@@ -50,13 +60,14 @@ const pets = (store) => (next) => (action) => {
     }
 
     case UPDATE_PET: {
+      console.log('je lance la requête pour éditer les infos de suivi');
       const state = store.getState();
       const {
         name,
         age,
         species,
         breed,
-      } = state.pets.currentPet;
+      } = state.pets;
       const id = state.pets.currentPet._id;
       const formData = new FormData();
       formData.append('avatar', state.pets.avatar);
@@ -73,6 +84,45 @@ const pets = (store) => (next) => (action) => {
         })
         .then((response) => {
           console.log('Middleware UPDATE PET API response ', response.data);
+          store.dispatch(saveCurrentPet(response.data));
+          store.dispatch(getPetsList());
+          store.dispatch(clearNewPet());
+        })
+        .catch((error) => {
+          console.error('erreur est survenue ', error);
+        });
+      break;
+    }
+
+    case UPDATE_PET_DETAILS: {
+      console.log('je lance la requête pour éditer les infos de suivi');
+      const state = store.getState();
+      const {
+        ide,
+        birthdate,
+        weight,
+        vaccine,
+        deworming,
+        antiflea,
+      } = state.pets;
+      const detailsId = state.pets.currentPet.pet_details._id;
+
+      api.patch(`pet/edit/details/${detailsId}`, {
+        ide,
+        birthdate,
+        weight,
+        vaccine,
+        deworming,
+        antiflea,
+      },
+      {
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+        withCredentials: true,
+      })
+        .then((response) => {
+          console.log('Middleware UPDATE PET DETAILS API response ', response.data);
           store.dispatch(saveCurrentPet(response.data));
           store.dispatch(getPetsList());
           store.dispatch(clearNewPet());
@@ -113,6 +163,9 @@ const pets = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.error(error);
+        })
+        .finally(() => {
+          store.dispatch(finishLoading());
         });
       break;
     }
