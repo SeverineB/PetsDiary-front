@@ -7,9 +7,9 @@ import {
   changeEditArrayField,
   changeFile,
   changeUrl,
-  addPets,
+  addPet,
   updatePet,
-  updatePetDetails,
+  updateWeight,
   clearNewPet,
 } from '../../actions';
 
@@ -28,23 +28,20 @@ const mapDispatchToProps = (dispatch) => ({
   changeEditField: (value, name) => {
     dispatch(changeEditField(value, name));
   },
-  changeEditArrayField: (value, name) => {
-    dispatch(changeEditArrayField(value, name));
-  },
   changeFile: (avatar) => {
     dispatch(changeFile(avatar));
   },
   changeUrl: (avatarUrl) => {
     dispatch(changeUrl(avatarUrl));
   },
-  addPets: () => {
-    dispatch(addPets());
+  addPet: () => {
+    dispatch(addPet());
   },
   updatePet: () => {
     dispatch(updatePet());
   },
-  updatePetDetails: () => {
-    dispatch(updatePetDetails());
+  updateWeight: () => {
+    dispatch(updateWeight());
   },
   clearNewPet: () => {
     dispatch(clearNewPet());

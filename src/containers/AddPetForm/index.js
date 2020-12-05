@@ -6,7 +6,7 @@ import {
   changeField,
   changeFile,
   changeUrl,
-  addPets,
+  addPet,
   clearNewPet,
 } from '../../actions';
 
@@ -39,8 +39,8 @@ const mapDispatchToProps = (dispatch) => ({
   changeUrl: (avatarUrl) => {
     dispatch(changeUrl(avatarUrl));
   },
-  addPets: () => {
-    dispatch(addPets());
+  addPet: () => {
+    dispatch(addPet());
   },
   clearNewPet: () => {
     dispatch(clearNewPet());

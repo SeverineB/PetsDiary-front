@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import dayjs from 'dayjs';
-import { VictoryLine, VictoryChart, VictoryAxis, VictoryLabel, VictorySharedEvents } from 'victory';
+import { VictoryLine, VictoryChart, VictoryAxis, VictoryLabel, VictoryTooltip, VictoryVoronoiContainer } from 'victory';
 import PropTypes from 'prop-types';
 
 const WeightChart = ({ petWeight }) => {
@@ -10,9 +10,25 @@ const WeightChart = ({ petWeight }) => {
   return (
     <div className="weight-chart-container">
       <VictoryChart
-        height={300}
+        containerComponent={
+          <VictoryVoronoiContainer label={d => `${d.label}`} />
+        }
+        height={350}
       >
         <VictoryLine
+          labelComponent={
+          <VictoryTooltip
+            style={{
+              fontSize: 10,
+              fontWeight: 'bold'
+            }}
+            flyoutStyle={{
+              stroke: "tomato",
+              strokeWidth: 0,
+              fill: "#f87268",
+            }}
+         />
+          }
           style={{
             data: { stroke: '#f87268' },
             parent: {
@@ -22,10 +38,23 @@ const WeightChart = ({ petWeight }) => {
             },
           }}
           data={petWeight.map((item) => {
-            return { x: dayjs(item.weightDate).format('DD/MM/YYYY'), y: item.weightValue };
+            if (item.weightDate && item.weightValue) {
+              return { x: dayjs(item.weightDate).format('DD/MM/YYYY'), y: item.weightValue };
+            } else {
+              return null;
+            }
+           
+          })}
+          labels={petWeight.map((item) => {
+            if (item.weightValue) {
+              return item.weightValue
+            } else {
+              return null;
+            }
+          
           })}
           animate={{
-            duration: 2000,
+            duration: 1500,
             onLoad: { duration: 1000 },
           }}
           interpolation="natural"
@@ -36,33 +65,35 @@ const WeightChart = ({ petWeight }) => {
           textAnchor="middle"
           text="Suivi du poids"
           style={{
-            fontSize: 16,
+            fontSize: 18,
             fontWeight: 'bold',
             fontFamily: 'Nunito',
             fill: '#4057cb',
           }}
         />
         <VictoryAxis
+          label="Dates"
           style={{
             /* main axis styles */
             tickLabels: {
               fontSize: 9,
               fontFamily: 'Nunito',
               fontWeight: 'bold',
-              padding: 20,
-              angle: -45,
+              padding: 15,
+              angle: -30,
             },
           }}
         />
         <VictoryAxis
           dependentAxis
+          label="Poids (kgs)"
           style={{
             /* cross axis styles */
             tickLabels: {
               fontSize: 12,
               fontFamily: 'Nunito',
               fontWeight: 'bold',
-              padding: 5,
+              padding: 10,
             },
           }}
         />

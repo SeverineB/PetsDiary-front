@@ -1,17 +1,13 @@
 // ACTION TYPES
 export const GET_PETSLIST = 'GET_PETSLIST';
 export const SAVE_PETSLIST = 'SAVE_PETSLIST';
-export const GET_PET_DETAILS_BY_PET_ID = 'GET_PET_DETAILS_BY_PET_ID';
 export const SAVE_CURRENT_PET = 'SAVE_CURRENT_PET';
-export const SAVE_CURRENT_PET_DETAILS = 'SAVE_CURRENT_PET_DETAILS';
-export const ADD_PETS = 'ADD_PETS';
+export const ADD_PET = 'ADD_PET';
 export const UPDATE_PET = 'UPDATE_PET';
-export const UPDATE_PET_DETAILS = 'UPDATE_PET_DETAILS';
 export const CHANGE_FILE = 'CHANGE_FILE';
 export const CHANGE_URL = 'CHANGE_URL';
-export const DELETE_PETS = 'DELETE_PETS';
-export const OPEN_MODAL_LOGIN = 'OPEN_MODAL_LOGIN';
-export const OPEN_MODAL = 'OPEN_MODAL';
+export const DELETE_PET = 'DELETE_PET';
+
 export const CLEAR_NEW_PET = 'CLEAR_NEW_PET';
 export const FINISH_LOADING = 'FINISH_LOADING';
 
@@ -26,30 +22,17 @@ export const savePetsList = (petsList) => ({
   petsList,
 });
 
-export const getPetDetailsByPetId = () => ({
-  type: GET_PET_DETAILS_BY_PET_ID,
-});
-
-export const saveCurrentPetDetails = (petDetails) => ({
-  type: SAVE_CURRENT_PET_DETAILS,
-  petDetails,
-});
-
 export const saveCurrentPet = (currentPet) => ({
   type: SAVE_CURRENT_PET,
   currentPet,
 });
 
-export const addPets = () => ({
-  type: ADD_PETS,
+export const addPet = () => ({
+  type: ADD_PET,
 });
 
 export const updatePet = () => ({
   type: UPDATE_PET,
-});
-
-export const updatePetDetails = () => ({
-  type: UPDATE_PET_DETAILS,
 });
 
 export const changeFile = (avatar) => ({
@@ -66,17 +49,9 @@ export const clearNewPet = () => ({
   type: CLEAR_NEW_PET,
 });
 
-export const deletePets = (id) => ({
-  type: DELETE_PETS,
+export const deletePet = (id) => ({
+  type: DELETE_PET,
   id,
-});
-
-export const openModal = () => ({
-  type: OPEN_MODAL,
-});
-
-export const openModalLogin = () => ({
-  type: OPEN_MODAL_LOGIN,
 });
 
 export const finishLoading = () => ({

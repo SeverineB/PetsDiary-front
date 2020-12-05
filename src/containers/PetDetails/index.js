@@ -6,7 +6,7 @@ import PetDetails from '../../components/Home/PetDetails/PetDetails';
 
 import {
   saveCurrentPet,
-  saveCurrentPetDetails,
+  saveWeight,
 } from '../../actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -21,8 +21,8 @@ const mapDispatchToProps = (dispatch) => ({
     const action = saveCurrentPet(currentPet);
     dispatch(action);
   },
-  saveCurrentPetDetails: (petDetails) => {
-    const action = saveCurrentPetDetails(petDetails);
+  saveWeight: (weight) => {
+    const action = saveWeight(weight);
     dispatch(action);
   },
 });

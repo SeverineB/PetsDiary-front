@@ -14,7 +14,7 @@ const EditPetForm = ({
   changeUrl,
   changeEditField,
   updatePet,
-  updatePetDetails,
+  updateWeight,
   avatarUrl,
 }) => {
   const params = useParams();
@@ -49,6 +49,12 @@ const EditPetForm = ({
     changeEditField(evt.target.value, evt.target.name);
   };
 
+  const handleChangeArray = (evt) => {
+    changeEditField(evt.target.value, evt.target.name);
+    console.log('ID WEIGHT TO UPDATE', evt.target.id)
+    localStorage.setItem('itemToUpdate', evt.target.id)
+  };
+
   const handleFileChange = (evt) => {
     const avatarToUpload = evt.target.files[0];
     const newAvatarUrl = URL.createObjectURL(evt.target.files[0]);
@@ -61,6 +67,7 @@ const EditPetForm = ({
     evt.preventDefault();
     console.log('je soumets le formulaire');
     updatePet();
+    updateWeight();
     history.push('/home');
   };
 
@@ -136,18 +143,20 @@ const EditPetForm = ({
           {weight.map((item) => (
             <div className="health-infos-weight" key={item._id}>
               <Form.Control
+                id={item._id}
                 type="date"
                 placeholder="Date"
                 name="weightDate"
                 defaultValue={dayjs(item.weightDate).format('YYYY-MM-DD')}
-                onChange={handleChange}
+                onChange={handleChangeArray}
               />
               <Form.Control
+                id={item._id}
                 type="number"
                 placeholder="Poids"
-                name={Object.keys(item)[2]}
+                name="weightValue"
                 defaultValue={item.weightValue}
-                onChange={handleChange}
+                onChange={handleChangeArray}
               />
             </div>
           ))}
@@ -163,11 +172,10 @@ const EditPetForm = ({
 EditPetForm.propTypes = {
   avatarUrl: PropTypes.string.isRequired,
   changeEditField: PropTypes.func.isRequired,
-  changeEditArrayField: PropTypes.func.isRequired,
   changeFile: PropTypes.func.isRequired,
   changeUrl: PropTypes.func.isRequired,
   updatePet: PropTypes.func.isRequired,
-  updatePetDetails: PropTypes.func.isRequired,
+  updateWeight: PropTypes.func.isRequired,
   currentPet: PropTypes.shape({
     avatarUrl: PropTypes.string.isRequired,
     name: PropTypes.string,
@@ -202,36 +210,6 @@ EditPetForm.propTypes = {
       }),
     ),
   }).isRequired,
-  petDetails: PropTypes.shape({
-    birthdate: PropTypes.string,
-    ide: PropTypes.number,
-    sex: PropTypes.string,
-    weight: PropTypes.arrayOf(
-      PropTypes.shape({
-        date: PropTypes.string.isRequired,
-        value: PropTypes.number.isRequired,
-      }),
-    ),
-    vaccine: PropTypes.arrayOf(
-      PropTypes.shape({
-        date: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-      }),
-    ),
-    deworming: PropTypes.arrayOf(
-      PropTypes.shape({
-        date: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-      }),
-    ),
-    antiflea: PropTypes.arrayOf(
-      PropTypes.shape({
-        date: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-      }),
-    ),
-  }).isRequired,
-
 };
 
 export default EditPetForm;

@@ -1,5 +1,5 @@
 import {
-  DELETE_PETS,
+  DELETE_PET,
   OPEN_MODAL_LOGIN,
   GET_PETSLIST,
   SAVE_PETSLIST,
@@ -8,9 +8,7 @@ import {
   CHANGE_EDIT_FIELD,
   CHANGE_FILE,
   CHANGE_URL,
-  ADD_PETS,
   UPDATE_PET,
-  UPDATE_PET_DETAILS,
   CLEAR_NEW_PET,
   FINISH_LOADING,
 } from '../actions';
@@ -18,7 +16,7 @@ import {
 const initialState = {
   petsList: [],
   currentPet: {
-    _id: null,
+    /*_id: null,
     name: '',
     age: '',
     species: '',
@@ -55,7 +53,7 @@ const initialState = {
         antifleaDate: '',
         antifleaName: '',
       },
-    ],
+    ],*/
   },
   //! find a solution to delete this part of state
   id: null,
@@ -99,7 +97,6 @@ const initialState = {
   userId: '',
 };
 
-
 const petReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case GET_PETSLIST:
@@ -117,15 +114,11 @@ const petReducer = (state = initialState, action = {}) => {
         ...state,
         currentPet: action.currentPet,
       };
-    case ADD_PETS:
+    /*case ADD_PET:
       return {
         ...state,
-      };
+      };*/
     case UPDATE_PET:
-      return {
-        ...state,
-      };
-    case UPDATE_PET_DETAILS:
       return {
         ...state,
       };
@@ -139,7 +132,7 @@ const petReducer = (state = initialState, action = {}) => {
         open: false,
         avatarUrl: '',
       };
-    case DELETE_PETS:
+    case DELETE_PET:
       return {
         ...state,
         petsList: state.petsList.filter((pet) => pet.id !== action.id),

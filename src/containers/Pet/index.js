@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 
 import {
-  getPetDetailsByPetId,
-  deletePets,
+  deletePet,
 } from '../../actions';
 
 import Pet from '../../components/Home/Pet/Pet';
@@ -12,12 +11,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  deletePets: (id) => {
-    const action = deletePets(id);
-    dispatch(action);
-  },
-  getPetDetails: () => {
-    const action = getPetDetailsByPetId();
+  deletePet: (id) => {
+    const action = deletePet(id);
     dispatch(action);
   },
 });

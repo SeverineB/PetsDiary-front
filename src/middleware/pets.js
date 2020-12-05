@@ -6,20 +6,38 @@ import api from '../services/api';
 import {
   GET_PETSLIST,
   getPetsList,
-  DELETE_PETS,
+  DELETE_PET,
   savePetsList,
-  ADD_PETS,
+  ADD_PET,
   UPDATE_PET,
-  UPDATE_PET_DETAILS,
+  UPDATE_WEIGHT,
   saveCurrentPet,
-  saveCurrentPetDetails,
   clearNewPet,
   finishLoading,
 } from '../actions';
 
 const pets = (store) => (next) => (action) => {
   switch (action.type) {
-    case ADD_PETS: {
+    case GET_PETSLIST: {
+      const userId = localStorage.getItem('id');
+      api.get(`user/${userId}/pets`,
+        {
+          withCredentials: true,
+        })
+        .then((response) => {
+          console.log('middleware GET PETSLIST response.data vaut ', response.data);
+          store.dispatch(savePetsList(response.data));
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+        .finally(() => {
+          store.dispatch(finishLoading());
+        });
+      break;
+    }
+
+    case ADD_PET: {
       const state = store.getState();
       const {
         name,
@@ -54,20 +72,20 @@ const pets = (store) => (next) => (action) => {
           store.dispatch(clearNewPet());
         })
         .catch((error) => {
-          console.error('erreur est survenue ', error);
+          console.error('Une erreur est survenue ', error);
         });
       break;
     }
 
     case UPDATE_PET: {
-      console.log('je lance la requête pour éditer les infos de suivi');
+      console.log('je lance la requête pour éditer les infos générales de l\'animal');
       const state = store.getState();
       const {
         name,
         age,
         species,
         breed,
-      } = state.pets;
+      } = state.pets.currentPet;
       const id = state.pets.currentPet._id;
       const formData = new FormData();
       formData.append('avatar', state.pets.avatar);
@@ -89,51 +107,40 @@ const pets = (store) => (next) => (action) => {
           store.dispatch(clearNewPet());
         })
         .catch((error) => {
-          console.error('erreur est survenue ', error);
+          console.error('Une erreur est survenue ', error);
         });
       break;
     }
 
-    case UPDATE_PET_DETAILS: {
-      console.log('je lance la requête pour éditer les infos de suivi');
+    case UPDATE_WEIGHT: {
+      console.log('je lance la requête pour éditer le poids');
       const state = store.getState();
       const {
-        ide,
-        birthdate,
-        weight,
-        vaccine,
-        deworming,
-        antiflea,
+        weightValue,
+        weightDate
       } = state.pets;
-      const detailsId = state.pets.currentPet.pet_details._id;
-
-      api.patch(`pet/edit/details/${detailsId}`, {
-        ide,
-        birthdate,
-        weight,
-        vaccine,
-        deworming,
-        antiflea,
+      const weightId = localStorage.getItem('itemToUpdate')
+    
+      api.put(`pet/weight/edit/${weightId}`, {
+        weightValue,
+        weightDate
       },
       {
-        headers: {
-          'content-type': 'multipart/form-data',
-        },
         withCredentials: true,
       })
         .then((response) => {
-          console.log('Middleware UPDATE PET DETAILS API response ', response.data);
+          console.log('Middleware UPDATE PET WEIGHT DETAILS API response ', response.data);
           store.dispatch(saveCurrentPet(response.data));
           store.dispatch(getPetsList());
           store.dispatch(clearNewPet());
         })
         .catch((error) => {
-          console.error('erreur est survenue ', error);
+          console.error('une erreur est survenue ', error);
         });
       break;
     }
 
-    case DELETE_PETS: {
+    case DELETE_PET: {
       const state = store.getState();
       const petId = state.pets.petsList.id;
       console.log('je lance la requête pour supprimer un animal');
@@ -150,25 +157,6 @@ const pets = (store) => (next) => (action) => {
       break;
     }
 
-    case GET_PETSLIST: {
-      console.log('je lance la requête pour récupérer les animaux par user');
-      const userId = localStorage.getItem('id');
-      api.get(`user/${userId}/pets`,
-        {
-          withCredentials: true,
-        })
-        .then((response) => {
-          console.log('middleware GET PETSLIST response.data vaut ', response.data);
-          store.dispatch(savePetsList(response.data));
-        })
-        .catch((error) => {
-          console.error(error);
-        })
-        .finally(() => {
-          store.dispatch(finishLoading());
-        });
-      break;
-    }
     default:
       next(action);
   }

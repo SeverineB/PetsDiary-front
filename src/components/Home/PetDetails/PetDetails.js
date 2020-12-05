@@ -12,13 +12,16 @@ import './PetDetails.scss';
 const PetDetails = ({
   pet,
   saveCurrentPet,
+  saveWeight,
 }) => {
   // useParams is used to retrieve the id in url params to filter the pet to display
   const params = useParams();
 
   useEffect(() => {
     console.log('je sauvegarde le pet courant qui est', pet);
+    console.log('WEIGHT CURRENT PET ', pet.weight)
     saveCurrentPet(pet);
+    saveWeight(pet.weight);
   }, []);
 
   console.log('WEIGHT LIST ', pet.weight);
