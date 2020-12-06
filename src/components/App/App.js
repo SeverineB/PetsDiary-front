@@ -17,7 +17,7 @@ import Footer from '../Footer/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'semantic-ui-css/semantic.min.css';
 
-import './app.scss';
+import './App.scss';
 
 // == Composant
 

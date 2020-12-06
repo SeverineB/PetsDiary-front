@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { Link, useParams } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import WeightChart from './WeightChart/WeightChart';
@@ -14,19 +15,29 @@ const PetDetails = ({
   saveCurrentPet,
   saveWeight,
 }) => {
+  const [showVaccine, setShowVaccine] = useState(false);
+  const [showAntiflea, setShowAntiflea] = useState(false);
+  const [showDeworming, setShowDeworming] = useState(false);
+  console.log('OPEN MODAL vaut', showVaccine);
   // useParams is used to retrieve the id in url params to filter the pet to display
   const params = useParams();
 
   useEffect(() => {
     console.log('je sauvegarde le pet courant qui est', pet);
     console.log('WEIGHT CURRENT PET ', pet.weight);
+    console.log('VACCINE CURRENT PET ', pet.vaccine);
     saveCurrentPet(pet);
     saveWeight(pet.weight);
   }, []);
 
-  const handleAddWeight = () => {
-    console.log('je veux ajouter un poids');
-  };
+  const handleCloseVaccine = () => setShowVaccine(false);
+  const handleShowVaccine = () => setShowVaccine(true);
+
+  const handleCloseAntiflea = () => setShowAntiflea(false);
+  const handleShowAntiflea = () => setShowAntiflea(true);
+
+  const handleCloseDeworming = () => setShowDeworming(false);
+  const handleShowDeworming = () => setShowDeworming(true);
 
   console.log('WEIGHT LIST ', pet.weight);
 
@@ -92,15 +103,15 @@ const PetDetails = ({
             </div>
             <div className="info-vaccine">
               <h4>Vaccins</h4>
-              {pet.vaccine.map((vaccineItem) => (
+              {pet.vaccine.map((item) => (
                 <div className="pet-vaccine-list" key={pet._id}>
                   <div className="pet-vaccine-items">
                     <h5>Date :</h5>
-                    {dayjs(vaccineItem.date).format('DD/MM/YYYY')}
+                    {dayjs(item.vaccineDate).format('DD/MM/YYYY')}
                   </div>
                   <div className="pet-vaccine-items">
                     <h5>Nom :</h5>
-                    {vaccineItem.name}
+                    {item.vaccineName}
                   </div>
                 </div>
               ))}
@@ -108,10 +119,24 @@ const PetDetails = ({
                 <button
                   type="submit"
                   className="add-weight-btn"
-                  onClick={handleAddWeight}
+                  onClick={handleShowVaccine}
                 >
                   Ajouter
                 </button>
+                <Modal show={showVaccine} onHide={handleCloseVaccine} className="modal-add-weight">
+                  <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                  <Modal.Footer>
+                    <button type="button" variant="secondary" onClick={handleCloseVaccine}>
+                      Close
+                    </button>
+                    <button type="button" variant="primary" onClick={handleCloseVaccine}>
+                      Save Changes
+                    </button>
+                  </Modal.Footer>
+                </Modal>
               </div>
             </div>
             <div className="info-antiflea">
@@ -128,6 +153,29 @@ const PetDetails = ({
                   </div>
                 </div>
               ))}
+              <div className="add-antiflea">
+                <button
+                  type="submit"
+                  className="add-antiflea-btn"
+                  onClick={handleShowAntiflea}
+                >
+                  Ajouter
+                </button>
+                <Modal show={showAntiflea} onHide={handleCloseAntiflea} className="modal-add-antiflea">
+                  <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                  <Modal.Footer>
+                    <button type="button" variant="secondary" onClick={handleCloseAntiflea}>
+                      Close
+                    </button>
+                    <button type="button" variant="primary" onClick={handleCloseAntiflea}>
+                      Save Changes
+                    </button>
+                  </Modal.Footer>
+                </Modal>
+              </div>
             </div>
             <div className="info-deworming">
               <h4>Anti-parasites</h4>
@@ -143,6 +191,29 @@ const PetDetails = ({
                   </div>
                 </div>
               ))}
+              <div className="add-deworming">
+                <button
+                  type="submit"
+                  className="add-deworming-btn"
+                  onClick={handleShowDeworming}
+                >
+                  Ajouter
+                </button>
+                <Modal show={showDeworming} onHide={handleCloseDeworming} className="modal-add-deworming">
+                  <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                  <Modal.Footer>
+                    <button type="button" variant="secondary" onClick={handleCloseDeworming}>
+                      Close
+                    </button>
+                    <button type="button" variant="primary" onClick={handleCloseDeworming}>
+                      Save Changes
+                    </button>
+                  </Modal.Footer>
+                </Modal>
+              </div>
             </div>
           </div>
         </div>
