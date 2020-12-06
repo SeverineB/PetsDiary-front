@@ -7,13 +7,13 @@ const PetCard = ({
   _id,
   name,
   avatarUrl,
-  deletePets,
+  deletePet,
 }) => {
   const petId = _id;
 
   const handleDelete = () => {
     console.log('je veux supprimer cet animal', petId);
-    deletePets(petId);
+    deletePet(petId);
   };
 
   return (
@@ -34,7 +34,7 @@ PetCard.propTypes = {
   _id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   avatarUrl: PropTypes.string.isRequired,
-  deletePets: PropTypes.func.isRequired,
+  deletePet: PropTypes.func.isRequired,
 };
 
 export default PetCard;

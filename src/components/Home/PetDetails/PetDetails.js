@@ -19,10 +19,14 @@ const PetDetails = ({
 
   useEffect(() => {
     console.log('je sauvegarde le pet courant qui est', pet);
-    console.log('WEIGHT CURRENT PET ', pet.weight)
+    console.log('WEIGHT CURRENT PET ', pet.weight);
     saveCurrentPet(pet);
     saveWeight(pet.weight);
   }, []);
+
+  const handleAddWeight = () => {
+    console.log('je veux ajouter un poids');
+  };
 
   console.log('WEIGHT LIST ', pet.weight);
 
@@ -86,10 +90,9 @@ const PetDetails = ({
                 ))}
               </div> */}
             </div>
-            {/* 
             <div className="info-vaccine">
               <h4>Vaccins</h4>
-              {petDetails.vaccine.map((vaccineItem) => (
+              {pet.vaccine.map((vaccineItem) => (
                 <div className="pet-vaccine-list" key={pet._id}>
                   <div className="pet-vaccine-items">
                     <h5>Date :</h5>
@@ -101,10 +104,34 @@ const PetDetails = ({
                   </div>
                 </div>
               ))}
+              <div className="add-weight">
+                <button
+                  type="submit"
+                  className="add-weight-btn"
+                  onClick={handleAddWeight}
+                >
+                  Ajouter
+                </button>
+              </div>
+            </div>
+            <div className="info-antiflea">
+              <h4>Anti-puces</h4>
+              {pet.antiflea.map((antifleaItem) => (
+                <div className="pet-antiflea-list">
+                  <div className="pet-antiflea-items">
+                    <h5>Date :</h5>
+                    {dayjs(antifleaItem.date).format('DD/MM/YYYY')}
+                  </div>
+                  <div className="pet-antiflea-items">
+                    <h5>Nom :</h5>
+                    {antifleaItem.value}
+                  </div>
+                </div>
+              ))}
             </div>
             <div className="info-deworming">
-             {/*  <h4>Anti-parasites</h4>
-              {petDetails.deworming.map((dewormingItem) => (
+              <h4>Anti-parasites</h4>
+              {pet.deworming.map((dewormingItem) => (
                 <div className="pet-deworming-list">
                   <div className="pet-deworming-items">
                     <h5>Date :</h5>
@@ -116,7 +143,7 @@ const PetDetails = ({
                   </div>
                 </div>
               ))}
-            </div> */}
+            </div>
           </div>
         </div>
         <div className="edit-link">
@@ -139,6 +166,15 @@ PetDetails.propTypes = {
     birthdate: PropTypes.string.isRequired,
     ide: PropTypes.number.isRequired,
     weight: PropTypes.arrayOf(
+      PropTypes.shape({}),
+    ).isRequired,
+    deworming: PropTypes.arrayOf(
+      PropTypes.shape({}),
+    ).isRequired,
+    vaccine: PropTypes.arrayOf(
+      PropTypes.shape({}),
+    ).isRequired,
+    antiflea: PropTypes.arrayOf(
       PropTypes.shape({}),
     ).isRequired,
   }).isRequired,
