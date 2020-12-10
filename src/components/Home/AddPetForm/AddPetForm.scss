@@ -1,46 +1,51 @@
 @import 'src/styles/vars';
 
-.add-pet h2 {
-  width: 100%;
-  text-align: center;
-  color: #f1746d;
-  margin-top: 1em;
+.add-pet {
+    height: 90%;
+    overflow-y: scroll;
+
+    h2 {
+    width: 100%;
+    text-align: center;
+    color: #f1746d;
+    margin-top: 1em;
+    }
 }
 
 .add-pet-form {
-  width: 80%;
-  background: #3a4eca;
-  margin: 1em auto;
-  padding: 0.5em;
-  border-radius: 0.5em;
-
-  .form-label {
-    color: #ffffff;
-    font-weight: bold;
-    margin: 0.5em 0;
-  }
-
-  .form-file-label {
-    color: #ffffff;
-  }
-
-  .btn-primary {
-    background-color: #f1746d;
-    border-color: #f1746d;
-  }
-
-  .buttons {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .avatar-preview {
+    width: 80%;
+    background: #3a4eca;
+    margin: 1em auto;
+    padding: 0.5em;
     border-radius: 0.5em;
-    display: flex;
-    justify-content: center;
-    img {
-      width: 50%;
-      margin: 0.5em 0;
+
+    .form-label {
+        color: #ffffff;
+        font-weight: bold;
+        margin: 0.5em 0;
     }
-  }
+
+    .form-file-label {
+        color: #ffffff;
+    }
+
+    .btn-primary {
+        background-color: #f1746d;
+        border-color: #f1746d;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .avatar-preview {
+        border-radius: 0.5em;
+        display: flex;
+        justify-content: center;
+        img {
+        width: 50%;
+        margin: 0.5em 0;
+        }
+    }
 }

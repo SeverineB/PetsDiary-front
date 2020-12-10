@@ -35,24 +35,12 @@ const EditPetForm = ({
   } = currentPet;
 
   console.log('CURRENT PET IN EDIT FORM', currentPet);
-  console.log('CURRENT WEIGHT IN EDIT FORM', weight);
-  weight.map((info, index) => {
-   /*  console.log(index[info.weightValue]); */
-    console.log('INDEX ', index, 'INFO ', info);
-    console.log('INFO ', Object.keys(info)[2]);
-  });
 
   const newBirthdate = dayjs(birthdate).format('YYYY-MM-DD');
   console.log('NEW BIRTHDATE', newBirthdate);
 
   const handleChange = (evt) => {
     changeEditField(evt.target.value, evt.target.name);
-  };
-
-  const handleChangeArray = (evt) => {
-    changeEditField(evt.target.value, evt.target.name);
-    console.log('ID WEIGHT TO UPDATE', evt.target.id)
-    localStorage.setItem('itemToUpdate', evt.target.id)
   };
 
   const handleFileChange = (evt) => {
@@ -77,6 +65,17 @@ const EditPetForm = ({
       <Form onSubmit={handleSubmit} className="edit-pet-form">
         <div className="general-infos">
           <h3>Informations générales</h3>
+          <Form.Group>
+            <Form.File
+              id="avatar"
+              name="avatar"
+              label="Ajouter un avatar"
+              onChange={handleFileChange}
+            />
+          </Form.Group>
+          <div className="avatar-preview">
+            {!avatarUrl ? <img src={currentPet.avatarUrl} alt="avatar" /> : <img src={avatarUrl} alt="avatar" />}
+          </div>
           <Form.Label>Nom</Form.Label>
           <Form.Control
             type="text"
@@ -109,17 +108,6 @@ const EditPetForm = ({
             defaultValue={breed}
             onChange={handleChange}
           />
-          <Form.Group>
-            <Form.File
-              id="avatar"
-              name="avatar"
-              label="Ajouter un avatar"
-              onChange={handleFileChange}
-            />
-          </Form.Group>
-          <div className="avatar-preview">
-            {!avatarUrl ? <img src={currentPet.avatarUrl} alt="avatar" /> : <img src={avatarUrl} alt="avatar" />}
-          </div>
         </div>
         <div className="health-infos">
           <Form.Label>Date de naissance</Form.Label>
@@ -138,7 +126,7 @@ const EditPetForm = ({
             defaultValue={ide}
             onChange={handleChange}
           />
-          <h3>Mesures</h3>
+         {/*  <h3>Mesures</h3>
           <Form.Label>Poids</Form.Label>
           {weight.map((item) => (
             <div className="health-infos-weight" key={item._id}>
@@ -159,10 +147,17 @@ const EditPetForm = ({
                 onChange={handleChangeArray}
               />
             </div>
-          ))}
+          ))} */}
         </div>
         <Button variant="primary" type="submit">
           Valider
+        </Button>
+        <Button
+          variant="primary"
+          type="button"
+          onClick={() => history.goBack()}
+        >
+          Annuler
         </Button>
       </Form>
     </div>

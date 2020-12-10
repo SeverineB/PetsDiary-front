@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 
-import WeightChart from '../../components/Home/PetDetails/WeightDetails/WeightChart/WeightChart';
+import AntifleaDetails from '../../components/Home/PetDetails/AntifleaDetails/AntifleaDetails';
 
 const mapStateToProps = (state) => ({
-  petWeight: state.pets.currentPet.weight,
+  petAntiflea: state.pets.currentPet.antiflea,
 });
+
 const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(WeightChart);
+)(AntifleaDetails);

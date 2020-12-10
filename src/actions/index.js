@@ -2,6 +2,7 @@ export * from './pets';
 export * from './users';
 export * from './auth';
 export * from './weight';
+export * from './vaccine';
 
 export const CHANGE_FIELD = 'CHANGE_FIELD';
 export const CHANGE_EDIT_FIELD = 'CHANGE_EDIT_FIELD';

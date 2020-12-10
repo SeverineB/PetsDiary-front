@@ -1,0 +1,45 @@
+@import 'src/styles/vars';
+
+.vaccine-container {
+    padding: 0.5em;
+
+    .back-btn {
+        border: none;
+        border-radius: 30.5px;
+        padding: 0.4em;
+        background: none;
+
+        img {
+            width: 1.6em;
+        }
+    }
+
+    h2 {
+        padding: 0.5em;
+    }
+}
+
+.vaccine-item {
+    width: 100%;
+    padding: 0.5em;
+
+    &-content {
+        display: flex;
+       
+
+        &-date {
+            width: 30%;
+        }
+
+        &-name {
+            width: 70%;
+        }
+
+        &-line {
+            width: 80%;
+            height: 1px;
+            background: grey;
+            margin-top: 0.5em;
+        }
+    }
+}

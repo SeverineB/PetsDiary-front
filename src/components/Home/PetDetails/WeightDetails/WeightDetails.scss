@@ -1,0 +1,31 @@
+@import 'src/styles/vars';
+
+.weight-container {
+  position: relative;
+  height: 100%;
+}
+
+.weight-list {
+  margin-left: 0.2em;
+}
+
+.weight-item-content {
+  display: flex;
+  width: 80%;
+  margin-bottom: 0.4em;
+
+  &-date {
+    width: 30%;
+  }
+
+  &-value {
+    width: 70%;
+  }
+
+  &-line {
+    height: 1px;
+    width: 80%;
+    margin-left: 0.2em;
+    background-color: black;
+  }
+}

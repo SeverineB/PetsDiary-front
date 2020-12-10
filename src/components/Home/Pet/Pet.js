@@ -4,37 +4,32 @@ import PropTypes from 'prop-types';
 import './Pet.scss';
 
 const PetCard = ({
-  _id,
-  name,
-  avatarUrl,
-  deletePet,
+    _id,
+    name,
+    avatarUrl,
+    deletePet,
 }) => {
-  const petId = _id;
+const petId = _id;
 
-  const handleDelete = () => {
-    console.log('je veux supprimer cet animal', petId);
-    deletePet(petId);
-  };
 
-  return (
+return (
     <>
-      <div className="pet-container">
-        <div className="pet-avatar">
-          <img src={avatarUrl} alt="profile avatar" />
+        <div className="pet-container">
+            <div className="pet-avatar">
+                <img src={avatarUrl} alt="profile avatar" />
+            </div>
+            <div className="pet-name">
+                <p>{name}</p>
+            </div>
         </div>
-        <div className="pet-name">
-          {name}
-        </div>
-      </div>
     </>
-  );
+);
 };
 
 PetCard.propTypes = {
-  _id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  avatarUrl: PropTypes.string.isRequired,
-  deletePet: PropTypes.func.isRequired,
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    avatarUrl: PropTypes.string.isRequired,
 };
 
 export default PetCard;
