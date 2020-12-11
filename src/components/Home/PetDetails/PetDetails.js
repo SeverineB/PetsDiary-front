@@ -10,6 +10,7 @@ import './PetDetails.scss';
 const PetDetails = ({
     pet,
     saveCurrentPet,
+    saveCurrentWeight,
     deletePet,
 }) => {
     // useParams is used to retrieve the id in url params to filter the pet to display
@@ -21,6 +22,7 @@ const PetDetails = ({
         console.log('Current pet :')
         console.table(pet);
         saveCurrentPet(pet);
+        saveCurrentWeight(pet.weight);
     }, []);
 
     

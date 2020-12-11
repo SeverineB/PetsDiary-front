@@ -3,6 +3,7 @@ import {
     GET_PETSLIST,
     SAVE_PETSLIST,
     SAVE_CURRENT_PET,
+    SAVE_CURRENT_WEIGHT,
     CHANGE_FIELD,
     CHANGE_EDIT_FIELD,
     CHANGE_FILE,
@@ -14,7 +15,7 @@ import {
     CLEAR_NEW_PET,
     FINISH_LOADING,
     DELETE_WEIGHT,
-    REMOVE_WEIGHT,
+    REMOVE_WEIGHT
 } from '../actions';
 
 const initialState = {
@@ -150,8 +151,16 @@ const petReducer = (state = initialState, action = {}) => {
             console.log(state.pets.currentPet.weight.filter((item) => item._id !== action.id))
             return {
                 ...state,
-                weight: state.pets.currentPet.weight.filter((item) => item._id !== action.id),
             };
+        case REMOVE_WEIGHT:
+            console.log('je suis dans le reducer');
+            console.log(state.pets.weight.filter((item) => item._id !== action.id))
+                return {
+                    ...state,
+                    weight: [
+                        ...state.pets.weight.filter((item) => item._id !== action.id)
+                    ],
+                };
         default:
         return state;
     }

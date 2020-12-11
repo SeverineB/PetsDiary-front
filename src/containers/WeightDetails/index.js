@@ -7,7 +7,7 @@ import {
 } from '../../actions';
 
 const mapStateToProps = (state) => ({
-    petWeight: state.pets.currentPet.weight,
+    petWeight: state.pets.weight,
 });
 
 const mapDispatchToProps = (dispatch) => ({
