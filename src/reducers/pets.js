@@ -80,7 +80,7 @@ const petReducer = (state = initialState, action = {}) => {
             console.log('ACTION PET ', action.pet)
             return {
                 ...state,
-                petsList: [...state.petsList, action.pet]
+                petsList: [...state.pets.petsList, action.pet]
             };
         case SEND_PET:
             console.log('ACTION PET ', action.pet)
@@ -93,10 +93,11 @@ const petReducer = (state = initialState, action = {}) => {
                 ...state,
             };
         case DELETE_PET:
-            console.log('STATE IN DELETE PETS', state.pets.petsList)
+            console.log('STATE IN DELETE PETS', state.pets.petsList);
+            const newPetsList = state.pets.petsList.filter(pet => pet._id !==  action.id);
             return {
                 ...state,
-                petsList: state.pets.petsList.filter((pet) => pet._id !== action.id),
+                petsList: newPetsList,
             };
         case CLEAR_NEW_PET:
             return {
@@ -143,12 +144,6 @@ const petReducer = (state = initialState, action = {}) => {
             };
         case DELETE_WEIGHT:
             console.log('STATE PETS REDUCER IN DELETE WEIGHT', state.pets.currentPet);
-            return {
-                ...state,
-            };
-        case REMOVE_WEIGHT:
-            console.log('STATE PETS REDUCER IN REMOVE WEIGHT ', state.pets.currentPet);
-            console.log(state.pets.currentPet.weight.filter((item) => item._id !== action.id))
             return {
                 ...state,
             };

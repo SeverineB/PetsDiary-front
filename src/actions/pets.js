@@ -36,8 +36,9 @@ export const saveCurrentWeight = (currentWeight) => ({
   currentWeight,
 });
 
-export const addPet = () => ({
+export const addPet = (pet) => ({
   type: ADD_PET,
+  pet
 });
 
 export const sendPet = (pet) => ({

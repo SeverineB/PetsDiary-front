@@ -41,7 +41,7 @@ switch (action.type) {
     }
 
     case ADD_PET: {
-        console.log('je suis dans SEND PET ')
+        console.log('je suis dans ADD PET ')
         const state = store.getState();
         const {
             name,
@@ -74,10 +74,7 @@ switch (action.type) {
             })
             .then((response) => {
                 console.log('Middleware API response ', response.data);
-                if (response.status === '200') {
                     store.dispatch(getPetsList());
-                }
-                /* store.dispatch(clearNewPet()); */
             })
             .catch((error) => {
                 console.error('Une erreur est survenue ', error);
