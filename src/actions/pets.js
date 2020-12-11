@@ -3,6 +3,7 @@ export const GET_PETSLIST = 'GET_PETSLIST';
 export const SAVE_PETSLIST = 'SAVE_PETSLIST';
 export const SAVE_CURRENT_PET = 'SAVE_CURRENT_PET';
 export const ADD_PET = 'ADD_PET';
+export const SEND_PET = 'SEND_PET';
 export const UPDATE_PET = 'UPDATE_PET';
 export const CHANGE_FILE = 'CHANGE_FILE';
 export const CHANGE_URL = 'CHANGE_URL';
@@ -30,6 +31,11 @@ export const saveCurrentPet = (currentPet) => ({
 export const addPet = () => ({
   type: ADD_PET,
 });
+
+export const sendPet = (pet) => ({
+    type: SEND_PET,
+    pet
+  });
 
 export const updatePet = () => ({
   type: UPDATE_PET,

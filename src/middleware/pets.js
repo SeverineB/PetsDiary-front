@@ -16,6 +16,7 @@ import {
     saveCurrentPet,
     clearNewPet,
     finishLoading,
+    removeWeight
 } from '../actions';
 
 const pets = (store) => (next) => (action) => {
@@ -40,6 +41,7 @@ switch (action.type) {
     }
 
     case ADD_PET: {
+        console.log('je suis dans SEND PET ')
         const state = store.getState();
         const {
             name,
@@ -49,10 +51,11 @@ switch (action.type) {
             sex,
             birthdate,
             ide,
+            avatar
         } = state.pets;
         const { id } = state.auth.session;
         const formData = new FormData();
-        formData.append('avatar', state.pets.avatar);
+        formData.append('avatar', avatar);
         formData.append('name', name);
         formData.append('age', age);
         formData.append('species', species);
@@ -61,6 +64,7 @@ switch (action.type) {
         formData.append('birthdate', birthdate);
         formData.append('ide', ide);
         formData.append('user_id', id);
+        console.log('FORMDATA ', formData);
         api.post('pet/add', formData,
             {
                 headers: {
@@ -70,8 +74,10 @@ switch (action.type) {
             })
             .then((response) => {
                 console.log('Middleware API response ', response.data);
-                store.dispatch(getPetsList());
-                store.dispatch(clearNewPet());
+                if (response.status === '200') {
+                    store.dispatch(getPetsList());
+                }
+                /* store.dispatch(clearNewPet()); */
             })
             .catch((error) => {
                 console.error('Une erreur est survenue ', error);
@@ -177,6 +183,7 @@ switch (action.type) {
             })
             .then((response) => {
                 console.log(response);
+
             })
             .catch((error) => {
                 console.error(error);
@@ -194,6 +201,7 @@ switch (action.type) {
             })
             .then((response) => {
                 console.log('ITEM DELETED ', response);
+                store.dispatch(removeWeight(weightId));
             })
             .catch((error) => {
                 console.error(error);

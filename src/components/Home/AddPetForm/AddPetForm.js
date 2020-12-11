@@ -20,6 +20,7 @@ const AddPetForm = ({
   addPet,
   clearNewPet,
 }) => {
+    console.log('SEX VALUE IN ADD PET FORM', sex);
     const history = useHistory();
     const handleChange = (evt) => {
         changeField(evt.target.name, evt.target.value);
@@ -35,7 +36,7 @@ const AddPetForm = ({
     const handleSubmit = (evt) => {
         evt.preventDefault();
         addPet();
-        clearNewPet();
+        /* clearNewPet(); */
         history.push('/home');
     };
 
