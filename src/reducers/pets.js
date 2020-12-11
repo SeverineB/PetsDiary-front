@@ -3,6 +3,7 @@ import {
     GET_PETSLIST,
     SAVE_PETSLIST,
     SAVE_CURRENT_PET,
+    SAVE_CURRENT_WEIGHT,
     CHANGE_FIELD,
     CHANGE_EDIT_FIELD,
     CHANGE_FILE,
@@ -12,6 +13,7 @@ import {
     CLEAR_NEW_PET,
     FINISH_LOADING,
     DELETE_WEIGHT,
+    REMOVE_WEIGHT
 } from '../actions';
 
 const initialState = {
@@ -25,12 +27,12 @@ const initialState = {
     sex: 'mâle',
     birthdate: '',
     ide: '',
-    weight: [
+    weight: [/* 
         {
         weightDate: '',
         weightValue: null,
         },
-    ],
+     */],
     vaccine: [
         {
         vaccineDate: '',
@@ -75,6 +77,11 @@ const petReducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 currentPet: action.currentPet,
+            };
+        case SAVE_CURRENT_WEIGHT:
+            return {
+                ...state,
+                weight: action.currentWeight,
             };
         case UPDATE_PET:
             return {
@@ -129,12 +136,18 @@ const petReducer = (state = initialState, action = {}) => {
                 isPetsLoading: false,
             };
         case DELETE_WEIGHT:
-            console.log('je suis dans le reducer');
-            console.log(state.pets.currentPet.weight.filter((item) => item._id !== action.id))
             return {
                 ...state,
-                weight: state.pets.currentPet.weight.filter((item) => item._id !== action.id),
             };
+        case REMOVE_WEIGHT:
+            console.log('je suis dans le reducer');
+            console.log(state.pets.weight.filter((item) => item._id !== action.id))
+                return {
+                    ...state,
+                    weight: [
+                        ...state.pets.weight.filter((item) => item._id !== action.id)
+                    ],
+                };
         default:
         return state;
     }

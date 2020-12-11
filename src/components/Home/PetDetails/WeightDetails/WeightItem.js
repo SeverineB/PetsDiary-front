@@ -10,6 +10,7 @@ const WeightItem = ({
     weightDate,
     weightValue,
     deleteWeight,
+    removeWeight
 }) => {
     const history = useHistory();
 
@@ -17,6 +18,7 @@ const WeightItem = ({
         evt.preventDefault();
         console.log('je supprime un item poids', _id);
         localStorage.setItem('weightToDelete', _id);
+        removeWeight(_id);
         deleteWeight(_id);
         history.push();
     };

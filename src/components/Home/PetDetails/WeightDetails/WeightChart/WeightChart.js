@@ -2,19 +2,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-VictoryLine,
-VictoryChart,
-VictoryAxis,
-VictoryLabel,
-VictoryTooltip,
-VictoryVoronoiContainer,
+    VictoryLine,
+    VictoryChart,
+    VictoryAxis,
+    VictoryLabel,
+    VictoryTooltip,
+    VictoryVoronoiContainer,
 } from 'victory';
 import PropTypes from 'prop-types';
 
 import './WeightChart.scss';
 
 const WeightChart = ({ petWeight }) => {
-console.log('PET WEIGHT IN BARCHART ', petWeight);
+    console.log('PET WEIGHT IN BARCHART ', petWeight);
 
 return (
     <>
@@ -28,7 +28,7 @@ return (
             scale={{x: 'time'}}
         >
         <VictoryLine
-            interpolation="step"
+            interpolation="monotoneX"
             labelComponent={(
             <VictoryTooltip
                 style={{

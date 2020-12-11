@@ -54,8 +54,6 @@
     "webpack-merge": "*"
   },
   "dependencies": {
-    "@nivo/core": "^0.67.0",
-    "@nivo/line": "^0.67.0",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
     "dayjs": "^1.9.6",
