@@ -126,28 +126,6 @@ const EditPetForm = ({
             defaultValue={ide}
             onChange={handleChange}
           />
-         {/*  <h3>Mesures</h3>
-          <Form.Label>Poids</Form.Label>
-          {weight.map((item) => (
-            <div className="health-infos-weight" key={item._id}>
-              <Form.Control
-                id={item._id}
-                type="date"
-                placeholder="Date"
-                name="weightDate"
-                defaultValue={dayjs(item.weightDate).format('YYYY-MM-DD')}
-                onChange={handleChangeArray}
-              />
-              <Form.Control
-                id={item._id}
-                type="number"
-                placeholder="Poids"
-                name="weightValue"
-                defaultValue={item.weightValue}
-                onChange={handleChangeArray}
-              />
-            </div>
-          ))} */}
         </div>
         <Button variant="primary" type="submit">
           Valider

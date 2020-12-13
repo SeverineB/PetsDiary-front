@@ -2,29 +2,43 @@ import { connect } from 'react-redux';
 
 import RegisterForm from '../../components/LoginPage/Auth/RegisterForm/RegisterForm';
 
-import { registerUser, changeUserField, toggleShowRegister } from '../../actions';
+import {
+    register,
+    changeUserFieldRegister,
+    setRegErrors,
+    clearRegErrors,
+} from '../../actions';
 
 const mapStateToProps = (state) => ({
-  showRegister: state.auth.showRegister,
-  email: state.users.email,
-  password: state.users.password,
-  username: state.users.username,
+    email: state.register.email,
+    password: state.register.password,
+    username: state.register.username,
+    isSignedUp: state.register.isSignedUp,
+    isFailed: state.register.isFailed,
+    error: state.register.error,
+    isLoading: state.register.isLoading,
+    errors: state.error.regErrors,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleShowRegister: () => {
-    dispatch(toggleShowRegister());
-  },
-  changeUserField: (value, name) => {
-    dispatch(changeUserField(value, name));
-  },
-  registerUser: () => {
-    const action = registerUser();
-    dispatch(action);
-  },
+    toggleShowRegister: () => {
+        dispatch(toggleShowRegister());
+    },
+    changeUserFieldRegister: (value, name) => {
+        dispatch(changeUserFieldRegister(value, name));
+    },
+    registerUser: () => {
+        dispatch(register());
+    },
+    setErrors: (id, value) => {
+        dispatch(setRegErrors(id, value));
+    },
+    clearErrors: () => {
+        dispatch(clearRegErrors());
+    },
 });
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+mapStateToProps,
+mapDispatchToProps,
 )(RegisterForm);

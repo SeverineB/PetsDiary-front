@@ -9,13 +9,11 @@ import {
     CHANGE_FILE,
     CHANGE_URL,
     ADD_PET,
-    SEND_PET,
     UPDATE_PET,
     DELETE_PET,
     CLEAR_NEW_PET,
     FINISH_LOADING,
     DELETE_WEIGHT,
-    REMOVE_WEIGHT
 } from '../actions';
 
 const initialState = {
@@ -30,24 +28,9 @@ const initialState = {
     birthdate: '',
     ide: '',
     weight: [],
-    vaccine: [
-        {
-        vaccineDate: '',
-        vaccineName: '',
-        },
-    ],
-    deworming: [
-        {
-        dewormingDate: '',
-        dewormingName: '',
-        },
-    ],
-    antiflea: [
-        {
-        antifleaDate: '',
-        antifleaName: '',
-        },
-    ],
+    vaccine: [],
+    deworming: [],
+    antiflea: [],
     avatar: {},
     avatarUrl: '',
     open: false,
@@ -76,24 +59,22 @@ const petReducer = (state = initialState, action = {}) => {
                 ...state,
                 currentPet: action.currentPet,
             };
+        case SAVE_CURRENT_WEIGHT:
+            return {
+                ...state,
+                weight: action.currentWeight,
+            };
         case ADD_PET:
             console.log('ACTION PET ', action.pet)
             return {
                 ...state,
                 petsList: [...state.pets.petsList, action.pet]
             };
-        case SEND_PET:
-            console.log('ACTION PET ', action.pet)
-            return {
-                ...state,
-                petsList: [...state.petsList, action.pet]
-            };
         case UPDATE_PET:
             return {
                 ...state,
             };
         case DELETE_PET:
-            console.log('STATE IN DELETE PETS', state.pets.petsList);
             const newPetsList = state.pets.petsList.filter(pet => pet._id !==  action.id);
             return {
                 ...state,
@@ -106,17 +87,17 @@ const petReducer = (state = initialState, action = {}) => {
                 age: '',
                 species: '',
                 breed: '',
-                sex: '',
+                sex: 'mâle',
                 birthdate: '',
                 ide: '',
                 open: false,
                 avatarUrl: '',
             };
-        case OPEN_MODAL_LOGIN:
+        /* case OPEN_MODAL_LOGIN:
             return {
                 ...state,
                 openLogin: !state.openLogin,
-            };
+            }; */
         case CHANGE_FIELD:
             return {
                 ...state,
@@ -144,18 +125,11 @@ const petReducer = (state = initialState, action = {}) => {
             };
         case DELETE_WEIGHT:
             console.log('STATE PETS REDUCER IN DELETE WEIGHT', state.pets.currentPet);
+            const newWeight = state.pets.weight.filter(item => item._id !==  action.id);
             return {
                 ...state,
+                weight: newWeight,
             };
-        case REMOVE_WEIGHT:
-            console.log('je suis dans le reducer');
-            console.log(state.pets.weight.filter((item) => item._id !== action.id))
-                return {
-                    ...state,
-                    weight: [
-                        ...state.pets.weight.filter((item) => item._id !== action.id)
-                    ],
-                };
         default:
         return state;
     }

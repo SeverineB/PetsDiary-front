@@ -2,8 +2,7 @@ import { connect } from 'react-redux';
 
 import Auth from '../../components/LoginPage/Auth/Auth';
 
-/* import { toggleLogin, logout } from '../../actions'; */
-import { toggleLogin, logout } from '../../actions/auth';
+import { toggleLogin, logout } from '../../actions';
 
 const mapStateToProps = (state) => ({
   openLogin: state.auth.openLogin,

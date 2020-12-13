@@ -36,7 +36,6 @@ const AddPetForm = ({
     const handleSubmit = (evt) => {
         evt.preventDefault();
         addPet();
-        clearNewPet();
         history.push('/home');
     };
 

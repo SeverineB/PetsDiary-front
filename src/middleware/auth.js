@@ -1,12 +1,18 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
+import { StrictMode } from 'react';
 import {
-  saveUser,
-  REGISTER,
-  LOGIN,
-  CHECK,
-  LOGOUT,
-  userConnected,
+    saveUser,
+    REGISTER,
+    registerSuccess,
+    registerFailed,
+    finishLoading,
+    LOGIN,
+    loginSuccess,
+    loginFailed,
+    CHECK,
+    LOGOUT,
+    userConnected,
 } from '../actions';
 
 import api from '../services/api';
@@ -14,46 +20,56 @@ import api from '../services/api';
 const auth = (store) => (next) => (action) => {
   switch (action.type) {
     case REGISTER: {
-      const state = store.getState();
-      const {
-        email,
-        password,
-        username,
-      } = state.users;
-      api.post('user/register', {
-        email,
-        password,
-        username,
-      })
-        .then((response) => {
-          console.log('Middleware USERS response', response.data);
-          store.dispatch(saveUser({ ...response.data }));
+        const state = store.getState();
+        const {
+            email,
+            password,
+            username,
+        } = state.register;
+        api.post('user/register', {
+            email,
+            password,
+            username,
         })
-        .catch((error) => {
-          console.error('Il y a une erreur', error.message);
-        });
-      break;
+            .then((response) => {
+            console.log('Middleware USERS response', response.data);
+            store.dispatch(saveUser({ ...response.data }));
+            store.dispatch(registerSuccess())
+            })
+            .catch((error) => {
+            console.error('Il y a une erreur', error.message);
+            store.dispatch(registerFailed(error.response.data.message));
+            })
+            .finally(() => {
+                store.dispatch(finishLoading());
+            });
+            next(action);
+        break;
     }
 
     case LOGIN: {
-      const state = store.getState();
-      const { email, password } = state.users;
-      api.post('user/login', {
-        email,
-        password,
-      },
-      {
-        withCredentials: true,
-      })
-        .then((response) => {
-          localStorage.setItem('id', response.data.session._id);
-          store.dispatch(saveUser({ ...response.data }));
-          store.dispatch(userConnected(true));
+        const state = store.getState();
+        const { email, password } = state.users;
+        api.post('user/login', {
+            email,
+            password,
+        },
+        {
+            withCredentials: true,
         })
-        .catch((error) => {
-          console.log('Mais noooon c\'est pas bon !', error.message);
-        });
-      break;
+            .then((response) => {
+                localStorage.setItem('id', response.data.session._id);
+                store.dispatch(saveUser({ ...response.data }));
+                store.dispatch(loginSuccess());
+            })
+            .catch((error) => {
+                console.log('Mais noooon c\'est pas bon !', error.message);
+                store.dispatch(loginFailed(error.response.data.message));
+            })
+            .finally(() => {
+                store.dispatch(finishLoading());
+            })
+        break;
     }
 
     case LOGOUT: {

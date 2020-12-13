@@ -102,10 +102,10 @@ PetDetails.propTypes = {
         name: PropTypes.string.isRequired,
         age: PropTypes.string.isRequired,
         species: PropTypes.string.isRequired,
-        breed: PropTypes.string.isRequired,
+        breed: PropTypes.string,
         sex: PropTypes.string.isRequired,
         birthdate: PropTypes.string.isRequired,
-        ide: PropTypes.number.isRequired,
+        ide: PropTypes.number,
         weight: PropTypes.arrayOf(
         PropTypes.shape({}),
         ).isRequired,
@@ -122,5 +122,10 @@ PetDetails.propTypes = {
     saveCurrentPet: PropTypes.func.isRequired,
     deletePet: PropTypes.func.isRequired,
 };
+
+PetDetails.defaultProps = {
+    breed: '',
+    ide: null,
+}
 
 export default PetDetails;

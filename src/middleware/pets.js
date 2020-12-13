@@ -14,9 +14,9 @@ import {
     DELETE_WEIGHT,
     UPDATE_VACCINE,
     saveCurrentPet,
+    saveCurrentWeight,
     clearNewPet,
     finishLoading,
-    removeWeight
 } from '../actions';
 
 const pets = (store) => (next) => (action) => {
@@ -74,10 +74,11 @@ switch (action.type) {
             })
             .then((response) => {
                 console.log('Middleware API response ', response.data);
+                    store.dispatch(clearNewPet());
                     store.dispatch(getPetsList());
             })
             .catch((error) => {
-                console.error('Une erreur est survenue ', error);
+                console.error('Une erreur est survenue ', error.message);
             });
         break;
     }
@@ -191,14 +192,15 @@ switch (action.type) {
     case DELETE_WEIGHT: {
         const state = store.getState();
         const weightId = localStorage.getItem('weightToDelete');
-        console.log('je lance la requête pour supprimer un item de poids');
+        console.log('je lance la requête pour supprimer un item de poids', weightId);
         api.delete(`pet/weight/${weightId}`,
             {
                 withCredentials: true,
             })
             .then((response) => {
-                console.log('ITEM DELETED ', response);
-                store.dispatch(removeWeight(weightId));
+                console.log('ITEM DELETED ', response.data);
+                store.dispatch(saveCurrentPet(response.data))
+                store.dispatch(saveCurrentWeight(response.data.weight));
             })
             .catch((error) => {
                 console.error(error);

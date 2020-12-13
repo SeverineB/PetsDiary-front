@@ -1,8 +1,8 @@
 import {
   GET_USERS,
-  REGISTER_USER,
   CHANGE_USER_FIELD,
   SAVE_USERS,
+  LOGOUT
 } from '../actions';
 
 const initialState = {
@@ -30,10 +30,13 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         users: action.users,
       };
-    case REGISTER_USER:
-      return {
+    case LOGOUT:
+        return {
         ...state,
-      };
+        email: '',
+        password: '',
+        
+    };
     default:
       return state;
   }

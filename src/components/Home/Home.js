@@ -24,6 +24,8 @@ const Home = ({
     getPetsList();
   }, []);
 
+  console.log('PETSLIST DANS HOME ', petsList);
+
   const handleLogout = () => {
     logout();
   };

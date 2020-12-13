@@ -4,7 +4,7 @@ export const GET_USERS = 'GET_USERS';
 export const SAVE_USER = 'SAVE_USER';
 export const SAVE_USERS = 'SAVE_USERS';
 export const CHANGE_USER_FIELD = 'CHANGE_USER_FIELD';
-
+export const CHANGE_USER_FIELD_REGISTER = 'CHANGE_USER_FIELD_REGISTER';
 
 // ACTION CREATOR
 
@@ -32,4 +32,10 @@ export const changeUserField = (value, name) => ({
   type: CHANGE_USER_FIELD,
   value,
   name,
+});
+
+export const changeUserFieldRegister = (value, name) => ({
+    type: CHANGE_USER_FIELD_REGISTER,
+    value,
+    name,
 });
