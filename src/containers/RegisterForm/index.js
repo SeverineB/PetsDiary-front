@@ -15,7 +15,6 @@ const mapStateToProps = (state) => ({
     username: state.register.username,
     isSignedUp: state.register.isSignedUp,
     isFailed: state.register.isFailed,
-    error: state.register.error,
     isLoading: state.register.isLoading,
     errors: state.error.regErrors,
 });
@@ -39,6 +38,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(
-mapStateToProps,
-mapDispatchToProps,
+    mapStateToProps,
+    mapDispatchToProps,
 )(RegisterForm);

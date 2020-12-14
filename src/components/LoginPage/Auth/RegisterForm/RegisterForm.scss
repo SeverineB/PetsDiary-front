@@ -1,0 +1,85 @@
+@import 'src/styles/vars';
+
+button.btn.btn-primary.register-button {
+    background-color: #ff7362;
+    border: none;
+    font-family: "Quicksand";
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 5em;
+    padding: 0.5em 1em;
+    @include m767() {
+        margin: 0 1em;
+    };
+    @include m1200() {
+        font-size: 1.2em;
+    };
+    @include m1600() {
+        font-size: 1.4em;
+    };
+    
+    &:focus {
+        box-shadow: none;
+    }
+    
+    &:hover {
+        background-color: #3a49cd;
+    }
+}
+
+.register-form {
+
+    &-btn {
+        margin-top: 1em;
+    }
+
+    button.btn.btn-primary.register-button-submit {
+        background-color:#3a49cd;
+        border: none;
+        border-radius: 5em;
+        padding: 0.5em 1em;
+        margin: 0 1em;
+        &:focus {
+            box-shadow: none;
+        }
+        
+        &:hover {
+            background-color: #ff7362;
+        }
+    }
+    
+    button.btn.btn-secondary.register-button-cancel {
+        background-color:#999dc2;
+        border: none;
+        border-radius: 5em;
+        padding: 0.5em 1em;
+        margin: 0 1em;
+        &:focus {
+            box-shadow: none;
+        }
+    
+        &:hover {
+            background-color: #ff7362;
+        }
+    }
+    
+    .modal-dialog {
+        margin: 0;
+        width: 95vw;
+    }
+    
+    .form-group {
+        margin-bottom: 0.5em;
+        margin-top: 1em;
+    }
+    
+    .modal-title {
+        color: #5f89d3;
+        font-weight: bold;
+    }
+    
+    .error-register-username, .error-register-email, .error-register-password {
+        font-size: 0.8em;
+        color: red;
+    }
+}

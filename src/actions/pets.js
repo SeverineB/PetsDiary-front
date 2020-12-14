@@ -8,7 +8,6 @@ export const UPDATE_PET = 'UPDATE_PET';
 export const CHANGE_FILE = 'CHANGE_FILE';
 export const CHANGE_URL = 'CHANGE_URL';
 export const DELETE_PET = 'DELETE_PET';
-export const DELETE_WEIGHT = 'DELETE_WEIGHT';
 
 export const CLEAR_NEW_PET = 'CLEAR_NEW_PET';
 export const FINISH_LOADING = 'FINISH_LOADING';
@@ -59,11 +58,6 @@ export const clearNewPet = () => ({
 
 export const deletePet = (id) => ({
   type: DELETE_PET,
-  id,
-});
-
-export const deleteWeight = (id) => ({
-  type: DELETE_WEIGHT,
   id,
 });
 

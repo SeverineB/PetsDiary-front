@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory, withRouter } from 'react-router-dom';
-import { Modal } from 'react-bootstrap';
+import { Modal, Form } from 'react-bootstrap';
 import dayjs from 'dayjs';
 
 import WeightChart from '../../../../containers/WeightChart';
@@ -16,12 +16,21 @@ const WeightDetails = ({ petWeight, deleteWeight }) => {
     const handleCloseWeight = () => setShowWeight(false);
     const handleShowWeight = () => setShowWeight(true);
 
+    const handleChange = (evt) => {
+        console.log('EVT TARGET VALUE', evt.target.value);
+        console.log('EVT TARGET NAME', evt.target.name);
+    }
+
+    const handleSubmit = () => {
+        console.log('je soumets le form d\'ajout de poids');
+    }
+
     return (
         <div className="weight-container">
         <button
             className="back-btn"
             type="submit"
-            onClick={() => history.goBack()}
+            onClick={() => history.push(`/pet/${petWeight[0].pet_id}`)}
         >
             Retour
         </button>
@@ -43,9 +52,46 @@ const WeightDetails = ({ petWeight, deleteWeight }) => {
             </button>
             <Modal show={showWeight} onHide={handleShowWeight} className="modal-add-weight">
             <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Title>Ajouter un item de poids</Modal.Title>
             </Modal.Header>
-            <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+            <Modal.Body>
+                <Form onSubmit={handleSubmit} className="login-form">
+                    <Form.Label>Date</Form.Label>
+                    <Form.Control
+                        type="date"
+                        placeholder="Date"
+                        name="weight"
+                        value={weightDate}
+                        onChange={handleChange}
+                    />
+
+                    <Form.Label>Mot de passe</Form.Label>
+                    <Form.Control
+                        type="password"
+                        placeholder="Votre mot de passe"
+                        name="password"
+                        value={password}
+                        onChange={handleChange}
+                    />
+
+                    <div className="login-form-btn">
+                        <Button
+                            className="login-button-submit"
+                            variant="primary"
+                            type="submit"
+                        >
+                            Valider
+                        </Button>
+                        <Button
+                            className="login-button-cancel"
+                            variant="secondary"
+                            onClick={() => {setShowLogin(false)}}
+                        >
+                            Annuler
+                        </Button>
+                    </div>
+                </Form>
+            </Modal.Body>
             <Modal.Footer>
                 <button type="button" variant="secondary" onClick={handleCloseWeight}>
                 Close

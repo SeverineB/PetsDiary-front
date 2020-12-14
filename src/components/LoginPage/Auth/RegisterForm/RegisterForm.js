@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Modal } from 'react-bootstrap';
 
@@ -16,9 +16,13 @@ const RegisterForm = ({
     isLoading,
     error,
     errors,
-    setErrors
+    setErrors, clearErrors
 }) => {
     const [showRegister, setShowRegister] = useState(false);
+
+    useEffect(() => {
+        clearErrors();
+        }, []);
 
     // Check data before submit form
 
@@ -39,10 +43,11 @@ const RegisterForm = ({
     };
 
     const checkEmail = (value) => {
+        const emailPattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
         if (value.length < 1) {
             setErrors('email', 'L\'email doit être renseigné');
         }
-        else if (!EmailValidator.validate(value)) {
+        else if (!emailPattern.test(value)) {
             setErrors('email', 'Le format de l\'email n\'est pas valide');
         }
         else {
@@ -86,6 +91,9 @@ const RegisterForm = ({
         }
     };
 
+    console.log('errors ', errors)
+    console.log('errors username', errors.username)
+
     const handleSubmit = (evt) => {
         evt.preventDefault();
         if (checkUsername && checkEmail && checkPassword) {
@@ -97,7 +105,7 @@ const RegisterForm = ({
         <div className="modal-register-form">
             {!isSignedUp && !isLoading && (
                 <>
-                    <Button className="login-button" variant="primary" onClick={() => {setShowRegister(true)}}>
+                    <Button className="register-button" variant="primary" onClick={() => {setShowRegister(true)}}>
                         Inscription
                     </Button>
 
@@ -106,7 +114,12 @@ const RegisterForm = ({
                             <Modal.Title>Inscription</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form onSubmit={handleSubmit}>
+                        {!isSignedUp && isFailed && (
+                            <p className="error-register">
+                                {error}
+                            </p>
+                        )}
+                            <Form onSubmit={handleSubmit} className="register-form">
                                 <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Nom d'utilisateur</Form.Label>
                                 <Form.Control
@@ -117,9 +130,12 @@ const RegisterForm = ({
                                     onChange={handleChange}
                                 />
                                 </Form.Group>
+
+                                {errors.username ? (
                                 <div className="error-register-username">
                                     <p>{errors.username}</p>
                                 </div>
+                                ) : ''}
 
                                 <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Adresse email</Form.Label>
@@ -148,16 +164,21 @@ const RegisterForm = ({
                                 <div className="error-register-password">
                                     <p>{errors.password}</p>
                                 </div>
-                                <Button variant="primary" type="submit">
+                                <Button
+                                    className="register-button-submit"
+                                    variant="primary"
+                                    type="submit">
                                     Valider
+                                </Button>
+                                <Button
+                                    className="register-button-cancel"
+                                    variant="secondary"
+                                    onClick={() => {setShowRegister(false)}}
+                                >
+                                    Annuler
                                 </Button>
                             </Form>
                         </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={() => {setShowRegister(false)}}>
-                                Close
-                            </Button>
-                        </Modal.Footer>
                     </Modal>
                 </>
             )}
@@ -166,28 +187,17 @@ const RegisterForm = ({
 };
 
 RegisterForm.propTypes = {
-email: PropTypes.string.isRequired,
-password: PropTypes.string.isRequired,
-username: PropTypes.string.isRequired,
-changeUserFieldRegister: PropTypes.func.isRequired,
-registerUser: PropTypes.func.isRequired,
-isLoading: PropTypes.bool.isRequired,
-isSignedUp: PropTypes.bool.isRequired,
-isFailed: PropTypes.bool.isRequired,
-setErrors: PropTypes.func.isRequired,
-clearErrors: PropTypes.func.isRequired,
-errors: PropTypes.objectOf(
-    PropTypes.shape({
-    username: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
-    }),
-).isRequired,
-error: PropTypes.objectOf(
-    PropTypes.shape({
-    message: PropTypes.string.isRequired,
-    }),
-).isRequired,
+    username: PropTypes.string.isRequired,
+    changeUserFieldRegister: PropTypes.func.isRequired,
+    registerUser: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    isSignedUp: PropTypes.bool.isRequired,
+    isFailed: PropTypes.bool.isRequired,
+    setErrors: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
+    errors: PropTypes.objectOf(PropTypes.string),
 };
 
 export default RegisterForm;
