@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory, withRouter } from 'react-router-dom';
-import { Modal, Form } from 'react-bootstrap';
+import { Modal, Form, Button } from 'react-bootstrap';
 import dayjs from 'dayjs';
 
 import WeightChart from '../../../../containers/WeightChart';
@@ -19,11 +19,17 @@ const WeightDetails = ({ petWeight, deleteWeight }) => {
     const handleChange = (evt) => {
         console.log('EVT TARGET VALUE', evt.target.value);
         console.log('EVT TARGET NAME', evt.target.name);
+        change
     }
 
     const handleSubmit = () => {
         console.log('je soumets le form d\'ajout de poids');
     }
+
+    petWeight.map((item, index) => {
+        console.log('ITEM ', item);
+        console.log('INDEX', index);
+    })
 
     return (
         <div className="weight-container">
@@ -56,23 +62,28 @@ const WeightDetails = ({ petWeight, deleteWeight }) => {
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={handleSubmit} className="login-form">
-                    <Form.Label>Date</Form.Label>
-                    <Form.Control
-                        type="date"
-                        placeholder="Date"
-                        name="weight"
-                        value={weightDate}
-                        onChange={handleChange}
-                    />
+                    {petWeight.map((item, index) => (
+                        <>
+                        <Form.Label>Date</Form.Label>
+                            <Form.Control
+                                type="date"
+                                placeholder="Date"
+                                name={""+index}
+                                value={item.weightDate}
+                                onChange={handleChange}
+                            />
 
-                    <Form.Label>Mot de passe</Form.Label>
-                    <Form.Control
-                        type="password"
-                        placeholder="Votre mot de passe"
-                        name="password"
-                        value={password}
-                        onChange={handleChange}
-                    />
+                        {/* <Form.Label>Mot de passe</Form.Label>
+                        <Form.Control
+                            type="number"
+                            placeholder="Poids"
+                            name="weight"
+                        
+                            onChange={handleChange}
+                        /> */}
+                    </>
+                    ))}
+                    
 
                     <div className="login-form-btn">
                         <Button
