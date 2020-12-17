@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory, withRouter } from 'react-router-dom';
+import { Modal, Form, Button } from 'react-bootstrap';
 import dayjs from 'dayjs';
 import { useHistory, withRouter } from 'react-router-dom';
 import { Modal, Form, Button } from 'react-bootstrap';
@@ -66,6 +68,11 @@ const WeightDetails = ({
         openShowWeight(false);
         history.push(`/pet/${petWeight[0].pet_id}/weight`)
     }
+
+    petWeight.map((item, index) => {
+        console.log('ITEM ', item);
+        console.log('INDEX', index);
+    })
 
     return (
         <div className="weight-container">
