@@ -11,6 +11,7 @@ const PetDetails = ({
     pet,
     saveCurrentPet,
     saveCurrentWeight,
+    saveCurrentVaccine,
     deletePet,
 }) => {
     // useParams is used to retrieve the id in url params to filter the pet to display
@@ -18,31 +19,25 @@ const PetDetails = ({
     const history = useHistory();
 
     useEffect(() => {
-        console.group();
-        console.log('Current pet :')
-        console.table(pet);
         saveCurrentPet(pet);
         saveCurrentWeight(pet.weight);
+        saveCurrentVaccine(pet.vaccine);
+        localStorage.setItem('pet_id', pet._id);
     }, []);
 
     
     const handleDelete = () => {
-        console.log('je veux supprimer cet animal', pet._id);
         deletePet(pet._id);
         history.push('/home');
     };
 
-    console.log('WEIGHT LIST ', pet.weight);
-
     return (
         <div className="pet-details">
-            <Link to="/home">Retour à mes animaux</Link>
+            <Link to="/home">Retour</Link>
             <div className="pet-details-title">
                 <h2>Suivi de {pet.name}</h2>
             </div>
-            <button type="button" onClick={handleDelete}>
-                supprimer
-            </button>
+
             <div className="pet-details-content">
                 <div className="pet-details-content-infos">
                     <div className="pet-details-content-infos-avatar">
@@ -77,12 +72,12 @@ const PetDetails = ({
                             <h3>Numéro d'identification</h3>
                             <p>{pet.ide}</p>
                         </div>
+                        <div className="edit-link">
+                            <button type="button" className="edit-btn">
+                                <Link to={`/pet/edit/${params.petId}`}>Modifier</Link>
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div className="edit-link">
-                    <button type="button" className="edit-btn">
-                        <Link to={`/pet/edit/${params.petId}`}>Modifier</Link>
-                    </button>
                 </div>
                 <div className="details-links">
                     <Link to={`/pet/${pet._id}/weight`}>Poids</Link>
@@ -91,6 +86,9 @@ const PetDetails = ({
                     <Link to={`/pet/${pet._id}/deworming`}>Vermifuge</Link>
                 </div>
             </div>
+            <button className="pet-delete-btn" type="button" onClick={handleDelete}>
+                supprimer
+            </button>
         </div>
     );
 };
@@ -107,16 +105,16 @@ PetDetails.propTypes = {
         birthdate: PropTypes.string.isRequired,
         ide: PropTypes.number,
         weight: PropTypes.arrayOf(
-        PropTypes.shape({}),
+            PropTypes.shape({}),
         ).isRequired,
         deworming: PropTypes.arrayOf(
-        PropTypes.shape({}),
+            PropTypes.shape({}),
         ).isRequired,
         vaccine: PropTypes.arrayOf(
-        PropTypes.shape({}),
+            PropTypes.shape({}),
         ).isRequired,
         antiflea: PropTypes.arrayOf(
-        PropTypes.shape({}),
+            PropTypes.shape({}),
         ).isRequired,
     }).isRequired,
     saveCurrentPet: PropTypes.func.isRequired,

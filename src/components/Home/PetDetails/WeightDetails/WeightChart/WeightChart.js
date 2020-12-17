@@ -14,7 +14,6 @@ import PropTypes from 'prop-types';
 import './WeightChart.scss';
 
 const WeightChart = ({ petWeight }) => {
-    console.log('PET WEIGHT IN BARCHART ', petWeight);
 
 return (
     <>
@@ -54,23 +53,13 @@ return (
             }}
             data={petWeight.map((item) => {
                 if (item.weightDate && item.weightValue) {
-                    console.log('LABEL FORMAT ', (new Date(item.weightDate)).getFullYear())
                     return { x: new Date(item.weightDate), y: item.weightValue };
-                    /* return { x: item.weightDate, y: item.weightValue }; */
                 }
-                return null;
-            })}
-            labels={petWeight.map((item) => {
-                if (item.weightValue) {
-                    return item.weightValue;
-                }
-                return null;
             })}
             animate={{
                 duration: 1500,
                 onLoad: { duration: 1000 },
             }}
-          
         />
         <VictoryLabel
             x={225}
@@ -95,7 +84,7 @@ return (
         />
         <VictoryAxis
             // main axis styles
-            scale={'time'}
+            scale={{x: 'time'}}
             style={{
                 tickLabels: {
                     fontSize: 12,
@@ -103,13 +92,15 @@ return (
                     fontWeight: 'bold',
                 },
             }}
+            tickCount={6}
             // define the format of the main axis dates
             tickFormat={(x) => {
                 const dateObj = new Date(x);
                 const year = dateObj.getFullYear().toString().substr(-2);
-                const month = dateObj.toLocaleString('fr-fr', { month: 'short' });
+                const month = dateObj.toLocaleString('fr-fr', { month: '2-digit' });
                 return `${month}/${year}`;
             }}
+           fixLabelOverlap={true}
         />
         <VictoryAxis
         // cross axis styles

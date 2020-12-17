@@ -1,22 +1,21 @@
 import { connect } from 'react-redux';
 
-import WeightItem from '../../components/Home/PetDetails/WeightDetails/WeightItem/WeightItem';
+import VaccineItem from '../../components/Home/PetDetails/VaccineDetails/VaccineItem/VaccineItem';
 
 import {
-    deleteWeight,
+    deleteVaccine,
 } from '../../actions';
 
 const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
-    deleteWeight: (id) => {
-        const action = deleteWeight(id);
+    deleteVaccine: (id) => {
+        const action = deleteVaccine(id);
         dispatch(action);
     },
-
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(WeightItem);
+)(VaccineItem);

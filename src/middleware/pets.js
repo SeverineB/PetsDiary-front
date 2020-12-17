@@ -10,13 +10,26 @@ import {
     savePetsList,
     ADD_PET,
     UPDATE_PET,
+    ADD_WEIGHT,
     UPDATE_WEIGHT,
     DELETE_WEIGHT,
+    ADD_VACCINE,
     UPDATE_VACCINE,
+    DELETE_VACCINE,
+    ADD_DEWORMING,
+    UPDATE_DEWORMING,
+    DELETE_DEWORMING,
+    ADD_ANTIFLEA,
+    UPDATE_ANTIFLEA,
+    DELETE_ANTIFLEA,
     saveCurrentPet,
     saveCurrentWeight,
+    saveCurrentVaccine,
+    saveCurrentDeworming,
+    saveCurrentAntiflea,
     clearNewPet,
     finishLoading,
+    getErrors
 } from '../actions';
 
 const pets = (store) => (next) => (action) => {
@@ -118,6 +131,56 @@ switch (action.type) {
         break;
     }
 
+
+    case DELETE_PET: {
+        const state = store.getState();
+        const petId = state.pets.currentPet._id;
+        console.log('je lance la requête pour supprimer un animal');
+        api.delete(`pet/${petId}`,
+            {
+                withCredentials: true,
+            })
+            .then((response) => {
+                console.log(response);
+
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        break;
+    }
+
+    case ADD_WEIGHT: {
+        console.log('je suis dans ADD WEIGHT ')
+        const state = store.getState();
+        const {
+            weightDate,
+            weightValue
+        } = state.pets;
+        const pet_id = state.pets.currentPet._id;
+        api.post('pet/weight/add', {
+            pet_id,
+            weightDate,
+            weightValue
+        },
+        {
+            withCredentials: true,
+        })
+            .then((response) => {
+                console.log('Middleware ADD WEIGHT ', response.data);
+                store.dispatch(saveCurrentPet(response.data));
+                store.dispatch(saveCurrentWeight(response.data.weight));
+                store.dispatch(getPetsList());
+                store.dispatch(clearNewPet());
+                
+            })
+            .catch((error) => {
+                console.error('Une erreur est survenue ', error.response.data.message);
+                store.dispatch(getErrors(error.response.data.message));
+            });
+        break;
+    }
+
     case UPDATE_WEIGHT: {
         console.log('je lance la requête pour éditer le poids');
         const state = store.getState();
@@ -140,7 +203,59 @@ switch (action.type) {
                 store.dispatch(clearNewPet());
             })
             .catch((error) => {
-                console.error('une erreur est survenue ', error);
+                console.error('une erreur est survenue ', error.response.data.message);
+                store.dispatch(getErrors(error.response.data.message));
+            });
+        break;
+    }
+
+    case DELETE_WEIGHT: {
+        const state = store.getState();
+        const weightId = localStorage.getItem('weightToDelete');
+        console.log('je lance la requête pour supprimer un item de poids', weightId);
+        api.delete(`pet/weight/${weightId}`,
+            {
+                withCredentials: true,
+            })
+            .then((response) => {
+                console.log('ITEM DELETED ', response.data);
+                store.dispatch(saveCurrentPet(response.data))
+                store.dispatch(saveCurrentWeight(response.data.weight));
+            })
+            .catch((error) => {
+                console.error(error);
+                store.dispatch(getErrors(error.response.data.message));
+            });
+        break;
+    }
+
+    case ADD_VACCINE: {
+        console.log('je suis dans ADD VACCINE ')
+        const state = store.getState();
+        const {
+            vaccineDate,
+            vaccineName
+        } = state.pets;
+        const pet_id = state.pets.currentPet._id;
+        api.post('pet/vaccine/add', {
+            pet_id,
+            vaccineDate,
+            vaccineName
+        },
+        {
+            withCredentials: true,
+        })
+            .then((response) => {
+                console.log('Middleware ADD VACCINE ', response.data);
+                store.dispatch(saveCurrentPet(response.data));
+                store.dispatch(saveCurrentVaccine(response.data.vaccine));
+                store.dispatch(getPetsList());
+                store.dispatch(clearNewPet());
+                
+            })
+            .catch((error) => {
+                console.error('Une erreur est survenue ', error.message);
+                store.dispatch(getErrors(error.response.data.message));
             });
         break;
     }
@@ -167,43 +282,176 @@ switch (action.type) {
             })
             .catch((error) => {
                 console.error('une erreur est survenue ', error);
+                store.dispatch(getErrors(error.response.data.message));
             });
         break;
     }
 
-    case DELETE_PET: {
+    case DELETE_VACCINE: {
         const state = store.getState();
-        const petId = state.pets.currentPet._id;
-        console.log('je lance la requête pour supprimer un animal');
-        api.delete(`pet/${petId}`,
-            {
-                withCredentials: true,
-            })
-            .then((response) => {
-                console.log(response);
-
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-        break;
-    }
-
-    case DELETE_WEIGHT: {
-        const state = store.getState();
-        const weightId = localStorage.getItem('weightToDelete');
-        console.log('je lance la requête pour supprimer un item de poids', weightId);
-        api.delete(`pet/weight/${weightId}`,
+        const vaccineId = localStorage.getItem('vaccineToDelete');
+        api.delete(`pet/vaccine/${vaccineId}`,
             {
                 withCredentials: true,
             })
             .then((response) => {
                 console.log('ITEM DELETED ', response.data);
                 store.dispatch(saveCurrentPet(response.data))
-                store.dispatch(saveCurrentWeight(response.data.weight));
+                store.dispatch(saveCurrentVaccine(response.data.vaccine));
             })
             .catch((error) => {
-                console.error(error);
+                store.dispatch(getErrors(error.response.data.message));
+            });
+        break;
+    }
+    case ADD_DEWORMING: {
+        console.log('je suis dans ADD DEWORMING ')
+        const state = store.getState();
+        const {
+            dewormingDate,
+            dewormingName
+        } = state.pets;
+        const pet_id = state.pets.currentPet._id;
+        api.post('pet/deworming/add', {
+            pet_id,
+            dewormingDate,
+            dewormingName
+        },
+        {
+            withCredentials: true,
+        })
+            .then((response) => {
+                console.log('Middleware ADD DEWORMING ', response.data);
+                store.dispatch(saveCurrentPet(response.data));
+                store.dispatch(saveCurrentDeworming(response.data.deworming));
+                store.dispatch(getPetsList());
+                store.dispatch(clearNewPet());
+                
+            })
+            .catch((error) => {
+                console.error('Une erreur est survenue ', error.message);
+                store.dispatch(getErrors(error.response.data.message));
+            });
+        break;
+    }
+
+    case UPDATE_DEWORMING: {
+        console.log('je lance la requête pour éditer le vermifuge');
+        const state = store.getState();
+        const {
+            dewormingDate,
+            dewormingName,
+        } = state.pets;
+        const dewormingId = localStorage.getItem('itemToUpdate');
+        api.put(`pet/deworming/edit/${dewormingId}`, {
+            dewormingDate,
+            dewormingName,
+        },
+        {
+            withCredentials: true,
+        })
+            .then((response) => {
+                console.log('Middleware UPDATE PET DEWORMING DETAILS API response ', response.data);
+                store.dispatch(getPetsList());
+                store.dispatch(clearNewPet());
+            })
+            .catch((error) => {
+                console.error('une erreur est survenue ', error);
+                store.dispatch(getErrors(error.response.data.message));
+            });
+        break;
+    }
+
+    case DELETE_DEWORMING: {
+        const state = store.getState();
+        const dewormingId = localStorage.getItem('dewormingToDelete');
+        api.delete(`pet/deworming/${dewormingId}`,
+            {
+                withCredentials: true,
+            })
+            .then((response) => {
+                console.log('ITEM DELETED ', response.data);
+                store.dispatch(saveCurrentPet(response.data))
+                store.dispatch(saveCurrentDeworming(response.data.deworming));
+            })
+            .catch((error) => {
+                store.dispatch(getErrors(error.response.data.message));
+            });
+        break;
+    }
+
+    case ADD_ANTIFLEA: {
+        console.log('je suis dans ADD ANTIFLEA ')
+        const state = store.getState();
+        const {
+            antifleaDate,
+            antifleaName
+        } = state.pets;
+        const pet_id = state.pets.currentPet._id;
+        api.post('pet/antiflea/add', {
+            pet_id,
+            antifleaDate,
+            antifleaName
+        },
+        {
+            withCredentials: true,
+        })
+            .then((response) => {
+                console.log('Middleware ADD DEWORMING ', response.data);
+                store.dispatch(saveCurrentPet(response.data));
+                store.dispatch(saveCurrentAntiflea(response.data.deworming));
+                store.dispatch(getPetsList());
+                store.dispatch(clearNewPet());
+                
+            })
+            .catch((error) => {
+                console.error('Une erreur est survenue ', error.message);
+                store.dispatch(getErrors(error.response.data.message));
+            });
+        break;
+    }
+
+    case UPDATE_ANTIFLEA: {
+        console.log('je lance la requête pour éditer l\'anti-puces');
+        const state = store.getState();
+        const {
+            antifleaDate,
+            antifleaName,
+        } = state.pets;
+        const antifleaId = localStorage.getItem('itemToUpdate');
+        api.put(`pet/deworming/edit/${antifleaId}`, {
+            antifleaDate,
+            antifleaName,
+        },
+        {
+            withCredentials: true,
+        })
+            .then((response) => {
+                console.log('Middleware UPDATE PET ANTIFLEA DETAILS API response ', response.data);
+                store.dispatch(getPetsList());
+                store.dispatch(clearNewPet());
+            })
+            .catch((error) => {
+                console.error('une erreur est survenue ', error);
+                store.dispatch(getErrors(error.response.data.message));
+            });
+        break;
+    }
+
+    case DELETE_ANTIFLEA: {
+        const state = store.getState();
+        const antifleaId = localStorage.getItem('antifleaToDelete');
+        api.delete(`pet/antiflea/${antifleaId}`,
+            {
+                withCredentials: true,
+            })
+            .then((response) => {
+                console.log('ITEM DELETED ', response.data);
+                store.dispatch(saveCurrentPet(response.data))
+                store.dispatch(saveCurrentAntiflea(response.data.antiflea));
+            })
+            .catch((error) => {
+                store.dispatch(getErrors(error.response.data.message));
             });
         break;
     }

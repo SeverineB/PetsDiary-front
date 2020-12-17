@@ -4,14 +4,14 @@ import { useHistory, withRouter } from 'react-router-dom';
 import { Modal, Form } from 'react-bootstrap';
 import dayjs from 'dayjs';
 
-import './WeightItem.scss';
+import './DewormingItem.scss';
 
-const WeightItem = ({
+const DewormingItem = ({
     _id,
     pet_id,
-    weightDate,
-    weightValue,
-    deleteWeight,
+    dewormingDate,
+    dewormingName,
+    deleteDeworming,
 }) => {
     const history = useHistory();
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -21,31 +21,32 @@ const WeightItem = ({
     const handleShowDeleteModal = () => setShowDeleteModal(true);
 
     const handleDelete = () => {
-        console.log('je supprime un item poids', _id);
-        localStorage.setItem('weightToDelete', _id);
-        deleteWeight(_id);
-        history.push(`/pet/${pet_id}/weight`);
+        console.log('je supprime un item vermifuge', _id);
+        localStorage.setItem('dewormingToDelete', _id);
+        deleteDeworming(_id);
+        /* setShowDeleteModal(false); */
+        history.push(`/pet/${pet_id}/deworming`);
     };
 
     return (
-        <div className="weight-item" key={_id}>
-            <div className="weight-item-content">
-                <div className="weight-item-content-date">
-                    <p>{dayjs(weightDate).format('DD/MM/YYYY')}
+        <div className="deworming-item" key={_id}>
+            <div className="deworming-item-content">
+                <div className="deworming-item-content-date">
+                    <p>{dayjs(dewormingDate).format('DD/MM/YYYY')}
                     </p>
                 </div>
-                <div className="weight-item-content-value">
-                    <p>{weightValue} kg
+                <div className="deworming-item-content-value">
+                    <p>{dewormingName}
                     </p>
                 </div>
             </div>
-            <div className="weight-item-content-line" />
+            <div className="deworming-item-content-line" />
             <div className="delete">
                 <button type="button" className="delete-btn" onClick={handleShowDeleteModal}>supp</button>
             </div>
-            <Modal show={showDeleteModal} onHide={handleShowDeleteModal} className="modal-add-weight">
+            <Modal show={showDeleteModal} onHide={handleShowDeleteModal} className="modal-add-deworming">
                 <Modal.Header closeButton>
-                    <Modal.Title>Supprimer ce poids ?</Modal.Title>
+                    <Modal.Title>Supprimer ce vermifuge ?</Modal.Title>
                 </Modal.Header>
                 <Modal.Footer>
                     <button type="button" variant="secondary" onClick={handleCloseDeleteModal}>
@@ -60,9 +61,9 @@ const WeightItem = ({
     );
 };
 
-WeightItem.propTypes = {
-    deleteWeight: PropTypes.func.isRequired,
+DewormingItem.propTypes = {
+    deleteDeworming: PropTypes.func.isRequired,
 };
 
 
-export default WeightItem;
+export default DewormingItem;

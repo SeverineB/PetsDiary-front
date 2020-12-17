@@ -14,63 +14,64 @@ import add from '../../assets/img/add.png';
 import './Home.scss';
 
 const Home = ({
-  isLogged,
-  logout,
-  getPetsList,
-  petsList,
+    isLogged,
+    logout,
+    getPetsList,
+    petsList,
 }) => {
-  console.log('ISLOGGED DANS HOME ', isLogged);
-  useEffect(() => {
-    getPetsList();
-  }, []);
+    console.log('ISLOGGED DANS HOME ', isLogged);
+    useEffect(() => {
+        getPetsList();
+    }, []);
 
-  console.log('PETSLIST DANS HOME ', petsList);
+    const handleLogout = () => {
+        logout();
+    };
 
-  const handleLogout = () => {
-    logout();
-  };
-
-  return (
-    <>
-      <div className="home-container">
-        <img src={logo} alt="cat and dog in badge" className="home-container-logo" />
-        <div className="pets-section">
-          <h2>Mes animaux</h2>
-          <div className="add-pet-button">
-            <Link to="/add">
-              <img src={add} alt="plus icon" />
-            </Link>
-          </div>
-          <div className="pets-list">
-            <Card.Group itemsPerRow={2}>
-              {petsList.map((pet) => (
-                <Link to={`/pet/${pet._id}`} className="pet-name" key={pet._id}>
-                  <Pet {...pet} />
+    return (
+        <>
+        <div className="home-container">
+                <div className="logo-small">
+                    <img src={logo} alt="cat and dog in badge" className="home-container-logo" />
+                </div>
+            <div className="pets-section">
+            <h2 className="pets-section-title">Mes animaux</h2>
+            
+            <div className="pets-list">
+                <Card.Group itemsPerRow={2}>
+                {petsList.map((pet) => (
+                    <Link to={`/pet/${pet._id}`} className="pet-name" key={pet._id}>
+                    <Pet {...pet} />
+                    </Link>
+                ))}
+                </Card.Group>
+            </div>
+            </div>
+    {/*        <div className="appointments-section">
+            <Link to="/appointments">Mes rendez-vous</Link>
+            </div> */}
+            <div className="add-pet-button">
+                <Link to="/add">
+                <img src={add} alt="plus icon" />
                 </Link>
-              ))}
-            </Card.Group>
-          </div>
+            </div>
+            <div className="logout">
+            <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
+            </div>
         </div>
- {/*        <div className="appointments-section">
-          <Link to="/appointments">Mes rendez-vous</Link>
-        </div> */}
-        <div className="logout">
-          <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
-        </div>
-      </div>
-    </>
-  );
+        </>
+    );
 };
 
 Home.propTypes = {
-  getPetsList: PropTypes.func.isRequired,
-  isLogged: PropTypes.bool.isRequired,
-  logout: PropTypes.func.isRequired,
-  petsList: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+    getPetsList: PropTypes.func.isRequired,
+    isLogged: PropTypes.bool.isRequired,
+    logout: PropTypes.func.isRequired,
+    petsList: PropTypes.arrayOf(
+        PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        }),
+    ).isRequired,
 };
 
 export default Home;

@@ -18,7 +18,6 @@ const AddPetForm = ({
   changeFile,
   changeUrl,
   addPet,
-  clearNewPet,
 }) => {
     console.log('SEX VALUE IN ADD PET FORM', sex);
     const history = useHistory();

@@ -2,7 +2,6 @@
 export const GET_PETSLIST = 'GET_PETSLIST';
 export const SAVE_PETSLIST = 'SAVE_PETSLIST';
 export const SAVE_CURRENT_PET = 'SAVE_CURRENT_PET';
-export const SAVE_CURRENT_WEIGHT = 'SAVE_CURRENT_WEIGHT';
 export const ADD_PET = 'ADD_PET';
 export const UPDATE_PET = 'UPDATE_PET';
 export const CHANGE_FILE = 'CHANGE_FILE';
@@ -26,11 +25,6 @@ export const savePetsList = (petsList) => ({
 export const saveCurrentPet = (currentPet) => ({
   type: SAVE_CURRENT_PET,
   currentPet,
-});
-
-export const saveCurrentWeight = (currentWeight) => ({
-  type: SAVE_CURRENT_WEIGHT,
-  currentWeight,
 });
 
 export const addPet = (pet) => ({

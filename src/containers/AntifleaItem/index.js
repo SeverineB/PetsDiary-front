@@ -1,22 +1,21 @@
 import { connect } from 'react-redux';
 
-import WeightItem from '../../components/Home/PetDetails/WeightDetails/WeightItem/WeightItem';
+import AntifleaItem from '../../components/Home/PetDetails/AntifleaDetails/AntifleaItem/AntifleaItem';
 
 import {
-    deleteWeight,
+    deleteAntiflea,
 } from '../../actions';
 
 const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
-    deleteWeight: (id) => {
-        const action = deleteWeight(id);
+    deleteAntiflea: (id) => {
+        const action = deleteAntiflea(id);
         dispatch(action);
     },
-
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(WeightItem);
+)(AntifleaItem);

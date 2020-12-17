@@ -1,115 +1,160 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory, withRouter } from 'react-router-dom';
-import { Modal, Form } from 'react-bootstrap';
 import dayjs from 'dayjs';
+import { useHistory, withRouter } from 'react-router-dom';
+import { Modal, Form, Button } from 'react-bootstrap';
 
 import WeightChart from '../../../../containers/WeightChart';
 import WeightItem from '../../../../containers/WeightItem';
+import backIcon from '../../../../assets/icons/left-arrow.png';
 
 import './WeightDetails.scss';
 
-const WeightDetails = ({ petWeight, deleteWeight }) => {
-    const [showWeight, setShowWeight] = useState(false);
+const WeightDetails = ({
+    petWeight,
+    changeField,
+    addWeight,
+    setErrors,
+    error
+}) => {
     const history = useHistory();
+    const [showWeight, openShowWeight] = useState(false);
 
-    const handleCloseWeight = () => setShowWeight(false);
-    const handleShowWeight = () => setShowWeight(true);
+    const petId = localStorage.getItem('pet_id');
 
-    const handleChange = (evt) => {
-        console.log('EVT TARGET VALUE', evt.target.value);
-        console.log('EVT TARGET NAME', evt.target.name);
+    const closeShowWeight = () => {  
+        setErrors('weightDate', '');
+        setErrors('weightValue', '');
+        openShowWeight(false);
     }
 
-    const handleSubmit = () => {
-        console.log('je soumets le form d\'ajout de poids');
+    const checkDate = (value) => {
+        if (!value) {
+            setErrors('weightDate', 'La date doit être sélectionnée')
+        } else {
+            setErrors('weightDate', '');
+        }
+        return true;
+    }
+
+    const checkValue = (value) => {
+        if (!value) {
+            setErrors('weightValue', 'Le poids doit être renseigné')
+        } else {
+            setErrors('weightValue', '');
+        }
+        return true;
+    }
+
+    const handleChange = (evt) => {
+        evt.preventDefault();
+        changeField(evt.target.value, evt.target.name);
+        switch (evt.target.name) {
+            case 'weightDate':
+              checkDate(evt.target.value);
+              break;
+            case 'weightValue':
+              checkValue(evt.target.value);
+              break;
+            default:
+        }
+    }
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        addWeight();
+        openShowWeight(false);
+        history.push(`/pet/${petWeight[0].pet_id}/weight`)
     }
 
     return (
         <div className="weight-container">
-        <button
-            className="back-btn"
-            type="submit"
-            onClick={() => history.push(`/pet/${petWeight[0].pet_id}`)}
-        >
-            Retour
-        </button>
-        <div className="weight-chart">
-           <WeightChart petWeight={petWeight} />
-        </div>
-        <div className="weight-list">
-            {petWeight.map((item) => (
-                <WeightItem key={item._id} {...item} />
-            ))}
-        </div>
-        <div className="add-weight">
             <button
-            type="submit"
-            className="add-weight-btn"
-            onClick={handleShowWeight}
+                className="back-btn"
+                type="button"
+                onClick={() => history.push(`/pet/${petId}`)}
             >
-            Ajouter
+                <img src={backIcon} alt="black left arrow" />
             </button>
-            <Modal show={showWeight} onHide={handleShowWeight} className="modal-add-weight">
-            <Modal.Header closeButton>
-                <Modal.Title>Ajouter un item de poids</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <Form onSubmit={handleSubmit} className="login-form">
-                    <Form.Label>Date</Form.Label>
-                    <Form.Control
-                        type="date"
-                        placeholder="Date"
-                        name="weight"
-                        value={weightDate}
-                        onChange={handleChange}
-                    />
-
-                    <Form.Label>Mot de passe</Form.Label>
-                    <Form.Control
-                        type="password"
-                        placeholder="Votre mot de passe"
-                        name="password"
-                        value={password}
-                        onChange={handleChange}
-                    />
-
-                    <div className="login-form-btn">
-                        <Button
-                            className="login-button-submit"
-                            variant="primary"
-                            type="submit"
-                        >
-                            Valider
-                        </Button>
-                        <Button
-                            className="login-button-cancel"
-                            variant="secondary"
-                            onClick={() => {setShowLogin(false)}}
-                        >
-                            Annuler
-                        </Button>
-                    </div>
-                </Form>
-            </Modal.Body>
-            <Modal.Footer>
-                <button type="button" variant="secondary" onClick={handleCloseWeight}>
-                Close
+            <div className="weight-chart">
+                <WeightChart petWeight={petWeight} />
+            </div>
+            <div className="weight-list">
+                {petWeight.map((item) => (
+                    <WeightItem key={item._id} {...item} />
+                ))}
+            </div>
+            <div className="add-weight">
+                <button
+                    type="submit"
+                    className="add-weight-btn"
+                    onClick={() => openShowWeight(true)}
+                >
+                Ajouter
                 </button>
-                <button type="button" variant="primary" onClick={handleCloseWeight}>
-                Save Changes
-                </button>
-            </Modal.Footer>
-            </Modal>
-        </div>
+                <Modal show={showWeight} onHide={closeShowWeight} className="modal-add-weight">
+                <Modal.Header closeButton>
+                    <Modal.Title>Ajouter un item de poids</Modal.Title>
+                </Modal.Header>
+                    <Modal.Body>
+                        <Form onSubmit={handleSubmit} className="add-weight-form">
+                            <Form.Label>Date</Form.Label>
+                            <Form.Control
+                                type="date"
+                                placeholder="Date"
+                                name="weightDate"
+                                value={petWeight.weightDate}
+                                onChange={handleChange}
+                                max={dayjs(new Date(Date.now())).format('YYYY-MM-DD')}
+                                required
+                            />
+                            <div className="date-error">
+                                <p>{error.weightDate}</p>
+                            </div>
+                            <Form.Label>Poids</Form.Label>
+                            <Form.Control
+                                type="number"
+                                step="0.1"
+                                placeholder="Poids en kg"
+                                name="weightValue"
+                                value={petWeight.weightValue}
+                                onChange={handleChange}
+                                required
+                            />
+                            <div className="number-error">
+                                <p>{error.weightValue}</p>
+                            </div>
+                            <div className="add-weight-form-btn">
+                                <Button
+                                    className="add-weight-button-submit"
+                                    variant="primary"
+                                    type="submit"
+                                >
+                                    Valider
+                                </Button>
+                                <Button
+                                    className="add-weight-button-cancel"
+                                    variant="secondary"
+                                    onClick={closeShowWeight}
+                                >
+                                    Annuler
+                                </Button>
+                            </div>
+                        </Form>
+                    </Modal.Body>
+                </Modal>
+            </div>
         </div>
     );
 };
 
 WeightDetails.propTypes = {
+    changeField: PropTypes.func.isRequired,
     petWeight: PropTypes.arrayOf(
         PropTypes.shape({}),
     ).isRequired,
+    addWeight: PropTypes.func.isRequired,
+
 };
 
 
