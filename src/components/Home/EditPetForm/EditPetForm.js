@@ -64,14 +64,11 @@ const EditPetForm = ({
       <h2>Editer les informations</h2>
       <Form onSubmit={handleSubmit} className="edit-pet-form">
         <div className="general-infos">
-          <h3>Informations générales</h3>
           <Form.Group>
-            <Form.File
-              id="avatar"
-              name="avatar"
-              label="Ajouter un avatar"
-              onChange={handleFileChange}
-            />
+              <div className="edit-pet-form-btn">
+                <label htmlFor="inputFile" className="label-file">Choisir un avatar</label>
+                <input type="file" name="avatar" id="inputFile" onChange={handleFileChange} />
+            </div>
           </Form.Group>
           <div className="avatar-preview">
             {!avatarUrl ? <img src={currentPet.avatarUrl} alt="avatar" /> : <img src={avatarUrl} alt="avatar" />}
@@ -127,16 +124,18 @@ const EditPetForm = ({
             onChange={handleChange}
           />
         </div>
-        <Button variant="primary" type="submit">
-          Valider
-        </Button>
-        <Button
-          variant="primary"
-          type="button"
-          onClick={() => history.goBack()}
-        >
-          Annuler
-        </Button>
+        <div className="buttons">
+            <Button variant="primary" type="submit">
+                Valider
+            </Button>
+            <Button
+                variant="primary"
+                type="button"
+                onClick={() => history.goBack()}
+            >
+                Annuler
+            </Button>
+        </div>
       </Form>
     </div>
   );

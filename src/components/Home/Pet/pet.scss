@@ -1,36 +1,39 @@
 @import 'src/styles/vars';
 
 .pet-container {
-  width: 25vw;
-  height: 18vh;
-  background: #fafafa;
-  box-shadow:  10px 10px 20px #f0eeee, 
-             -10px -10px 20px #e6e4e4;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 0.5em;
-  margin: 0.4em;
-  padding: 0.2em;
+    width: 90vw;
+    height: 12vh;
+    background: #fafafa;
+    box-shadow:  10px 10px 20px #f0eeee, 
+                -10px -10px 20px #e6e4e4;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    border-radius: 0.5em;
+    margin: 0.4em;
+    padding: 0.2em;
 
-  .pet-name {
-    font-family: 'Nunito';
-    font-weight: bold;
-  }
-
-  .pet-avatar {
-    height: 10em;
-    overflow: hidden;
-
-    img {
-      width: 100%;
-      height: auto;
+    .pet-name {
+        width: 50%;
+        font-family: 'Karla';
+        font-weight: bold;
+        color: $light-color;
     }
-  }
 
-  &:hover {
-    transform: translateX(-0.4em) translateY(-0.4em);
-    box-shadow:  10px 10px 60px #d5d5d5, 
-                -10px -10px 60px #ffffff;
-  }
+    .pet-avatar {
+        width: 50%;
+        height: 90%;
+        overflow: hidden;
+
+        img {
+        width: 40%;
+        height: auto;
+    }
+}
+
+    &:hover {
+        transform: translateX(-0.4em) translateY(-0.4em);
+        box-shadow:  10px 10px 60px #d5d5d5, 
+                    -10px -10px 60px #ffffff;
+    }
 }

@@ -111,7 +111,7 @@ const RegisterForm = ({
 
                     <Modal show={showRegister} onHide={() => {setShowRegister(false)}}>
                         <Modal.Header closeButton>
-                            <Modal.Title>Inscription</Modal.Title>
+                            <Modal.Title className="modal-register-form-title">Inscription</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                         {!isSignedUp && isFailed && (

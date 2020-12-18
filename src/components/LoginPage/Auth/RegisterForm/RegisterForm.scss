@@ -1,7 +1,19 @@
 @import 'src/styles/vars';
 
+.modal-register-form {
+    .modal-dialog {
+        margin: 0;
+        width: 95vw;
+    }
+}
+
+.modal-register-form-title {
+    color: #c6a49a;
+    font-weight: bold;
+}
+
 button.btn.btn-primary.register-button {
-    background-color: #ff7362;
+    background-color: $accent-color;
     border: none;
     font-family: "Quicksand";
     font-size: 1.1em;
@@ -23,7 +35,7 @@ button.btn.btn-primary.register-button {
     }
     
     &:hover {
-        background-color: #3a49cd;
+        background-color: #c6a49a;
     }
 }
 
@@ -34,7 +46,7 @@ button.btn.btn-primary.register-button {
     }
 
     button.btn.btn-primary.register-button-submit {
-        background-color:#3a49cd;
+        background-color:#c6a49a;
         border: none;
         border-radius: 5em;
         padding: 0.5em 1em;
@@ -63,19 +75,9 @@ button.btn.btn-primary.register-button {
         }
     }
     
-    .modal-dialog {
-        margin: 0;
-        width: 95vw;
-    }
-    
     .form-group {
         margin-bottom: 0.5em;
         margin-top: 1em;
-    }
-    
-    .modal-title {
-        color: #5f89d3;
-        font-weight: bold;
     }
     
     .error-register-username, .error-register-email, .error-register-password {

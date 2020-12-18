@@ -23,8 +23,8 @@
 
     &-title {
         display: inline-block;
-        font-family: 'Nunito';
-        color: #3749c9;
+        font-family: 'Karla';
+        color: $accent-color;
         display: inline-block;
         margin-top: 1em;
     }
@@ -60,7 +60,7 @@
 
 .logout-button {
     border: none;
-    background-color:#3749c9;
+    background-color:$light-color;
     color: white;
     padding: 0.5em 1em;
     border-radius: 5em;

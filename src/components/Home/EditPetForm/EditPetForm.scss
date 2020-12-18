@@ -1,5 +1,79 @@
 @import 'src/styles/vars';
 
+.edit-pet {
+    height: 90%;
+    overflow-y: scroll;
+
+    h2 {
+    width: 100%;
+    text-align: center;
+    color: #f1746d;
+    margin-top: 1em;
+    }
+}
+
+.edit-pet-form {
+    width: 80%;
+    background: $light-color;
+    margin: 1em auto;
+    padding: 0.5em;
+    border-radius: 0.5em;
+
+    .form-label {
+        color: #ffffff;
+        font-weight: bold;
+        margin: 0.5em 0;
+    }
+
+    &-btn {
+        input[type=file]{
+            display: none;
+        }
+        label {
+            background-color: $light-color;
+            color: #ffffff;
+            font-size: 0.9em;
+            padding: 0.5em;
+            border-radius: 30.5px;
+            width: 12em;
+            &:hover {
+              background-color: $light-color;
+            }
+          }
+    }
+
+    input:focus {
+        border-color: $main-color;
+        box-shadow: 0 0 0 0.2rem rgba(186,204,190, 0.25);
+    }
+
+    .form-file-label {
+        color: #ffffff;
+    }
+
+    .btn-primary {
+        background-color: #f1746d;
+        border-color: #f1746d;
+        border-radius: 30.5px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 0.5em;
+    }
+
+    .avatar-preview {
+        border-radius: 0.8em;
+        display: flex;
+        justify-content: center;
+        img {
+        width: 50%;
+        margin: 0.5em 0;
+        }
+    }
+}
+
 .avatar-preview {
   border-radius: 0.5em;
   display: flex;

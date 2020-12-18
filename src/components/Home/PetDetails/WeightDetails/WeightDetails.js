@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { useHistory, withRouter } from 'react-router-dom';
 import { Modal, Form, Button } from 'react-bootstrap';
 import dayjs from 'dayjs';
-import { useHistory, withRouter } from 'react-router-dom';
-import { Modal, Form, Button } from 'react-bootstrap';
 
 import WeightChart from '../../../../containers/WeightChart';
 import WeightItem from '../../../../containers/WeightItem';

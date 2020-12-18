@@ -9,7 +9,7 @@
     }
   @include m1024() {
     width: 100vw;
-    height: 20vh; 
+    height: 16vh; 
     }
 
   &-title {
@@ -23,7 +23,7 @@
   }
 
   &-img {
-    background-image: url('../../../assets/img/Banner5.png');
+    background-image: url('../../../assets/img/Banner_pets_diary_2.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

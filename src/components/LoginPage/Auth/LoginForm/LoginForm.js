@@ -80,7 +80,6 @@ const LoginForm = ({
 
     return (
         <div className="modal-login-form">
-
             {!isLogged &&(
                 <>
                     <Button className="login-button" variant="primary" onClick={() => {setShowLogin(true)}}>
@@ -89,7 +88,7 @@ const LoginForm = ({
 
                     <Modal show={showLogin} onHide={() => {setShowLogin(false)}}>
                         <Modal.Header closeButton>
-                            <Modal.Title>Connexion</Modal.Title>
+                            <Modal.Title className="modal-login-form-title">Connexion</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                         {!isLogged && isFailed && (

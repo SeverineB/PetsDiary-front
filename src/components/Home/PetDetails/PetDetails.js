@@ -5,6 +5,8 @@ import dayjs from 'dayjs';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import backIcon from '../../../assets/icons/left-arrow.png';
+
 import './PetDetails.scss';
 
 const PetDetails = ({
@@ -33,9 +35,11 @@ const PetDetails = ({
 
     return (
         <div className="pet-details">
-            <Link to="/home">Retour</Link>
+            <Link to="/home">
+                <img src={backIcon} alt="left arrow" />
+            </Link>
             <div className="pet-details-title">
-                <h2>Suivi de {pet.name}</h2>
+                <h2>{pet.name}</h2>
             </div>
 
             <div className="pet-details-content">
@@ -45,36 +49,36 @@ const PetDetails = ({
                     </div>
                     <div className="pet-details-content-infos-general">
                         <div className="pet-details-name">
-                            <h3>Nom</h3>
+                            <h3>Nom :</h3>
                             <p>{pet.name}</p>
                         </div>
                         <div className="pet-details-age">
-                            <h3>Age</h3>
+                            <h3>Age :</h3>
                             <p>{pet.age}</p>
                         </div>
                         <div className="pet-details-species">
-                            <h3>Espèce</h3>
+                            <h3>Espèce :</h3>
                             <p>{pet.species}</p>
                         </div>
                         <div className="pet-details-breed">
-                            <h3>Race</h3>
+                            <h3>Race :</h3>
                             <p>{pet.breed}</p>
                         </div>
                         <div className="info-sex">
-                            <h3>Sexe</h3>
+                            <h3>Sexe :</h3>
                             <p>{pet.sex}</p>
                         </div>
                         <div className="info-birthdate">
-                            <h3>Date de naissance</h3>
+                            <h3>Date de naissance :</h3>
                             <p>{dayjs(pet.birthdate).format('DD/MM/YYYY')}</p>
                         </div>
                         <div className="info-ide">
-                            <h3>Numéro d'identification</h3>
+                            <h3>Numéro d'identification :</h3>
                             <p>{pet.ide}</p>
                         </div>
                         <div className="edit-link">
                             <button type="button" className="edit-btn">
-                                <Link to={`/pet/edit/${params.petId}`}>Modifier</Link>
+                                <Link to={`/pet/edit/${params.petId}`}>Editer</Link>
                             </button>
                         </div>
                     </div>

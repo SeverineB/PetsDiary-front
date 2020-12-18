@@ -1,17 +1,20 @@
 @import 'src/styles/vars';
 
 .auth {
-  font-family: 'Nunito';
-  width: 100%;
-  height: 8em;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 1em;
-  @include m767() {
-    justify-content: center;
-   };
-  @include m1200() {
-    width: 20%;
-   };
+    font-family: 'Karla';
+    width: 100vw;
+    height: 8em;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1em;
+    @include m767() {
+        justify-content: center;
+    };
+    @include m1024() {
+        width: 40vw;
+    };
+    @include m1200() {
+        width: 20%;
+    };
 }

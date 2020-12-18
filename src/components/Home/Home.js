@@ -8,7 +8,7 @@ import { Card } from 'semantic-ui-react';
 
 import Pet from '../../containers/Pet';
 
-import logo from '../../assets/img/Logo.png';
+import logo from '../../assets/img/Logo_pets_diary.png';
 import add from '../../assets/img/add.png';
 
 import './Home.scss';
