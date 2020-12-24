@@ -123,8 +123,8 @@ return (
 WeightChart.propTypes = {
 petWeight: PropTypes.arrayOf(
     PropTypes.shape({
-    weightValue: PropTypes.number,
-    weightDate: PropTypes.string,
+        weightValue: PropTypes.number,
+        weightDate: PropTypes.string,
     }),
 ).isRequired,
 };

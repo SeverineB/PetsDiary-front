@@ -11,6 +11,9 @@
     width: 100vw;
     height: 16vh; 
     }
+    @include m1200() {
+      height: 22vh;
+     };
 
   &-title {
     display: inline-block;
@@ -23,15 +26,17 @@
   }
 
   &-img {
-    background-image: url('../../../assets/img/Banner_pets_diary_2.png');
+    background-image: url('../../../assets/img/BannerPetsDiary.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     height: 100%;
     @include m767() {
+      background-size: 70%;
       margin-top: 1em;
      };
     @include m1200() {
+      background-size: 50%;
       height: 100%;
       align-self: center;
      };

@@ -8,56 +8,64 @@
     justify-content: flex-end;
     width: 100%;
     height: 20em;
-    padding: 2em;
+    padding: 1.2em;
     border-radius: 0.5em;
-    background-image: url('../../../assets/img/paw-shape.png');
-    background-size: 75%;
+    background-image: url('../../../assets/img/PawPrint.svg');
+    background-size: 80%;
     background-position: center;
     background-repeat: no-repeat;
     color: white;
     @include m400() {
-        padding: 3.5em;
+        padding: 2.6em;
         height: 24em;
-        width: 90vw;
-        background-size: 70%;
     };
     @include m767() {
-        padding: 4em;
+        padding: 3em;
         background-size: 70%;
         height: 35em;
     };
     @include m1024() {
+        padding: 4.8em;
         height: 40em;
+        background-size: 72%;
     };
     @include m1200() {
         width: 60vw;
-        background-size: 80%;
+        padding: 2em;
+        height: 100%;
+        background-size: 46%;
     };
     @include m1600() {
-        width: 60vw;
-        background-size: 55%;
+        padding: 2.6em;
+        background-size: 44%;
     };
     @include m1900() {
-        width: 60vw;
-        background-size: 38%;
+        padding: 3em;
+        background-size: 48%;
     };
 
 &-infos-first,
 &-infos-second {
     display: inline-block;
     align-self: center;
-    font-size: 0.7em;
+    font-size: 0.5em;
     margin-right: 0.4em;
     text-align: center;
     z-index: 30;
     @include m400() {
-        width: 50vw;
+        font-size: 0.6em;
     };
     @include m767() {
-        font-size: 1.1em;
+        font-size: 1.2em;
+    };
+    @include m1024() {
+        font-size: 1.3em;
     };
     @include m1200() {
-        font-size: 1.2em;
+        font-size: 0.9em;
+    };
+    @include m1600() {
+        font-size: 1.1em;
     };
     @include m1900() {
         font-size: 1.3em;
@@ -65,17 +73,19 @@
 }
 
 &-infos-first {
-    width: 33vw;
-    text-align: center;
+    width: 32vw;
     margin-bottom: 0.5em;
     @include m400() {
-        width: 20vw;
+        width: 28vw;
     };
     @include m767() {
-        width: 20vw;
+        width: 24vw;
     };
     @include m1024() {
-        width: 20vw;
+        width: 22vw;
+    };
+    @include m1200() {
+        width: 12vw;
     };
     @include m1600() {
         width: 10vw;
@@ -83,17 +93,26 @@
 }
 
 &-infos-second {
-    width: 50vw;
+    width: 45vw;
     margin-bottom: 0.5em;
     @include m400() {
-        width: 40vw;
+        width: 43vw;
     };
     @include m767() {
-        width: 30vw;
+        width: 38vw;
         margin-bottom: 1em;
     };
+    @include m1024() {
+        width: 30vw;
+    };
+    @include m1200() {
+        width: 18vw;
+    };
     @include m1600() {
-        width: 15vw;
+        width: 16vw;
+    };
+    @include m1900() {
+        width: 18vw;
     };
 }
 

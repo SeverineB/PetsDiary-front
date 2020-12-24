@@ -5,6 +5,8 @@ import { Button, Form, Modal } from 'react-bootstrap';
 
 import './RegisterForm.scss';
 
+import PawIcon from '../../../../../src/assets/img/paw.png';
+
 const RegisterForm = ({
     email,
     password,
@@ -92,7 +94,6 @@ const RegisterForm = ({
     };
 
     console.log('errors ', errors)
-    console.log('errors username', errors.username)
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
@@ -109,9 +110,12 @@ const RegisterForm = ({
                         Inscription
                     </Button>
 
-                    <Modal show={showRegister} onHide={() => {setShowRegister(false)}}>
+                    <Modal className="modal-register-content-custom" show={showRegister} onHide={() => {setShowRegister(false)}}>
                         <Modal.Header closeButton>
-                            <Modal.Title className="modal-register-form-title">Inscription</Modal.Title>
+                            <Modal.Title className="modal-register-form-title">
+                                Inscription
+                                <img src={PawIcon} alt="paw coral" className="login-form-icon" />
+                                </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                         {!isSignedUp && isFailed && (
@@ -120,7 +124,7 @@ const RegisterForm = ({
                             </p>
                         )}
                             <Form onSubmit={handleSubmit} className="register-form">
-                                <Form.Group controlId="formBasicUsername">
+                                {/* <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Nom d'utilisateur</Form.Label>
                                 <Form.Control
                                     type="username"
@@ -129,54 +133,60 @@ const RegisterForm = ({
                                     value={username}
                                     onChange={handleChange}
                                 />
-                                </Form.Group>
-
+                                </Form.Group> */}
+                                <label htmlFor="username">Votre nom d'utilisateur</label>
+                                <input
+                                    className="input-username"
+                                    type="username"
+                                    placeholder="Votre nom d'utilisateur"
+                                    name="username"
+                                    value={username}
+                                    onChange={handleChange}
+                                />
                                 {errors.username ? (
                                 <div className="error-register-username">
                                     <p>{errors.username}</p>
                                 </div>
                                 ) : ''}
-
-                                <Form.Group controlId="formBasicEmail">
-                                <Form.Label>Adresse email</Form.Label>
-                                <Form.Control
+                                <label htmlFor="email">Votre email</label>
+                                <input
+                                    className="input-email"
                                     type="email"
                                     placeholder="Votre email"
                                     name="email"
                                     value={email}
                                     onChange={handleChange}
                                 />
-                                </Form.Group>
                                 <div className="error-register-email">
                                     <p>{errors.email}</p>
                                 </div>
-
-                                <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Mot de passe</Form.Label>
-                                <Form.Control
+                                <label htmlFor="password">Votre password</label>
+                                <input
+                                    className="input-password"
                                     type="password"
                                     placeholder="Votre mot de passe"
                                     name="password"
                                     value={password}
                                     onChange={handleChange}
                                 />
-                                </Form.Group>
                                 <div className="error-register-password">
                                     <p>{errors.password}</p>
                                 </div>
-                                <Button
-                                    className="register-button-submit"
-                                    variant="primary"
-                                    type="submit">
-                                    Valider
-                                </Button>
-                                <Button
-                                    className="register-button-cancel"
-                                    variant="secondary"
-                                    onClick={() => {setShowRegister(false)}}
-                                >
-                                    Annuler
-                                </Button>
+                                <div className="register-form-btn">
+                                    <Button
+                                        className="register-button-submit"
+                                        variant="primary"
+                                        type="submit">
+                                        Valider
+                                    </Button>
+                                    <Button
+                                        className="register-button-cancel"
+                                        variant="secondary"
+                                        onClick={() => {setShowRegister(false)}}
+                                    >
+                                        Annuler
+                                    </Button>
+                                </div>
                             </Form>
                         </Modal.Body>
                     </Modal>

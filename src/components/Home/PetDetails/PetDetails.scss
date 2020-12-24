@@ -1,12 +1,26 @@
 @import 'src/styles/vars';
 
+.pet-details-hidden {
+    display: none;
+}
+
 .pet-details {
     position: relative;
     padding: 0.2em;
     height: 90%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+
+    animation-name: fadeIn;
+    animation-duration: 2s;
+
+    @keyframes fadeIn {
+        from {display: none;}
+        to {display: flex;}
+    }
     @include m1200() {
         margin-top: 3em;
         align-items: center;
@@ -17,19 +31,33 @@
         text-align: center;
     }
 
+    .back-icon {
+        width: 1.6em;
+        border-radius: 50%;
+        margin-top: 0.5em;
+        box-shadow: 0 0 10px 5px  #f0eeee,
+        -10px -10px 20px #e6e4e4;
+        -moz-box-shadow:  0 0 10px 5px  #f0eeee,
+        -10px -10px 20px #e6e4e4;
+        -webkit-box-shadow:  0 0 10px 5px  #f0eeee,
+        -10px -10px 20px #e6e4e4;
+        -o-box-shadow: 0 0 10px 5px  #f0eeee,
+        -10px -10px 20px #e6e4e4;
+    }
+
     .pet-delete-btn {
         width: 6em;
         padding: 0.5em;
         border: none;
         border-radius: 30.5px;
-        align-self: center;
     }
 
     &-content {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 60%;
+        height: 80%;
+        width: 95%;
         /* background: rgb(235, 232, 232); */
         box-shadow:  10px 10px 20px #f0eeee, 
                 -10px -10px 20px #e6e4e4;
@@ -62,9 +90,66 @@
                 }
             }
         }
+
+        &-infos {
+            width: 100%;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 1em;
+    
+            &-avatar {
+                width: 98%;
+                height: auto;
+                align-self: center;
+             
+                & img {
+                    width: 100%;
+                    border-radius: 1em;
+                }
+            }
+    
+            &-general {
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin-left: 0.5em;
+    
+            
+    
+                .pet-details-name,
+                .pet-details-age,
+                .pet-details-species,
+                .pet-details-breed,
+                .info-sex,
+                .info-birthdate,
+                .info-ide
+                 {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    h3 {
+                        margin: 0;
+                        font-size: 0.9em;
+                        line-height: 1.2;
+                        color: $accent-color;
+                    }
+    
+                    p {
+                        margin-left: 0.5em;
+                        margin-bottom: 0;
+                        line-height: 1.2;
+                    }
+                }
+            }
+        }
     }
 
-    &-content-infos {
+    /* &-content-infos {
         width: 100%;
         height: 90%;
         display: flex;
@@ -72,11 +157,12 @@
         margin-top: 1em;
 
         &-avatar {
-            width: 40%;
-
+            width: 30%;
+            height: 20%;
+         
             & img {
                 width: 100%;
-                border-radius: 30.5px;
+                border-radius: 50px;
             }
         }
 
@@ -90,7 +176,7 @@
 
             h3 {
                 margin: 0;
-                font-size: 1em;
+                font-size: 0.9em;
                 color: $accent-color;
             }
 
@@ -103,13 +189,22 @@
              {
                 display: flex;
                 flex-direction: row;
-                
+                align-items: center;
+
                 p {
                     margin-left: 0.5em;
                 }
             }
+
+             .pet-details-name h3,
+            .pet-details-name p{
+                line-height: 2em;
+                margin: 0;
+                padding: 0;
+                vertical-align: baseline;
+            }
         }
-    }
+    } */
 
     .edit-link {
         width: 100%;

@@ -7,8 +7,12 @@
     }
 }
 
+.modal-content-custom {
+    margin-top: 35%;
+}
+
 .modal-register-form-title {
-    color: #c6a49a;
+    color: $accent-color;
     font-weight: bold;
 }
 
@@ -16,7 +20,7 @@ button.btn.btn-primary.register-button {
     background-color: $accent-color;
     border: none;
     font-family: "Quicksand";
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: bold;
     border-radius: 5em;
     padding: 0.5em 1em;
@@ -42,11 +46,48 @@ button.btn.btn-primary.register-button {
 .register-form {
 
     &-btn {
-        margin-top: 1em;
+        margin-top: 1.5em;
+    }
+
+    label {
+        display: none;
+    }
+
+    &-icon {
+        width: 1.2em;
+        margin-left: 0.4em;
+    }
+
+    .input-email,
+    .input-password,
+    .input-username {
+        width: 100%;
+        padding: 0.8em;
+        background-color: white!important;
+        border: none;
+        border-bottom: 1px solid $light-color;
+    }
+
+    .input-email:focus,
+    .input-password:focus,
+    .input-username:focus {
+        border: none;
+        border-bottom: 1px solid $accent-color;
+    }
+
+    input:-webkit-autofill {
+        -webkit-text-fill-color: $light-color !important;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:active  {
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
     }
 
     button.btn.btn-primary.register-button-submit {
-        background-color:#c6a49a;
+        background-color:$accent-color;
         border: none;
         border-radius: 5em;
         padding: 0.5em 1em;
@@ -56,12 +97,12 @@ button.btn.btn-primary.register-button {
         }
         
         &:hover {
-            background-color: #ff7362;
+            background-color: $light-color;
         }
     }
     
     button.btn.btn-secondary.register-button-cancel {
-        background-color:#999dc2;
+        background-color:$main-color;
         border: none;
         border-radius: 5em;
         padding: 0.5em 1em;
@@ -73,11 +114,6 @@ button.btn.btn-primary.register-button {
         &:hover {
             background-color: #ff7362;
         }
-    }
-    
-    .form-group {
-        margin-bottom: 0.5em;
-        margin-top: 1em;
     }
     
     .error-register-username, .error-register-email, .error-register-password {

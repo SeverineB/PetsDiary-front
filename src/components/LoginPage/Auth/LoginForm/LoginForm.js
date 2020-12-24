@@ -5,6 +5,8 @@ import { Modal, Button, Form } from 'react-bootstrap';
 
 import './LoginForm.scss';
 
+import PawIcon from '../../../../../src/assets/img/paw.png';
+
 const LoginForm = ({
     changeUserField,
     email,
@@ -86,9 +88,12 @@ const LoginForm = ({
                         Connexion
                     </Button>
 
-                    <Modal show={showLogin} onHide={() => {setShowLogin(false)}}>
+                    <Modal className="modal-login-content-custom"show={showLogin} onHide={() => {setShowLogin(false)}}>
                         <Modal.Header closeButton>
-                            <Modal.Title className="modal-login-form-title">Connexion</Modal.Title>
+                            <Modal.Title className="modal-login-form-title">
+                                Connexion
+                                <img src={PawIcon} alt="paw coral" className="login-form-icon" />
+                            </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                         {!isLogged && isFailed && (
@@ -97,30 +102,27 @@ const LoginForm = ({
                             </p>
                         )}
                             <Form onSubmit={handleSubmit} className="login-form">
-                                <Form.Group controlId="formBasicEmail">
-                                <Form.Label>Adresse email</Form.Label>
-                                <Form.Control
+                                <label htmlFor="email">Votre email</label>
+                                <input
+                                    className="input-email"
                                     type="email"
                                     placeholder="Votre email"
                                     name="email"
                                     value={email}
                                     onChange={handleChange}
                                 />
-                                </Form.Group>
                                 <div className="error-email">
                                     {errors.email}
                                 </div>
-
-                                <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Mot de passe</Form.Label>
-                                <Form.Control
+                                <label htmlFor="password">Votre password</label>
+                                <input
+                                    className="input-password"
                                     type="password"
                                     placeholder="Votre mot de passe"
                                     name="password"
                                     value={password}
                                     onChange={handleChange}
                                 />
-                                </Form.Group>
                                 <div className="error-password">
                                     {errors.password}
                                 </div>

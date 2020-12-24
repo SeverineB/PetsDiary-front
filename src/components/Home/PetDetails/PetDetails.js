@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import backIcon from '../../../assets/icons/left-arrow.png';
+import backIcon from '../../../assets/icons/left-arrow-2.png';
 
 import './PetDetails.scss';
 
@@ -16,11 +16,13 @@ const PetDetails = ({
     saveCurrentVaccine,
     deletePet,
 }) => {
+    const [showDetails, setShowDetails] = useState(false);
     // useParams is used to retrieve the id in url params to filter the pet to display
     const params = useParams();
     const history = useHistory();
 
     useEffect(() => {
+        setShowDetails(true);
         saveCurrentPet(pet);
         saveCurrentWeight(pet.weight);
         saveCurrentVaccine(pet.vaccine);
@@ -34,15 +36,17 @@ const PetDetails = ({
     };
 
     return (
-        <div className="pet-details">
+        <div className={showDetails ? 'pet-details' : 'pet-details-hidden'}>
             <Link to="/home">
-                <img src={backIcon} alt="left arrow" />
+                <div className="back-icon-container">
+                    <img className="back-icon" src={backIcon} alt="left arrow" />
+                </div>
             </Link>
-            <div className="pet-details-title">
-                <h2>{pet.name}</h2>
-            </div>
-
+            
             <div className="pet-details-content">
+                {/* <div className="pet-details-title">
+                    <h2>{pet.name}</h2>
+                </div> */}
                 <div className="pet-details-content-infos">
                     <div className="pet-details-content-infos-avatar">
                         <img src={pet.avatarUrl} alt="profile avatar" />

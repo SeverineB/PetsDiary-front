@@ -7,7 +7,6 @@ const PetCard = ({
     _id,
     name,
     avatarUrl,
-    deletePet,
 }) => {
 const petId = _id;
 
