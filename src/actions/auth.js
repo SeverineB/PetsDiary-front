@@ -1,5 +1,7 @@
 // ACTION TYPES
 
+export const CHANGE_USER_FIELD = 'CHANGE_USER_FIELD';
+export const CHANGE_USER_FIELD_REGISTER = 'CHANGE_USER_FIELD_REGISTER';
 export const REGISTER = 'REGISTER ';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILED = 'REGISTER_FAILED';
@@ -9,7 +11,6 @@ export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const LOGOUT = 'LOGOUT';
 export const CHECK = 'CHECK';
 export const USER_CONNECTED = 'USER_CONNECTED';
-export const USER_DISCONNECTED = 'USER_DISCONNECTED';
 export const ERROR_LOGIN = 'ERROR_LOGIN';
 
 // ACTION CREATOR
@@ -53,8 +54,17 @@ export const userConnected = (isLogged) => ({
     isLogged,
 });
 
-export const userDisconnected = () => ({
-    type: USER_DISCONNECTED,
+
+export const changeUserField = (value, name) => ({
+    type: CHANGE_USER_FIELD,
+    value,
+    name,
+});
+
+export const changeUserFieldRegister = (value, name) => ({
+    type: CHANGE_USER_FIELD_REGISTER,
+    value,
+    name,
 });
 
 export const errorLogin = () => ({

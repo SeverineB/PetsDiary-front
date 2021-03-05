@@ -6,6 +6,9 @@ import dayjs from 'dayjs';
 
 import './VaccineItem.scss';
 
+import cancelIcon from '../../../../../assets/icons/close.png';
+
+
 const VaccineItem = ({
     _id,
     pet_id,
@@ -14,17 +17,14 @@ const VaccineItem = ({
     deleteVaccine,
 }) => {
     const history = useHistory();
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [showDeleteVaccineModal, setShowDeleteVaccineModal] = useState(false);
 
-    console.log('SHOW MODAL ', showDeleteModal);
-    const handleCloseDeleteModal = () => setShowDeleteModal(false);
-    const handleShowDeleteModal = () => setShowDeleteModal(true);
+    const handleCloseDeleteVaccineModal = () => setShowDeleteVaccineModal(false);
+    const handleShowDeleteVaccineModal = () => setShowDeleteVaccineModal(true);
 
-    const handleDelete = () => {
-        console.log('je supprime un item vaccin', _id);
+    const handleDeleteVaccine = () => {
         localStorage.setItem('vaccineToDelete', _id);
         deleteVaccine(_id);
-        /* setShowDeleteModal(false); */
         history.push(`/pet/${pet_id}/vaccine`);
     };
 
@@ -39,20 +39,36 @@ const VaccineItem = ({
                     <p>{vaccineName}
                     </p>
                 </div>
+                <div className="vaccine-item-content-delete">
+                    <button
+                        type="button"
+                        className="vaccine-item-content-delete__btn"
+                        onClick={handleShowDeleteVaccineModal}
+                    >
+                        <img src={cancelIcon} alt="brown croce" />
+
+                    </button>
+            </div>
             </div>
             <div className="vaccine-item-content-line" />
-            <div className="delete">
-                <button type="button" className="delete-btn" onClick={handleShowDeleteModal}>supp</button>
-            </div>
-            <Modal show={showDeleteModal} onHide={handleShowDeleteModal} className="modal-add-vaccine">
+            
+            <Modal show={showDeleteVaccineModal} onHide={handleShowDeleteVaccineModal} className="modal-delete-vaccine">
                 <Modal.Header closeButton>
                     <Modal.Title>Supprimer ce vaccin ?</Modal.Title>
                 </Modal.Header>
                 <Modal.Footer>
-                    <button type="button" variant="secondary" onClick={handleCloseDeleteModal}>
+                    <button
+                        type="button"
+                        className="modal-delete-cancel-btn"
+                        variant="secondary"
+                        onClick={handleCloseDeleteVaccineModal}>
                         Annuler
                     </button>
-                    <button type="button" variant="primary" onClick={handleDelete}>
+                    <button
+                        type="button"
+                        className="modal-delete-validate-btn"
+                        variant="primary"
+                        onClick={handleDeleteVaccine}>
                         Oui, supprimer
                     </button>
                 </Modal.Footer>

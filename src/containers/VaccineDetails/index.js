@@ -1,15 +1,16 @@
 import { connect } from 'react-redux';
 
 import VaccineDetails from '../../components/Home/PetDetails/VaccineDetails/VaccineDetails';
+
 import {
     changeField,
-    addVaccine,
-    setErrors
+    setErrors,
+    addVaccine
 } from '../../actions';
 
 const mapStateToProps = (state) => ({
-  petVaccine: state.pets.vaccine,
-  error: state.error.error
+    petVaccine: state.pets.vaccine,
+    error: state.error.error,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -18,8 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(action);
     },
     addVaccine: () => {
-        const action = addVaccine();
-        dispatch(action);
+        dispatch(addVaccine());
     },
     setErrors: (id, value) => {
         dispatch(setErrors(id, value));

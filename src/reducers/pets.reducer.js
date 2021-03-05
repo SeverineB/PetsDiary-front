@@ -9,7 +9,10 @@ import {
     ADD_PET,
     SAVE_CURRENT_PET,
     UPDATE_PET,
+    SAVE_PET_TO_DELETE,
     DELETE_PET,
+    DELETE_PET_ON_SCREEN,
+    CLEAR_CURRENT_PET,
     CLEAR_NEW_PET,
     ADD_WEIGHT,
     DELETE_WEIGHT,
@@ -52,7 +55,6 @@ const initialState = {
 const petReducer = (state = initialState, action = {}) => {
     switch (action.type) {
         case GET_PETSLIST:
-            console.log('je suis dans GET PETSLIST REDUCER')
             return {
                 ...state,
                 isPetsLoading: true,
@@ -67,9 +69,17 @@ const petReducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 currentPet: action.currentPet,
+                avatarUrl: action.currentPet.avatarUrl,
+                id: action.currentPet._id,
+                name: action.currentPet.name,
+                age: action.currentPet.age,
+                species: action.currentPet.species,
+                breed: action.currentPet.breed,
+                sex: action.currentPet.sex,
+                birthdate: action.currentPet.birthdate,
+                ide: action.currentPet.ide,
             };
         case ADD_PET:
-            console.log('ACTION PET ', action.pet)
             return {
                 ...state,
                 petsList: [...state.pets.petsList, action.pet]
@@ -78,11 +88,33 @@ const petReducer = (state = initialState, action = {}) => {
             return {
                 ...state,
             };
-        case DELETE_PET:
-            const newPetsList = state.pets.petsList.filter(pet => pet._id !==  action.id);
+        case SAVE_PET_TO_DELETE:
             return {
                 ...state,
-                petsList: newPetsList,
+                id: action.id,
+            };
+        case DELETE_PET_ON_SCREEN:
+            return {
+                ...state,
+                petsList: [...state.petsList.filter((pet) => pet._id !== action.id)],
+            };
+        case DELETE_PET:
+            return {
+                ...state,
+            };
+        case CLEAR_CURRENT_PET:
+            return {
+                ...state,
+                currentPet: {},
+                id: '',
+                name: '',
+                age: '',
+                species: '',
+                breed: '',
+                sex: 'mâle',
+                birthdate: '',
+                ide: '',
+                avatarUrl: '',
             };
         case CLEAR_NEW_PET:
             return {

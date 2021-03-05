@@ -63,38 +63,42 @@ const AntifleaDetails = ({
         evt.preventDefault();
         addAntiflea();
         openShowAntiflea(false);
-        history.push(`/pet/${petId}/weight`)
+        history.push(`/pet/${petId}/antiflea`)
     }
 
     return (
-        <div className="antiflea-details-container">
+        <div className="antiflea-container">
             <button
-                className="back-btn"
+                className="antiflea-container__btn-back"
                 type="button"
                 onClick={() => history.push(`/pet/${petId}`)}
             >
                 <img src={backIcon} alt="black left arrow" />
             </button>
-            <h2>Suivi de l'anti-puces</h2>
-            <div className="antiflea-details-list">
+            <h2 className="antiflea-container-title">Suivi de l'anti-puces</h2>
+            <div className="antiflea-container-list">
                 {petAntiflea.map((item) => (
                 <AntifleaItem key={item._id} {...item} />
                 ))}
             </div>
-            <div className="add-antiflea">
+            <div className="antiflea-container-add">
                 <button
                     type="submit"
-                    className="add-antiflea-btn"
+                    className="antiflea-container-add__btn"
                     onClick={() => openShowAntiflea(true)}
                 >
-                    Ajouter
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52">
+                        <path d="M26,0C11.664,0,0,11.663,0,26s11.664,26,26,26s26-11.663,26-26S40.336,0,26,0z M38.5,28H28v11c0,1.104-0.896,2-2,2
+                            s-2-0.896-2-2V28H13.5c-1.104,0-2-0.896-2-2s0.896-2,2-2H24V14c0-1.104,0.896-2,2-2s2,0.896,2,2v10h10.5c1.104,0,2,0.896,2,2
+                            S39.604,28,38.5,28z"/>
+                    </svg>
                 </button>
-                <Modal show={showAntiflea} onHide={closeShowAntiflea} className="modal-add-antiflea">
+                <Modal show={showAntiflea} onHide={closeShowAntiflea} className="antiflea-container-add__modal">
                     <Modal.Header closeButton>
                         <Modal.Title>Ajouter un anti-puces</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form onSubmit={handleSubmit} className="add-antiflea-form">
+                        <Form onSubmit={handleSubmit} className="antiflea-container-add__modal__form">
                             <Form.Label>Date</Form.Label>
                             <Form.Control
                                 type="date"
@@ -112,7 +116,7 @@ const AntifleaDetails = ({
                             <Form.Control
                                 type="text"
                                 placeholder="Nom de l`anti-puces"
-                                name="vaccineName"
+                                name="antifleaName"
                                 value={petAntiflea.antifleaName}
                                 onChange={handleChange}
                                 required
@@ -120,16 +124,16 @@ const AntifleaDetails = ({
                             <div className="name-error">
                                 <p>{error.antifleaName}</p>
                             </div>
-                            <div className="add-antiflea-form-btn">
+                            <div className="modal__form-btns">
                                 <Button
-                                    className="add-antiflea-button-submit"
+                                    className="add-button-submit"
                                     variant="primary"
                                     type="submit"
                                 >
                                     Valider
                                 </Button>
                                 <Button
-                                    className="add-antiflea-button-cancel"
+                                    className="add-button-cancel"
                                     variant="secondary"
                                     onClick={closeShowAntiflea}
                                 >

@@ -3,24 +3,30 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Pet from '../../containers/Pet';
 
 import logo from '../../assets/img/LogoPetsDiary.png';
 
-import './Home.scss';
+import './home.scss';
 
 const Home = ({
     isLogged,
     logout,
+    clearCurrentPet,
     getPetsList,
     petsList,
 }) => {
     console.log('ISLOGGED DANS HOME ', isLogged);
+    console.log('PETSLIST DANS HOME ', petsList);
     useEffect(() => {
+        clearCurrentPet();
         getPetsList();
     }, []);
+
+    const username = localStorage.getItem('username');
 
     const handleLogout = () => {
         logout();
@@ -29,17 +35,20 @@ const Home = ({
     return (
         <>
         <div className="home-container">
-                <div className="logo-small">
+{/*                 <div className="logo-small">
                     <img src={logo} alt="cat and dog in badge" className="home-container-logo" />
-                </div>
+                </div> */}
+                {isLogged && (
+                    <Alert>
+                        <p>Vous êtes bien connecté(e) {username}</p>
+                    </Alert>
+                )}
             <div className="pets-section">
             <h2 className="pets-section-title">Mes animaux</h2>
             
             <div className="pets-list">
                 {petsList.map((pet) => (
-                    <Link to={`/pet/${pet._id}`} className="pet-name" key={pet._id}>
-                        <Pet {...pet} />
-                    </Link>
+                    <Pet {...pet} pet={pet} key={pet._id}/>
                 ))}
             </div>
             </div>
@@ -61,7 +70,7 @@ const Home = ({
                 </Link>
             </div>
             <div className="logout">
-            <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
+                <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
             </div>
         </div>
         </>
@@ -69,6 +78,7 @@ const Home = ({
 };
 
 Home.propTypes = {
+    clearCurrentPet: PropTypes.func.isRequired,
     getPetsList: PropTypes.func.isRequired,
     isLogged: PropTypes.bool.isRequired,
     logout: PropTypes.func.isRequired,

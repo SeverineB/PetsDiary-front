@@ -22,22 +22,23 @@ const auth = (store) => (next) => (action) => {
     case REGISTER: {
         const state = store.getState();
         const {
-            email,
-            password,
             username,
+            email,
+            password
         } = state.register;
         api.post('user/register', {
+            username,
             email,
             password,
-            username,
         })
             .then((response) => {
-            console.log('Middleware USERS response', response.data);
-            store.dispatch(saveUser({ ...response.data }));
-            store.dispatch(registerSuccess())
+                console.log('Middleware USERS response', response.data);
+                if (response.status === 200) {
+                    store.dispatch(registerSuccess());
+                }
             })
             .catch((error) => {
-            console.error('Il y a une erreur', error.message);
+            console.error('Il y a une erreur', error.response.data.message);
             store.dispatch(registerFailed(error.response.data.message));
             })
             .finally(() => {
@@ -59,6 +60,7 @@ const auth = (store) => (next) => (action) => {
         })
             .then((response) => {
                 localStorage.setItem('id', response.data.session._id);
+                localStorage.setItem('username', response.data.session.username);
                 store.dispatch(saveUser({ ...response.data }));
                 store.dispatch(loginSuccess());
             })
@@ -78,7 +80,9 @@ const auth = (store) => (next) => (action) => {
           withCredentials: true,
         })
         .then((response) => {
-          store.dispatch(userConnected(false));
+            console.log('Utilisateur déconnecté');
+            localStorage.removeItem('username');
+            store.dispatch(userConnected(false));
         })
         .catch((error) => {
           console.log('Mais noooon c\'est pas bon !', error.message);
@@ -100,6 +104,7 @@ const auth = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log('error', error.message);
+          store.dispatch(userConnected(false));
         });
       break;
     }

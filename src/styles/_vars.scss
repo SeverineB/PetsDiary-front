@@ -1,16 +1,75 @@
 // COLORS
 
 $main-color: #baccbe;
-$accent-color: #ff7362;
-$accent-color-bis: #f26a76;
-$light-color: #c6a49a;
+$main-color-bis: #5eb698;
+$accent-color-bis: #ff7362;
+$accent-color: #f4696f;
+$brown-color: #c6a49a;
+$light-color: #705430;
+
+// MIXIN
+
+@mixin add-btn {
+    width: 2.6em;
+    border: none;
+    background: none;
+    margin-top: 0.5em;
+    
+    svg {
+        fill: $accent-color;
+    }
+}
+
+@mixin back-btn {
+    border: none;
+    border-radius: 30.5px;
+    padding: 0.4em;
+    background: none;
+
+    img {
+        width: 1.6em;
+    }
+}
+
+@mixin add-btn-svg {
+    width: 100%;
+    fill: #ff7362;
+
+    &:hover {
+        fill: $light-color;
+    }
+}
 
 
+@mixin delete-btn {
+    border: none;
+    background: none;
+    width: 1.4em;
+    img {
+        width: 100%;
+        transform: scale(1);
+    }
+
+    &:hover {
+        transform: scale(1.6);
+    }
+
+    &:focus {
+        border: none;
+        box-shadow: none;
+    }
+}
 
 // MEDIA QUERIES
 
 @mixin m375($size: 375px) {
-  @media (min-width: $size) {
+  @media (min-width: $size) and (max-height: 700px){
+    @content;
+  }
+}
+
+@mixin m375higher($size: 375px) {
+  @media (min-width: $size) and (min-height: 700px){
     @content;
   }
 }
@@ -28,7 +87,13 @@ $light-color: #c6a49a;
   }
   
   @mixin m1024($size: 1024px) {
-    @media (min-width: $size) {
+    @media (min-width: $size){
+      @content;
+    }
+  }
+
+  @mixin m1024ipad($size: 1024px) {
+    @media (min-width: $size) and (min-height: 1200px){
       @content;
     }
   }

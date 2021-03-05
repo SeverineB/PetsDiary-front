@@ -3,9 +3,15 @@
 import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { Link, useParams, useHistory } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import backIcon from '../../../assets/icons/left-arrow-2.png';
+import cancelIcon from '../../../assets/icons/close.png';
+import weightIcon from '../../../assets/icons/kitchen-scale.png';
+import vaccineIcon from '../../../assets/icons/syringe.png';
+import fleaIcon from '../../../assets/icons/flea.png';
+import wormIcon from '../../../assets/icons/jelly.png';
 
 import './PetDetails.scss';
 
@@ -14,9 +20,16 @@ const PetDetails = ({
     saveCurrentPet,
     saveCurrentWeight,
     saveCurrentVaccine,
+    savePetToDelete,
+    deletePetOnScreen,
     deletePet,
 }) => {
     const [showDetails, setShowDetails] = useState(false);
+    const [showDeletePetModal, setShowDeletePetModal] = useState(false);
+
+    const handleCloseDeletePetModal = () => setShowDeletePetModal(false);
+    const handleShowDeletePetModal = () => setShowDeletePetModal(true);
+
     // useParams is used to retrieve the id in url params to filter the pet to display
     const params = useParams();
     const history = useHistory();
@@ -28,10 +41,11 @@ const PetDetails = ({
         saveCurrentVaccine(pet.vaccine);
         localStorage.setItem('pet_id', pet._id);
     }, []);
-
     
-    const handleDelete = () => {
-        deletePet(pet._id);
+    const handleDeletePet = () => {
+        savePetToDelete(pet._id);
+        deletePet();
+        deletePetOnScreen(pet._id);
         history.push('/home');
     };
 
@@ -44,13 +58,36 @@ const PetDetails = ({
             </Link>
             
             <div className="pet-details-content">
-                {/* <div className="pet-details-title">
-                    <h2>{pet.name}</h2>
-                </div> */}
                 <div className="pet-details-content-infos">
                     <div className="pet-details-content-infos-avatar">
                         <img src={pet.avatarUrl} alt="profile avatar" />
                     </div>
+                    <div className="pet-delete">
+                        <button className="pet-delete-btn" type="button" onClick={handleShowDeletePetModal}>
+                            <img src={cancelIcon} alt="cancel croce" />
+                        </button>
+                    </div>
+                    <Modal show={showDeletePetModal} onHide={handleShowDeletePetModal} className="modal-delete-pet">
+                        <Modal.Header closeButton>
+                            <Modal.Title>Supprimer cet animal?</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Footer>
+                            <button
+                                type="button"
+                                className="modal-delete-cancel-btn"
+                                variant="secondary"
+                                onClick={handleCloseDeletePetModal}>
+                                Annuler
+                            </button>
+                            <button
+                                type="button"
+                                className="modal-delete-validate-btn"
+                                variant="primary"
+                                onClick={handleDeletePet}>
+                                Oui, supprimer
+                            </button>
+                        </Modal.Footer>
+                    </Modal>
                     <div className="pet-details-content-infos-general">
                         <div className="pet-details-name">
                             <h3>Nom :</h3>
@@ -88,15 +125,32 @@ const PetDetails = ({
                     </div>
                 </div>
                 <div className="details-links">
-                    <Link to={`/pet/${pet._id}/weight`}>Poids</Link>
-                    <Link to={`/pet/${pet._id}/vaccine`}>Vaccins</Link>
-                    <Link to={`/pet/${pet._id}/antiflea`}>Anti-puces</Link>
-                    <Link to={`/pet/${pet._id}/deworming`}>Vermifuge</Link>
+                    <div>
+                        <Link className="details-links-item" to={`/pet/${pet._id}/weight`}>
+                            <img src={weightIcon} alt="weight tool" />
+                            <p>Poids</p>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link className="details-links-item" to={`/pet/${pet._id}/vaccine`}>
+                            <img src={vaccineIcon} alt="vaccine syringe" />
+                            <p>Vaccins</p>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link className="details-links-item" to={`/pet/${pet._id}/antiflea`}>
+                            <img src={fleaIcon} alt="flea" />
+                            <p>Anti-puces</p>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link className="details-links-item" to={`/pet/${pet._id}/deworming`}>
+                            <img src={wormIcon} alt="worms" />
+                            <p>Vermifuge</p>
+                        </Link>
+                    </div>
                 </div>
             </div>
-            <button className="pet-delete-btn" type="button" onClick={handleDelete}>
-                supprimer
-            </button>
         </div>
     );
 };
@@ -111,7 +165,7 @@ PetDetails.propTypes = {
         breed: PropTypes.string,
         sex: PropTypes.string.isRequired,
         birthdate: PropTypes.string.isRequired,
-        ide: PropTypes.number,
+        ide: PropTypes.string,
         weight: PropTypes.arrayOf(
             PropTypes.shape({}),
         ).isRequired,
@@ -127,11 +181,13 @@ PetDetails.propTypes = {
     }).isRequired,
     saveCurrentPet: PropTypes.func.isRequired,
     deletePet: PropTypes.func.isRequired,
+    deletePetOnScreen: PropTypes.func.isRequired,
+    savePetToDelete: PropTypes.func.isRequired,
 };
 
 PetDetails.defaultProps = {
     breed: '',
-    ide: null,
+    ide: '',
 }
 
 export default PetDetails;

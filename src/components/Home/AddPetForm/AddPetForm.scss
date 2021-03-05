@@ -4,34 +4,132 @@
     height: 90%;
     overflow-y: scroll;
 
-    h2 {
-    width: 100%;
-    text-align: center;
-    color: #f1746d;
-    margin-top: 1em;
+    &-title {
+        background: $accent-color;
+        border-radius: 30.5px;
+        padding: 0.2em;
+        width: 60%;
+        text-align: center;
+        color: white;
+        margin: 0 auto;
+        margin-top: 1em;
+        font-family: 'Raleway';
+        font-size: 1.2em;
+        font-weight: bold;
+        @include m1600() {
+            width: 15%;
+            margin-top: 2em;
+            font-size: 1.6em;
+        };
     }
 }
 
 .add-pet-form {
-    width: 80%;
-    background: $light-color;
+    width: 90%;
+    background: white;
     margin: 1em auto;
     padding: 0.5em;
-    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
+    @include m767() {
+        width: 60%;
+    };
+    @include m1600() {
+        width: 20%;
+        height: 60%;
+        margin-top: 5%;
+        border-radius: 30.5px;
+        box-shadow:  -8px 8px 30px #d9d9d9,
+        20px -20px 50px #ffffff;
+    };
 
-    .form-label {
-        color: #ffffff;
-        font-weight: bold;
-        margin: 0.5em 0;
+    label {
+        display: none;
+    }
+
+    label[for="sex"],
+    label[for="avatar"],
+    label[for="inline-checkbox-1"],
+    label[for="inline-checkbox-2"],
+    label[for="avatar"] {
+        display: block;
+        font-size: 0.8em;
+        margin-top: 0.2em;
+        margin-bottom: 0;
+    }
+
+    label[for="avatar"] {
+        color: $light-color;
+    }
+
+    input {
+        font-size: 0.8em;
+        padding: 0.7em;
+        border: none;
+        border-bottom: 1px solid $light-color;
+        border-radius: 0;
+        filter: none;
+    }
+
+    input[type="date"]::before{
+        content: attr(placeholder)" : ";
+        white-space: pre;
+     }
+    input[type="date"]:focus::before {
+        content:""!important;
+    }
+
+    input:hover {
+        background: $main-color-bis;
+        -webkit-text-fill-color: white;
+    }
+
+    input:focus {
+        border: none;
+        filter: none;
+    }
+
+    input:-webkit-autofill {
+        -webkit-text-fill-color: $light-color !important;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:active  {
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+        box-shadow: 0 0 0 30px white inset !important;
     }
 
     .form-file-label {
         color: #ffffff;
     }
 
-    .btn-primary {
+    .add-validate-btn,
+    .add-cancel-btn {
+        color: white;
         background-color: #f1746d;
-        border-color: #f1746d;
+        border: none;
+        border-radius: 30.5px;
+        font-size: 0.9em;
+        height: 2em;
+        padding: 0 0.6em;
+    }
+
+    .add-cancel-btn {
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    }
+
+    .add-validate-btn:focus {
+        color: white;
+    }
+
+    .add-validate-btn:hover,
+    .add-cancel-btn:hover {
+        background: $light-color;
     }
 
     .buttons {
@@ -44,8 +142,8 @@
         display: flex;
         justify-content: center;
         img {
-        width: 50%;
-        margin: 0.5em 0;
+            width: 50%;
+            margin: 0.5em 0;
         }
     }
 }

@@ -17,6 +17,7 @@ const mapStateToProps = (state) => ({
     isFailed: state.register.isFailed,
     isLoading: state.register.isLoading,
     errors: state.error.regErrors,
+    error: state.register.error,
 });
 
 const mapDispatchToProps = (dispatch) => ({

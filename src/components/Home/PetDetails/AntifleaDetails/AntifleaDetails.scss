@@ -1,0 +1,79 @@
+@import 'src/styles/vars';
+
+.antiflea-container {
+    padding: 0.5em;
+
+    &__btn-back {
+        @include back-btn;
+    }
+
+    &-title {
+        padding: 0.5em;
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    &-add {
+
+        &__btn {
+            @include add-btn;
+        }
+
+       &__modal__form {
+            label {
+              display: none;
+            }
+          
+            input {
+              border: 1px solid $light-color;
+              border-radius: 0.4em;
+              padding: 0.4em;
+              color: $light-color;
+            }
+          
+            .modal__form-btns {
+              display: flex;
+              justify-content: space-between;
+          
+              .add-button-submit,
+              .add-button-cancel {
+                width: 6em;
+                background: $accent-color;
+                border: none;
+                border-radius: 30.5px;
+                padding: 0.4em;
+                color: white;
+          
+                &:hover {
+                  background: $light-color;
+                }
+              }
+            }
+        }
+    }
+}
+
+.antiflea-item {
+    width: 100%;
+    padding: 0.5em;
+
+    &-content {
+        display: flex;
+       
+
+        &-date {
+            width: 30%;
+        }
+
+        &-name {
+            width: 70%;
+        }
+
+        &-line {
+            width: 80%;
+            height: 1px;
+            background: grey;
+            margin-top: 0.5em;
+        }
+    }
+}

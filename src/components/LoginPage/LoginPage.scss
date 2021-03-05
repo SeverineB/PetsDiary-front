@@ -31,11 +31,15 @@
         @include m767() {
             justify-content: space-around;
             width: 100vw;
-            height: 60vh;
+            height: 55vh;
         };
         @include m1024() {
             flex-direction: row;
-            height: 40vh;
+            height: 75%;
+        };
+        @include m1024ipad() {
+            flex-direction: row;
+            height: 40%;
         };
         @include m1200() {
             height: 50vh;

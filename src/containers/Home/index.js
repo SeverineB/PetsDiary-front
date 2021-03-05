@@ -1,15 +1,14 @@
 import { connect } from 'react-redux';
 
 import {
-  openModal,
   getPetsList,
   logout,
+  clearCurrentPet
 } from '../../actions';
 
 import Home from '../../components/Home/Home';
 
 const mapStateToProps = (state) => ({
-  open: state.pets.open,
   isLogged: state.auth.isLogged,
   session: state.auth.session,
   petsList: state.pets.petsList,
@@ -20,9 +19,8 @@ const mapDispatchToProps = (dispatch) => ({
     const action = getPetsList();
     dispatch(action);
   },
-  openModal: () => {
-    const action = openModal();
-    dispatch(action);
+  clearCurrentPet: () => {
+    dispatch(clearCurrentPet());
   },
   logout: () => {
     dispatch(logout());

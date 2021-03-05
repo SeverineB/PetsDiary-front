@@ -1,41 +1,95 @@
 @import 'src/styles/vars';
 
 .pet-container {
-    width: 28vw;
-    height: 14vh;
-    background: #fafafa;
-    box-shadow:  10px 10px 20px #f0eeee, 
-                -10px -10px 20px #e6e4e4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
+    width: 100%;
+    display: content;
+    height: 5.5em;
+    background: white;
+    /* box-shadow:  3px 3px 20px #f5f3f3, 
+                -3px -3px 20px #f3f3f3; */
+    box-shadow:  -8px 8px 30px #d9d9d9,
+        20px -20px 50px #ffffff;
     border-radius: 0.5em;
-    margin: 0.4em 0.2em;
     padding: 0.2em;
+    overflow: hidden;
+    @include m767() {
+        margin: 0.4em 0.6em;
+        height: 9em;
+    };
+    @include m1024() {
+        margin: 0.4em 0.6em;
+    };
+    @include m1200() {
+        height: 16vh;
+    };
+
+    .pet-delete {
+        position: absolute;
+        margin-left: 75%;
+        margin-top: 70%;
+    }
+
+    .pet-delete-btn {
+        border: none;
+        background: none;
+        width: 1.4em;
+        z-index: 100;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .pet-item {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
 
     .pet-name {
         width: 100%;
         height: 20%;
-        margin-left: 0.5em;
-        font-family: 'Quicksand';
+        font-family: 'Nunito';
+        font-size: 0.7em;
+        font-weight: bold;
         color: $light-color;
+        text-align: center;
+        @include m767() {
+            font-size: 1em;
+        };
+
+        p {
+            margin-bottom: 0;
+        }
     }
 
     .pet-avatar {
         width: 100%;
-        height: 80%;
-        overflow: hidden;
+        height: 70%;
 
         img {
-            object-fit: cover;
+            height: 100%;
             width: 100%;
+            object-fit: contain;
+        }
+
     }
-}
 
     &:hover {
-        /* transform: translateX(-0.4em) translateY(-0.4em); */
-        transform: scale(1.1);
-        box-shadow:  10px 10px 60px #d5d5d5, 
-                    -10px -10px 60px #ffffff;
+        transform: scale(1.05);
+        transition: transform 200ms ease-in-out;
+        box-shadow:  5px 5px 15px #e7e6e6, 
+                    -5px -5px 15px #e7e6e6;
     }
 }

@@ -6,6 +6,9 @@ import dayjs from 'dayjs';
 
 import './WeightItem.scss';
 
+import cancelIcon from '../../../../../assets/icons/close.png';
+
+
 const WeightItem = ({
     _id,
     pet_id,
@@ -14,14 +17,12 @@ const WeightItem = ({
     deleteWeight,
 }) => {
     const history = useHistory();
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [showDeleteWeightModal, setShowDeleteWeightModal] = useState(false);
 
-    console.log('SHOW MODAL ', showDeleteModal);
-    const handleCloseDeleteModal = () => setShowDeleteModal(false);
-    const handleShowDeleteModal = () => setShowDeleteModal(true);
+    const handleCloseDeleteWeightModal = () => setShowDeleteWeightModal(false);
+    const handleShowDeleteWeightModal = () => setShowDeleteWeightModal(true);
 
-    const handleDelete = () => {
-        console.log('je supprime un item poids', _id);
+    const handleDeleteWeight = () => {
         localStorage.setItem('weightToDelete', _id);
         deleteWeight(_id);
         history.push(`/pet/${pet_id}/weight`);
@@ -38,20 +39,36 @@ const WeightItem = ({
                     <p>{weightValue} kg
                     </p>
                 </div>
+                <div className="weight-item-content-delete">
+                    <button
+                        type="button"
+                        className="delete-btn"
+                        onClick={handleShowDeleteWeightModal}
+                    >
+                        <img src={cancelIcon} alt="brown croce" />
+
+                    </button>
+            </div>
             </div>
             <div className="weight-item-content-line" />
-            <div className="delete">
-                <button type="button" className="delete-btn" onClick={handleShowDeleteModal}>supp</button>
-            </div>
-            <Modal show={showDeleteModal} onHide={handleShowDeleteModal} className="modal-add-weight">
+            
+            <Modal show={showDeleteWeightModal} onHide={handleShowDeleteWeightModal} className="modal-delete-weight">
                 <Modal.Header closeButton>
                     <Modal.Title>Supprimer ce poids ?</Modal.Title>
                 </Modal.Header>
                 <Modal.Footer>
-                    <button type="button" variant="secondary" onClick={handleCloseDeleteModal}>
+                    <button
+                        type="button"
+                        className="modal-delete-cancel-btn"
+                        variant="secondary"
+                        onClick={handleCloseDeleteWeightModal}>
                         Annuler
                     </button>
-                    <button type="button" variant="primary" onClick={handleDelete}>
+                    <button
+                        type="button"
+                        className="modal-delete-validate-btn"
+                        variant="primary"
+                        onClick={handleDeleteWeight}>
                         Oui, supprimer
                     </button>
                 </Modal.Footer>

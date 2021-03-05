@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory, withRouter } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
 import dayjs from 'dayjs';
-import { useHistory } from 'react-router-dom';
-import { Modal, Form, Button } from 'react-bootstrap';
 
 import VaccineItem from '../../../../containers/VaccineItem';
 import backIcon from '../../../../assets/icons/left-arrow.png';
@@ -13,12 +13,16 @@ const VaccineDetails = ({
     petVaccine,
     changeField,
     addVaccine,
-    setErrors
+    setErrors,
+    error
 }) => {
     const history = useHistory();
     const [showVaccine, openShowVaccine] = useState(false);
 
     const petId = localStorage.getItem('pet_id');
+
+
+    console.log('PET VACCINE IN DETAILS', petVaccine)
 
     const closeShowVaccine = () => {  
         setErrors('vaccineDate', '');
@@ -62,40 +66,43 @@ const VaccineDetails = ({
         evt.preventDefault();
         addVaccine();
         openShowVaccine(false);
-        history.push(`/pet/${petId}/vaccine`)
+        history.push(`/pet/${pet_id}/vaccine`)
     }
 
     return (
         <div className="vaccine-container">
             <button
-                className="back-btn"
+                className="vaccine-container__btn-back"
                 type="button"
                 onClick={() => history.push(`/pet/${petId}`)}
             >
                 <img src={backIcon} alt="black left arrow" />
             </button>
-            <h2>Suivi des vaccins</h2>
-            <div className="vaccine-list">
-                {petVaccine.map((item) => (
+            <div className="vaccine-container-list">
+                {petVaccine ? petVaccine.map((item) => (
                     <VaccineItem key={item._id} {...item} />
-                ))}
+                )) : ''}
             </div>
-            <div className="add-vaccine">
+            <div className="vaccine-container-add">
                 <button
-                type="submit"
-                className="add-vaccine-btn"
-                onClick={() => openShowVaccine(true)}
+                    type="submit"
+                    className="vaccine-container-add__btn"
+                    onClick={() => openShowVaccine(true)}
                 >
-                Ajouter
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52">
+                        <path d="M26,0C11.664,0,0,11.663,0,26s11.664,26,26,26s26-11.663,26-26S40.336,0,26,0z M38.5,28H28v11c0,1.104-0.896,2-2,2
+                            s-2-0.896-2-2V28H13.5c-1.104,0-2-0.896-2-2s0.896-2,2-2H24V14c0-1.104,0.896-2,2-2s2,0.896,2,2v10h10.5c1.104,0,2,0.896,2,2
+                            S39.604,28,38.5,28z"/>
+                    </svg>
                 </button>
-                <Modal show={showVaccine} onHide={closeShowVaccine} className="modal-add-vaccine">
+                <Modal show={showVaccine} onHide={closeShowVaccine} className="vaccine-container-add__modal">
                 <Modal.Header closeButton>
-                    <Modal.Title>Ajouter un vaccin</Modal.Title>
+                    <Modal.Title>Ajouter un item de vaccin</Modal.Title>
                 </Modal.Header>
                     <Modal.Body>
-                        <Form onSubmit={handleSubmit} className="add-vaccine-form">
-                            <Form.Label>Date</Form.Label>
-                            <Form.Control
+                        <form onSubmit={handleSubmit} className="vaccine-container-add__modal__form">
+                            <label htmlFor="date">Date</label>
+                            <input
                                 type="date"
                                 placeholder="Date"
                                 name="vaccineDate"
@@ -107,8 +114,8 @@ const VaccineDetails = ({
                             <div className="date-error">
                                 <p>{error.vaccineDate}</p>
                             </div>
-                            <Form.Label>Nom</Form.Label>
-                            <Form.Control
+                            <label htmlFor="vaccine">Vaccin</label>
+                            <input
                                 type="text"
                                 placeholder="Nom du vaccin"
                                 name="vaccineName"
@@ -119,23 +126,23 @@ const VaccineDetails = ({
                             <div className="name-error">
                                 <p>{error.vaccineName}</p>
                             </div>
-                            <div className="add-vaccine-form-btn">
-                                <Button
-                                    className="add-vaccine-button-submit"
+                            <div className="modal__form-btns">
+                                <button
+                                    className="add-button-submit"
                                     variant="primary"
                                     type="submit"
                                 >
                                     Valider
-                                </Button>
-                                <Button
-                                    className="add-vaccine-button-cancel"
+                                </button>
+                                <button
+                                    className="add-button-cancel"
                                     variant="secondary"
                                     onClick={closeShowVaccine}
                                 >
                                     Annuler
-                                </Button>
+                                </button>
                             </div>
-                        </Form>
+                        </form>
                     </Modal.Body>
                 </Modal>
             </div>
@@ -144,12 +151,13 @@ const VaccineDetails = ({
 };
 
 VaccineDetails.propTypes = {
+    changeField: PropTypes.func.isRequired,
     petVaccine: PropTypes.arrayOf(
         PropTypes.shape({}),
     ).isRequired,
     addVaccine: PropTypes.func.isRequired,
-    changeField: PropTypes.func.isRequired,
-    setErrors: PropTypes.func.isRequired,
+
 };
 
-export default VaccineDetails;
+
+export default withRouter(VaccineDetails);

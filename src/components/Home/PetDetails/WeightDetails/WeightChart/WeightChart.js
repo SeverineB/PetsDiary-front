@@ -15,6 +15,13 @@ import './WeightChart.scss';
 
 const WeightChart = ({ petWeight }) => {
 
+    console.log('MIDDLE DATE', petWeight[Math.floor(petWeight.length / 2)])
+    const firstxvalue = (petWeight.length > 0) ? new Date(petWeight[0].weightDate) : new Date();
+    const middlexvalue = (petWeight.length > 0) ? new Date(petWeight[Math.floor(petWeight.length / 2)].weightDate) : new Date();
+    const lastxvalue = (petWeight.length > 0) ? new Date(petWeight[petWeight.length-1].weightDate) : new Date();
+    const tickCount = (petWeight.length > 0) ? petWeight.length : 2;
+
+
 return (
     <>
     <div className="weight-chart-container">
@@ -23,7 +30,8 @@ return (
             containerComponent={
                 <VictoryVoronoiContainer label={(d) => `${d.label}`} />
             }
-            height={350}
+            /* height={350} */
+            /* width={400} */
             scale={{x: 'time'}}
         >
         <VictoryLine
@@ -35,9 +43,9 @@ return (
                     fontWeight: 'bold',
                 }}
                 flyoutStyle={{
-                    stroke: 'tomato',
+                    stroke: '#ff7362',
                     strokeWidth: 0,
-                    fill: '#f87268',
+                    fill: '#ff7362',
                 }}
             />
             )}
@@ -49,13 +57,16 @@ return (
                 },
             }}
             domain={{
+                x: [firstxvalue, lastxvalue],
                 y: [0, 10]
             }}
-            data={petWeight.map((item) => {
-                if (item.weightDate && item.weightValue) {
-                    return { x: new Date(item.weightDate), y: item.weightValue };
-                }
-            })}
+            data={
+                petWeight.map((item) => {
+                    if (item.weightDate && item.weightValue) {
+                        return { x: new Date(item.weightDate), y: item.weightValue };
+                    }
+                })
+            }
             animate={{
                 duration: 1500,
                 onLoad: { duration: 1000 },
@@ -70,7 +81,7 @@ return (
                 fontSize: 18,
                 fontWeight: 'bold',
                 fontFamily: 'Nunito',
-                fill: '#4057cb',
+                fill: '#c6a49a',
             }}
         />
         <VictoryLabel
@@ -92,13 +103,14 @@ return (
                     fontWeight: 'bold',
                 },
             }}
-            tickCount={6}
+            tickValues={[firstxvalue, middlexvalue, lastxvalue]}
+            tickCount={tickCount}
             // define the format of the main axis dates
             tickFormat={(x) => {
-                const dateObj = new Date(x);
-                const year = dateObj.getFullYear().toString().substr(-2);
-                const month = dateObj.toLocaleString('fr-fr', { month: '2-digit' });
-                return `${month}/${year}`;
+                    const dateObj = new Date(x);
+                    const year = dateObj.getFullYear().toString().substr(-2);
+                    const month = dateObj.toLocaleString('fr-fr', { month: '2-digit' });
+                    return `${month}/${year}`;
             }}
            fixLabelOverlap={true}
         />

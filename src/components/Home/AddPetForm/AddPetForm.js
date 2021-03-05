@@ -19,7 +19,7 @@ const AddPetForm = ({
   changeUrl,
   addPet,
 }) => {
-    console.log('SEX VALUE IN ADD PET FORM', sex);
+
     const history = useHistory();
     const handleChange = (evt) => {
         changeField(evt.target.name, evt.target.value);
@@ -38,101 +38,101 @@ const AddPetForm = ({
         history.push('/home');
     };
 
-  return (
-    <div className="add-pet">
-        <h2 className="add-pet-title">Ajouter un animal</h2>
-        <Form onSubmit={handleSubmit} className="add-pet-form">
-            <Form.Label>Nom</Form.Label>
-                <Form.Control
-                    type="text"
-                    placeholder="Nom"
-                    name="name"
-                    value={name}
-                    onChange={handleChange}
-                />
+    return (
+        <div className="add-pet">
+            <h2 className="add-pet-title">Ajouter un animal</h2>
+            <Form onSubmit={handleSubmit} className="add-pet-form">
+                <label htmlFor="name">Nom</label>
+                    <input
+                        type="text"
+                        placeholder="Nom"
+                        name="name"
+                        value={name}
+                        onChange={handleChange}
+                    />
 
-            <Form.Label>Age</Form.Label>
-                <Form.Control
-                    type="text"
-                    placeholder="Age"
-                    name="age"
-                    value={age}
-                    onChange={handleChange}
-                />
-            <Form.Label>Date de naissance</Form.Label>
-                <Form.Control
-                    type="date"
-                    placeholder="Date de naissance"
-                    name="birthdate"
-                    value={birthdate}
-                    onChange={handleChange}
-                />
-            <Form.Label>Espèce</Form.Label>
-                <Form.Control
-                    type="text"
-                    placeholder="Espèce"
-                    name="species"
-                    value={species}
-                    onChange={handleChange}
-                />
-            <Form.Label>Race</Form.Label>
-                <Form.Control
-                    type="text"
-                    placeholder="Race"
-                    name="breed"
-                    value={breed}
-                    onChange={handleChange}
-                />
-            <Form.Label>Numéro d'identification</Form.Label>
-                <Form.Control
-                    type="text"
-                    placeholder="Numéro d'identification à 15 chiffres"
-                    name="ide"
-                    value={ide}
-                    onChange={handleChange}
-                />
-            <Form.Label>Sexe</Form.Label>
-            {['checkbox'].map((type) => (
-            <div key={`inline-${type}`} className="mb-3">
-                <Form.Check
-                    inline
-                    label="Femelle"
-                    type={type}
-                    value={sex}
-                    id={`inline-${type}-1`}
-                />
-                <Form.Check
-                    inline
-                    label="Mâle"
-                    type={type}
-                    value={sex}
-                    id={`inline-${type}-2`}
-                />
-            </div>
-            ))}
-            <Form.Group>
-                <Form.File
-                    id="avatar"
-                    name="avatar"
-                    label="Ajouter un avatar"
-                    onChange={handleFileChange}
-                />
-            </Form.Group>
-                <div className="avatar-preview">
-                    {avatarUrl && <img src={avatarUrl} alt="avatar" />}
+                <label htmlFor="age">Age</label>
+                    <input
+                        type="text"
+                        placeholder="Age"
+                        name="age"
+                        value={age}
+                        onChange={handleChange}
+                    />
+                <label htmlFor="date">Date de naissance</label>
+                    <input
+                        type="date"
+                        placeholder="Date de naissance"
+                        name="birthdate"
+                        value={birthdate}
+                        onChange={handleChange}
+                    />
+                <label htmlFor="species">Espèce</label>
+                    <input
+                        type="text"
+                        placeholder="Espèce"
+                        name="species"
+                        value={species}
+                        onChange={handleChange}
+                    />
+                <label htmlFor="breed">Race</label>
+                    <input
+                        type="text"
+                        placeholder="Race"
+                        name="breed"
+                        value={breed}
+                        onChange={handleChange}
+                    />
+                <label htmlFor="ide">Numéro d'identification</label>
+                    <input
+                        type="text"
+                        placeholder="Numéro d'identification à 15 chiffres"
+                        name="ide"
+                        value={ide}
+                        onChange={handleChange}
+                    />
+                <label htmlFor="sex">Sexe</label>
+                {['checkbox'].map((type) => (
+                <div key={`inline-${type}`} className="mb-3">
+                    <Form.Check
+                        inline
+                        label="Femelle"
+                        type={type}
+                        value={sex}
+                        id={`inline-${type}-1`}
+                    />
+                    <Form.Check
+                        inline
+                        label="Mâle"
+                        type={type}
+                        value={sex}
+                        id={`inline-${type}-2`}
+                    />
                 </div>
-            <div className="buttons">
-                <Button variant="primary" type="submit">
-                    Valider
-                </Button>
-                <Button variant="primary" type="submit">
-                    <Link to="/home">Annuler</Link>
-                </Button>
+                ))}
+                <Form.Group>
+                    <Form.File
+                        id="avatar"
+                        name="avatar"
+                        label="Ajouter un avatar"
+                        onChange={handleFileChange}
+                    />
+                </Form.Group>
+                    <div className="avatar-preview">
+                        {avatarUrl && <img src={avatarUrl} alt="avatar" />}
+                    </div>
+                <div className="buttons">
+                    <button className="add-validate-btn" variant="primary" type="submit">
+                        Valider
+                    </button>
+                    <button className="add-cancel-btn"variant="primary" type="submit">
+                        <Link to="/home">Annuler</Link>
+                    </button>
+                </div>
+            </Form>
             </div>
-        </Form>
-        </div>
-    );
-};
+        );
+    };
 
 AddPetForm.propTypes = {
     name: PropTypes.string.isRequired,
@@ -152,7 +152,7 @@ AddPetForm.propTypes = {
 
 AddPetForm.defaultProps = {
     breed: '',
-    ide: '',
+    ide: 2,
 }
 
 export default AddPetForm;

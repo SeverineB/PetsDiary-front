@@ -14,6 +14,7 @@ import AntifleaDetails from '../../containers/AntifleaDetails';
 import EditPetForm from '../../containers/EditPetForm';
 import NavBar from '../../containers/NavBar';
 import LoginPage from '../LoginPage/LoginPage';
+
 import PrivateRoute from '../PrivateRoute';
 import PublicRoute from '../PublicRoute';
 import Footer from '../Footer/Footer';
@@ -39,6 +40,7 @@ const App = ({ isLogged, check }) => {
       <ErrorBoundary>
       <Switch>
         <PublicRoute exact path="/" component={LoginPage} />
+
         <PrivateRoute exact path="/home" component={Home} />
         <PrivateRoute exact path="/add" component={AddPetForm} />
         <PrivateRoute exact path="/appointments" component={Appointments} />

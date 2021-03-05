@@ -6,7 +6,9 @@ export const ADD_PET = 'ADD_PET';
 export const UPDATE_PET = 'UPDATE_PET';
 export const CHANGE_FILE = 'CHANGE_FILE';
 export const CHANGE_URL = 'CHANGE_URL';
+export const SAVE_PET_TO_DELETE = 'SAVE_PET_TO_DELETE';
 export const DELETE_PET = 'DELETE_PET';
+export const DELETE_PET_ON_SCREEN = 'DELETE_PET_ON_SCREEN';
 
 export const CLEAR_NEW_PET = 'CLEAR_NEW_PET';
 export const FINISH_LOADING = 'FINISH_LOADING';
@@ -50,10 +52,19 @@ export const clearNewPet = () => ({
   type: CLEAR_NEW_PET,
 });
 
-export const deletePet = (id) => ({
+export const savePetToDelete = (id) => ({
+    type: SAVE_PET_TO_DELETE,
+    id,
+  });
+
+export const deletePet = () => ({
   type: DELETE_PET,
-  id,
 });
+
+export const deletePetOnScreen = (id) => ({
+    type: DELETE_PET_ON_SCREEN,
+    id,
+  });
 
 export const finishLoading = () => ({
   type: FINISH_LOADING,

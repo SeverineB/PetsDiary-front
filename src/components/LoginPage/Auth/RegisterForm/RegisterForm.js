@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Alert, Modal } from 'react-bootstrap';
 
 import './RegisterForm.scss';
 
@@ -18,9 +19,11 @@ const RegisterForm = ({
     isLoading,
     error,
     errors,
-    setErrors, clearErrors
+    setErrors,
+    clearErrors
 }) => {
     const [showRegister, setShowRegister] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
 
     useEffect(() => {
         clearErrors();
@@ -93,8 +96,6 @@ const RegisterForm = ({
         }
     };
 
-    console.log('errors ', errors)
-
     const handleSubmit = (evt) => {
         evt.preventDefault();
         if (checkUsername && checkEmail && checkPassword) {
@@ -104,12 +105,13 @@ const RegisterForm = ({
 
     return (
         <div className="modal-register-form">
+            {!isSignedUp && (
+                <button className="register-button" variant="primary" onClick={() => {setShowRegister(true)}}>
+                    Inscription
+                </button>
+            )}
             {!isSignedUp && !isLoading && (
                 <>
-                    <Button className="register-button" variant="primary" onClick={() => {setShowRegister(true)}}>
-                        Inscription
-                    </Button>
-
                     <Modal className="modal-register-content-custom" show={showRegister} onHide={() => {setShowRegister(false)}}>
                         <Modal.Header closeButton>
                             <Modal.Title className="modal-register-form-title">
@@ -117,23 +119,14 @@ const RegisterForm = ({
                                 <img src={PawIcon} alt="paw coral" className="login-form-icon" />
                                 </Modal.Title>
                         </Modal.Header>
+  
                         <Modal.Body>
-                        {!isSignedUp && isFailed && (
-                            <p className="error-register">
-                                {error}
-                            </p>
-                        )}
-                            <Form onSubmit={handleSubmit} className="register-form">
-                                {/* <Form.Group controlId="formBasicUsername">
-                                <Form.Label>Nom d'utilisateur</Form.Label>
-                                <Form.Control
-                                    type="username"
-                                    placeholder="Votre nom d'utilisateur"
-                                    name="username"
-                                    value={username}
-                                    onChange={handleChange}
-                                />
-                                </Form.Group> */}
+                        {isFailed && !isSignedUp && (
+                                    <p className="error-register">
+                                        {error}
+                                    </p>
+                                )}
+                            <form onSubmit={handleSubmit} className="register-form">
                                 <label htmlFor="username">Votre nom d'utilisateur</label>
                                 <input
                                     className="input-username"
@@ -143,11 +136,9 @@ const RegisterForm = ({
                                     value={username}
                                     onChange={handleChange}
                                 />
-                                {errors.username ? (
                                 <div className="error-register-username">
                                     <p>{errors.username}</p>
                                 </div>
-                                ) : ''}
                                 <label htmlFor="email">Votre email</label>
                                 <input
                                     className="input-email"
@@ -160,11 +151,23 @@ const RegisterForm = ({
                                 <div className="error-register-email">
                                     <p>{errors.email}</p>
                                 </div>
-                                <label htmlFor="password">Votre password</label>
+                                <label htmlFor="password">Mot de passe</label>
                                 <input
                                     className="input-password"
                                     type="password"
                                     placeholder="Votre mot de passe"
+                                    name="password"
+                                    /* value={password} */
+                                    onChange={handleChange}
+                                />
+                                <div className="error-register-password">
+                                    <p>{errors.password}</p>
+                                </div>
+                                <label htmlFor="password">Mot de passe</label>
+                                <input
+                                    className="input-password-verif"
+                                    type="password"
+                                    placeholder="Veuillez retaper votre mot de passe"
                                     name="password"
                                     value={password}
                                     onChange={handleChange}
@@ -173,21 +176,21 @@ const RegisterForm = ({
                                     <p>{errors.password}</p>
                                 </div>
                                 <div className="register-form-btn">
-                                    <Button
+                                    <button
                                         className="register-button-submit"
                                         variant="primary"
                                         type="submit">
                                         Valider
-                                    </Button>
-                                    <Button
+                                    </button>
+                                    <button
                                         className="register-button-cancel"
                                         variant="secondary"
                                         onClick={() => {setShowRegister(false)}}
                                     >
                                         Annuler
-                                    </Button>
+                                    </button>
                                 </div>
-                            </Form>
+                            </form>
                         </Modal.Body>
                     </Modal>
                 </>

@@ -10,6 +10,7 @@ import {
 } from '../../actions';
 
 const mapStateToProps = (state) => ({
+    username: state.users.username,
     email: state.users.email,
     password: state.users.password,
     isLoading: state.auth.isLoading,
@@ -35,6 +36,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(
-mapStateToProps,
-mapDispatchToProps,
+    mapStateToProps,
+    mapDispatchToProps,
 )(LoginForm);

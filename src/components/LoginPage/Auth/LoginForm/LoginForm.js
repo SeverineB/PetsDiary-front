@@ -31,7 +31,7 @@ const LoginForm = ({
         if (value.length < 1) {
             setErrors('email', 'L\'email doit être renseigné');
         }
-        else if (!emailPattern.test(value)) {
+        else if (value.length > 1 && !emailPattern.test(value)) {
             setErrors('email', 'Le format de l\'email n\'est pas valide');
         }
         else {
@@ -76,18 +76,18 @@ const LoginForm = ({
     const handleSubmit = (evt) => {
         evt.preventDefault();
         if (checkEmail && checkPassword) {
+            console.log('les champs sont valides');
             login();
         }
     };
 
     return (
         <div className="modal-login-form">
-            {!isLogged &&(
+            <Button className="login-button" variant="primary" onClick={() => {setShowLogin(true)}}>
+                Connexion
+            </Button>
+            {!isLogged && (
                 <>
-                    <Button className="login-button" variant="primary" onClick={() => {setShowLogin(true)}}>
-                        Connexion
-                    </Button>
-
                     <Modal className="modal-login-content-custom"show={showLogin} onHide={() => {setShowLogin(false)}}>
                         <Modal.Header closeButton>
                             <Modal.Title className="modal-login-form-title">
@@ -97,15 +97,15 @@ const LoginForm = ({
                         </Modal.Header>
                         <Modal.Body>
                         {!isLogged && isFailed && (
-                            <p className="error-register">
+                            <p className="error-login">
                                 {error}
                             </p>
                         )}
                             <Form onSubmit={handleSubmit} className="login-form">
-                                <label htmlFor="email">Votre email</label>
+                                <label htmlFor="username">Votre email</label>
                                 <input
                                     className="input-email"
-                                    type="email"
+                                    type="username"
                                     placeholder="Votre email"
                                     name="email"
                                     value={email}
@@ -152,7 +152,8 @@ const LoginForm = ({
 };
 
 LoginForm.propTypes = {
-    email: PropTypes.string.isRequired,
+    /* email: PropTypes.string.isRequired, */
+    username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     changeUserField: PropTypes.func.isRequired,
     login: PropTypes.func.isRequired,

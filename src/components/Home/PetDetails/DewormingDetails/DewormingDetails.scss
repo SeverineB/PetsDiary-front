@@ -1,0 +1,45 @@
+@import 'src/styles/vars';
+
+.deworming-container {
+    padding: 0.5em;
+
+    .back-btn {
+        border: none;
+        border-radius: 30.5px;
+        padding: 0.4em;
+        background: none;
+
+        img {
+            width: 1.6em;
+        }
+    }
+
+    &-title {
+        padding: 0.5em;
+    }
+}
+
+.deworming-item {
+    width: 100%;
+    padding: 0.5em;
+
+    &-content {
+        display: flex;
+       
+
+        &-date {
+            width: 30%;
+        }
+
+        &-name {
+            width: 70%;
+        }
+
+        &-line {
+            width: 80%;
+            height: 1px;
+            background: grey;
+            margin-top: 0.5em;
+        }
+    }
+}

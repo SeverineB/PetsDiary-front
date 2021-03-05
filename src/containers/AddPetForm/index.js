@@ -12,7 +12,6 @@ import {
 
 const mapStateToProps = (state) => {
   return ({
-    open: state.pets.open,
     name: state.pets.name,
     age: state.pets.age,
     species: state.pets.species,
@@ -26,10 +25,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  openModal: () => {
-    const action = openModal();
-    dispatch(action);
-  },
   changeField: (name, value) => {
     dispatch(changeField(value, name));
   },

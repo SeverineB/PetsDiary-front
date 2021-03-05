@@ -28,6 +28,7 @@ const register = (state = initialState, action = {}) => {
                 ...state,
                 isSignedUp: true,
                 isLoading: true,
+
             };
         case REGISTER_FAILED:
             return {

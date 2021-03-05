@@ -1,0 +1,9 @@
+@import 'src/styles/vars';
+
+.weight-chart {
+    @include m767() {
+        width: 30em;
+        height: auto;
+        margin: 0;
+    };
+}

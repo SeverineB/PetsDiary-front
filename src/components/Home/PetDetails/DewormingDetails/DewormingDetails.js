@@ -67,7 +67,7 @@ const DewormingDetails = ({
     }
 
     return (
-        <div className="deworming-details-container">
+        <div className="deworming-container">
         <button
             className="back-btn"
             type="button"
@@ -75,8 +75,8 @@ const DewormingDetails = ({
         >
             <img src={backIcon} alt="black left arrow" />
         </button>
-        <h2>Suivi des vermifuges</h2>
-        <div className="deworming-details-list">
+        <h2 className="deworming-container-title">Suivi des vermifuges</h2>
+        <div className="deworming-list">
             {petDeworming.map((item) => (
                 <DewormingItem key={item._id} {...item} />
             ))}

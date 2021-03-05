@@ -77,7 +77,6 @@ switch (action.type) {
         formData.append('birthdate', birthdate);
         formData.append('ide', ide);
         formData.append('user_id', id);
-        console.log('FORMDATA ', formData);
         api.post('pet/add', formData,
             {
                 headers: {
@@ -86,7 +85,7 @@ switch (action.type) {
                 withCredentials: true,
             })
             .then((response) => {
-                console.log('Middleware API response ', response.data);
+                console.log('Middleware API response ADD PET', response.data);
                     store.dispatch(clearNewPet());
                     store.dispatch(getPetsList());
             })
@@ -100,18 +99,27 @@ switch (action.type) {
         console.log('je lance la requête pour éditer les infos générales de l\'animal');
         const state = store.getState();
         const {
+            avatar,
             name,
             age,
             species,
             breed,
+            birthdate,
+            ide,
         } = state.pets;
+
         const id = state.pets.currentPet._id;
+        console.log('ID DANS UPDATE AXIOS', id);
+
         const formData = new FormData();
-        formData.append('avatar', state.pets.avatar);
+        formData.append('avatar', avatar);
         formData.append('name', name);
         formData.append('age', age);
         formData.append('species', species);
         formData.append('breed', breed);
+        formData.append('birthdate', birthdate);
+        formData.append('ide', ide);
+        console.log('FORM DATA IN UPDATE AXIOS ', formData);
         api.patch(`pet/edit/${id}`, formData,
             {
                 headers: {
@@ -123,7 +131,6 @@ switch (action.type) {
                 console.log('Middleware UPDATE PET API response ', response.data);
                 store.dispatch(saveCurrentPet(response.data));
                 store.dispatch(getPetsList());
-                store.dispatch(clearNewPet());
             })
             .catch((error) => {
                 console.error('Une erreur est survenue ', error);
@@ -134,7 +141,7 @@ switch (action.type) {
 
     case DELETE_PET: {
         const state = store.getState();
-        const petId = state.pets.currentPet._id;
+        const petId = state.pets.id;
         console.log('je lance la requête pour supprimer un animal');
         api.delete(`pet/${petId}`,
             {
@@ -218,7 +225,7 @@ switch (action.type) {
                 withCredentials: true,
             })
             .then((response) => {
-                console.log('ITEM DELETED ', response.data);
+                console.log('ITEM DELETED ', response.data.weight);
                 store.dispatch(saveCurrentPet(response.data))
                 store.dispatch(saveCurrentWeight(response.data.weight));
             })
@@ -254,7 +261,7 @@ switch (action.type) {
                 
             })
             .catch((error) => {
-                console.error('Une erreur est survenue ', error.message);
+                console.error('Une erreur est survenue ', error.response.data.message);
                 store.dispatch(getErrors(error.response.data.message));
             });
         break;
@@ -277,6 +284,7 @@ switch (action.type) {
         })
             .then((response) => {
                 console.log('Middleware UPDATE PET WEIGHT DETAILS API response ', response.data);
+                store.dispatch(saveCurrentPet(response.data));
                 store.dispatch(getPetsList());
                 store.dispatch(clearNewPet());
             })
@@ -290,20 +298,23 @@ switch (action.type) {
     case DELETE_VACCINE: {
         const state = store.getState();
         const vaccineId = localStorage.getItem('vaccineToDelete');
+        console.log('je lance la requête pour supprimer un item de vaccin', vaccineId);
         api.delete(`pet/vaccine/${vaccineId}`,
             {
                 withCredentials: true,
             })
             .then((response) => {
-                console.log('ITEM DELETED ', response.data);
+                console.log('ITEM DELETED ', response.data.vaccine);
                 store.dispatch(saveCurrentPet(response.data))
                 store.dispatch(saveCurrentVaccine(response.data.vaccine));
             })
             .catch((error) => {
+                console.error(error);
                 store.dispatch(getErrors(error.response.data.message));
             });
         break;
     }
+
     case ADD_DEWORMING: {
         console.log('je suis dans ADD DEWORMING ')
         const state = store.getState();

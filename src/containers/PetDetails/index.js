@@ -8,7 +8,9 @@ import {
     saveCurrentPet,
     saveCurrentWeight,
     saveCurrentVaccine,
-    deletePet
+    savePetToDelete,
+    deletePet,
+    deletePetOnScreen
 } from '../../actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -31,8 +33,15 @@ const mapDispatchToProps = (dispatch) => ({
         const action = saveCurrentVaccine(vaccine);
         dispatch(action);
     },
+    savePetToDelete: (id) => {
+        dispatch(savePetToDelete(id));
+    },
     deletePet: (id) => {
         const action = deletePet(id);
+        dispatch(action);
+    },
+    deletePetOnScreen: (id) => {
+        const action = deletePetOnScreen(id);
         dispatch(action);
     },
 });

@@ -49,6 +49,13 @@ body, html {
 }
 
 @font-face {
+    font-family: "Raleway";
+    src: url("../../src/assets/fonts/Raleway-Regular.ttf");
+      font-weight: normal;
+      font-style: normal;
+  }
+
+@font-face {
   font-family: "Montserrat";
   src: url("../../src/assets/fonts/Montserrat-Regular.ttf");
     font-weight: normal;

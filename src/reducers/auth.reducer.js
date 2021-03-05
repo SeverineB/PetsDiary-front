@@ -1,28 +1,24 @@
 import {
-  SAVE_USER,
-  LOGIN,
-  LOGIN_SUCCESS,
-  LOGIN_FAILED,
-  FINISH_LOADING,
-  CHECK,
-  LOGOUT,
-  USER_CONNECTED,
-  USER_DISCONNECTED,
+    SAVE_USER,
+    LOGIN,
+    LOGIN_SUCCESS,
+    LOGIN_FAILED,
+    FINISH_LOADING,
+    USER_CONNECTED,
+    CHECK,
+    LOGOUT,
 } from '../actions';
 
 const initialState = {
-  openLogin: false,
-  isLogged: false,
-  loading: false,
-  session: {},
-  isLoading: false,
-  isFailed: false,
-  isDisconnected: false,
-  error: {},
+    session: {},
+    isLogged: false,
+    isLoading: false,
+    isFailed: false,
+    error: {},
 };
 
-const authReducer = (state = initialState, action = {}) => {
-  switch (action.type) {
+const auth = (state = initialState, action = {}) => {
+switch (action.type) {
     case SAVE_USER:
         return {
             ...state,
@@ -32,13 +28,13 @@ const authReducer = (state = initialState, action = {}) => {
             id: action.sessionId,
             username: action.sessionUsername,
             },
-      };
+        };
     case LOGIN:
         return {
             ...state,
             isLoading: true,
             isLogged: true,
-      };
+    };
     case LOGIN_SUCCESS:
         return {
             ...state,
@@ -62,27 +58,27 @@ const authReducer = (state = initialState, action = {}) => {
         return {
             ...state,
             isLogged: true,
-      };
+    };
     case LOGOUT:
         return {
             ...state,
             isLogged: false,
             isLoading: true,
             session: {},
-      };
+    };
     case USER_CONNECTED:
         return {
             ...state,
             isLogged: action.isLogged,
         };
-    case USER_DISCONNECTED:
+    /*case USER_DISCONNECTED:
         return {
             ...state,
             isLogged: false,
-        };
+        }; */
     default:
-      return state;
-  }
+    return state;
+}
 };
 
-export default authReducer;
+export default auth;

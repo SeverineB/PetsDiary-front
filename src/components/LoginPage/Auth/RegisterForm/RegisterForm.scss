@@ -9,6 +9,9 @@
 
 .modal-content-custom {
     margin-top: 35%;
+    @include m1900() {
+        margin-top: 15%;
+    };
 }
 
 .modal-register-form-title {
@@ -16,8 +19,13 @@
     font-weight: bold;
 }
 
-button.btn.btn-primary.register-button {
+@import 'src/styles/vars';
+
+.register-button,
+.register-button-submit,
+.register-button-cancel {
     background-color: $accent-color;
+    color: #ffffff;
     border: none;
     font-family: "Quicksand";
     font-size: 1em;
@@ -33,6 +41,9 @@ button.btn.btn-primary.register-button {
     @include m1600() {
         font-size: 1.4em;
     };
+    @include m1900() {
+        font-size: 1.1em;
+    };
     
     &:focus {
         box-shadow: none;
@@ -46,6 +57,8 @@ button.btn.btn-primary.register-button {
 .register-form {
 
     &-btn {
+        display: flex;
+        justify-content: center;
         margin-top: 1.5em;
     }
 
@@ -66,6 +79,8 @@ button.btn.btn-primary.register-button {
         background-color: white!important;
         border: none;
         border-bottom: 1px solid $light-color;
+        border-radius: 0;
+        filter: none;
     }
 
     .input-email:focus,
@@ -73,6 +88,7 @@ button.btn.btn-primary.register-button {
     .input-username:focus {
         border: none;
         border-bottom: 1px solid $accent-color;
+        filter: none;
     }
 
     input:-webkit-autofill {
@@ -84,6 +100,7 @@ button.btn.btn-primary.register-button {
     input:-webkit-autofill:focus, 
     input:-webkit-autofill:active  {
         -webkit-box-shadow: 0 0 0 30px white inset !important;
+        box-shadow: 0 0 0 30px white inset !important;
     }
 
     button.btn.btn-primary.register-button-submit {
@@ -120,4 +137,5 @@ button.btn.btn-primary.register-button {
         font-size: 0.8em;
         color: red;
     }
+
 }

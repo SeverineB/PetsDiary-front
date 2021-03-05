@@ -8,13 +8,12 @@ import {
 const initialState = {
   users: [],
   currentUser: {},
+  username: '',
   email: '',
   password: '',
-  username: '',
-  loading: false,
 };
 
-const userReducer = (state = initialState, action = {}) => {
+const users = (state = initialState, action = {}) => {
   switch (action.type) {
     case GET_USERS:
       return {
@@ -35,11 +34,11 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         email: '',
         password: '',
-        
+        username: '',
     };
     default:
       return state;
   }
 };
 
-export default userReducer;
+export default users;

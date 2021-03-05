@@ -14,7 +14,15 @@
     @include m1024() {
         width: 40vw;
     };
-    @include m1200() {
-        width: 20%;
+    @include m1024ipad() {
+        width: 40%;
     };
+    @include m1200() {
+        width: 30%;
+    };
+
+    .success-message {
+        position: absolute;
+        margin-top: -15%;
+    }
 }

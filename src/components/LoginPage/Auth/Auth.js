@@ -10,34 +10,46 @@ import HomeIcon from '../../../assets/icons/pet-house.png';
 
 import './Auth.scss';
 
-const Auth = ({ checkIsLogged, logout }) => {
-  const handleLogout = () => {
+const Auth = ({
+    checkIsLogged,
+    isSignedUp,
+    logout
+}) => {
+const handleLogout = () => {
     console.log('je me déconnecte');
     logout();
-  };
-  return (
+};
+return (
     <div className="auth">
-      {!checkIsLogged && (
+    {!checkIsLogged && (
         <>
-          <LoginForm />
-          <RegisterForm />
+        <LoginForm />
+        <RegisterForm />
         </>
-      )}
-      {checkIsLogged && (
-      <div className="logout">
+    )}
+    {checkIsLogged && (
+    <div className="logout">
         <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
-      </div>
-      )}
-      {checkIsLogged && (
-        <Redirect to="/home" />
-      )}
     </div>
-  );
+    )}
+    {checkIsLogged && (
+        <Redirect to="/home" />
+    )}
+        {isSignedUp && (
+            <div className="success-message">
+                <div className="success-message-text">
+                    <p><span>Le compte a bien été créé, vous pouvez vous connecter !</span></p>
+                </div>
+            </div>
+        )}
+    </div>
+);
 };
 
 Auth.propTypes = {
-  checkIsLogged: PropTypes.bool.isRequired,
-  logout: PropTypes.func.isRequired,
+    checkIsLogged: PropTypes.bool.isRequired,
+    isSignedUp: PropTypes.bool.isRequired,
+    logout: PropTypes.func.isRequired,
 };
 
 export default Auth;
