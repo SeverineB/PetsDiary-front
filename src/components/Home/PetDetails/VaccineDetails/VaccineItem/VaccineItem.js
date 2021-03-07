@@ -46,9 +46,8 @@ const VaccineItem = ({
                         onClick={handleShowDeleteVaccineModal}
                     >
                         <img src={cancelIcon} alt="brown croce" />
-
                     </button>
-            </div>
+                </div>
             </div>
             <div className="vaccine-item-content-line" />
             

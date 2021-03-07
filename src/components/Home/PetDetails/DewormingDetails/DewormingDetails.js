@@ -21,6 +21,8 @@ const DewormingDetails = ({
 
     const petId = localStorage.getItem('pet_id');
 
+    console.log('PET DEWORMING', petDeworming)
+
     const closeShowDeworming = () => {  
         setErrors('dewormingDate', '');
         setErrors('dewormingName', '');
@@ -69,32 +71,36 @@ const DewormingDetails = ({
     return (
         <div className="deworming-container">
         <button
-            className="back-btn"
+            className="deworming-container__btn-back"
             type="button"
             onClick={() => history.push(`/pet/${petId}`)}
         >
             <img src={backIcon} alt="black left arrow" />
         </button>
         <h2 className="deworming-container-title">Suivi des vermifuges</h2>
-        <div className="deworming-list">
+        <div className="deworming-container-list">
             {petDeworming.map((item) => (
                 <DewormingItem key={item._id} {...item} />
             ))}
         </div>
-        <div className="add-deworming">
+        <div className="deworming-container-add">
             <button
                 type="submit"
-                className="add-deworming-btn"
+                className="deworming-container-add__btn"
                 onClick={() => openShowDeworming(true)}
             >
-            Ajouter
+             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52">
+                <path d="M26,0C11.664,0,0,11.663,0,26s11.664,26,26,26s26-11.663,26-26S40.336,0,26,0z M38.5,28H28v11c0,1.104-0.896,2-2,2
+                    s-2-0.896-2-2V28H13.5c-1.104,0-2-0.896-2-2s0.896-2,2-2H24V14c0-1.104,0.896-2,2-2s2,0.896,2,2v10h10.5c1.104,0,2,0.896,2,2
+                    S39.604,28,38.5,28z"/>
+            </svg>
             </button>
-            <Modal show={showDeworming} onHide={closeShowDeworming} className="modal-add-deworming">
+            <Modal show={showDeworming} onHide={closeShowDeworming} className="deworming-container-add__modal">
                 <Modal.Header closeButton>
                     <Modal.Title>Ajouter un vermifuge</Modal.Title>
                 </Modal.Header>
                     <Modal.Body>
-                        <Form onSubmit={handleSubmit} className="add-deworming-form">
+                        <Form onSubmit={handleSubmit} className="deworming-container-add__modal__form">
                             <Form.Label>Date</Form.Label>
                             <Form.Control
                                 type="date"
@@ -120,21 +126,21 @@ const DewormingDetails = ({
                             <div className="name-error">
                                 <p>{error.dewormingName}</p>
                             </div>
-                            <div className="add-deworming-form-btn">
-                                <Button
-                                    className="add-deworming-button-submit"
+                            <div className="modal__form-btns">
+                                <button
+                                    className="add-button-submit"
                                     variant="primary"
                                     type="submit"
                                 >
                                     Valider
-                                </Button>
-                                <Button
-                                    className="add-deworming-button-cancel"
+                                </button>
+                                <button
+                                    className="add-button-cancel"
                                     variant="secondary"
                                     onClick={closeShowDeworming}
                                 >
                                     Annuler
-                                </Button>
+                                </button>
                             </div>
                         </Form>
                     </Modal.Body>

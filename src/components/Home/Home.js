@@ -18,12 +18,16 @@ const Home = ({
     clearCurrentPet,
     getPetsList,
     petsList,
+    getEventsList,
+    eventsList
 }) => {
     console.log('ISLOGGED DANS HOME ', isLogged);
     console.log('PETSLIST DANS HOME ', petsList);
+    console.log('EVENTSLIST DANS HOME ', eventsList);
     useEffect(() => {
         clearCurrentPet();
         getPetsList();
+        getEventsList();
     }, []);
 
     const username = localStorage.getItem('username');
@@ -35,9 +39,6 @@ const Home = ({
     return (
         <>
         <div className="home-container">
-{/*                 <div className="logo-small">
-                    <img src={logo} alt="cat and dog in badge" className="home-container-logo" />
-                </div> */}
                 {isLogged && (
                     <Alert>
                         <p>Vous êtes bien connecté(e) {username}</p>
@@ -52,11 +53,11 @@ const Home = ({
                 ))}
             </div>
             </div>
-    {/*        <div className="appointments-section">
-            <Link to="/appointments">Mes rendez-vous</Link>
-            </div> */}
+            <div className="appointments-section">
+            <Link to="/event">Mes rendez-vous</Link>
+            </div>
             <div className="add-pet-button">
-                <Link to="/add">
+                <Link to="/pet/add">
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 457.47 457.469">
                         <g>
                             <path d="M228.734,0C102.41,0,0,102.41,0,228.735C0,355.06,102.41,457.469,228.734,457.469
@@ -80,6 +81,7 @@ const Home = ({
 Home.propTypes = {
     clearCurrentPet: PropTypes.func.isRequired,
     getPetsList: PropTypes.func.isRequired,
+    getEventsList: PropTypes.func.isRequired,
     isLogged: PropTypes.bool.isRequired,
     logout: PropTypes.func.isRequired,
     petsList: PropTypes.arrayOf(

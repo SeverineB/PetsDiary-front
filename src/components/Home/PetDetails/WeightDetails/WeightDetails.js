@@ -30,8 +30,6 @@ const WeightDetails = ({
      };
     const newPetWeight = sortByDate(petWeight);
 
-    console.log('PET WEIGHT IN DETAILS', petWeight)
-
     const closeShowWeight = () => {  
         setErrors('weightDate', '');
         setErrors('weightValue', '');
@@ -74,7 +72,7 @@ const WeightDetails = ({
         evt.preventDefault();
         addWeight();
         openShowWeight(false);
-        history.push(`/pet/${petWeight[0].pet_id}/weight`)
+        history.push(`/pet/${petId}/weight`)
     }
 
     return (

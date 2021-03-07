@@ -52,28 +52,3 @@
         }
     }
 }
-
-.antiflea-item {
-    width: 100%;
-    padding: 0.5em;
-
-    &-content {
-        display: flex;
-       
-
-        &-date {
-            width: 30%;
-        }
-
-        &-name {
-            width: 70%;
-        }
-
-        &-line {
-            width: 80%;
-            height: 1px;
-            background: grey;
-            margin-top: 0.5em;
-        }
-    }
-}

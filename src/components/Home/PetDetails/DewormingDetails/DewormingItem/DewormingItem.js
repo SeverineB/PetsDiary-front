@@ -6,6 +6,8 @@ import dayjs from 'dayjs';
 
 import './DewormingItem.scss';
 
+import cancelIcon from '../../../../../assets/icons/close.png';
+
 const DewormingItem = ({
     _id,
     pet_id,
@@ -16,15 +18,12 @@ const DewormingItem = ({
     const history = useHistory();
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-    console.log('SHOW MODAL ', showDeleteModal);
     const handleCloseDeleteModal = () => setShowDeleteModal(false);
     const handleShowDeleteModal = () => setShowDeleteModal(true);
 
     const handleDelete = () => {
-        console.log('je supprime un item vermifuge', _id);
         localStorage.setItem('dewormingToDelete', _id);
         deleteDeworming(_id);
-        /* setShowDeleteModal(false); */
         history.push(`/pet/${pet_id}/deworming`);
     };
 
@@ -39,20 +38,23 @@ const DewormingItem = ({
                     <p>{dewormingName}
                     </p>
                 </div>
+                <div className="deworming-item-content-delete">
+                    <button type="button" className="deworming-item-content-delete__btn" onClick={handleShowDeleteModal}>
+                        <img src={cancelIcon} alt="brown croce" />
+                    </button>
+                </div>
             </div>
             <div className="deworming-item-content-line" />
-            <div className="delete">
-                <button type="button" className="delete-btn" onClick={handleShowDeleteModal}>supp</button>
-            </div>
-            <Modal show={showDeleteModal} onHide={handleShowDeleteModal} className="modal-add-deworming">
+          
+            <Modal show={showDeleteModal} onHide={handleShowDeleteModal} className="modal-delete-deworming">
                 <Modal.Header closeButton>
                     <Modal.Title>Supprimer ce vermifuge ?</Modal.Title>
                 </Modal.Header>
                 <Modal.Footer>
-                    <button type="button" variant="secondary" onClick={handleCloseDeleteModal}>
+                    <button type="button" className="modal-delete-cancel-btn" variant="secondary" onClick={handleCloseDeleteModal}>
                         Annuler
                     </button>
-                    <button type="button" variant="primary" onClick={handleDelete}>
+                    <button type="button" className="modal-delete-validate-btn" variant="primary" onClick={handleDelete}>
                         Oui, supprimer
                     </button>
                 </Modal.Footer>

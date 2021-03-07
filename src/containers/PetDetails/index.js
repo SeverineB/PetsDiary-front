@@ -8,6 +8,8 @@ import {
     saveCurrentPet,
     saveCurrentWeight,
     saveCurrentVaccine,
+    saveCurrentAntiflea,
+    saveCurrentDeworming,
     savePetToDelete,
     deletePet,
     deletePetOnScreen
@@ -31,6 +33,14 @@ const mapDispatchToProps = (dispatch) => ({
     },
     saveCurrentVaccine: (vaccine) => {
         const action = saveCurrentVaccine(vaccine);
+        dispatch(action);
+    },
+    saveCurrentAntiflea: (antiflea) => {
+        const action = saveCurrentAntiflea(antiflea);
+        dispatch(action);
+    },
+    saveCurrentDeworming: (deworming) => {
+        const action = saveCurrentDeworming(deworming);
         dispatch(action);
     },
     savePetToDelete: (id) => {

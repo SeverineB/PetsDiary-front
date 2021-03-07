@@ -155,7 +155,6 @@ const petReducer = (state = initialState, action = {}) => {
                 isPetsLoading: false,
             };
         case ADD_WEIGHT:
-            console.log('ACTION WEIGHT ', action.weight)
             return {
                 ...state,
                 weight: [...state.pets.weight, action.weight]
@@ -172,7 +171,6 @@ const petReducer = (state = initialState, action = {}) => {
                 weight: newWeight,
         };
         case ADD_VACCINE:
-            console.log('ACTION VACCINE ', action.vaccine)
             return {
                 ...state,
                 vaccine: [...state.pets.vaccine, action.vaccine]
@@ -189,7 +187,6 @@ const petReducer = (state = initialState, action = {}) => {
                 vaccine: newVaccine,
         };
         case ADD_DEWORMING:
-            console.log('ACTION VACCINE ', action.vaccine)
             return {
                 ...state,
                 deworming: [...state.pets.deworming, action.deworming]
@@ -206,7 +203,6 @@ const petReducer = (state = initialState, action = {}) => {
                 deworming: newDeworming,
         };
         case ADD_ANTIFLEA:
-            console.log('ACTION ANTIFLEA ', action.antiflea)
             return {
                 ...state,
                 antiflea: [...state.pets.antiflea, action.antiflea]

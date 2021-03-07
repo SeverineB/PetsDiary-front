@@ -41,7 +41,6 @@ switch (action.type) {
                 withCredentials: true,
             })
             .then((response) => {
-                console.log('middleware GET PETSLIST response.data vaut ', response.data);
                 store.dispatch(savePetsList(response.data));
             })
             .catch((error) => {
@@ -54,7 +53,6 @@ switch (action.type) {
     }
 
     case ADD_PET: {
-        console.log('je suis dans ADD PET ')
         const state = store.getState();
         const {
             name,
@@ -109,7 +107,6 @@ switch (action.type) {
         } = state.pets;
 
         const id = state.pets.currentPet._id;
-        console.log('ID DANS UPDATE AXIOS', id);
 
         const formData = new FormData();
         formData.append('avatar', avatar);
@@ -158,7 +155,6 @@ switch (action.type) {
     }
 
     case ADD_WEIGHT: {
-        console.log('je suis dans ADD WEIGHT ')
         const state = store.getState();
         const {
             weightDate,
@@ -174,7 +170,6 @@ switch (action.type) {
             withCredentials: true,
         })
             .then((response) => {
-                console.log('Middleware ADD WEIGHT ', response.data);
                 store.dispatch(saveCurrentPet(response.data));
                 store.dispatch(saveCurrentWeight(response.data.weight));
                 store.dispatch(getPetsList());

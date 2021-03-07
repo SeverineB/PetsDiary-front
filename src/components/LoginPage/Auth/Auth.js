@@ -33,7 +33,7 @@ return (
     </div>
     )}
     {checkIsLogged && (
-        <Redirect to="/home" />
+        <Redirect to="/pet" />
     )}
         {isSignedUp && (
             <div className="success-message">

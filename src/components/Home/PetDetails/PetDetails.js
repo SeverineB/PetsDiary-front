@@ -20,6 +20,8 @@ const PetDetails = ({
     saveCurrentPet,
     saveCurrentWeight,
     saveCurrentVaccine,
+    saveCurrentAntiflea,
+    saveCurrentDeworming,
     savePetToDelete,
     deletePetOnScreen,
     deletePet,
@@ -39,6 +41,8 @@ const PetDetails = ({
         saveCurrentPet(pet);
         saveCurrentWeight(pet.weight);
         saveCurrentVaccine(pet.vaccine);
+        saveCurrentAntiflea(pet.antiflea);
+        saveCurrentDeworming(pet.deworming);
         localStorage.setItem('pet_id', pet._id);
     }, []);
     

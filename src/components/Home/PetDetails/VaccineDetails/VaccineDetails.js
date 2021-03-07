@@ -21,9 +21,6 @@ const VaccineDetails = ({
 
     const petId = localStorage.getItem('pet_id');
 
-
-    console.log('PET VACCINE IN DETAILS', petVaccine)
-
     const closeShowVaccine = () => {  
         setErrors('vaccineDate', '');
         setErrors('vaccineName', '');
@@ -66,7 +63,7 @@ const VaccineDetails = ({
         evt.preventDefault();
         addVaccine();
         openShowVaccine(false);
-        history.push(`/pet/${pet_id}/vaccine`)
+        history.push(`/pet/${petId}/vaccine`)
     }
 
     return (
@@ -97,7 +94,7 @@ const VaccineDetails = ({
                 </button>
                 <Modal show={showVaccine} onHide={closeShowVaccine} className="vaccine-container-add__modal">
                 <Modal.Header closeButton>
-                    <Modal.Title>Ajouter un item de vaccin</Modal.Title>
+                    <Modal.Title>Ajouter un vaccin</Modal.Title>
                 </Modal.Header>
                     <Modal.Body>
                         <form onSubmit={handleSubmit} className="vaccine-container-add__modal__form">

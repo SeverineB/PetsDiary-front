@@ -13,7 +13,7 @@ const PublicRoute = ({ component: Component, isLogged, ...rest }) => {
       render={(props) => (
         !isLogged
           ? <Component {...props} />
-          : <Redirect to="/home" />
+          : <Redirect to="/pet" />
       )}
     />
   );

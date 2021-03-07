@@ -15,7 +15,7 @@ const NavBar = ({ isLogged, logout }) => {
   };
     return (
         <Navbar bg="light" expand="lg" id="navbar-custom">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="#pet">
             {isLogged && (
                 <div className="logo-small">
                     <img src={logo} alt="cat and dog in badge" />
@@ -28,13 +28,13 @@ const NavBar = ({ isLogged, logout }) => {
             <Nav className="mr-auto">
             {!isLogged && (
                 <>
-                <Link to="/home">Accueil</Link>
+                <Link to="/pet">Accueil</Link>
                 </>
             )}
             {isLogged && (
                 <>
-                <Link to="/home">Home</Link>
-                <Link to="/appointments">Mes rendez-vous</Link>
+                <Link to="/pet">Home</Link>
+                <Link to="/event">Mes rendez-vous</Link>
                 <Link to="/logout" onClick={handleLogout}>Déconnexion</Link>
                 </>
             )}
