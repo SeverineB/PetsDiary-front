@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory, withRouter } from 'react-router-dom';
-import { Modal, Form } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
 import dayjs from 'dayjs';
 
 import './DewormingItem.scss';

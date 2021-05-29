@@ -92,7 +92,6 @@ const LoginForm = ({
                         <Modal.Header closeButton>
                             <Modal.Title className="modal-login-form-title">
                                 Connexion
-                                <img src={PawIcon} alt="paw coral" className="login-form-icon" />
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>

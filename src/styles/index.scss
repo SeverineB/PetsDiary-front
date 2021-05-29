@@ -1,24 +1,61 @@
 @import 'reset';
 @import 'vars';
+@import 'react-big-calendar/lib/sass/styles';
 
-body, html {
+html {
+    height: 100vh;
+    box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
   margin: 0;
   padding: 0;
   min-height: 100%;
   position: relative;
-  font-family: sans-serif;
+  font-family: 'Muli';
+  height: 100%;
 }
 
 #root {
-    height: 100vh;
+    height: 100%;
+}
+
+h1, h2 {
+    font-family: 'PassionOne';
+}
+
+.section-title {
+    font-family: 'CorbenBold';
+}
+
+.back-icon-container {
+    margin: 0.7em 0;
+    width: 1.5em;
+    height: 1.5em;
+   
+    svg {
+        fill: $color-green-dark;
+        transition: all 200ms ease-in;
+    }
+
+    &:hover svg {
+        fill: $color-green-light;
+        transition: all 200ms ease-in;
+    }
+
 }
 
 @font-face {
-  font-family: "Adventure";
-  src: url("../../src/assets/fonts/Adventure.otf");
-    font-weight: normal;
-    font-style: normal;
-}
+    font-family: "Rocknroll";
+    src: url("../../src/assets/fonts/RocknRollOne-Regular.ttf");
+      font-weight: normal;
+      font-style: normal;
+  }
 
 @font-face {
     font-family: "Karla";
@@ -26,20 +63,6 @@ body, html {
       font-weight: normal;
       font-style: normal;
   }
-
-@font-face {
-  font-family: "Bangers";
-  src: url("../../src/assets/fonts/Bangers-Regular.ttf");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-  font-family: "Nunito";
-  src: url("../../src/assets/fonts/Nunito-Regular.ttf");
-    font-weight: normal;
-    font-style: normal;
-}
 
 @font-face {
   font-family: "Quicksand";
@@ -67,4 +90,46 @@ body, html {
   src: url("../../src/assets/fonts/PlayfairDisplay-Regular.ttf");
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+    font-family: "Coolvetica";
+    src: url("../../src/assets/fonts/Coolvetica.ttf");
+      font-weight: normal;
+      font-style: normal;
+}
+
+@font-face {
+    font-family: "BasisGrotesque";
+    src: url("../../src/assets/fonts/BasisGrotesquePro-Regular.woff");
+      font-weight: normal;
+      font-style: normal;
+}
+
+@font-face {
+    font-family: "OrelegaOne";
+    src: url("../../src/assets/fonts/OrelegaOne-Regular.ttf");
+      font-weight: normal;
+      font-style: normal;
+}
+
+@font-face {
+    font-family: "CorbenBold";
+    src: url("../../src/assets/fonts/Corben-Bold.ttf");
+      font-weight: normal;
+      font-style: normal;
+}
+
+@font-face {
+    font-family: "Muli";
+    src: url("../../src/assets/fonts/Muli.ttf");
+      font-weight: normal;
+      font-style: normal;
+}
+
+@font-face {
+    font-family: "PassionOne";
+    src: url("../../src/assets/fonts/PassionOne-Regular.ttf");
+      font-weight: normal;
+      font-style: normal;
 }

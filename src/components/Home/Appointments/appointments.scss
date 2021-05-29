@@ -1,0 +1,14 @@
+@import 'src/styles/vars';
+
+h1 {
+    text-align: center;
+}
+
+.events-item {
+    border-bottom: 1px solid grey;
+    font-size: 0.8em;
+
+    p {
+        margin-bottom: 0;
+    }
+}

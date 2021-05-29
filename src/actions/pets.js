@@ -9,6 +9,7 @@ export const CHANGE_URL = 'CHANGE_URL';
 export const SAVE_PET_TO_DELETE = 'SAVE_PET_TO_DELETE';
 export const DELETE_PET = 'DELETE_PET';
 export const DELETE_PET_ON_SCREEN = 'DELETE_PET_ON_SCREEN';
+export const GET_EVENTSLIST_BY_PET = 'GET_EVENTSLIST_BY_PET';
 
 export const CLEAR_NEW_PET = 'CLEAR_NEW_PET';
 export const FINISH_LOADING = 'FINISH_LOADING';
@@ -18,6 +19,11 @@ export const FINISH_LOADING = 'FINISH_LOADING';
 export const getPetsList = () => ({
   type: GET_PETSLIST,
 });
+
+export const getEventsListByPet = (petId) => ({
+    type: GET_EVENTSLIST_BY_PET,
+    petId
+  });
 
 export const savePetsList = (petsList) => ({
   type: SAVE_PETSLIST,

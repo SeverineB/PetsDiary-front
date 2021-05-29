@@ -11,11 +11,11 @@ const Appointments = ({ eventsList, getEventsList }) => {
 
     return (
       <div>
+          <h1>Rendez-vous</h1>
         {eventsList.map((event) => (
-                <div class="events-item" key={event._id}>
-                    <p>{event.name}</p>
+                <div className="events-item" key={event._id}>
                     <p>{dayjs(event.startDate).format('DD/MM/YYYY')}</p>
-                    <p>{dayjs(event.endDate).format('DD/MM/YYYY')}</p>
+                    <p>{event.name}</p>
                     <p>{event.address}</p>
                 </div>
             ))}

@@ -2,9 +2,9 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Navbar, Nav, NavLink } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 
-import logo from '../../assets/img/LogoPetsDiary.png';
+import logo from '../../assets/img/Logo-title-white.png';
 
 import './Navbar.scss';
 

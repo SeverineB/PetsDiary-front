@@ -1,0 +1,23 @@
+@import 'src/styles/vars';
+
+.calendar-container {
+
+    &__link {
+        width: 4em;
+        height: 4em;
+        display: flex;
+        justify-content: center;
+        margin: 1em auto;
+        
+        svg {
+            width: 3em;
+            fill: $main-color;
+        }
+    }
+
+    .rbc-day-slot .rbc-background-event, 
+    .rbc-event {
+        background-color: $main-color;
+    }
+
+}

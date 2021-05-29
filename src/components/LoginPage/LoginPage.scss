@@ -7,15 +7,11 @@
     align-items: center;
     justify-content: space-around;
     width: 100vw;
-    height: 90%;
     margin: 0 auto;
-    @include m767() {
-        height: 90vh;
-        justify-content: space-around;
-    };
-    @include m1024() {
-        align-items: center;
-        justify-content: space-around;
+    gap: 0.5em;
+    @include m1600() {
+        flex-direction: row;
+        height: 90%;
     };
 
     &-infos {
@@ -26,27 +22,5 @@
         align-items: center;
         justify-content: space-around;
         margin: 0 auto;
-        height: 60vh;
-
-        @include m767() {
-            justify-content: space-around;
-            width: 100vw;
-            height: 55vh;
-        };
-        @include m1024() {
-            flex-direction: row;
-            height: 75%;
-        };
-        @include m1024ipad() {
-            flex-direction: row;
-            height: 40%;
-        };
-        @include m1200() {
-            height: 50vh;
-        };
-        @include m1600() {
-            align-items: center;
-            justify-content: center;
-        };
     }
 }

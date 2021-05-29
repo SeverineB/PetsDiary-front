@@ -14,115 +14,111 @@ import {
     clearNewEvent,
     finishLoading,
     getErrors
-} from '../actions';
+} from '../actions'
 
 const events = (store) => (next) => (action) => {
 switch (action.type) {
     case GET_EVENTSLIST: {
-        const userId = localStorage.getItem('id');
-        console.log('je lance la requête pour récupérer les évènements')
+        const userId = localStorage.getItem('id')
         api.get(`user/${userId}/events`,
             {
                 withCredentials: true,
             })
             .then((response) => {
-                console.log('EVENTS LIST', response.data)
-                store.dispatch(saveEventsList(response.data));
+                store.dispatch(saveEventsList(response.data))
             })
             .catch((error) => {
-                console.error(error);
+                console.error(error)
             })
             .finally(() => {
-                store.dispatch(finishLoading());
-            });
-        break;
+                store.dispatch(finishLoading())
+            })
+        break
     }
 
     case ADD_EVENT: {
-        const state = store.getState();
+        const state = store.getState()
         const {
-            name,
-            startDate,
-            endDate,
+            title,
+            start,
+            end,
             address
-        } = state.events;
-        const { id } = state.auth.session;
+        } = state.events
+        const user_id = state.auth.session.id
+        const pet_id = localStorage.getItem("petId")
         
         api.post('event/add', {
-            id,
-            name,
-            startDate,
-            endDate,
-            address
+            user_id,
+            title,
+            start,
+            end,
+            address,
+            pet_id
         },
             {
                 withCredentials: true,
             })
             .then((response) => {
-                console.log('Middleware API response ADD event', response.data);
-                    store.dispatch(clearNewEvent());
-                    store.dispatch(getEventsList());
+                store.dispatch(clearNewEvent())
+                store.dispatch(getEventsList())
             })
             .catch((error) => {
-                console.error('Une erreur est survenue ', error.message);
-            });
-        break;
+                console.error('Une erreur est survenue ', error.message)
+            })
+        break
     }
 
     case UPDATE_EVENT: {
-        console.log('je lance la requête pour éditer les infos générales de l\'évènement');
-        const state = store.getState();
+        const state = store.getState()
         const {
-            name,
-            startDate,
-            endDate,
+            title,
+            start,
+            end,
             address,
-        } = state.events;
+        } = state.events
 
-        const id = state.events.currentevent._id;
+        const id = state.events.currentevent._id
 
         api.patch(`event/edit/${id}`, {
-            name,
-            startDate,
-            endDate,
+            title,
+            start,
+            end,
             address
         },
             {
                 withCredentials: true,
             })
             .then((response) => {
-                console.log('Middleware UPDATE event API response ', response.data);
-                store.dispatch(saveCurrentEvent(response.data));
-                store.dispatch(getEventsList());
+                store.dispatch(saveCurrentEvent(response.data))
+                store.dispatch(getEventsList())
             })
             .catch((error) => {
-                console.error('Une erreur est survenue ', error);
-            });
-        break;
+                console.error('Une erreur est survenue ', error)
+            })
+        break
     }
 
 
     case DELETE_EVENT: {
-        const state = store.getState();
-        const eventId = state.events.id;
-        console.log('je lance la requête pour supprimer un évènement');
+        const state = store.getState()
+        const eventId = state.events.id
         api.delete(`event/${eventId}`,
             {
                 withCredentials: true,
             })
             .then((response) => {
-                console.log(response);
+                console.log(response)
 
             })
             .catch((error) => {
-                console.error(error);
-            });
-        break;
+                console.error(error)
+            })
+        break
     }
 
     default:
-    next(action);
+    next(action)
     }
 };
 
-export default events;
+export default events

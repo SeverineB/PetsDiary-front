@@ -8,7 +8,7 @@ import RegisterForm from '../../../containers/RegisterForm';
 
 import HomeIcon from '../../../assets/icons/pet-house.png';
 
-import './Auth.scss';
+import './auth.scss';
 
 const Auth = ({
     checkIsLogged,
@@ -16,7 +16,6 @@ const Auth = ({
     logout
 }) => {
 const handleLogout = () => {
-    console.log('je me déconnecte');
     logout();
 };
 return (

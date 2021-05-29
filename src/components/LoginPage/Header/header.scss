@@ -1,43 +1,28 @@
 @import 'src/styles/vars';
 
 .login-page-header {
-        width: 100vw;
-        height: 20vh;
-    @include m767() {
-        width: 100vw;
-        height: 15vh;
-        }
-    @include m1024() {
-        width: 100vw;
-        height: 16vh; 
-        }
-    @include m1200() {
-        height: 22vh;
-    };
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
     &-title {
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        @include m1200() {
-            top: 0;
-            margin-bottom: 4em;
+        width: 80%;
+        @include m1024() {
+            width: 60%;
         };
+        img {
+            width: 100%;
+        }
     }
 
     &-img {
-        background-image: url('../../../assets/img/BannerPetsDiary.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        height: 100%;
-        @include m767() {
-            margin-top: 1em;
-        };
-        @include m1200() {
-            background-size: 50%;
-            height: 100%;
-            align-self: center;
-        };
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        img {
+            width: 100%;
+        }
     }
 }

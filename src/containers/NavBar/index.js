@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import NavBar from '../../components/Navbar/NavBar';
-
 import { toggleShowLogin, changeUserField, logout } from '../../actions';
+
+import NavBar from '../../components/Navbar/NavBar';
 
 const mapStateToProps = (state) => ({
   showLogin: state.auth.showLogin,

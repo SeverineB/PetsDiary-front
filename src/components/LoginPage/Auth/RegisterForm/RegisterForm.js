@@ -6,8 +6,6 @@ import { Alert, Modal } from 'react-bootstrap';
 
 import './RegisterForm.scss';
 
-import PawIcon from '../../../../../src/assets/img/paw.png';
-
 const RegisterForm = ({
     email,
     password,
@@ -116,7 +114,6 @@ const RegisterForm = ({
                         <Modal.Header closeButton>
                             <Modal.Title className="modal-register-form-title">
                                 Inscription
-                                <img src={PawIcon} alt="paw coral" className="login-form-icon" />
                                 </Modal.Title>
                         </Modal.Header>
   

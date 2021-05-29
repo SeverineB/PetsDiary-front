@@ -9,6 +9,7 @@ export * from './deworming';
 export * from './antiflea';
 
 export const CHANGE_FIELD = 'CHANGE_FIELD';
+export const CHANGE_SELECT = 'CHANGE_SELECT';
 export const CHANGE_EDIT_FIELD = 'CHANGE_EDIT_FIELD';
 export const TOGGLE_SHOW_LOGIN = 'TOGGLE_SHOW_LOGIN';
 export const FINISH_LOADING = 'FINISH_LOADING';
@@ -25,6 +26,11 @@ export const changeEditField = (value, name) => ({
     type: CHANGE_EDIT_FIELD,
     value,
     name,
+});
+
+export const changeSelect = (value) => ({
+    type: CHANGE_SELECT,
+    value
 });
 
 export const clearCurrentPet = () => ({
