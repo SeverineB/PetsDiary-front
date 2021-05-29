@@ -1,11 +1,9 @@
 /* eslint-disable no-console */
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Modal, Button, Form } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import { Modal, Button, Form } from 'react-bootstrap'
 
-import './LoginForm.scss';
-
-import PawIcon from '../../../../../src/assets/img/paw.png';
+import './LoginForm.scss'
 
 const LoginForm = ({
     changeUserField,
@@ -20,29 +18,29 @@ const LoginForm = ({
     setErrors,
     clearErrors
 }) => {
-    const [showLogin, setShowLogin] = useState(false);
+    const [showLogin, setShowLogin] = useState(false)
 
     useEffect(() => {
         clearErrors();
-        }, []);
+        }, [])
 
     const checkEmail = (value) => {
         const emailPattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
         if (value.length < 1) {
-            setErrors('email', 'L\'email doit être renseigné');
+            setErrors('email', 'L\'email doit être renseigné')
         }
         else if (value.length > 1 && !emailPattern.test(value)) {
-            setErrors('email', 'Le format de l\'email n\'est pas valide');
+            setErrors('email', 'Le format de l\'email n\'est pas valide')
         }
         else {
-            setErrors('email', '');
+            setErrors('email', '')
         }
-        return true;
+        return true
     };
 
     const checkPassword = (value) => {
         if (value.length < 1) {
-            setErrors('password', 'Le mot de passe doit être renseigné');
+            setErrors('password', 'Le mot de passe doit être renseigné')
         }
         else if (value.length > 0 && value.length < 5) {
             setErrors('password', 'Le mot de passe doit contenir au moins 5 caractères');

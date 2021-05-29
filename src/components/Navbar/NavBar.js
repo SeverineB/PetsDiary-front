@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Navbar, Nav } from 'react-bootstrap';
 
-import logo from '../../assets/img/Logo-title-white.png';
+import logo from '../../assets/images/Logo-title-white.png';
 
 import './Navbar.scss';
 

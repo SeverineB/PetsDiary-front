@@ -7,7 +7,7 @@ import { Alert } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Pet from '../../containers/Pet';
-import  cat from '../../assets/img/Cat_transparent.png';
+import  cat from '../../assets/images/Cat_transparent.png';
 import { filterBy, groupBy } from '../../../src/fun';
 
 import './home.scss';
