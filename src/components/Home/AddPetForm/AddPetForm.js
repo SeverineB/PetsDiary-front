@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 
 import './AddPetForm.scss';
@@ -22,20 +22,20 @@ const AddPetForm = ({
 
     const history = useHistory();
     const handleChange = (evt) => {
-        changeField(evt.target.name, evt.target.value);
+        changeField(evt.target.name, evt.target.value)
     };
 
     const handleFileChange = (evt) => {
-        const avatarToUpload = evt.target.files[0];
-        const newAvatarUrl = URL.createObjectURL(evt.target.files[0]);
-        changeFile(avatarToUpload);
-        changeUrl(newAvatarUrl);
+        const avatarToUpload = evt.target.files[0]
+        const newAvatarUrl = URL.createObjectURL(evt.target.files[0])
+        changeFile(avatarToUpload)
+        changeUrl(newAvatarUrl)
     };
 
     const handleSubmit = (evt) => {
-        evt.preventDefault();
-        addPet();
-        history.push('/home');
+        evt.preventDefault()
+        addPet()
+        history.push('/pet')
     };
 
     return (
@@ -98,15 +98,19 @@ const AddPetForm = ({
                         inline
                         label="Femelle"
                         type={type}
-                        value={sex}
+                        name="sex"
+                        value="femelle"
                         id={`inline-${type}-1`}
+                        onChange={handleChange}
                     />
                     <Form.Check
                         inline
                         label="Mâle"
                         type={type}
-                        value={sex}
+                        name="sex"
+                        value="mâle"
                         id={`inline-${type}-2`}
+                        onChange={handleChange}
                     />
                 </div>
                 ))}
@@ -148,11 +152,11 @@ AddPetForm.propTypes = {
     changeUrl: PropTypes.func.isRequired,
     addPet: PropTypes.func.isRequired,
     clearNewPet: PropTypes.func.isRequired,
-};
+}
 
 AddPetForm.defaultProps = {
     breed: '',
     ide: 2,
 }
 
-export default AddPetForm;
+export default AddPetForm

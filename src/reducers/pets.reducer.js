@@ -1,6 +1,7 @@
 import {
     GET_PETSLIST,
     SAVE_PETSLIST,
+    GET_EVENTSLIST_BY_PET,
     CHANGE_FIELD,
     CHANGE_EDIT_FIELD,
     CHANGE_FILE,
@@ -28,7 +29,7 @@ import {
     SAVE_CURRENT_ANTIFLEA,
 } from '../actions';
 
-const initialState = {
+export const initialState = {
     petsList: [],
     currentPet: {},
     id: null,
@@ -36,13 +37,14 @@ const initialState = {
     age: '',
     species: '',
     breed: '',
-    sex: 'mâle',
+    sex: '',
     birthdate: '',
     ide: '',
     weight: [],
     vaccine: [],
     deworming: [],
     antiflea: [],
+    events: [],
     avatar: {},
     avatarUrl: '',
     open: false,
@@ -58,6 +60,11 @@ const petReducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 isPetsLoading: true,
+            };
+        case GET_EVENTSLIST_BY_PET:
+            return {
+                ...state,
+                eventsList: [...state.eventsList.filter((pet) => pet._id === action.petId)],
             };
         case SAVE_PETSLIST:
             return {
@@ -111,7 +118,7 @@ const petReducer = (state = initialState, action = {}) => {
                 age: '',
                 species: '',
                 breed: '',
-                sex: 'mâle',
+                sex: '',
                 birthdate: '',
                 ide: '',
                 avatarUrl: '',
@@ -123,7 +130,7 @@ const petReducer = (state = initialState, action = {}) => {
                 age: '',
                 species: '',
                 breed: '',
-                sex: 'mâle',
+                sex: '',
                 birthdate: '',
                 ide: '',
                 open: false,

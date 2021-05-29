@@ -3,63 +3,110 @@
 .home-container {
     position: relative;
     width: 100%;
-    height: 90%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 1em;
-
-    &-logo {
-        align-self: flex-start;
-        width: 3em;
-        margin-top: 0.5em;
-    }
+    padding-bottom: 3em;
+    background-color: #F8FBFE;
+    @include m767() {
+        height: 100vh;
+        justify-content: flex-start;
+    };
 
     .alert {
-        font-size: 0.7em;
+        font-size: 0.9em;
         padding: 0;
         margin-bottom: 0.2em;
+        opacity: 0;
 
         p {
             margin-bottom: 0;
             margin-top: 0.5em;
         }
     }
+
+    .cat-img {
+        width: 3em;
+        position: absolute;
+        bottom: 0;
+        right: 1em;
+        img {
+            width: 100%;
+        }
+    }
 }
 
 .pets-section {
     width: 100%;
-    height: 75%;
+    height: auto;
     display: flex;
     flex-direction: column;
     padding-top: 0.4em;
+    padding-bottom: 4em;
+    position: relative;
     @include m767() {
-        height: 60%;
-    };
-    @include m1024() {
-        width: 80%;
-        height: 60%;
-    };
-    @include m1200() {
-        width: 65%;
-        height: 70%;
-    };
-    @include m1600() {
-        width: 55%;
-        height: 70%;
+        min-height: 50%;
     };
 
     &-title {
-        display: inline-block;
-        font-family: 'Quicksand';
-        font-family: 'Raleway';
-        font-size: 1.2em;
-        font-weight: bold;
-        color: $accent-color;
-        display: inline-block;
-        text-align: center;
-        margin-bottom: 0.8em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1em;
+        margin-bottom: 1em;
+        @include m767() {
+            justify-content: center;
+            gap: 1em;
+            padding: 0 1em;
+        }
+        @include m1024() {
+            margin: 2em 0;
+        }
+
+        .section-title {
+            display: inline-block;
+            font-family: 'PassionOne';
+            font-size: 1.8em;
+            font-weight: bold;
+            color: rgb(75, 74, 74);
+            display: inline-block;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 0;
+        }
+    }
+
+    .add-pet-button {
+        width: 2.2em;
+        height: 2.2em;
+        border-radius: 50%;
+        background-color: $color-coral-light;
+        box-shadow:
+            0 2.5px 5px rgba(255, 49, 101, 0.1),
+            0 20px 40px rgba(255, 49, 101, 0.2);
+        transition: all 250ms ease-in;
+
+        &:hover {
+            background-color: $color-coral;
+            transform-origin: center;
+        }
+
+        a {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+    
+        & svg {
+            width: 1.1em;
+            fill: #fff;
+        }
     }
 }
 
@@ -68,27 +115,18 @@
 .pets-list {
     width: 100%;
     height: 100%;
-    padding: 0.8em;
+    padding: 0.5em;
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(70px, 1fr));
+    grid-template-columns: repeat(auto-fill,minmax(80%, 1fr));
     grid-column-gap: 0.8em;
     grid-row-gap: 0.6em;
     grid-auto-rows: 1fr;
     overflow-y: auto;
+    justify-items: center;
 
-    @include m375() {
-        grid-template-columns: repeat(auto-fill,minmax(90px, 1fr));
-    };
-    @include m375higher() {
-        height: 60%;
-    };
-    @include m400() {
-        height: 100%;
-        grid-template-columns: repeat(auto-fill,minmax(100px, 1fr));
-    };
     @include m767() {
-        height: 70%;
-        grid-template-columns: repeat(auto-fill,minmax(140px, 1fr));
+        height: 100%;
+        grid-template-columns: repeat(auto-fill,minmax(12em, 1fr));
         grid-column-gap: 1em;
         grid-row-gap: 0.5em;
     };
@@ -107,43 +145,84 @@
     };
 }
 
-.add-pet-button {
-    width: 2em;
-    align-self: flex-end;
-    margin-bottom: 0.5em;
-    margin-right: 1em;
-
-    & svg {
-        width: 2em;
-        fill: $accent-color;
-        border-radius: 50%;
- 
-        &:hover {
-            fill: $light-color;
-            transform: scale(1.1);
-            box-shadow: 0 0 10px 5px  #f0eeee,
-            -10px -10px 20px #ecebeb;
-            -moz-box-shadow:  0 0 10px 5px  #f0eeee,
-            -10px -10px 20px #ecebeb;
-            -webkit-box-shadow:  0 0 10px 5px  #f0eeee,
-            -10px -10px 20px #ecebeb;
-            -o-box-shadow: 0 0 10px 5px  #f0eeee,
-            -10px -10px 20px #ecebeb;
-        }
-    }
-}
-
 .logout-button {
-    height: 1.8em;
     font-size: 0.8em;
+    text-transform: uppercase;
     border: none;
-    background-color:$light-color;
+    background-color: $color-coral-light;
     color: white;
-    padding: 0.2em 1em;
+    padding: 1em;
     border-radius: 5em;
 }
 
 .home-icon {
   width: 2.4em;
+}
+
+.events-section {
+    width: 100%;    
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba($color-blue-light, 0.3);
+    @include m767() {
+        min-height: 50%;
+    };
+
+    .section-title {
+        display: inline-block;
+        font-size: 1.8em;
+        font-weight: bold;
+        color: #4b4a4a;
+        text-align: left;
+        margin-bottom: 0.8em;
+        font-family: 'PassionOne';
+        @include m767() {
+            text-align: center;
+        };
+    }
+
+    .events-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+        width: 100%;
+        height: 100%;
+
+        .event-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4em;
+            width: 100%;
+            font-size: 0.9em;
+            border-bottom: 1px solid $color-green-dark;
+            @include m767() {
+                font-size: 1em;
+                height: 5em;
+            };
+
+            &-date {
+                font-weight: bold;
+                p {
+                    margin: 0;
+                }
+            }
+
+            &-content {
+                display: flex;
+                flex-direction: row;
+
+                &-name {
+                    margin: 0 0.2em 0 0;
+                    font-weight: bold;
+                    color: $color-green-dark;
+                }
+                &-title {
+                    display: inline-block;
+                    margin: 0 0 0 0.2em;
+                }
+            }
+        }
+    }
 }
 

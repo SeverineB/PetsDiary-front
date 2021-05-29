@@ -15,50 +15,37 @@
 }
 
 .modal-register-form-title {
-    color: $accent-color;
+    color: $color-coral;
     font-weight: bold;
 }
-
-@import 'src/styles/vars';
 
 .register-button,
 .register-button-submit,
 .register-button-cancel {
-    background-color: $accent-color;
+    background-color: $color-coral-light;
     color: #ffffff;
     border: none;
-    font-family: "Quicksand";
     font-size: 1em;
-    font-weight: bold;
     border-radius: 5em;
     padding: 0.5em 1em;
-    @include m767() {
-        margin: 0 1em;
-    };
-    @include m1200() {
-        font-size: 1.2em;
-    };
-    @include m1600() {
-        font-size: 1.4em;
-    };
-    @include m1900() {
-        font-size: 1.1em;
-    };
     
     &:focus {
         box-shadow: none;
     }
     
     &:hover {
-        background-color: #c6a49a;
+        background-color: $color-coral;
+        box-shadow:
+            0 2.9px 10px rgba(0, 0, 0, 0.035),
+            0 23px 80px rgba(0, 0, 0, 0.07);
+        }
     }
-}
 
 .register-form {
 
     &-btn {
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         margin-top: 1.5em;
     }
 
@@ -73,26 +60,28 @@
 
     .input-email,
     .input-password,
-    .input-username {
+    .input-username,
+    .input-password-verif {
         width: 100%;
         padding: 0.8em;
         background-color: white!important;
         border: none;
-        border-bottom: 1px solid $light-color;
+        border-bottom: 1px solid $color-green-light;
         border-radius: 0;
         filter: none;
+        color: $color-green-dark;
     }
 
     .input-email:focus,
     .input-password:focus,
     .input-username:focus {
         border: none;
-        border-bottom: 1px solid $accent-color;
+        border-bottom: 1px solid $color-green-dark;
         filter: none;
     }
 
     input:-webkit-autofill {
-        -webkit-text-fill-color: $light-color !important;
+        -webkit-text-fill-color: $color-green-dark !important;
     }
 
     input:-webkit-autofill,
@@ -104,7 +93,7 @@
     }
 
     button.btn.btn-primary.register-button-submit {
-        background-color:$accent-color;
+        background-color:$color-coral-light;
         border: none;
         border-radius: 5em;
         padding: 0.5em 1em;
@@ -114,12 +103,12 @@
         }
         
         &:hover {
-            background-color: $light-color;
+            background-color: $color-coral;
         }
     }
     
     button.btn.btn-secondary.register-button-cancel {
-        background-color:$main-color;
+        background-color: $color-green-light;
         border: none;
         border-radius: 5em;
         padding: 0.5em 1em;
@@ -129,7 +118,7 @@
         }
     
         &:hover {
-            background-color: #ff7362;
+            background-color: $color-green-dark;
         }
     }
     

@@ -5,45 +5,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     width: 100%;
-    height: 80%;
     border-radius: 0.5em;
-    background-image: url('../../../assets/img/PawPrint.svg');
-    background-size: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
-    
-    @include m375higher() {
-        background-size: 95%;
-    };
-    @include m400() {
-        background-size: 85%;
-    };
+    color: #000;
     @include m767() {
-        background-size: 62%;
-        height: 100%;
-    };
-    @include m1024() {
-        background-size: 60%;
-        height: 80%;
-    };
-    @include m1024ipad() {
-        width: 60%;
-        background-size: 90%;
-    };
-    @include m1200() {
-        width: 52%;
-        height: 100%;
-        background-size: 65%;
+        height: 20vh;
     };
     @include m1600() {
         width: 60%;
-        background-size: 54%;
-    };
-    @include m1900() {
-        background-size: 46%;
     };
 
     &-infos {
@@ -51,91 +21,20 @@
         flex-direction: column;
         justify-content: center;
         position: relative;
-        width: 50%;
-        height: 50%;
-        @include m375higher() {
-            height: 60%;
-        };
-        @include m400() {
-            height: 55%;
-        };
+        width: 80%;
+        height: 100%;
     }
 
     &-infos-first,
     &-infos-second {
         display: inline-block;
         align-self: center;
-        font-size: 0.5em;
+        font-size: 0.9em;
         margin-right: 0.4em;
         text-align: center;
-        z-index: 30;
-        @include m375() {
-            font-size: 0.6em;
-        };
-        @include m375higher() {
-            font-size: 0.7em;
-        };
-        @include m400() {
-            font-size: 0.7em;
-        };
-        @include m767() {
-            font-size: 1em;
-        };
-        @include m1024() {
-            font-size: 0.9em;
-        };
-        @include m1024ipad() {
-            font-size: 1em;
-        };
-        @include m1200() {
-            font-size: 0.9em;
-        };
-        @include m1600() {
-            font-size: 1.1em;
-        };
-        @include m1900() {
-            font-size: 1em;
-        };
-    }
-
-    &-infos-first {
-        width: 75%;
-        margin-bottom: 0.5em;
-        @include m375higher() {
-            width: 70%;
-        };
-        @include m767() {
-            width: 50%;
-        };
-        @include m1024() {
-            width: 45%;
-        };
-        @include m1200() {
-            width: 50%;
-        };
-        @include m1600() {
-            width: 35%;
-        };
-    }
-
-    &-infos-second {
         width: 90%;
-        margin-bottom: 0.5em;
-
         @include m767() {
-            width: 70%;
-        };
-        @include m1024ipad() {
-            width: 90%;
-        };
-        @include m1200() {
-            width: 80%;
-        };
-        @include m1600() {
-           width: 68%;
-        };
-        @include m1900() {
-            width: 60%;
+            font-size: 1em;
         };
     }
 }

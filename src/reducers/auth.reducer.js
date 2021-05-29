@@ -7,7 +7,7 @@ import {
     USER_CONNECTED,
     CHECK,
     LOGOUT,
-} from '../actions';
+} from '../actions'
 
 const initialState = {
     session: {},
@@ -28,19 +28,19 @@ switch (action.type) {
             id: action.sessionId,
             username: action.sessionUsername,
             },
-        };
+        }
     case LOGIN:
         return {
             ...state,
             isLoading: true,
             isLogged: true,
-    };
+        }
     case LOGIN_SUCCESS:
         return {
             ...state,
             isLogged: true,
             isLoading: true,
-        };
+        }
     case LOGIN_FAILED:
         return {
             ...state,
@@ -48,37 +48,32 @@ switch (action.type) {
             isLogged: false,
             isFailed: true,
             isLoading: true,
-        };
+        }
     case FINISH_LOADING:
         return {
             ...state,
             isLoading: false,
-        };
+        }
     case CHECK:
         return {
             ...state,
             isLogged: true,
-    };
+        }
     case LOGOUT:
         return {
             ...state,
             isLogged: false,
             isLoading: true,
             session: {},
-    };
+        }
     case USER_CONNECTED:
         return {
             ...state,
             isLogged: action.isLogged,
-        };
-    /*case USER_DISCONNECTED:
-        return {
-            ...state,
-            isLogged: false,
-        }; */
+        }
     default:
-    return state;
+        return state
+    }
 }
-};
 
-export default auth;
+export default auth

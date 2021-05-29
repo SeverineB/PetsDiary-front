@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Form, Button } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Form } from 'react-bootstrap'
+import { Link, useHistory } from 'react-router-dom'
 
 import './AddEventForm.scss';
 
 const AddEventForm = ({
-  name,
-  startDate,
-  endDate,
+  title,
+  start,
+  end,
   address,
   changeField,
   addEvent,
@@ -20,30 +20,34 @@ const AddEventForm = ({
         changeField(evt.target.name, evt.target.value);
     };
 
+    const handleSelect = (evt) => {
+        localStorage.setItem("petId", evt.target.value)
+    }
+
     const handleSubmit = (evt) => {
         evt.preventDefault();
         addEvent();
-        history.push('/home');
+        history.push('/event');
     };
 
     return (
         <div className="add-event">
             <h2 className="add-event-title">Ajouter un rendez-vous</h2>
             <Form onSubmit={handleSubmit} className="add-event-form">
-                <select>
+                <select onChange={handleSelect} name="petId">
                     {petsList.map((pet) => (
-                        <option value={pet._id}>{pet.name}</option>
+                        <option key={pet._id} value={pet._id} label={pet.name}>{pet.name}</option>
                     ))}
                  </select>
-                <label htmlFor="name">Nom</label>
+                <label htmlFor="title">Nom</label>
                     <input
                         type="text"
-                        placeholder="Nom"
-                        name="name"
-                        value={name}
+                        placeholder="Titre"
+                        name="title"
+                        value={title}
                         onChange={handleChange}
                     />
-                <label htmlFor="name">Adresse</label>
+                <label htmlFor="address">Adresse</label>
                     <input
                         type="text"
                         placeholder="Adresse"
@@ -55,16 +59,16 @@ const AddEventForm = ({
                     <input
                         type="date"
                         placeholder="Date de début"
-                        name="startDate"
-                        value={startDate}
+                        name="start"
+                        value={start}
                         onChange={handleChange}
                     />
                  <label htmlFor="date">Date de fin</label>
                     <input
                         type="date"
                         placeholder="Date de fin"
-                        name="endDate"
-                        value={endDate}
+                        name="end"
+                        value={end}
                         onChange={handleChange}
                     />
                 <div className="buttons">
@@ -81,13 +85,14 @@ const AddEventForm = ({
     };
 
 AddEventForm.propTypes = {
-    name: PropTypes.string.isRequired,
-    startDate: PropTypes.string.isRequired,
-    endDate: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    start: PropTypes.string.isRequired,
+    end: PropTypes.string.isRequired,
     address: PropTypes.string,
     changeField: PropTypes.func.isRequired,
+    changeSelect: PropTypes.func.isRequired,
     addEvent: PropTypes.func.isRequired,
     clearNewEvent: PropTypes.func.isRequired,
-};
+}
 
-export default AddEventForm;
+export default AddEventForm

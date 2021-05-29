@@ -2,27 +2,31 @@
 
 .edit-pet {
     height: 90%;
+    width: 100%;
+    padding: 0.5em;
     overflow-y: scroll;
+    padding-bottom: 3em;
 
     h2 {
     width: 100%;
     text-align: center;
-    color: #f1746d;
+    color:$color-coral;
     margin-top: 1em;
     }
 }
 
 .edit-pet-form {
-    width: 80%;
-    background: $light-color;
-    margin: 1em auto;
+    width: 100%;
     padding: 0.5em;
+    margin-bottom: 0.5em;
     border-radius: 0.5em;
-
+    box-shadow:  0 0 20px #f0eeee,
+                 0 0 20px#f0eeee;
     .form-label {
-        color: #ffffff;
-        font-weight: bold;
+        color: $color-green-dark;
         margin: 0.5em 0;
+        font-size: 0.8em;
+        cursor: default;
     }
 
     &-btn {
@@ -30,20 +34,28 @@
             display: none;
         }
         label {
-            background-color: $light-color;
-            color: #ffffff;
+            background-color: none;
+            color: $color-green-dark;
             font-size: 0.9em;
             padding: 0.5em;
             border-radius: 30.5px;
             width: 12em;
             &:hover {
-              background-color: $light-color;
+              font-weight: bold;
             }
           }
     }
 
+    input {
+        border-color: $color-green-light;
+        border-width: 0 0 1px 0;
+        border-radius: 0;
+        padding-left: 0;
+    }
+
     input:focus {
-        border-color: $main-color;
+        border-color: $color-green-light;
+        border-width: 0 0 1px 0;
         box-shadow: 0 0 0 0.2rem rgba(186,204,190, 0.25);
     }
 
@@ -52,9 +64,15 @@
     }
 
     .btn-primary {
-        background-color: #f1746d;
-        border-color: #f1746d;
+        background-color: $color-coral-light;
+        border-color: $color-coral-light;
         border-radius: 30.5px;
+
+        &:hover,
+        &:active {
+            background-color: $color-coral;
+            border-color: $color-coral;
+        }
     }
 
     .buttons {
@@ -68,18 +86,8 @@
         display: flex;
         justify-content: center;
         img {
-        width: 50%;
-        margin: 0.5em 0;
+            width: 50%;
+            margin: 0.5em 0;
         }
     }
-}
-
-.avatar-preview {
-  border-radius: 0.5em;
-  display: flex;
-  justify-content: center;
-  img {
-    width: 40%;
-    margin: 0.5em 0;
-  }
 }

@@ -6,6 +6,15 @@
         width: 95vw;
     }
 }
+.modal-header {
+    border-bottom: 1px solid $color-green-dark!important;
+    text-transform: uppercase;
+    font-size: 0.9em;
+
+    .close {
+        color: $color-green-dark!important;
+    }
+}
 
 .modal-login-content-custom {
     margin-top: 35%;
@@ -15,39 +24,28 @@
 }
 
 .modal-login-form-title {
-    color: $accent-color;
+    color: $color-coral;
     font-weight: bold;
 }
 
 button.btn.btn-primary.login-button {
-    background-color: $accent-color;
+    background-color: $color-coral-light;
     border: none;
-    font-family: "Quicksand";
     font-size: 1em;
-    font-weight: bold;
     border-radius: 5em;
     padding: 0.5em 1em;
-    @include m767() {
-        margin: 0 1em;
-    };
-    @include m1200() {
-        font-size: 1.2em;
-    };
-    @include m1600() {
-        font-size: 1.4em;
-    };
-    @include m1900() {
-        font-size: 1.1em;
-    };
     
     &:focus {
         box-shadow: none;
     }
     
     &:hover {
-        background-color: #c6a49a;
+        background-color: $color-coral;
+        box-shadow:
+            0 2.9px 10px rgba(0, 0, 0, 0.035),
+            0 23px 80px rgba(0, 0, 0, 0.07);
+        }
     }
-}
 
 .login-form {
 
@@ -72,20 +70,21 @@ button.btn.btn-primary.login-button {
         padding: 0.8em;
         background-color: white!important;
         border: none;
-        border-bottom: 1px solid $light-color;
+        border-bottom: 1px solid $color-green-light;
         border-radius: 0;
         filter: none;
+        color: $color-green-dark;
     }
 
     .input-email:focus,
     .input-password:focus {
         border: none;
-        border-bottom: 1px solid $accent-color;
+        border-bottom: 1px solid $color-green-dark;
         filter: none;
     }
 
     input:-webkit-autofill {
-        -webkit-text-fill-color: $light-color !important;
+        -webkit-text-fill-color: $color-green-dark !important;
     }
 
     input:-webkit-autofill,
@@ -97,7 +96,7 @@ button.btn.btn-primary.login-button {
     }
 
     button.btn.btn-primary.login-button-submit {
-        background-color: $accent-color;
+        background-color: $color-coral-light;
         border: none;
         border-radius: 5em;
         padding: 0.5em 1em;
@@ -107,12 +106,12 @@ button.btn.btn-primary.login-button {
         }
         
         &:hover {
-            background-color: $light-color;
+            background-color: $color-coral;
         }
     }
     
     button.btn.btn-secondary.login-button-cancel {
-        background-color: $main-color;
+        background-color: $color-green-light;
         border: none;
         border-radius: 5em;
         padding: 0.5em 1em;
@@ -122,7 +121,7 @@ button.btn.btn-primary.login-button {
         }
     
         &:hover {
-            background-color: #ff7362;
+            background-color: $color-green-dark;
         }
     }
     
@@ -130,12 +129,5 @@ button.btn.btn-primary.login-button {
         font-size: 0.8em;
         color: red;
     }
-}
-
-
-.error-register {
-    color: red;
-    font-size: 0.9em;
-    display: block;
 }
 

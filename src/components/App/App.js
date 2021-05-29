@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Switch } from 'react-router-dom';
 
 import Home from '../../containers/Home';
-import Appointments from '../../containers/Appointments';
+import Calendar from '../../containers/Calendar';
 import AddPetForm from '../../containers/AddPetForm';
 import AddEventForm from '../../containers/AddEventForm';
 import PetDetails from '../../containers/PetDetails';
@@ -22,28 +22,24 @@ import Footer from '../Footer/Footer';
 import ErrorBoundary from '../../ErrorBoundary';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-/* import 'semantic-ui-css/semantic.min.css'; */
 
-import './App.scss';
+import './app.scss';
 
 // == Composant
 
-const App = ({ isLogged, check }) => {
+const App = ({ check }) => {
   useEffect(() => {
-    console.log('je check si le user est bien connecté');
     check();
   }, []);
 
-  console.log('dans app checkIsLogged vaut ', isLogged);
   return (
     <div className="app">
       <NavBar />
       <ErrorBoundary>
       <Switch>
         <PublicRoute exact path="/" component={LoginPage} />
-
         <PrivateRoute exact path="/pet" component={Home} />
-        <PrivateRoute exact path="/event" component={Appointments} />
+        <PrivateRoute exact path="/event" component={Calendar} />
         <PrivateRoute exact path="/event/add" component={AddEventForm} />
         <PrivateRoute exact path="/pet/add" component={AddPetForm} />
         <PrivateRoute exact path="/pet/:petId" component={PetDetails} />
@@ -60,9 +56,13 @@ const App = ({ isLogged, check }) => {
 };
 
 App.propTypes = {
-  isLogged: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool,
   check: PropTypes.func.isRequired,
 };
+
+App.defaultProps = {
+    isLogged: false,
+}
 
 // == Export
 

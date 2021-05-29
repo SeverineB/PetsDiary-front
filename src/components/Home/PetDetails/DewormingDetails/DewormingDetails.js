@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory, withRouter } from 'react-router-dom';
-import { Modal, Form, Button  } from 'react-bootstrap';
+import { Modal, Form } from 'react-bootstrap';
 import dayjs from 'dayjs';
 
 import DewormingItem from '../../../../containers/DewormingItem';
@@ -17,54 +17,52 @@ const DewormingDetails = ({
     setErrors
 }) => {
     const history = useHistory();
-    const [showDeworming, openShowDeworming] = useState(false);
+    const [showDeworming, openShowDeworming] = useState(false)
 
-    const petId = localStorage.getItem('pet_id');
-
-    console.log('PET DEWORMING', petDeworming)
+    const petId = localStorage.getItem('pet_id')
 
     const closeShowDeworming = () => {  
-        setErrors('dewormingDate', '');
-        setErrors('dewormingName', '');
-        openShowDeworming(false);
+        setErrors('dewormingDate', '')
+        setErrors('dewormingName', '')
+        openShowDeworming(false)
     }
 
     const checkDate = (value) => {
         if (!value) {
             setErrors('dewormingDate', 'La date doit être sélectionnée')
         } else {
-            setErrors('dewormingDate', '');
+            setErrors('dewormingDate', '')
         }
-        return true;
+        return true
     }
 
     const checkValue = (value) => {
         if (!value) {
             setErrors('dewormingName', 'Le nom doit être renseigné')
         } else {
-            setErrors('dewormingName', '');
+            setErrors('dewormingName', '')
         }
-        return true;
+        return true
     }
 
     const handleChange = (evt) => {
-        evt.preventDefault();
-        changeField(evt.target.value, evt.target.name);
+        evt.preventDefault()
+        changeField(evt.target.value, evt.target.name)
         switch (evt.target.name) {
             case 'dewormingDate':
-              checkDate(evt.target.value);
+              checkDate(evt.target.value)
               break;
             case 'dewormingName':
-              checkValue(evt.target.value);
-              break;
+              checkValue(evt.target.value)
+              break
             default:
         }
     }
 
     const handleSubmit = (evt) => {
-        evt.preventDefault();
-        addDeworming();
-        openShowDeworming(false);
+        evt.preventDefault()
+        addDeworming()
+        openShowDeworming(false)
         history.push(`/pet/${petId}/deworming`)
     }
 

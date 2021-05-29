@@ -1,14 +1,14 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Pet from '../../containers/Pet';
-
-import logo from '../../assets/img/LogoPetsDiary.png';
+import  cat from '../../assets/img/Cat_transparent.png';
+import { filterBy, groupBy } from '../../../src/fun';
 
 import './home.scss';
 
@@ -21,58 +21,93 @@ const Home = ({
     getEventsList,
     eventsList
 }) => {
-    console.log('ISLOGGED DANS HOME ', isLogged);
-    console.log('PETSLIST DANS HOME ', petsList);
-    console.log('EVENTSLIST DANS HOME ', eventsList);
+
     useEffect(() => {
-        clearCurrentPet();
-        getPetsList();
-        getEventsList();
-    }, []);
+        clearCurrentPet()
+        getPetsList()
+        getEventsList()
+
+    }, [])
 
     const username = localStorage.getItem('username');
 
-    const handleLogout = () => {
-        logout();
-    };
+    // filter, sort and group events by date
+    // to only display futures events
+    const filteredArray = filterBy(eventsList, 'start')
+    const sortedArray = filteredArray.sort((a, b) => new Date(a.start) - new Date(b.start))
+    const groupedByDates = Object.keys(groupBy(sortedArray, 'start')).map((key) => [key, groupBy(sortedArray, 'start')[key]])
+
+    const formatDate = (date) => {
+        if (date) {
+            const formattedDate = new Date(date)
+            const day = formattedDate.getDate()
+            const month = formattedDate.getMonth()+1
+            const year = formattedDate.getFullYear()
+            return `${day}/${month}/${year}`
+        }
+    }   
 
     return (
         <>
         <div className="home-container">
                 {isLogged && (
                     <Alert>
-                        <p>Vous êtes bien connecté(e) {username}</p>
+                        <p>Vous êtes bien connecté(e) <strong>{username}</strong></p>
                     </Alert>
                 )}
             <div className="pets-section">
-            <h2 className="pets-section-title">Mes animaux</h2>
+                <div className="pets-section-title">
+                    <h2 className="section-title">Mes animaux</h2>
+                    <div className="add-pet-button">
+                        <Link to="/pet/add" title="Ajouter un animal">
+                            <svg version="1.1" id="Capa_1"x="0px" y="0px" viewBox="0 0 45.402 45.402" xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <path d="M41.267,18.557H26.832V4.134C26.832,1.851,24.99,0,22.707,0c-2.283,0-4.124,1.851-4.124,4.135v14.432H4.141
+                                        c-2.283,0-4.139,1.851-4.138,4.135c-0.001,1.141,0.46,2.187,1.207,2.934c0.748,0.749,1.78,1.222,2.92,1.222h14.453V41.27
+                                        c0,1.142,0.453,2.176,1.201,2.922c0.748,0.748,1.777,1.211,2.919,1.211c2.282,0,4.129-1.851,4.129-4.133V26.857h14.435
+                                        c2.283,0,4.134-1.867,4.133-4.15C45.399,20.425,43.548,18.557,41.267,18.557z"/>
+                                </g>
+                            </svg>
+                        </Link>
+                    </div>
+                </div>
+                <div className="pets-list">
+                    {petsList.map((pet) => (
+                        <Pet {...pet} pet={pet} key={pet._id}/>
+                    ))}
+                </div>
+                <div className="cat-img">
+                    <img src={cat} alt="green cat" />
+                </div>
+            </div>
+
+            <div className="events-section">
+                <h2 className="section-title">Rendez-vous à venir</h2>
+                <div className="events-list">
+                    {groupedByDates.map(item => (
+                        <div key={item._id} className="event-container">
+                            <div className="event-container-date">
+                                <p>{formatDate(item[0])}</p>
+                            </div>
+                            {item[1].length > 1 && (
+                                item[1].map(subItem => (
+                                    <div className="event-container-content" key={subItem._id}>
+                                        <p className="event-container-content-name">{subItem.petName} :</p>
+                                        <p className="event-container-content-title">{subItem.title}</p>
+                                    </div>
+                                ))
+                            )}
+                            {item[1].length == 1 && (
+                                <div className="event-container-content">
+                                    <p className="event-container-content-name">{item[1][0].petName} :</p>
+                                    <p className="event-container-content-title">{item[1][0].title}</p>
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            </div>
             
-            <div className="pets-list">
-                {petsList.map((pet) => (
-                    <Pet {...pet} pet={pet} key={pet._id}/>
-                ))}
-            </div>
-            </div>
-            <div className="appointments-section">
-            <Link to="/event">Mes rendez-vous</Link>
-            </div>
-            <div className="add-pet-button">
-                <Link to="/pet/add">
-                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 457.47 457.469">
-                        <g>
-                            <path d="M228.734,0C102.41,0,0,102.41,0,228.735C0,355.06,102.41,457.469,228.734,457.469
-                                c126.325,0,228.735-102.409,228.735-228.734C457.47,102.41,355.06,0,228.734,0z M359.268,265.476h-97.326v97.315
-                                c0,16.668-13.506,30.186-30.181,30.186c-16.668,0-30.189-13.518-30.189-30.186v-97.315h-97.309
-                                c-16.674,0-30.192-13.512-30.192-30.187c0-16.674,13.518-30.188,30.192-30.188h97.315v-97.31c0-16.674,13.515-30.183,30.189-30.183
-                                c16.675,0,30.187,13.509,30.187,30.183v97.315h97.314c16.669,0,30.192,13.515,30.192,30.188
-                                C389.46,251.97,375.937,265.476,359.268,265.476z"/>
-                        </g>
-                    </svg>
-                </Link>
-            </div>
-            <div className="logout">
-                <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
-            </div>
         </div>
         </>
     );

@@ -18,10 +18,11 @@ const initialState = {
     eventsList: [],
     currentEvent: {},
     id: null,
-    name: '',
-    startDate: '',
-    endDate: '',
+    title: '',
+    start: '',
+    end: '',
     address: '',
+    petId: '',
     open: false,
     isEventsLoading: false,
     isEventsLoaded: false,
@@ -46,9 +47,9 @@ const eventReducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 currentEvent: action.currentEvent,
-                name: action.currentEvent.name,
-                startDate: action.currentEvent.startDate,
-                endDate: action.currentEvent.endDate,
+                title: action.currentEvent.title,
+                start: action.currentEvent.start,
+                end: action.currentEvent.end,
                 address: action.currentEvent.address,
             };
         case ADD_EVENT:
@@ -79,18 +80,18 @@ const eventReducer = (state = initialState, action = {}) => {
                 ...state,
                 currentEvent: {},
                 id: '',
-                name: '',
-                startDate: '',
-                endDate: '',
+                title: '',
+                start: '',
+                end: '',
                 address: '',
             };
         case CLEAR_NEW_EVENT:
             return {
                 ...state,
-                name: '',
+                title: '',
                 age: '',
-                startDate: '',
-                endDate: '',
+                start: '',
+                end: '',
                 address: '',
                 open: false,
             };
