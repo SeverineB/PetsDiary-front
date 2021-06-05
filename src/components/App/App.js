@@ -18,7 +18,7 @@ import LoginPage from '../LoginPage/LoginPage';
 
 import PrivateRoute from '../PrivateRoute';
 import PublicRoute from '../PublicRoute';
-import Footer from '../Footer/Footer';
+/* import Footer from '../Footer/Footer'; */
 import ErrorBoundary from '../../ErrorBoundary';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -50,7 +50,6 @@ const App = ({ check }) => {
         <PrivateRoute exact path="/pet/edit/:petId" component={EditPetForm} />
       </Switch>
       </ErrorBoundary>
-      <Footer />
     </div>
   );
 };

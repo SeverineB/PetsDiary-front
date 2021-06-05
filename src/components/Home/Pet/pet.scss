@@ -3,7 +3,7 @@
 .pet-container {
     position: relative;
     width: 90%;
-    height: 12em;
+    height: 8em;
     display: flex;
     align-items: center;
     background: #fff;
@@ -29,15 +29,17 @@
         height: 100%;
         width: 100%;
         display: flex;
-        flex-direction: column;
+        //flex-direction: column;
         align-items: center;
         justify-content: space-between;
     }
 
     .pet-name {
-        font-size: 1.2em;
+        font-size: 1em;
         font-family: 'Muli';
+        text-align: center;
         color: rgb(63, 63, 63);
+        flex: 1;
         @include m767() {
             font-size: 1em;
         };
@@ -49,15 +51,18 @@
 
     .pet-avatar {
         height: 100%;
-        width: 100%;
+        //width: 100%;
         overflow: hidden;
         padding: 0.4em;
         border-radius: 0.2em;
+        flex: 2;
+        max-width: 70%; 
         
         img {
             height: 100%;
             width: 100%;
             object-fit: cover;
+            object-position: 0 5%;
             border-radius: 0.2em;
         }
 
