@@ -34,7 +34,7 @@ jobs:
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
-        ftp-server: lettonie.o2switch.net
+        ftp-server: ftp.bise6935.odns.fr
         ftp-username: ${{ secrets.FTP_USERNAME }}
         ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: build
+        local-dir: /pets-diary-recette/dist
