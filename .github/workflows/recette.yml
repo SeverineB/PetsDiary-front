@@ -34,4 +34,4 @@ jobs:
         ftp-username: ${{ secrets.FTP_USERNAME }}
         ftp-password: ${{ secrets.FTP_PASSWORD }}
         local-dir: dist/
-        dist_target_dir: /home/bise6935/pets-diary-recette.severinebianchi.com/dist
+        server_dir: /home/bise6935/pets-diary-recette.severinebianchi.com/dist/
