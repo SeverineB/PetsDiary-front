@@ -33,3 +33,4 @@ jobs:
         ftp-server: ftp://ftp.bise6935.odns.fr:21/pets-diary-recette/dist
         ftp-username: ${{ secrets.FTP_USERNAME }}
         ftp-password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: dist/
