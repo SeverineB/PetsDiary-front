@@ -30,7 +30,7 @@ jobs:
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
-        ftp-server: pets-diary-recette.severinebianchi.com
+        ftp-server: ftp://pets-diary-recette.severinebianchi.com
         ftp-username: ${{ secrets.FTP_USERNAME }}
         ftp-password: ${{ secrets.FTP_PASSWORD }}
         local-dir: dist/
