@@ -25,12 +25,12 @@ jobs:
         npm test
         
     - name: List output files
-      run: find dist/ -print
+      run: find build/ -print
       
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
-        ftp-server: ftp://ftp.lettonie.o2switch.net:21/home/bise6935/pets-diary-recette.severinebianchi.com/dist
+        ftp-server: ftp://ftp.lettonie.o2switch.net:21/home/bise6935/pets-diary-recette.severinebianchi.com
         ftp-username: ${{ secrets.FTP_USERNAME }}
         ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: dist/
+        local-dir: build/
