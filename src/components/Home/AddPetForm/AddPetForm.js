@@ -130,7 +130,7 @@ const AddPetForm = ({
                         Valider
                     </button>
                     <button className="add-cancel-btn"variant="primary" type="submit">
-                        <Link to="/home">Annuler</Link>
+                        <Link to="/">Annuler</Link>
                     </button>
                 </div>
             </Form>

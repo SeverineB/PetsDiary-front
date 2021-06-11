@@ -76,9 +76,9 @@ const Home = ({
                         <Pet {...pet} pet={pet} key={pet._id}/>
                     ))}
                 </div>
-                <div className="cat-img">
+                {/* <div className="cat-img">
                     <img src={cat} alt="green cat" />
-                </div>
+                </div> */}
             </div>
 
             <div className="events-section">

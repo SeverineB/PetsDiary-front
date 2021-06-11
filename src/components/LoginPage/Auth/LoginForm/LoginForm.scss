@@ -7,7 +7,7 @@
     }
 }
 .modal-header {
-    border-bottom: 1px solid $color-green-dark!important;
+    border-bottom: 1px solid $dark-blue!important;
     text-transform: uppercase;
     font-size: 0.9em;
 
@@ -21,15 +21,22 @@
     @include m1900() {
         margin-top: 15%;
     };
+
+    button.close {
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
 }
 
 .modal-login-form-title {
-    color: $color-coral;
+    color: $color-green-dark;
     font-weight: bold;
 }
 
 button.btn.btn-primary.login-button {
-    background-color: $color-coral-light;
+    background-color: rgba($color-green-dark, 1);
     border: none;
     font-size: 1em;
     border-radius: 5em;
@@ -40,7 +47,7 @@ button.btn.btn-primary.login-button {
     }
     
     &:hover {
-        background-color: $color-coral;
+        background-color: $dark-blue;
         box-shadow:
             0 2.9px 10px rgba(0, 0, 0, 0.035),
             0 23px 80px rgba(0, 0, 0, 0.07);
@@ -96,7 +103,7 @@ button.btn.btn-primary.login-button {
     }
 
     button.btn.btn-primary.login-button-submit {
-        background-color: $color-coral-light;
+        background-color: rgba($dark-blue, 0.5);
         border: none;
         border-radius: 5em;
         padding: 0.5em 1em;
@@ -106,7 +113,7 @@ button.btn.btn-primary.login-button {
         }
         
         &:hover {
-            background-color: $color-coral;
+            background-color: rgba($dark-blue, 1);
         }
     }
     

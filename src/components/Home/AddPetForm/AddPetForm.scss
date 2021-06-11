@@ -5,16 +5,14 @@
     overflow-y: scroll;
 
     &-title {
-        background: $accent-color;
         border-radius: 30.5px;
         padding: 0.2em;
         width: 60%;
         text-align: center;
-        color: white;
+        color: $dark-blue;
         margin: 0 auto;
         margin-top: 1em;
-        font-family: 'Raleway';
-        font-size: 1.2em;
+        font-size: 1.1rem;
         font-weight: bold;
         @include m1600() {
             width: 15%;
@@ -59,7 +57,8 @@
     }
 
     label[for="avatar"] {
-        color: $light-color;
+      color: $dark-blue;
+      text-decoration: underline;
     }
 
     input {
@@ -79,18 +78,18 @@
         content:""!important;
     }
 
-    input:hover {
-        background: $main-color-bis;
+   /*  input:hover {
+        //ackground: $main-color-bis;
         -webkit-text-fill-color: white;
-    }
+    } */
 
     input:focus {
-        border: none;
+        //border: none;
         filter: none;
     }
 
     input:-webkit-autofill {
-        -webkit-text-fill-color: $light-color !important;
+        -webkit-text-fill-color: #fff !important;
     }
 
     input:-webkit-autofill,
@@ -105,10 +104,14 @@
         color: #ffffff;
     }
 
+    .form-control-file {
+      display: none;
+    }
+
     .add-validate-btn,
     .add-cancel-btn {
         color: white;
-        background-color: #f1746d;
+        background-color: rgba($color-green-dark, 0.5);
         border: none;
         border-radius: 30.5px;
         font-size: 0.9em;
@@ -129,7 +132,7 @@
 
     .add-validate-btn:hover,
     .add-cancel-btn:hover {
-        background: $light-color;
+        background: rgba($color-green-dark, 1);
     }
 
     .buttons {

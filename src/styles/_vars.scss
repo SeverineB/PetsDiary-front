@@ -19,6 +19,7 @@ $color-coral-pale: #fac8cb;
 $color-brown: #563d40;
 $color-green-dark: #2eae8d;
 $color-green-light: #b1efda;
+$dark-blue: #202753;
 
 // MIXIN
 
@@ -52,7 +53,6 @@ $color-green-light: #b1efda;
         fill: $light-color;
     }
 }
-
 
 @mixin delete-btn {
     border: none;
@@ -99,32 +99,32 @@ $color-green-light: #b1efda;
     }
   }
   
-  @mixin m1024($size: 1024px) {
-    @media (min-width: $size){
-      @content;
-    }
+@mixin m1024($size: 1024px) {
+  @media (min-width: $size){
+    @content;
   }
+}
 
-  @mixin m1024ipad($size: 1024px) {
-    @media (min-width: $size) and (min-height: 1200px){
-      @content;
-    }
+@mixin m1024ipad($size: 1024px) {
+  @media (min-width: $size) and (min-height: 1200px){
+    @content;
   }
+}
   
-  @mixin m1200($size: 1200px) {
-    @media (min-width: $size) {
-      @content;
-    }
+@mixin m1200($size: 1200px) {
+  @media (min-width: $size) {
+    @content;
   }
+}
   
-  @mixin m1600($size: 1600px) {
-    @media (min-width: $size) {
-      @content;
-    }
+@mixin m1600($size: 1600px) {
+  @media (min-width: $size) {
+    @content;
   }
+}
 
-  @mixin m1900($size: 1900px) {
-    @media (min-width: $size) {
-      @content;
-    }
+@mixin m1900($size: 1900px) {
+  @media (min-width: $size) {
+    @content;
   }
+}

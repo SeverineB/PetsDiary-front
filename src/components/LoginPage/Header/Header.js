@@ -3,7 +3,7 @@ import React from 'react';
 import './header.scss';
 
 import logo2 from '../../../assets/images/Logo-title-yellow.png';
-import banner from '../../../assets/images/BannerPets2.jpg';
+import banner from '../../../assets/images/banner-home.jpg';
 
 const Header = () => (
   <div className="login-page-header">

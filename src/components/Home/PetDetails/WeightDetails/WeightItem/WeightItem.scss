@@ -44,19 +44,21 @@
       margin-left: 0.2em;
       background-color: $light-color;
     }
-  }
 
-  .modal-content {
+    .modal-content {
 
-    .modal-title {
-        color: $accent-color;
-    }
-      .modal-delete-cancel-btn,
-      .modal-delete-validate-btn {
-          border: none;
-          background: $main-color;
-          border-radius: 30.5px;
-          padding: 0.4em;
-          color: white;
+      .modal-title {
+          color: $accent-color;
       }
+        .modal-delete-cancel-btn,
+        .modal-delete-validate-btn {
+            border: none;
+            background: $main-color;
+            border-radius: 30.5px;
+            padding: 0.4em;
+            color: white;
+        }
+    }
   }
+
+
