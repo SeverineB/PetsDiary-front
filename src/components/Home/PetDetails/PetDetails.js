@@ -7,6 +7,7 @@ import { Modal } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 
 import cancelIcon from '../../../assets/icons/close.png'
+//import Weight from '../../../assets/icons/weight-scale.svg';
 
 import './PetDetails.scss';
 
@@ -80,6 +81,7 @@ const PetDetails = ({
                                         </g>
                                     </g>
                                 </svg>
+                                {/* <Weight /> */}
                                 <p>Poids</p>
                             </Link>
                         </div>

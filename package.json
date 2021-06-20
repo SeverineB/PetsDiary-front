@@ -1,13 +1,14 @@
 {
   "name": "react-modele",
   "scripts": {
+    "svgr": "svgr -d src/Icons/ src/assets/icons/",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint --fix src/**/*.js",
     "clean": "rm -rf dist",
     "clean:all": "rm -rf dist node_modules yarn.lock package-lock.json",
-    "test": "cross-env NODE_PATH=./ mocha --require tests/.setup.js tests/**/*.test.js",
+    "test": "jest",
     "test:watch": "cross-env NODE_PATH=./ mocha --watch --require tests/.setup.js tests/**/*.test.js"
   },
   "devDependencies": {
@@ -21,7 +22,6 @@
     "@babel/preset-env": "^7.14.1",
     "@babel/preset-react": "*",
     "@babel/register": "*",
-    "@svgr/webpack": "^5.5.0",
     "babel-eslint": "*",
     "babel-jest": "^26.6.3",
     "babel-loader": "*",
@@ -51,6 +51,7 @@
     "optimize-css-assets-webpack-plugin": "*",
     "postcss-loader": "^4.0.4",
     "postcss-preset-env": "^6.7.0",
+    "redux-mock-store": "^1.5.4",
     "resolve-url-loader": "^3.1.2",
     "sass": "^1.27.1",
     "sass-loader": "^10.0.4",
@@ -79,6 +80,7 @@
     "react-router-dom": "^5.2.0",
     "react-transition-group": "^4.4.1",
     "redux": "*",
+    "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^1.2.1",
     "styled-components": "*",

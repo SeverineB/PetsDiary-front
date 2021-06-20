@@ -1,9 +1,12 @@
+const webpack = require('webpack');
+const path = require('path');
+
 module.exports = {
     module: {
       rules: [
         {
           test: /\.svg$/,
-          use: ['babel-loader', '@svgr/webpack']
+          use: [{loader: '@svgr/webpack'}]
         }
       ]
     }

@@ -25,24 +25,22 @@
     // Pet details container
 
     &-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
         width: 100%;
         margin-bottom: 0.4em;
-        box-shadow:  0 0 20px #f0eeee,
-                 0 0 20px#f0eeee;
-        -moz-box-shadow: 0 0 20px #f0eeee,
-            0 0 20px #f0eeee;
-        -webkit-box-shadow: 0 0 20px #f0eeee,
-            0 0 20px #f0eeee;
-        -o-box-shadow: 0 0 20px #f0eeee,
-            0 0 2s0px #f0eeee;
+       
         
         @include m767() {
             width: 60%;
             border-radius: 1em;
             margin-bottom: 1em;
+            box-shadow:  0 0 20px #f0eeee,
+            0 0 20px#f0eeee;
+            -moz-box-shadow: 0 0 20px #f0eeee,
+                0 0 20px #f0eeee;
+            -webkit-box-shadow: 0 0 20px #f0eeee,
+                0 0 20px #f0eeee;
+            -o-box-shadow: 0 0 20px #f0eeee,
+                0 0 2s0px #f0eeee;
         }
 
         .details-links {
@@ -99,7 +97,7 @@
 
         &-infos {
             width: 100%;
-            height: 85%;
+            height: 95%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;

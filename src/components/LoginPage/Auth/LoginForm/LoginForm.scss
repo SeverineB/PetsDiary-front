@@ -1,11 +1,6 @@
 @import 'src/styles/vars';
 
-.modal-login-form {
-    .modal-dialog {
-        margin: 0;
-        width: 95vw;
-    }
-}
+
 .modal-header {
     border-bottom: 1px solid $dark-blue!important;
     text-transform: uppercase;
@@ -16,19 +11,7 @@
     }
 }
 
-.modal-login-content-custom {
-    margin-top: 35%;
-    @include m1900() {
-        margin-top: 15%;
-    };
 
-    button.close {
-
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-}
 
 .modal-login-form-title {
     color: $color-green-dark;

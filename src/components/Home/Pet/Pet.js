@@ -1,6 +1,7 @@
-import React, { useEffect, useState }  from 'react'
-import PropTypes from 'prop-types'
-import { Link, useHistory } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import './pet.scss';
 
 const PetCard = ({

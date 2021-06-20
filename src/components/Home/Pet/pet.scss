@@ -21,9 +21,6 @@
     @include m1024() {
         margin: 0.4em 0.6em;
     };
-    @include m1200() {
-        height: 16vh;
-    };
 
     .pet-item {
         height: 100%;

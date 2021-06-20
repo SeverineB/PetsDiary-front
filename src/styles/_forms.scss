@@ -1,0 +1,27 @@
+@import 'src/styles/vars';
+
+
+// LOGIN AND REGISTER FORMS
+
+.modal-login-form,
+.modal-register-form {
+    .modal-dialog {
+        margin: 0;
+        width: 95vw;
+    }
+}
+
+.modal-login-content-custom,
+.modal-register-content-custom {
+    margin-top: 35%;
+    @include m1900() {
+        margin-top: 15%;
+    };
+
+    button.close {
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+}
