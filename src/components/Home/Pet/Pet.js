@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import './pet.scss';
 
-const PetCard = ({
+const Pet = ({
     pet,
     name,
     avatarUrl,
@@ -37,11 +37,11 @@ const PetCard = ({
     );
 };
 
-PetCard.propTypes = {
+Pet.propTypes = {
     _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     avatarUrl: PropTypes.string.isRequired,
     getPetsList: PropTypes.func.isRequired,
 };
 
-export default PetCard;
+export default Pet;
