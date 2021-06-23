@@ -18,9 +18,9 @@ jobs:
         
     - name: Build and Test project
       run: |
-        npm install
-        npm run build
-        npm test
+        yarn install
+        yarn build
+        yarn test
       
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
