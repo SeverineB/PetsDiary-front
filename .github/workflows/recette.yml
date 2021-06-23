@@ -15,6 +15,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '12'
+    
+    - name: Debug versions
+      run:
+        node -v
+        npm -v
+        ls -alh
         
     - name: Build and Test project
       run: |
