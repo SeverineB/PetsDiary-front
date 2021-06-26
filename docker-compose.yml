@@ -1,0 +1,13 @@
+version: "3"
+services:
+  frontend:
+    build: ./docker
+    command: yarn start
+    ports:
+    - "8080:8080"
+    working_dir: /app
+    volumes:
+    - .:/app
+    environment:
+      BACKEND_URL: http://localhost:3000/api
+

@@ -54,5 +54,6 @@ module.exports = merge(common, {
     compress: true,
     hot: true,
     port,
+    host: '0.0.0.0',
   },
 });
