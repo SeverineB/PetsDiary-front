@@ -85,5 +85,6 @@
     "styled-components": "*",
     "uuid": "^8.3.0",
     "victory": "^35.4.2"
-  }
+  },
+    "homepage": "http://pets-diary-recette.severinebianchi.com"
 }
