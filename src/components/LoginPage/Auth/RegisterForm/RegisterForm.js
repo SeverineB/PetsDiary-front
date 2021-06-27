@@ -104,7 +104,7 @@ const RegisterForm = ({
     return (
         <div className="modal-register-form">
             {!isSignedUp && (
-                <button className="register-button" variant="primary" onClick={() => {setShowRegister(true)}}>
+                <button className="register-button btn btn-primary" variant="primary" onClick={() => {setShowRegister(true)}}>
                     Inscription
                 </button>
             )}
