@@ -25,7 +25,14 @@ return (
         <LoginForm />
         <RegisterForm />
         </>
-    )}
+        )}
+             {isSignedUp && (
+            <div className="success-message">
+                <div className="success-message-text">
+                    <p><span>Le compte a bien été créé, vous pouvez vous connecter !</span></p>
+                </div>
+            </div>
+        )}
     {checkIsLogged && (
     <div className="logout">
         <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
@@ -34,13 +41,7 @@ return (
     {checkIsLogged && (
         <Redirect to="/pet" />
     )}
-        {isSignedUp && (
-            <div className="success-message">
-                <div className="success-message-text">
-                    <p><span>Le compte a bien été créé, vous pouvez vous connecter !</span></p>
-                </div>
-            </div>
-        )}
+   
     </div>
 );
 };

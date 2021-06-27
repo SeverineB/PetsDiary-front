@@ -9,13 +9,10 @@
     @include m767() {
         width: 40vw;
     };
+    
     @include m1600() {
         gap: 2em;
         width: 60%;
     };
 
-    .success-message {
-        position: absolute;
-        margin-top: -15%;
-    }
 }
