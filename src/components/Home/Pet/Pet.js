@@ -11,7 +11,6 @@ const Pet = ({
     getPetsList
 }) => {
     const petId = pet._id;
-    console.log('avatarUrl', avatarUrl)
 
     const [showDeletePetModal, setShowDeletePetModal] = useState(false);
 
