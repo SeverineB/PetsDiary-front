@@ -11,8 +11,6 @@
     }
 }
 
-
-
 .modal-login-form-title {
     color: $color-green-dark;
     font-weight: bold;
@@ -21,14 +19,20 @@
 button.btn.btn-primary.login-button {
     background-color: rgba($color-green-dark, 1);
     border: none;
-    font-size: 1em;
+    font-size: 1.2em;
     border-radius: 5em;
-    padding: 0.5em 1em;
-    
+    padding: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em var(--padding-x);
+    line-height: 1.6;
+    --padding-x: 1.2em;
+
     &:focus {
         box-shadow: none;
     }
-    
+
     &:hover {
         background-color: $dark-blue;
         box-shadow:
@@ -78,8 +82,8 @@ button.btn.btn-primary.login-button {
     }
 
     input:-webkit-autofill,
-    input:-webkit-autofill:hover, 
-    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
     input:-webkit-autofill:active  {
         -webkit-box-shadow: 0 0 0 30px white inset !important;
         box-shadow: 0 0 0 30px white inset !important;
@@ -94,12 +98,12 @@ button.btn.btn-primary.login-button {
         &:focus {
             box-shadow: none;
         }
-        
+
         &:hover {
             background-color: rgba($dark-blue, 1);
         }
     }
-    
+
     button.btn.btn-secondary.login-button-cancel {
         background-color: $color-green-light;
         border: none;
@@ -109,15 +113,14 @@ button.btn.btn-primary.login-button {
         &:focus {
             box-shadow: none;
         }
-    
+
         &:hover {
             background-color: $color-green-dark;
         }
     }
-    
+
     .error-email, .error-password {
         font-size: 0.8em;
         color: red;
     }
 }
-

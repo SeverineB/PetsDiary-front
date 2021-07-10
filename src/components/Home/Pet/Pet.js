@@ -30,7 +30,8 @@ const Pet = ({
                         <img className="pet-avatar-img" src={avatarUrl} alt="profile avatar" />
                     </div>
                     <div className="pet-name">
-                        <p>{name}</p>
+                        {/* <p>{name}</p> */}
+                        <p>{petId}</p>
                     </div>
                 </div>
             </Link>

@@ -173,7 +173,7 @@ switch (action.type) {
                 store.dispatch(saveCurrentWeight(response.data.weight))
                 store.dispatch(getPetsList())
                 store.dispatch(clearNewPet())
-                
+
             })
             .catch((error) => {
                 console.error('Une erreur est survenue ', error.response.data.message)
@@ -245,7 +245,7 @@ switch (action.type) {
                 store.dispatch(saveCurrentVaccine(response.data.vaccine))
                 store.dispatch(getPetsList())
                 store.dispatch(clearNewPet())
-                
+
             })
             .catch((error) => {
                 console.error('Une erreur est survenue ', error.response.data.message)
@@ -318,7 +318,7 @@ switch (action.type) {
                 store.dispatch(saveCurrentDeworming(response.data.deworming))
                 store.dispatch(getPetsList())
                 store.dispatch(clearNewPet())
-                
+
             })
             .catch((error) => {
                 console.error('Une erreur est survenue ', error.message)
@@ -388,7 +388,7 @@ switch (action.type) {
                 store.dispatch(saveCurrentAntiflea(response.data.deworming))
                 store.dispatch(getPetsList())
                 store.dispatch(clearNewPet())
-                
+
             })
             .catch((error) => {
                 console.error('Une erreur est survenue ', error.message)
@@ -438,7 +438,7 @@ switch (action.type) {
         break
     }
 
-    
+
     case GET_EVENTSLIST_BY_PET: {
         const petId = localStorage.getItem('petId')
         api.get(`pet/${petId}/events`, {
