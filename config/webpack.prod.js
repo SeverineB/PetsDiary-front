@@ -44,6 +44,10 @@ module.exports = merge.smart(common, {
           },
         ],
       },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
     ],
   },
   stats: {
