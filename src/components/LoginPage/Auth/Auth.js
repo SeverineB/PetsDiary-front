@@ -20,28 +20,29 @@ const handleLogout = () => {
 };
 return (
     <div className="auth">
-    {!checkIsLogged && (
-        <>
-        <LoginForm />
-        <RegisterForm />
-        </>
+        {!checkIsLogged && (
+            <>
+            <LoginForm />
+            <RegisterForm />
+            </>
+            )}
+            
+        {checkIsLogged && (
+        <div className="logout">
+            <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
+        </div>
         )}
-             {isSignedUp && (
+        {checkIsLogged && (
+            <Redirect to="/pet" />
+        )}
+
+        {isSignedUp && (
             <div className="success-message">
                 <div className="success-message-text">
                     <p><span>Le compte a bien été créé, vous pouvez vous connecter !</span></p>
                 </div>
             </div>
         )}
-    {checkIsLogged && (
-    <div className="logout">
-        <button type="submit" className="logout-button" onClick={handleLogout}>Déconnexion</button>
-    </div>
-    )}
-    {checkIsLogged && (
-        <Redirect to="/pet" />
-    )}
-   
     </div>
 );
 };
@@ -53,3 +54,4 @@ Auth.propTypes = {
 };
 
 export default Auth;
+ 

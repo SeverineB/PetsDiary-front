@@ -10,10 +10,6 @@
     height: calc(100vh - 5em);
     margin: 0 auto;
     gap: 0.5em;
-    @include m1600() {
-        flex-direction: row;
-        height: 90%;
-    };
 
     &-infos {
         position: relative;
@@ -23,5 +19,6 @@
         align-items: center;
         justify-content: space-around;
         margin: 0 auto;
+        flex: 1;
     }
 }

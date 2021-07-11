@@ -91,7 +91,7 @@ const AddPetForm = ({
                         value={ide}
                         onChange={handleChange}
                     />
-                <label htmlFor="sex">Sexe</label>
+                <label htmlFor="sex"></label>
                 {['checkbox'].map((type) => (
                 <div key={`inline-${type}`} className="mb-3">
                     <Form.Check

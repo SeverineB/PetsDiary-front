@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Navbar, Nav } from 'react-bootstrap';
 
-import logo from '../../assets/images/Logo-title-white.png';
+import LogoText from '../../assets/images/banner-pets-text.svg';
 
 import './Navbar.scss';
 
@@ -17,9 +17,7 @@ const NavBar = ({ isLogged, logout }) => {
         <Navbar bg="light" expand="lg" id="navbar-custom">
         <Navbar.Brand href="#pet">
             {isLogged && (
-                <div className="logo-small">
-                    <img src={logo} alt="cat and dog in badge" />
-                </div>
+                <LogoText className="logo-small"/>
             )}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

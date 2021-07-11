@@ -3,17 +3,27 @@
 .add-pet {
     height: 90%;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 
     &-title {
         border-radius: 30.5px;
         padding: 0.2em;
         width: 60%;
         text-align: center;
-        color: $dark-blue;
+        color: $purple;
         margin: 0 auto;
         margin-top: 1em;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         font-weight: bold;
+        flex: 0.5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include m767() {
+            flex: 0;
+        };
         @include m1600() {
             width: 15%;
             margin-top: 2em;
@@ -29,8 +39,15 @@
     padding: 0.5em;
     display: flex;
     flex-direction: column;
+    flex: 2;
+    border-radius: 2em;
+    max-height: 65%;
+
     @include m767() {
         width: 60%;
+        padding: 1em;
+        box-shadow:  -8px 8px 30px #d9d9d9,
+        20px -20px 50px #ffffff;
     };
     @include m1600() {
         width: 20%;
@@ -49,7 +66,8 @@
     label[for="avatar"],
     label[for="inline-checkbox-1"],
     label[for="inline-checkbox-2"],
-    label[for="avatar"] {
+    label[for="avatar"],
+    label[for="date"] {
         display: block;
         font-size: 0.8em;
         margin-top: 0.2em;
@@ -57,8 +75,12 @@
     }
 
     label[for="avatar"] {
-      color: $dark-blue;
-      text-decoration: underline;
+      color: $dark-grey;
+      text-decoration: none;
+
+      &:hover {
+          color: $purple;
+      }
     }
 
     input {
@@ -104,6 +126,10 @@
         color: #ffffff;
     }
 
+    .mb-3 {
+        margin-top: 0.5em;
+    }
+
     .form-control-file {
       display: none;
     }
@@ -111,7 +137,7 @@
     .add-validate-btn,
     .add-cancel-btn {
         color: white;
-        background-color: rgba($color-green-dark, 0.5);
+        background-color: $green;
         border: none;
         border-radius: 30.5px;
         font-size: 0.9em;
@@ -132,7 +158,7 @@
 
     .add-validate-btn:hover,
     .add-cancel-btn:hover {
-        background: rgba($color-green-dark, 1);
+        background: $purple;
     }
 
     .buttons {
@@ -144,8 +170,11 @@
         border-radius: 0.5em;
         display: flex;
         justify-content: center;
+        height: 8rem;
+        margin: 0.4em 0;
         img {
-            width: 50%;
+            //width: 50%;
+            object-fit: cover;
             margin: 0.5em 0;
         }
     }

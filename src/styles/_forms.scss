@@ -13,7 +13,8 @@
 
 .modal-login-content-custom,
 .modal-register-content-custom {
-    margin-top: 35%;
+    margin-top: 25%;
+
     @include m1900() {
         margin-top: 15%;
     };

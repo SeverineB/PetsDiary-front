@@ -21,6 +21,7 @@ body {
   font-family: 'Muli';
   height: 100%;
   font-size: 14px;
+  font-family: 'Montserrat';
 }
 
 #root {
@@ -98,4 +99,11 @@ body {
     src: url("../../src/assets/fonts/PassionOne-Regular.ttf");
       font-weight: normal;
       font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../../src/assets/fonts/Poppins-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
 }

@@ -37,6 +37,10 @@ module.exports = merge(common, {
           },
         ],
       },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
     ],
   },
 
