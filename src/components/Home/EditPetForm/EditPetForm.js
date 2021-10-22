@@ -47,12 +47,12 @@ const EditPetForm = ({
 
     return (
         <div className="edit-pet">
-        <h2>Editer les informations</h2>
+        <h2 className="edit-pet-title">Editer les informations</h2>
         <Form onSubmit={handleSubmit} className="edit-pet-form">
             <div className="general-infos">
             <Form.Group>
                 <div className="edit-pet-form-btn">
-                    <label htmlFor="inputFile" className="label-file">Choisir un avatar</label>
+                    <label htmlFor="inputFile" className="label-file">Modifier l'avatar</label>
                     <input type="file" name="avatar" id="inputFile" onChange={handleFileChange} />
                 </div>
             </Form.Group>
@@ -75,29 +75,14 @@ const EditPetForm = ({
                 defaultValue={age}
                 onChange={handleChange}
             />
-            <Form.Label>Sexe</Form.Label>
-            <div>
-                <Form.Check
-                    inline
-                    label="Femelle"
-                    name="sex"
-                    type="radio"
-                    id="inline-radio-1"
-                    value="femelle"
-                    checked={sex === "femelle"}
-                    onChange={handleChange}
-                />
-                <Form.Check
-                    inline
-                    label="Mâle"
-                    name="sex"
-                    type="radio"
-                    id="inline-radio-2"
-                    value="mâle"
-                    checked={sex === "mâle"}
-                    onChange={handleChange}
-                />
-                </div>
+             <Form.Label>Date de naissance</Form.Label>
+            <Form.Control
+                type="date"
+                placeholder="Date de naissance"
+                name="birthdate"
+                defaultValue={newBirthdate}
+                onChange={handleChange}
+            />
             <Form.Label>Espèce</Form.Label>
             <Form.Control
                 type="text"
@@ -116,14 +101,7 @@ const EditPetForm = ({
             />
             </div>
             <div className="health-infos">
-            <Form.Label>Date de naissance</Form.Label>
-            <Form.Control
-                type="date"
-                placeholder="Date de naissance"
-                name="birthdate"
-                defaultValue={newBirthdate}
-                onChange={handleChange}
-            />
+           
             <Form.Label>Numéro d'identification</Form.Label>
             <Form.Control
                 type="text"
@@ -133,6 +111,29 @@ const EditPetForm = ({
                 onChange={handleChange}
             />
             </div>
+            <Form.Label>Sexe</Form.Label>
+            <Form.Group>
+                <Form.Check
+                    inline
+                    label="Femelle"
+                    name="sex"
+                    type="radio"
+                    id="inline-radio-1"
+                    value='femelle'
+                    checked={sex === 'femelle'}
+                    onChange={handleChange}
+                />
+                <Form.Check
+                    inline
+                    label="Mâle"
+                    name="sex"
+                    type="radio"
+                    id="inline-radio-2"
+                    value="mâle"
+                    checked={sex === 'mâle'}
+                    onChange={handleChange}
+                />
+            </Form.Group>
             <div className="buttons">
                 <Button variant="primary" type="submit">
                     Valider

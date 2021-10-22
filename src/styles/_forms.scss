@@ -26,3 +26,17 @@
       }
     }
 }
+
+.form-check.form-check-inline {
+  display: inline-flex;
+  align-items: center;
+
+  .form-check-input {
+      margin: 0 0 0 0.2em ;
+  }
+
+  .form-check-label {
+      padding: 2px;
+      margin: 0 0 0 0.4em ;
+  }
+}

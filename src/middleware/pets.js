@@ -217,6 +217,7 @@ switch (action.type) {
             .then((response) => {
                 store.dispatch(saveCurrentPet(response.data))
                 store.dispatch(saveCurrentWeight(response.data.weight))
+                store.dispatch(getPetsList())
             })
             .catch((error) => {
                 console.error(error)

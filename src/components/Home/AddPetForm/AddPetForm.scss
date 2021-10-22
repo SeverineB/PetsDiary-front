@@ -2,13 +2,10 @@
 
 .add-pet {
     height: 90%;
-    overflow-y: scroll;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
 
     &-title {
-        border-radius: 30.5px;
         padding: 0.2em;
         width: 60%;
         text-align: center;
@@ -17,46 +14,47 @@
         margin-top: 1em;
         font-size: 1.2rem;
         font-weight: bold;
-        flex: 0.5;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        @include m767() {
-            flex: 0;
-        };
+
+        @include m1024() {
+            margin-top: 3em;
+        }
+
         @include m1600() {
             width: 15%;
             margin-top: 2em;
             font-size: 1.6em;
-        };
+        }
+    }
+
+    .icon.medium {
+        width: 3em;
+        height: 3em;
     }
 }
 
 .add-pet-form {
     width: 90%;
+    max-width: 600px;
     background: white;
     margin: 1em auto;
     padding: 0.5em;
     display: flex;
     flex-direction: column;
-    flex: 2;
-    border-radius: 2em;
-    max-height: 65%;
+    //flex: 2;
+    border-radius: 15px;
 
     @include m767() {
-        width: 60%;
-        padding: 1em;
-        box-shadow:  -8px 8px 30px #d9d9d9,
-        20px -20px 50px #ffffff;
-    };
+        box-shadow: -8px 8px 30px #d9d9d9,
+            20px -20px 50px #ffffff;
+    }
+
     @include m1600() {
-        width: 20%;
-        height: 60%;
-        margin-top: 5%;
-        border-radius: 30.5px;
-        box-shadow:  -8px 8px 30px #d9d9d9,
-        20px -20px 50px #ffffff;
-    };
+        border-radius: 15px;
+    }
 
     label {
         display: none;
@@ -72,15 +70,19 @@
         font-size: 0.8em;
         margin-top: 0.2em;
         margin-bottom: 0;
+
+        @include m1024() {
+            font-size: 1em;
+        }
     }
 
     label[for="avatar"] {
-      color: $dark-grey;
-      text-decoration: none;
+        color: $dark-grey;
+        text-decoration: none;
 
-      &:hover {
-          color: $purple;
-      }
+        &:hover {
+            color: $purple;
+        }
     }
 
     input {
@@ -90,24 +92,28 @@
         border-bottom: 1px solid $light-color;
         border-radius: 0;
         filter: none;
+        caret-color: $purple;
+        margin-bottom: 0.5em;
+
+        @include m1024() {
+            font-size: 1em;
+        }
+
+        ;
     }
 
-    input[type="date"]::before{
+    input[type="date"]::before {
         content: attr(placeholder)" : ";
         white-space: pre;
-     }
-    input[type="date"]:focus::before {
-        content:""!important;
     }
 
-   /*  input:hover {
-        //ackground: $main-color-bis;
-        -webkit-text-fill-color: white;
-    } */
+    input[type="date"]:focus::before {
+        content: "" !important;
+    }
 
     input:focus {
-        //border: none;
         filter: none;
+        border-bottom: 2px solid $purple;
     }
 
     input:-webkit-autofill {
@@ -115,9 +121,9 @@
     }
 
     input:-webkit-autofill,
-    input:-webkit-autofill:hover, 
-    input:-webkit-autofill:focus, 
-    input:-webkit-autofill:active  {
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
         -webkit-box-shadow: 0 0 0 30px white inset !important;
         box-shadow: 0 0 0 30px white inset !important;
     }
@@ -131,7 +137,7 @@
     }
 
     .form-control-file {
-      display: none;
+        display: none;
     }
 
     .add-validate-btn,
@@ -141,8 +147,15 @@
         border: none;
         border-radius: 30.5px;
         font-size: 0.9em;
-        height: 2em;
+        height: 3em;
+        width: 7em;
         padding: 0 0.6em;
+
+        @include m1024() {
+            font-size: 1em;
+        }
+
+        ;
     }
 
     .add-cancel-btn {
@@ -170,10 +183,10 @@
         border-radius: 0.5em;
         display: flex;
         justify-content: center;
-        height: 8rem;
         margin: 0.4em 0;
+
         img {
-            //width: 50%;
+            height: 8rem;
             object-fit: cover;
             margin: 0.5em 0;
         }

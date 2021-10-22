@@ -27,13 +27,13 @@ $dark-grey: #5e6697;
 // MIXIN
 
 @mixin add-btn {
-    width: 2.6em;
+    width: 2em;
     border: none;
     background: none;
     margin-top: 0.5em;
-    
+
     svg {
-        fill: $accent-color;
+        fill: $purple;
     }
 }
 
@@ -50,20 +50,25 @@ $dark-grey: #5e6697;
 
 @mixin add-btn-svg {
     width: 100%;
-    fill: #ff7362;
+    fill: $purple;
 
     &:hover {
-        fill: $light-color;
+        fill: $dark-grey;
     }
 }
 
 @mixin delete-btn {
     border: none;
     background: none;
-    width: 1.4em;
+
     img {
         width: 100%;
         transform: scale(1);
+    }
+
+    svg {
+        width: 1.2em;
+        height: 1.2em;
     }
 
     &:hover {
@@ -79,55 +84,55 @@ $dark-grey: #5e6697;
 // MEDIA QUERIES
 
 @mixin m375($size: 375px) {
-  @media (min-width: $size) and (max-height: 700px){
-    @content;
-  }
+    @media (min-width: $size) and (max-height: 700px) {
+        @content;
+    }
 }
 
 @mixin m375higher($size: 375px) {
-  @media (min-width: $size) and (min-height: 700px){
-    @content;
-  }
+    @media (min-width: $size) and (min-height: 700px) {
+        @content;
+    }
 }
 
 @mixin m400($size: 400px) {
-  @media (min-width: $size) {
-    @content;
-  }
+    @media (min-width: $size) {
+        @content;
+    }
 }
 
 @mixin m767($size: 767px) {
     @media (min-width: $size) {
-      @content;
+        @content;
     }
-  }
-  
+}
+
 @mixin m1024($size: 1024px) {
-  @media (min-width: $size){
-    @content;
-  }
+    @media (min-width: $size) {
+        @content;
+    }
 }
 
 @mixin m1024ipad($size: 1024px) {
-  @media (min-width: $size) and (min-height: 1200px){
-    @content;
-  }
+    @media (min-width: $size) and (min-height: 1200px) {
+        @content;
+    }
 }
-  
+
 @mixin m1200($size: 1200px) {
-  @media (min-width: $size) {
-    @content;
-  }
+    @media (min-width: $size) {
+        @content;
+    }
 }
-  
+
 @mixin m1600($size: 1600px) {
-  @media (min-width: $size) {
-    @content;
-  }
+    @media (min-width: $size) {
+        @content;
+    }
 }
 
 @mixin m1900($size: 1900px) {
-  @media (min-width: $size) {
-    @content;
-  }
+    @media (min-width: $size) {
+        @content;
+    }
 }

@@ -2,7 +2,7 @@
 
 .pet-container {
     position: relative;
-    width: 90%;
+    width: 100%;
     height: 6em;
     display: flex;
     align-items: center;
@@ -10,7 +10,8 @@
     border-radius: 0.8em;
     box-shadow:
         0 2.5px 5px rgba(0, 0, 0, 0.01),
-        0 20px 40px rgba(0, 0, 0, 0.02); 
+        0 20px 40px rgba(0, 0, 0, 0.02);
+
     &:hover {
         text-decoration: none;
     }
@@ -18,9 +19,11 @@
     &:hover .pet-name {
         color: $color-green-dark;
     }
+
     @include m1024() {
         margin: 0.4em 0.6em;
-    };
+        height: 14em;
+    }
 
     .pet-item {
         height: 100%;
@@ -28,6 +31,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @include m1024() {
+            flex-direction: column;
+        }
     }
 
     .pet-name {
@@ -35,31 +42,41 @@
         font-size: 1.1rem;
         padding: 0.5em;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        align-items: center;
         color: $dark-blue;
-        @include m767() {
+        gap: 0.5em;
+
+        @include m1024() {
             font-size: 1em;
-        };
+            flex: auto;
+        }
 
         p {
             margin-bottom: 0;
         }
+
+        svg {
+            width: 1.2em;
+            height: 1.2em;
+        }
     }
 
     .pet-avatar {
-        flex: 1;
+        flex: 2;
         height: 100%;
         overflow: hidden;
-        padding: 0.4em;
-        border-radius: 0.2em;
-        
+        border-radius: 0.8em 0 0 0.8em;
+
+        @include m1024() {
+            flex: auto;
+        }
+
         img {
             height: 100%;
             width: 100%;
-            object-fit: cover;
-            border-radius: 0.2em;
+            object-fit: contain;
         }
-
     }
 
     .pet-delete {

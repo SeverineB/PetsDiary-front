@@ -9,7 +9,6 @@ import {
 } from '../../actions';
 
 const mapStateToProps = (state) => ({
-    petWeight: state.pets.weight,
     error: state.error.error,
 });
 

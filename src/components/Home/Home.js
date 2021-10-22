@@ -55,9 +55,9 @@ const Home = ({
                         <p>Vous êtes bien connecté(e) <strong>{username}</strong></p>
                     </Alert>
                 )}
-            <div className="pets-section">
-                <div className="pets-section-title">
-                    <h2 className="section-title">Mes animaux</h2>
+            <div className="section pets-section">
+                <div className="section-title flex-row">
+                    <h2 className="section-title-text">Mes animaux</h2>
                     <div className="add-pet-button">
                         <Link to="/pet/add" title="Ajouter un animal">
                             <svg version="1.1" id="Capa_1"x="0px" y="0px" viewBox="0 0 45.402 45.402" xmlns="http://www.w3.org/2000/svg">
@@ -76,13 +76,12 @@ const Home = ({
                         <Pet {...pet} pet={pet} key={pet._id}/>
                     ))}
                 </div>
-                {/* <div className="cat-img">
-                    <img src={cat} alt="green cat" />
-                </div> */}
             </div>
 
-            <div className="events-section">
-                <h2 className="section-title">Rendez-vous à venir</h2>
+            <div className="section events-section">
+                <div className="section-title">
+                    <h2 className="section-title-text">Rendez-vous à venir</h2>
+                </div>
                 <div className="events-list">
                     {groupedByDates.map(item => (
                         <div key={item._id} className="event-container">

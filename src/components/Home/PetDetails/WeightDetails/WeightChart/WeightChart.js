@@ -21,7 +21,6 @@ const WeightChart = ({ petWeight }) => {
     const lastxvalue = (petWeight.length > 0) ? new Date(petWeight[petWeight.length-1].weightDate) : new Date();
     const tickCount = (petWeight.length > 0) ? petWeight.length : 2;
 
-
 return (
     <>
     <div className="weight-chart-container">
@@ -50,10 +49,10 @@ return (
             />
             )}
             style={{
-                data: { stroke: '#f87268' },
+                data: { stroke: '#5e17eb' },
                 parent: {
                     border: '1px solid #ccc',
-                    fontFamily: 'Nunito',
+                    fontFamily: 'Muli',
                 },
             }}
             domain={{
@@ -78,10 +77,10 @@ return (
             textAnchor="middle"
             text="Suivi du poids"
             style={{
-                fontSize: 18,
+                fontSize: 20,
                 fontWeight: 'bold',
-                fontFamily: 'Nunito',
-                fill: '#c6a49a',
+                fontFamily: 'Muli',
+                fill: '#5e17eb',
             }}
         />
         <VictoryLabel
@@ -89,7 +88,7 @@ return (
             y={25}
             style={{
                 fontSize: 12,
-                fontFamily: 'Nunito',
+                fontFamily: 'Muli',
             }}
             text="Poids (en kg)"
         />
@@ -99,7 +98,7 @@ return (
             style={{
                 tickLabels: {
                     fontSize: 12,
-                    fontFamily: 'Nunito',
+                    fontFamily: 'Muli',
                     fontWeight: 'bold',
                 },
             }}
@@ -115,12 +114,12 @@ return (
            fixLabelOverlap={true}
         />
         <VictoryAxis
-        // cross axis styles
+            // cross axis styles
             dependentAxis
             style={{
                 tickLabels: {
                     fontSize: 12,
-                    fontFamily: 'Nunito',
+                    fontFamily: 'Muli',
                     fontWeight: 'bold',
                     padding: 10,
                 },

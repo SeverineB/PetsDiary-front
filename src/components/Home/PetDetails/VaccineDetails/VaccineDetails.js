@@ -10,12 +10,13 @@ import backIcon from '../../../../assets/icons/left-arrow.png';
 import './VaccineDetails.scss';
 
 const VaccineDetails = ({
-    petVaccine,
+    pet,
     changeField,
     addVaccine,
     setErrors,
     error
 }) => {
+    const petVaccine = pet.vaccine;
     const history = useHistory();
     const [showVaccine, openShowVaccine] = useState(false);
 
@@ -63,7 +64,7 @@ const VaccineDetails = ({
         evt.preventDefault();
         addVaccine();
         openShowVaccine(false);
-        history.push(`/pet/${petId}/vaccine`)
+        /* history.push(`/pet/${petId}/vaccine`) */
     }
 
     return (

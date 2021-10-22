@@ -19,6 +19,7 @@ return ({
     name: state.pets.name,
     age: state.pets.age,
     species: state.pets.species,
+    sex: state.pets.sex,
     breed: state.pets.breed,
     birthdate: state.pets.birthdate,
     ide: state.pets.ide,

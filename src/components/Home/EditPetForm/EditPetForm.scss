@@ -1,32 +1,37 @@
 @import 'src/styles/vars';
 
 .edit-pet {
-    height: 90%;
     width: 100%;
-    padding: 0.5em;
-    overflow-y: scroll;
-    padding-bottom: 3em;
-
-    h2 {
+    display: flex;
+    flex-direction: column;
+    
+    &-title {
     width: 100%;
     text-align: center;
-    color:$color-coral;
-    margin-top: 1em;
+    color:$purple;
+    margin: 0.5em 0 0.5em 0;
     }
 }
 
 .edit-pet-form {
     width: 100%;
     padding: 0.5em;
-    margin-bottom: 0.5em;
+    margin: 0 auto 0.5em auto;
     border-radius: 0.5em;
-    box-shadow:  0 0 20px #f0eeee,
+    max-width: 500px;
+    
+    @include m1024() {
+        box-shadow:  0 0 20px #f0eeee,
                  0 0 20px#f0eeee;
+        margin: 1em auto 0.5em auto;
+        
+    };
     .form-label {
         color: $color-green-dark;
         margin: 0.5em 0;
         font-size: 0.8em;
         cursor: default;
+        display: none;
     }
 
     &-btn {
@@ -35,7 +40,7 @@
         }
         label {
             background-color: none;
-            color: $color-green-dark;
+            color: $green;
             font-size: 0.9em;
             padding: 0.5em;
             border-radius: 30.5px;
@@ -51,6 +56,10 @@
         border-width: 0 0 1px 0;
         border-radius: 0;
         padding-left: 0;
+        margin-bottom: 0.5em;
+        @include m1024() {
+            font-size: 1em;
+        };
     }
 
     input:focus {
@@ -64,14 +73,15 @@
     }
 
     .btn-primary {
-        background-color: $color-coral-light;
-        border-color: $color-coral-light;
         border-radius: 30.5px;
+        background-color: $green;
+        border-color: $green;
+        color: #fff;
 
-        &:hover,
-        &:active {
-            background-color: $color-coral;
-            border-color: $color-coral;
+        &:hover {
+            background-color: $purple;
+            border-color: $purple;
+
         }
     }
 

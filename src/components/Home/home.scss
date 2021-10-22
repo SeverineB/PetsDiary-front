@@ -3,17 +3,22 @@
 .home-container {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: calc(100%-4em);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 1em;
     align-items: center;
     padding-bottom: 3em;
     background-color: #F8FBFE;
-    @include m767() {
-        height: 100vh;
+
+    @include m1024() {
+        flex-direction: row;
         justify-content: flex-start;
-    };
+        align-items: flex-start;
+        gap: 1em;
+    }
+
+    ;
 
     .alert {
         font-size: 0.9em;
@@ -27,181 +32,191 @@
         }
     }
 
-    .section-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      border-radius: 0.3em;
-      text-align: left;
-      padding: 0.2em;
-      margin-bottom: 0.8em;
-      color: $dark-blue;
-      @include m767() {
-          text-align: center;
-      };
+    .home-icon {
+        width: 2.4em;
     }
 
-    .home-icon {
-      width: 2.4em;
+    .section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        &-title {
+            font-weight: bold;
+            text-align: left;
+            padding: 0.5em;
+            color: $dark-blue;
+            background-color: rgba($green, 0.2);
+            height: 3em;
+            display: flex;
+            align-items: center;
+            gap: 1em;
+
+            @include m767() {
+                text-align: center;
+            }
+
+            ;
+
+            &-text {
+                font-size: 1.2rem;
+                margin: 0;
+            }
+        }
     }
 
     .pets-section {
-      width: 100%;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding-top: 0.4em;
-      padding-bottom: 4em;
-      position: relative;
-      @include m767() {
-          min-height: 50%;
-      };
-  
-      &-title {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0 1em;
-          margin-bottom: 1em;
-          @include m767() {
-              justify-content: center;
-              gap: 1em;
-              padding: 0 1em;
-          }
-          @include m1024() {
-              margin: 2em 0;
-          }
-  
-          h2 {
-              margin-bottom: 0;
-          }
-      }
-  
-      .add-pet-button {
-          width: 2.2em;
-          height: 2.2em;
-          border-radius: 50%;
-          background-color: $dark-grey;
-          box-shadow:
-              0 2.5px 5px rgba(255, 49, 101, 0.1),
-              0 20px 40px rgba(255, 49, 101, 0.2);
-          transition: all 200ms ease-in;
-  
-          &:hover {
-              background-color: $purple;
-              transform: scale(1.1);
-              transform-origin: center;
-          }
-  
-          a {
-              width: 100%;
-              height: 100%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              padding: 0;
-          }
-      
-          & svg {
-              width: 1.1em;
-              fill: #fff;
-          }
-      }
-  
-      // Pets list on home page
-  
-      .pets-list {
-        width: 100%;
-        height: 100%;
-        padding: 0.5em;
-        display: grid;
-        grid-template-columns: repeat(auto-fill,minmax(80%, 1fr));
-        grid-column-gap: 0.8em;
-        grid-row-gap: 0.6em;
-        grid-auto-rows: 1fr;
-        overflow-y: auto;
-        justify-items: center;
-  
+        position: relative;
+
         @include m767() {
+            min-height: 50%;
+        }
+
+        ;
+
+        .flex-row {
+            @include m767() {
+                justify-content: flex-start;
+            }
+
+            ;
+        }
+
+        .add-pet-button {
+            width: 2em;
+            height: 2em;
+            border-radius: 50%;
+            background-color: transparent;
+            transition: all 200ms ease-in;
+
+            &:hover {
+                transform: scale(1.1);
+                transform-origin: center;
+                background-color: rgba($green, 0.4);
+            }
+
+            a {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+            }
+
+            & svg {
+                width: 1.1em;
+                fill: $dark-grey;
+            }
+        }
+
+        // Pets list on home page
+
+        .pets-list {
+            width: 100%;
             height: 100%;
-            grid-template-columns: repeat(auto-fill,minmax(12em, 1fr));
-            grid-column-gap: 1em;
-            grid-row-gap: 0.5em;
-        };
-        @include m1024() {
-            grid-template-columns: repeat(auto-fill,minmax(180px, 1fr));
-        };
-        @include m1200() {
-            padding: 1em;
-            grid-template-columns: repeat(auto-fill,minmax(180px, 1fr));
-        };
-        @include m1600() {
-            grid-template-columns: repeat(auto-fill,minmax(210px, 1fr));
-        };
-        @include m1900() {
-            grid-template-columns: repeat(auto-fill,minmax(240px, 1fr));
-        };
-      }
+            padding: 0.5em;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80%, 1fr));
+            grid-column-gap: 0.8em;
+            grid-row-gap: 0.6em;
+            grid-auto-rows: 1fr;
+            justify-items: center;
+
+            @include m767() {
+                height: 100%;
+                grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+                grid-column-gap: 1em;
+                grid-row-gap: 0.5em;
+            }
+
+            ;
+
+            @include m1024() {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+
+            ;
+
+            @include m1200() {
+                padding: 1em;
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+
+            ;
+
+            @include m1600() {
+                grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            }
+
+            ;
+
+            @include m1900() {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+
+            ;
+        }
     }
 
     .events-section {
-      flex: 1;
-      width: 100%;    
-      padding: 1em;
-      display: flex;
-      flex-direction: column;
-      @include m767() {
-          min-height: 50%;
-      };
-  
-      .events-list {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1em;
-          width: 100%;
-          height: 100%;
-  
-          .event-container {
-              display: flex;
-              flex-direction: column;
-              gap: 0.4em;
-              width: 100%;
-              font-size: 0.9em;
-              border-bottom: 1px solid $color-green-dark;
-              @include m767() {
-                  font-size: 1em;
-                  height: 5em;
-              };
-  
-              &-date {
-                  font-weight: bold;
-                  p {
-                      margin: 0;
-                  }
-              }
-  
-              &-content {
-                  display: flex;
-                  flex-direction: row;
-  
-                  &-name {
-                      margin: 0 0.2em 0 0;
-                      font-weight: bold;
-                      color: $color-green-dark;
-                  }
-                  &-title {
-                      display: inline-block;
-                      margin: 0 0 0 0.2em;
-                  }
-              }
-          }
-      }
+        display: flex;
+        flex-direction: column;
+
+        @include m1024() {
+            min-height: 50%;
+            width: 45%;
+        }
+
+        ;
+
+        .events-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            width: 100%;
+            height: 100%;
+            padding: 0.5em;
+
+            .event-container {
+                display: flex;
+                flex-direction: column;
+                gap: 0.4em;
+                width: 100%;
+                font-size: 0.9em;
+                border-bottom: 1px solid $color-green-dark;
+
+                @include m767() {
+                    font-size: 1em;
+                    //height: 5em;
+                }
+
+                ;
+
+                &-date {
+                    font-weight: bold;
+
+                    p {
+                        margin: 0;
+                    }
+                }
+
+                &-content {
+                    display: flex;
+                    flex-direction: row;
+
+                    &-name {
+                        margin: 0 0.2em 0 0;
+                        font-weight: bold;
+                        color: $color-green-dark;
+                    }
+
+                    &-title {
+                        display: inline-block;
+                        margin: 0 0 0 0.2em;
+                    }
+                }
+            }
+        }
     }
 }
-
-
-
-
-
-
-
-

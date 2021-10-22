@@ -16,3 +16,22 @@
     };
 
 }
+
+.success-message {
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    padding: 0.5em;
+    width: 300px;
+    background-color: rgb(186, 245, 131);
+    box-shadow: 2px 2px 4px rgb(175, 184, 167);
+    border-radius: 5px;
+
+    &-text {
+        text-align: center;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+}

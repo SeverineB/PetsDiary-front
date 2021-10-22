@@ -63,7 +63,6 @@ const DewormingDetails = ({
         evt.preventDefault()
         addDeworming()
         openShowDeworming(false)
-        history.push(`/pet/${petId}/deworming`)
     }
 
     return (

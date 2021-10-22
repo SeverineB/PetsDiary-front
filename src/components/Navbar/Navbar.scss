@@ -6,9 +6,10 @@
   display: flex;
   align-items: center;
   padding: 0.2em 0.4em;
+  height: 4em;
 
   @include m1024 {
-    height: 4em;
+    height: 5em;
   }
 }
 
@@ -16,6 +17,11 @@
   a {
     color: #ffffff;
     margin: 0 1em;
+    font-size: 0.9rem;
+
+    @include m1024 {
+      font-size: 1rem;
+    }
 
     &:hover {
         color: rgb(88, 94, 89);
@@ -37,15 +43,14 @@
     .logo-small {
         height: 3rem;
         fill: #fff;
+        @include m1024 {
+          height: 4em;
+        }
 
         img {
             width: 100%;
         }
     }
-}
-
-.navbar-collapse {
-    //font-family: 'Muli';
 }
 
 .navbar-toggler {

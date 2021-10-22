@@ -1,75 +1,81 @@
 @import 'src/styles/vars';
 
 .weight-container {
-  position: relative;
-  height: 90%;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-
-  @include m1024() {
+    position: relative;
+    height: 90%;
+    overflow-y: scroll;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    };
+    flex-direction: column;
 
-  .back-btn {
-    border: none;
-    border-radius: 30.5px;
-    padding: 0.4em;
-    background: none;
-
-    img {
-        width: 1.6em;
+    @include m1024() {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
-  }
+
+    .back-btn {
+        border: none;
+        border-radius: 30.5px;
+        padding: 0.4em;
+        background: none;
+
+        img {
+            width: 1.6em;
+        }
+    }
+
+    .add-weight {
+        position: absolute;
+        right: 1em;
+    }
 }
 
 .weight-list {
-  margin-left: 0.2em;
 
-  @include m767() {
-    width: 25em;
-    margin: 0;
-    };
+    @include m767() {
+        width: 25em;
+        margin: 0;
+    }
 }
 
 .add-weight-btn {
     @include add-btn;
 
-  svg {
-    @include add-btn-svg;
-  }
+    svg {
+        @include add-btn-svg;
+    }
 }
 
 .modal-content {
-  label {
-    display: none;
-  }
-
-  input {
-    border: 1px solid $light-color;
-    border-radius: 0.4em;
-    padding: 0.4em;
-    color: $light-color;
-  }
-
-  .add-weight-form-btn {
-    display: flex;
-    justify-content: space-between;
-
-    .add-weight-button-submit,
-    .add-weight-button-cancel {
-      width: 6em;
-      background: $accent-color;
-      border: none;
-      border-radius: 30.5px;
-      padding: 0.4em;
-      color: white;
-
-      &:hover {
-        background: $light-color;
-      }
+    label {
+        display: none;
     }
-  }
+
+    input {
+        border: 1px solid $dark-grey;
+        border-radius: 0.4em;
+        padding: 0.4em;
+        color: $dark-grey;
+        width: 100%;
+        outline: none;
+    }
+
+    .add-weight-form-btn {
+        display: flex;
+        justify-content: space-between;
+
+        .add-weight-button-submit,
+        .add-weight-button-cancel {
+            width: 6em;
+            background: $green;
+            border: none;
+            border-radius: 30.5px;
+            padding: 0.4em;
+            color: white;
+
+            &:hover {
+                background: $purple;
+            }
+        }
+    }
 }

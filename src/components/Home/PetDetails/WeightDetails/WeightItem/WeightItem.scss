@@ -1,55 +1,66 @@
 @import 'src/styles/vars';
 
 .weight-item {
-    height: 2.4em;
+    height: 2.6em;
 
     @include m767() {
         width: 30em;
-    };
+    }
 }
 
 .weight-item-content {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 90%;
     margin-left: 0.2em;
-  
+    margin: 0 auto;
+    padding: 0.4em;
+
     &-date {
-        width: 30%;
-        margin-right: 1em;
+        margin: 0 2em 0 1em;
+
         p {
             margin-bottom: 0;
         }
     }
-  
+
     &-value {
-        width: 70%;
+
         p {
             margin-bottom: 0;
         }
     }
 
     &-delete {
-        width: 1em;
+        width: 1.4em;
+        height: 100%;
 
         .delete-btn {
-           @include delete-btn;
+            @include delete-btn;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                fill: $green;
+            }
         }
     }
-  
+
     &-line {
-      height: 0.8px;
-      width: 90%;
-      margin-left: 0.2em;
-      background-color: $light-color;
+        height: 0.8px;
+        width: 90%;
+        margin: 0 auto;
+        background-color: $light-color;
     }
 
     .modal-content {
 
-      .modal-title {
-          color: $accent-color;
-      }
+        .modal-title {
+            color: $accent-color;
+        }
+
         .modal-delete-cancel-btn,
         .modal-delete-validate-btn {
             border: none;
@@ -59,6 +70,4 @@
             color: white;
         }
     }
-  }
-
-
+}

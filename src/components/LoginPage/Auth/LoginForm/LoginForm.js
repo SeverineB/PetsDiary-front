@@ -114,7 +114,7 @@ const LoginForm = ({
                                 <label htmlFor="password">Votre password</label>
                                 <input
                                     className="input-password"
-                                    type="password"
+                                    type="text"
                                     placeholder="Votre mot de passe"
                                     name="password"
                                     value={password}
