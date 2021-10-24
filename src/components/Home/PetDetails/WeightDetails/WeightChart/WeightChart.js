@@ -15,7 +15,6 @@ import './WeightChart.scss';
 
 const WeightChart = ({ petWeight }) => {
 
-    console.log('MIDDLE DATE', petWeight[Math.floor(petWeight.length / 2)])
     const firstxvalue = (petWeight.length > 0) ? new Date(petWeight[0].weightDate) : new Date();
     const middlexvalue = (petWeight.length > 0) ? new Date(petWeight[Math.floor(petWeight.length / 2)].weightDate) : new Date();
     const lastxvalue = (petWeight.length > 0) ? new Date(petWeight[petWeight.length-1].weightDate) : new Date();

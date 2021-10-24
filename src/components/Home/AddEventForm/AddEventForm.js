@@ -35,6 +35,7 @@ const AddEventForm = ({
             <h2 className="add-event-title">Ajouter un rendez-vous</h2>
             <Form onSubmit={handleSubmit} className="add-event-form">
                 <select onChange={handleSelect} name="petId">
+                  <option value="none">Choisir l'animal</option>
                     {petsList.map((pet) => (
                         <option key={pet._id} value={pet._id} label={pet.name}>{pet.name}</option>
                     ))}
@@ -72,11 +73,11 @@ const AddEventForm = ({
                         onChange={handleChange}
                     />
                 <div className="buttons">
-                    <button className="add-validate-btn" variant="primary" type="submit">
+                    <button className="add-validate-btn btn btn--primary" variant="primary" type="submit">
                         Valider
                     </button>
-                    <button className="add-cancel-btn"variant="primary" type="submit">
-                        <Link to="/home">Annuler</Link>
+                    <button className="add-cancel-btn btn btn--primary" variant="primary" type="submit">
+                        <Link to="/">Annuler</Link>
                     </button>
                 </div>
             </Form>

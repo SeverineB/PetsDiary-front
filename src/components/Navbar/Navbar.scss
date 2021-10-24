@@ -1,41 +1,40 @@
 @import 'src/styles/vars';
 
 #navbar-custom {
-  background-color:  rgb(46, 174, 141)!important;
-  background-color:  $green!important;
-  display: flex;
-  align-items: center;
-  padding: 0.2em 0.4em;
-  height: 4em;
+    background-color: rgb(46, 174, 141) !important;
+    background-color: $green !important;
+    display: flex;
+    align-items: center;
+    padding: 0.2em 0.4em;
 
-  @include m1024 {
-    height: 5em;
-  }
+    @include m1024 {
+        height: 5em;
+    }
 }
 
 .navbar-nav {
-  a {
-    color: #ffffff;
-    margin: 0 1em;
-    font-size: 0.9rem;
+    a {
+        color: #ffffff;
+        margin: 0 1em;
+        font-size: 0.9rem;
 
-    @include m1024 {
-      font-size: 1rem;
-    }
+        @include m1024 {
+            font-size: 1rem;
+        }
 
-    &:hover {
-        color: rgb(88, 94, 89);
-    }
+        &:hover {
+            color: rgb(88, 94, 89);
+        }
 
-    &:active {
-        color: rgb(88, 94, 89);
+        &:active {
+            color: rgb(88, 94, 89);
+        }
     }
-  }
 }
 
 .navbar-light .navbar-toggler {
-  color: $purple;
-  border-color: transparent!important;
+    color: $purple;
+    border-color: transparent !important;
 }
 
 .navbar-brand {
@@ -43,8 +42,9 @@
     .logo-small {
         height: 3rem;
         fill: #fff;
+
         @include m1024 {
-          height: 4em;
+            height: 4em;
         }
 
         img {
@@ -54,5 +54,5 @@
 }
 
 .navbar-toggler {
-  border-color: none;
+    border-color: none;
 }

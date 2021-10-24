@@ -24,6 +24,8 @@ const EditPetForm = ({
     updatePet,
     avatarUrl,
 }) => {
+    const avatarPath = `http://localhost:3000/${currentPet.avatarPath}`
+
     const history = useHistory()
 
     const newBirthdate = dayjs(birthdate).format('YYYY-MM-DD')
@@ -57,7 +59,7 @@ const EditPetForm = ({
                 </div>
             </Form.Group>
             <div className="avatar-preview">
-                {!avatarUrl ? <img src={currentPet.avatarUrl} alt="avatar" /> : <img src={avatarUrl} alt="avatar" />}
+              <img src={avatarPath} alt="avatar" />
             </div>
             <Form.Label>Nom</Form.Label>
             <Form.Control
@@ -129,7 +131,7 @@ const EditPetForm = ({
                     name="sex"
                     type="radio"
                     id="inline-radio-2"
-                    value="mâle"
+                    value='mâle'
                     checked={sex === 'mâle'}
                     onChange={handleChange}
                 />

@@ -47,9 +47,17 @@ const MyCalendar = ({ eventsList, petsList, getEventsList, getEventsListByPet })
             endAccessor="end"
             style={{ height: 500 }}
             onSelectSlot={handleSelect}
+            messages={{
+              month: 'Mois',
+              day: 'Jour',
+              today: 'Aujourd\'hui',
+              week: 'semaine',
+              back: 'préc',
+              next: 'suiv'
+            }}
         />
          <Link to="/event/add" className="calendar-container__link">
-            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 457.47 457.469">
+           {/*  <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 457.47 457.469">
                 <g>
                     <path d="M228.734,0C102.41,0,0,102.41,0,228.735C0,355.06,102.41,457.469,228.734,457.469
                         c126.325,0,228.735-102.409,228.735-228.734C457.47,102.41,355.06,0,228.734,0z M359.268,265.476h-97.326v97.315
@@ -58,24 +66,26 @@ const MyCalendar = ({ eventsList, petsList, getEventsList, getEventsListByPet })
                         c16.675,0,30.187,13.509,30.187,30.183v97.315h97.314c16.669,0,30.192,13.515,30.192,30.188
                         C389.46,251.97,375.937,265.476,359.268,265.476z"/>
                 </g>
-            </svg>
+            </svg> */}
+            Ajouter un évènement
          </Link>
 
          <div className="events-container">
          {eventsList.map((event) => (
              <div className="event_item" key={event.id}>
-                <p>{event.pet_id}</p>
-                <p>{event.title}</p>
-                <p>{event.address}</p>
+                <p className="paragraph-text name" key={event.id}>{event.petName}</p>
+                <p className="paragraph-text" key={event.id}>{event.title}</p>
+                <p className="paragraph-text" key={event.id}>{event.address}</p>
             </div>
         ))}
-        <select onChange={filterEventsByPet} name="petId">
-            <option value="all">All</option>
+        
+         </div>
+         <select onChange={filterEventsByPet} name="petId">
+            <option value="all">Tous les évènements</option>
             {petsList.map((pet) => (
                 <option key={pet._id} value={pet._id} label={pet.name}>{pet.name}</option>
             ))}
         </select>
-         </div>
     </div>
     )
 }
