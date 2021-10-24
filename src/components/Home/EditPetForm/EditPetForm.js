@@ -26,7 +26,7 @@ const EditPetForm = ({
 }) => {
     //const avatarPath = `http://localhost:3000/${currentPet.avatarPath}`
 
-    const avatarPath = process.env.NODE_ENV === 'development' ? `http://localhost:3000/${currentPet.avatarPath}` : `http://pets-diary-server.severinebianchi.com/${currentPet.avatarPath}``
+    const avatarPath = process.env.NODE_ENV === 'development' ? `http://localhost:3000/${currentPet.avatarPath}` : `http://pets-diary-server.severinebianchi.com/${currentPet.avatarPath}`;
     const history = useHistory()
 
     const newBirthdate = dayjs(birthdate).format('YYYY-MM-DD')
