@@ -128,14 +128,13 @@
     // Pet details container
 
     &-content {
-        width: 100%;
-        max-width: 600px;
+
         margin-bottom: 0.4em;
         height: 100%;
         flex: 1;
         background: linear-gradient(0deg, rgba(94, 102, 151, 0.1) 17%, rgba(255, 255, 255, 1) 50%);
 
-        @include m1024() {
+        @include m767() {
             width: 60%;
             border-radius: 1em;
             margin-bottom: 1em;
@@ -228,14 +227,8 @@
 
     &-items {
         flex: 1;
-
-        &-weight {
-
-            .weight-container {
-                display: flex;
-                flex-direction: column;
-            }
-        }
+        height: 100%;
+        width: 100%;
     }
 
     .controls {

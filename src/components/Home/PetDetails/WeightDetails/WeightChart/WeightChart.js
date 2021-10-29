@@ -28,8 +28,6 @@ return (
             containerComponent={
                 <VictoryVoronoiContainer label={(d) => `${d.label}`} />
             }
-            /* height={350} */
-            /* width={400} */
             scale={{x: 'time'}}
         >
         <VictoryLine
@@ -73,8 +71,8 @@ return (
         <VictoryLabel
             x={225}
             y={25}
-            textAnchor="middle"
-            text="Suivi du poids"
+            //textAnchor="middle"
+            //text="Suivi du poids"
             style={{
                 fontSize: 20,
                 fontWeight: 'bold',

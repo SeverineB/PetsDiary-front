@@ -49,13 +49,12 @@ const WeightItem = ({
                             <path d="M15,17V10a1,1,0,0,0-2,0v7a1,1,0,0,0,2,0Z"/>
                         </svg>
 
-
                     </button>
             </div>
             </div>
             <div className="weight-item-content-line" />
             
-            <Modal show={showDeleteWeightModal} onHide={handleShowDeleteWeightModal} className="modal-delete-weight">
+            <Modal show={showDeleteWeightModal} onHide={handleCloseDeleteWeightModal} className="modal-delete-weight">
                 <Modal.Header closeButton>
                     <Modal.Title>Supprimer ce poids ?</Modal.Title>
                 </Modal.Header>

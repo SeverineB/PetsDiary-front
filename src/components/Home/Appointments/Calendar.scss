@@ -1,23 +1,31 @@
 @import 'src/styles/vars';
 
 .calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include m1024() {
+        padding: 0.5em;
+    }
 
     &__link {
-        width: 4em;
-        height: 4em;
-        display: flex;
+        width: 12em;
+        height: 2em;
+        display: inline-flex;
         justify-content: center;
         margin: 1em auto;
-
-        svg {
-            width: 3em;
-            fill: $main-color;
-        }
+        background-color: $green;
     }
 
     .rbc-day-slot .rbc-background-event,
     .rbc-event {
         background-color: $main-color;
+    }
+
+    .select {
+        background-color: #fff;
+        border: 1px solid $light-color;
     }
 }
 
@@ -33,6 +41,8 @@
 
 .events-container {
     display: flex;
+    flex-direction: column;
+    width: 100%;
 
     @include m767() {
         flex-direction: row;
@@ -41,6 +51,9 @@
 
     .event_item {
         margin-bottom: 0.4em;
+        padding: 0.2em;
+        border-bottom: 1px solid $light-color;
+        width: 100%;
 
         @include m767() {
             width: 10em;

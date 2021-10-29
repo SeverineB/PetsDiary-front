@@ -54,6 +54,8 @@ $dark-grey: #5e6697;
 
     &:hover {
         fill: $dark-grey;
+        border-radius: 50%;
+        transform: scale(1.1);
     }
 }
 
@@ -72,7 +74,7 @@ $dark-grey: #5e6697;
     }
 
     &:hover {
-        transform: scale(1.6);
+        transform: scale(1.2);
     }
 
     &:focus {

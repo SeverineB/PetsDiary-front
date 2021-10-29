@@ -59,33 +59,47 @@ const PetDetails = ({
 	};
 
 	const toggleShowWeight = () => {
-		setShowWeight(!showWeight)
-		setShowVaccine(false)
-		setShowAntiflea(false)
-		setShowDeworming(false)
+    if (showVaccine === false && showDeworming === false && showAntiflea === false) {
+      setShowWeight(true)
+    } else {
+      setShowWeight(!showWeight)
+      setShowVaccine(false)
+      setShowAntiflea(false)
+      setShowDeworming(false)
+    }
 	}
 
 	const toggleShowVaccine = () => {
-		setShowVaccine(!showVaccine)
-		setShowWeight(false)
-		setShowAntiflea(false)
-		setShowDeworming(false)
-
+    if (showWeight === false && showDeworming === false && showAntiflea === false) {
+      setShowVaccine(true)
+    } else {
+      setShowVaccine(!showVaccine)
+      setShowWeight(false)
+      setShowAntiflea(false)
+      setShowDeworming(false)
+    }
 	}
 
 	const toggleShowAntiflea = () => {
+    if (showWeight === false && showDeworming === false && showVaccine === false) {
+      setShowAntiflea(true)
+    } else {
 		setShowAntiflea(!showAntiflea)
 		setShowWeight(false)
 		setShowVaccine(false)
 		setShowDeworming(false)
+    }
 	}
 
 	const toggleShowDeworming = () => {
+    if (showWeight === false && showAntiflea === false && showVaccine === false) {
+      setShowDeworming(true)
+    } else {
 		setShowDeworming(!showDeworming)
 		setShowWeight(false)
 		setShowVaccine(false)
 		setShowAntiflea(false)
-
+    }
 	}
 
 	return (

@@ -45,7 +45,7 @@ const Home = ({
             const year = formattedDate.getFullYear()
             return `${day}/${month}/${year}`
         }
-    }   
+    }
 
     return (
         <>
@@ -82,9 +82,9 @@ const Home = ({
                 <div className="section-title">
                     <h2 className="section-title-text">Rendez-vous à venir</h2>
                 </div>
-                <div className="events-list">
+                <div className="events-list" key="unique-key">
                     {groupedByDates.map(item => (
-                        <div key={item._id} className="event-container">
+                        <div key={item[1][0]._id} className="event-container">
                             <div className="event-container-date">
                                 <p>{formatDate(item[0])}</p>
                             </div>
