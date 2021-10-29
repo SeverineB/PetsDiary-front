@@ -71,6 +71,11 @@
             ;
         }
 
+        select {
+            border: none;
+            background-color: rgba($green, 0.2);
+        }
+
         .buttons {
             width: 100%;
             display: flex;

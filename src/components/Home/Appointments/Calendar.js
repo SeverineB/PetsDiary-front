@@ -62,7 +62,7 @@ const MyCalendar = ({ eventsList, petsList, getEventsList, getEventsListByPet })
 
          <div className="events-container">
          {eventsList.map((event) => (
-             <div className="event_item" key={event.id}>
+             <div className="event_item" key={event._id}>
                 <p className="paragraph-text name">{event.petName}</p>
                 <p className="paragraph-text">{event.title}</p>
                 <p className="paragraph-text">{event.address}</p>

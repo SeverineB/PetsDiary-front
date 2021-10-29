@@ -14,8 +14,18 @@
         height: 2em;
         display: inline-flex;
         justify-content: center;
+        align-items: center;
         margin: 1em auto;
         background-color: $green;
+        color: #fff;
+        border-radius: 30.5px;
+
+        &:hover {
+            text-decoration: none;
+            color: #fff;
+            background-color: $purple;
+        }
+
     }
 
     .rbc-day-slot .rbc-background-event,
@@ -47,6 +57,8 @@
     @include m767() {
         flex-direction: row;
         gap: 1em;
+        flex-wrap: wrap;
+        padding: 1em;
     }
 
     .event_item {
@@ -56,10 +68,10 @@
         width: 100%;
 
         @include m767() {
-            width: 10em;
+            width: 14em;
             padding: 0.5em;
             border-radius: 15px;
-            box-shadow: -8px 8px 30px #d9d9d9,
+            box-shadow: -8px 8px 30px #ebebeb,
                 20px -20px 50px #ffffff;
         }
 
