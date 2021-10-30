@@ -58,7 +58,7 @@ const AddEventForm = ({
                     />
                 <label htmlFor="date">Date de début</label>
                     <input
-                        type="date"
+                        type="datetime-local"
                         placeholder="Date de début"
                         name="start"
                         value={start}
@@ -66,7 +66,7 @@ const AddEventForm = ({
                     />
                  <label htmlFor="date">Date de fin</label>
                     <input
-                        type="date"
+                        type="datetime-local"
                         placeholder="Date de fin"
                         name="end"
                         value={end}

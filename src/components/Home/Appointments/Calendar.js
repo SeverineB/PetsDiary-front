@@ -13,6 +13,15 @@ const MyCalendar = ({ eventsList, petsList, getEventsList, getEventsListByPet })
         getEventsList();
     }, []);
 
+
+    // to convert date in the good format for react big calendar
+    eventsList = eventsList.map(({start, end, ...rest}) => {
+      return {
+        start: new Date(Date.parse(start)),
+        end: new Date(Date.parse(end)),
+      ...rest}
+    })
+
     const handleSelect = ({ start, end }) => {
         const title = window.prompt('Titre de l\'évènement')
         if (title) {
@@ -66,6 +75,8 @@ const MyCalendar = ({ eventsList, petsList, getEventsList, getEventsListByPet })
                 <p className="paragraph-text name">{event.petName}</p>
                 <p className="paragraph-text">{event.title}</p>
                 <p className="paragraph-text">{event.address}</p>
+                <p className="paragraph-text">{(event.start).toLocaleString('fr-FR')}</p>
+                <p className="paragraph-text">{(event.end).toLocaleString('fr-FR')}</p>
             </div>
         ))}
         
