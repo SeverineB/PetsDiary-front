@@ -24,9 +24,9 @@ const EditPetForm = ({
     updatePet,
     avatarUrl,
 }) => {
-    //const avatarPath = `http://localhost:3000/${currentPet.avatarPath}`
 
     const avatarPath = process.env.NODE_ENV === 'development' ? `http://localhost:3000/${currentPet.avatarPath}` : `http://pets-diary-server.severinebianchi.com/${currentPet.avatarPath}`;
+
     const history = useHistory()
 
     const newBirthdate = dayjs(birthdate).format('YYYY-MM-DD')
@@ -37,6 +37,7 @@ const EditPetForm = ({
 
     const handleFileChange = (evt) => {
         const avatarToUpload = evt.target.files[0]
+
         const newAvatarUrl = URL.createObjectURL(evt.target.files[0])
         changeFile(avatarToUpload)
         changeUrl(newAvatarUrl)
@@ -60,7 +61,7 @@ const EditPetForm = ({
                 </div>
             </Form.Group>
             <div className="avatar-preview">
-              <img src={avatarPath} alt="avatar" />
+              <img src={avatarUrl} alt="avatar" />
             </div>
             <Form.Label>Nom</Form.Label>
             <Form.Control
