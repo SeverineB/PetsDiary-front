@@ -154,7 +154,7 @@ const RegisterForm = ({
                                     type="password"
                                     placeholder="Votre mot de passe"
                                     name="password"
-                                    /* value={password} */
+                                    value={password}
                                     onChange={handleChange}
                                 />
                                 <div className="error-register-password">
