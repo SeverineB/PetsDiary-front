@@ -11,20 +11,20 @@
 
 html,
 body {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
 }
 
 body {
-  height: 100vh;
-  width: 100%;
-  position: relative;
-  font-family: 'Muli';
-  font-size: 14px;
-  font-family: 'Montserrat';
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    font-family: 'Muli';
+    font-size: 16px;
+    font-family: 'Montserrat';
 }
 
 #root {
@@ -34,7 +34,7 @@ body {
 .back-icon-container {
     width: 100%;
     height: 100%;
-   
+
     svg {
         fill: $green;
         transition: all 200ms ease-in;
@@ -47,45 +47,45 @@ body {
 }
 
 .flex-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .fade.alert.show {
-  position: absolute;
+    position: absolute;
 }
 
 .btn-primary {
-  background-color: $green;
-  border-color: $green;
-  color: #fff;
+    background-color: $green;
+    border-color: $green;
+    color: #fff;
 
-  &:hover {
-    background-color: $purple;
-    border-color: $purple;
+    &:hover {
+        background-color: $purple;
+        border-color: $purple;
 
-  }
+    }
 }
 
 @font-face {
     font-family: "Rocknroll";
     src: url("../../src/assets/fonts/RocknRollOne-Regular.ttf");
-      font-weight: normal;
-      font-style: normal;
-  }
+    font-weight: normal;
+    font-style: normal;
+}
 
 @font-face {
     font-family: "Karla";
     src: url("../../src/assets/fonts/Karla-Regular.ttf");
-      font-weight: normal;
-      font-style: normal;
-  }
+    font-weight: normal;
+    font-style: normal;
+}
 
 @font-face {
-  font-family: "Montserrat";
-  src: url("../../src/assets/fonts/Montserrat-Regular.ttf");
+    font-family: "Montserrat";
+    src: url("../../src/assets/fonts/Montserrat-Regular.ttf");
     font-weight: normal;
     font-style: normal;
 }
@@ -93,41 +93,41 @@ body {
 @font-face {
     font-family: "BasisGrotesque";
     src: url("../../src/assets/fonts/BasisGrotesquePro-Regular.woff");
-      font-weight: normal;
-      font-style: normal;
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
     font-family: "OrelegaOne";
     src: url("../../src/assets/fonts/OrelegaOne-Regular.ttf");
-      font-weight: normal;
-      font-style: normal;
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
     font-family: "CorbenBold";
     src: url("../../src/assets/fonts/Corben-Bold.ttf");
-      font-weight: normal;
-      font-style: normal;
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
     font-family: "Muli";
     src: url("../../src/assets/fonts/Muli.ttf");
-      font-weight: normal;
-      font-style: normal;
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
     font-family: "PassionOne";
     src: url("../../src/assets/fonts/PassionOne-Regular.ttf");
-      font-weight: normal;
-      font-style: normal;
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url("../../src/assets/fonts/Poppins-Regular.ttf");
+    font-family: "Poppins";
+    src: url("../../src/assets/fonts/Poppins-Regular.ttf");
     font-weight: normal;
     font-style: normal;
 }
