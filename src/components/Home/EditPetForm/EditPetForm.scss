@@ -2,12 +2,12 @@
 
 .edit-pet {
     width: 100%;
-    height: calc(100%-4em);
+    height: calc(95%-4em);
     display: flex;
     flex-direction: column;
 
     @include m1024 {
-        height: calc(100%-5em);
+        height: calc(95%-5em);
     }
 
     &-title {
@@ -15,6 +15,7 @@
         text-align: center;
         color: $purple;
         margin: 0.5em 0 0.5em 0;
+        font-size: 2rem;
     }
 }
 
@@ -89,11 +90,17 @@
         color: #ffffff;
     }
 
+    .form-group {
+        display: flex;
+        justify-content: center;
+    }
+
     .btn-primary {
         border-radius: 30.5px;
         background-color: $green;
         border-color: $green;
         color: #fff;
+        width: 8em;
 
         &:hover {
             background-color: $purple;
