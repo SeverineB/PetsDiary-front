@@ -54,7 +54,6 @@
 .weight-list {
 
     @include m767() {
-        //width: 25em;
         margin: 0;
     }
 }
@@ -80,6 +79,12 @@
         color: $dark-grey;
         width: 100%;
         outline: none;
+    }
+
+    .add-weight-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
     }
 
     .add-weight-form-btn {

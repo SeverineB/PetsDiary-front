@@ -13,10 +13,12 @@
 }
 
 .navbar-nav {
-    a {
+    .navbar-item {
         color: #ffffff;
         margin: 0 1em;
-        font-size: 0.9rem;
+        font-size: 1rem;
+        display: inline-flex;
+        padding: 0.5em;
 
         @include m1024 {
             font-size: 1rem;

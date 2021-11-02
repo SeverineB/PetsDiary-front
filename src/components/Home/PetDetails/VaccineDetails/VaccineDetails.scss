@@ -48,6 +48,10 @@
         }
 
         &__modal__form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+
             label {
                 display: none;
             }
@@ -90,6 +94,7 @@
     }
 
     &-list {
+        padding-top: 1.5em;
         width: 100%;
 
         p {

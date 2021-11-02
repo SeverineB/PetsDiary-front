@@ -26,14 +26,14 @@ const NavBar = ({ isLogged, logout }) => {
             <Nav className="mr-auto">
             {!isLogged && (
                 <>
-                <Link to="/pet">Accueil</Link>
+                <Link to="/pet" className="navbar-item">Accueil</Link>
                 </>
             )}
             {isLogged && (
                 <>
-                <Link to="/pet">Home</Link>
-                <Link to="/event">Mes rendez-vous</Link>
-                <Link to="/logout" onClick={handleLogout}>Déconnexion</Link>
+                <Link to="/pet" className="navbar-item">Home</Link>
+                <Link to="/event" className="navbar-item">Mes rendez-vous</Link>
+                <Link to="/logout" onClick={handleLogout} className="navbar-item">Déconnexion</Link>
                 </>
             )}
             </Nav>

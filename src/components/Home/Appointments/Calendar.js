@@ -69,7 +69,7 @@ const MyCalendar = ({ eventsList, petsList, getEventsList, getEventsListByPet })
             Ajouter un évènement
          </Link>
 
-         <div className="events-container">
+         {/* <div className="events-container">
          {eventsList.map((event) => (
              <div className="event_item" key={event._id}>
                 <p className="paragraph-text name">{event.petName}</p>
@@ -86,7 +86,7 @@ const MyCalendar = ({ eventsList, petsList, getEventsList, getEventsListByPet })
             {petsList.map((pet) => (
                 <option key={pet._id} value={pet._id} label={pet.name}>{pet.name}</option>
             ))}
-        </select>
+        </select> */}
     </div>
     )
 }

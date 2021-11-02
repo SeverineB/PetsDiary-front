@@ -51,15 +51,23 @@ const AntifleaItem = ({
             </div>
             <div className="antiflea-item-content-line" />
           
-            <Modal show={showDeleteModal} onHide={handleShowDeleteModal} className="modal-delete-antiflea">
+            <Modal show={showDeleteModal} onHide={handleCloseDeleteModal} className="modal-delete-antiflea">
                 <Modal.Header closeButton>
                     <Modal.Title>Supprimer cet anti-puces ?</Modal.Title>
                 </Modal.Header>
                 <Modal.Footer>
-                    <button type="button" variant="secondary" onClick={handleCloseDeleteModal}  className="modal-delete-cancel-btn">
+                    <button
+                      type="button"
+                      variant="secondary"
+                      onClick={handleCloseDeleteModal}
+                      className="modal-delete-cancel-btn">
                         Annuler
                     </button>
-                    <button type="button" variant="primary" onClick={handleDelete} className="modal-delete-validate-btn">
+                    <button
+                    type="button"
+                    variant="primary"
+                    onClick={handleDelete}
+                    className="modal-delete-validate-btn">
                         Oui, supprimer
                     </button>
                 </Modal.Footer>

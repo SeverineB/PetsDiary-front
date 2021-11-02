@@ -64,14 +64,35 @@
         .modal-title {
             color: $accent-color;
         }
+    }
+}
 
-        .modal-delete-cancel-btn,
-        .modal-delete-validate-btn {
-            border: none;
-            background: $main-color;
-            border-radius: 30.5px;
-            padding: 0.4em;
-            color: white;
-        }
+.modal-delete-antiflea {
+
+    .modal-header {
+        text-align: center;
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .modal-delete-cancel-btn,
+    .modal-delete-validate-btn {
+        border: none;
+        border-radius: 30.5px;
+        padding: 0.4em;
+        color: white;
+        padding: 0.4em 0.6em;
+        width: 9rem;
+    }
+
+    .modal-delete-validate-btn {
+        background: $main-color;
+    }
+
+    .modal-delete-cancel-btn {
+        background: $dark-grey;
     }
 }
