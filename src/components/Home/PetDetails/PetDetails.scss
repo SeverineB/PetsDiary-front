@@ -112,11 +112,11 @@
     // Pet details container
 
     &-content {
-
+        width: 100%;
         margin-bottom: 0.4em;
         height: 100%;
         flex: 1;
-        background: linear-gradient(0deg, rgba(94, 102, 151, 0.1) 17%, rgba(255, 255, 255, 1) 50%);
+        background: linear-gradient(0deg, rgba(94, 102, 151, 0.05) 17%, rgba(255, 255, 255, 1) 50%);
 
         @include m767() {
             width: 60%;
@@ -132,8 +132,6 @@
                 0 0 2s0px #f0eeee;
             background: #fff;
         }
-
-
 
         &-infos {
             width: 100%;
@@ -286,5 +284,26 @@
     .edit-link {
         display: flex;
         justify-content: center;
+    }
+}
+
+.modal-delete-pet {
+
+    .modal-delete-cancel-btn,
+    .modal-delete-validate-btn {
+        border: none;
+        border-radius: 30.5px;
+        padding: 0.4em;
+        color: white;
+        padding: 0.4em 0.6em;
+        width: 9rem;
+    }
+
+    .modal-delete-validate-btn {
+        background: $main-color;
+    }
+
+    .modal-delete-cancel-btn {
+        background: $dark-grey;
     }
 }
