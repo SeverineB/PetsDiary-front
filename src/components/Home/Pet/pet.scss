@@ -22,7 +22,8 @@
 
     @include m1024() {
         margin: 0.4em 0.6em;
-        height: 14em;
+        height: 18em;
+        border-radius: 0;
     }
 
     .pet-item {
@@ -67,6 +68,7 @@
         height: 100%;
         overflow: hidden;
         border-radius: 0.8em 0 0 0.8em;
+
 
         @include m1024() {
             flex: auto;
