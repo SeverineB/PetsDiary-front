@@ -10,12 +10,14 @@
     align-items: center;
     padding-bottom: 3em;
     background-color: #F8FBFE;
+    padding: 1rem;
 
     @include m1024() {
         flex-direction: row;
         justify-content: flex-start;
         align-items: flex-start;
         gap: 1em;
+        padding: 0;
     }
 
     ;
