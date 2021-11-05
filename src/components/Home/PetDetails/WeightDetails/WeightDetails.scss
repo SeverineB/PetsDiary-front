@@ -6,6 +6,7 @@
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
+    padding: 1rem;
 
     @include m1024() {
         display: flex;
