@@ -1,4 +1,4 @@
-@import 'src/styles/vars';
+@import "src/styles/vars";
 
 .pet-container {
     position: relative;
@@ -8,9 +8,7 @@
     align-items: center;
     background: #fff;
     border-radius: 0.8em;
-    box-shadow:
-        0 2.5px 5px rgba(0, 0, 0, 0.01),
-        0 20px 40px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 2.5px 5px rgba(0, 0, 0, 0.01), 0 20px 40px rgba(0, 0, 0, 0.02);
 
     &:hover {
         text-decoration: none;
@@ -23,7 +21,7 @@
     @include m1024() {
         margin: 0.4em 0.6em;
         height: 18em;
-        border-radius: 0;
+        border-radius: 0.8em 0.8em 0 0;
     }
 
     .pet-item {
@@ -69,16 +67,17 @@
         overflow: hidden;
         border-radius: 0.8em 0 0 0.8em;
 
-
         @include m1024() {
             flex: auto;
+            border-radius: 0.8em 0.8em 0 0;
         }
 
         img {
             height: 100%;
             width: 100%;
             object-fit: cover;
-            object-position: 0 10%;
+
+            //object-position: 0 10%;
         }
     }
 

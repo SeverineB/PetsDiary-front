@@ -1,4 +1,4 @@
-@import 'src/styles/vars';
+@import "src/styles/vars";
 
 .pet-details-hidden {
     display: none;
@@ -24,6 +24,7 @@
             padding: 0.5em;
             align-items: flex-start;
             min-height: 500px;
+            margin-top: 2em;
         }
     }
 
@@ -103,7 +104,6 @@
 
             @include m767() {
                 font-size: 0.9em;
-
             }
         }
     }
@@ -115,7 +115,11 @@
         margin-bottom: 0.4em;
         height: 100%;
         flex: 1;
-        background: linear-gradient(0deg, rgba(94, 102, 151, 0.05) 17%, rgba(255, 255, 255, 1) 50%);
+        background: linear-gradient(
+            0deg,
+            rgba(94, 102, 151, 0.05) 17%,
+            rgba(255, 255, 255, 1) 50%
+        );
         padding: 1rem;
 
         @include m767() {
@@ -123,14 +127,10 @@
             width: 60%;
             border-radius: 1em;
             margin-bottom: 1em;
-            box-shadow: 0 0 20px #f0eeee,
-                0 0 20px#f0eeee;
-            -moz-box-shadow: 0 0 20px #f0eeee,
-                0 0 20px #f0eeee;
-            -webkit-box-shadow: 0 0 20px #f0eeee,
-                0 0 20px #f0eeee;
-            -o-box-shadow: 0 0 20px #f0eeee,
-                0 0 2s0px #f0eeee;
+            box-shadow: 0 0 20px #f0eeee, 0 0 20px#f0eeee;
+            -moz-box-shadow: 0 0 20px #f0eeee, 0 0 20px #f0eeee;
+            -webkit-box-shadow: 0 0 20px #f0eeee, 0 0 20px #f0eeee;
+            -o-box-shadow: 0 0 20px #f0eeee, 0 0 2s0px #f0eeee;
             background: #fff;
         }
 
@@ -190,7 +190,8 @@
                 justify-content: space-around;
 
                 @include m1024() {
-                    height: 60%;
+                    height: 100%;
+                    padding: 1em;
                 }
 
                 .pet-details-name,
@@ -288,7 +289,6 @@
 }
 
 .modal-delete-pet {
-
     .modal-delete-cancel-btn,
     .modal-delete-validate-btn {
         border: none;
