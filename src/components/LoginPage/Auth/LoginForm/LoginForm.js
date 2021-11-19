@@ -74,7 +74,6 @@ const LoginForm = ({
     const handleSubmit = (evt) => {
         evt.preventDefault();
         if (checkEmail && checkPassword) {
-            console.log('les champs sont valides');
             login();
         }
     };

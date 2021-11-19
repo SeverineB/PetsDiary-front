@@ -13,6 +13,7 @@ import './auth.scss';
 const Auth = ({
     checkIsLogged,
     isSignedUp,
+    isFailed,
     logout
 }) => {
 const handleLogout = () => {
@@ -36,10 +37,17 @@ return (
             <Redirect to="/pet" />
         )}
 
-        {isSignedUp && (
+        {isSignedUp && !isFailed && (
             <div className="success-message">
                 <div className="success-message-text">
                     <p><span>Le compte a bien été créé, vous pouvez vous connecter !</span></p>
+                </div>
+            </div>
+        )}
+        {isFailed && !isSignedUp && (
+            <div className="success-message">
+                <div className="success-message-text">
+                    <p><span>Il y a eu un souci lors de l'enregistrement, merci de renseigner de nouveau le formulaire !</span></p>
                 </div>
             </div>
         )}

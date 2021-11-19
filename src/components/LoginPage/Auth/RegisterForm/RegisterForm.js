@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Alert, Modal } from 'react-bootstrap';
 
 import './RegisterForm.scss';
@@ -9,6 +9,7 @@ import './RegisterForm.scss';
 const RegisterForm = ({
     email,
     password,
+    confirm_password,
     username,
     changeUserFieldRegister,
     registerUser,
@@ -20,6 +21,7 @@ const RegisterForm = ({
     setErrors,
     clearErrors
 }) => {
+    const history = useHistory();
     const [showRegister, setShowRegister] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
 
@@ -32,13 +34,16 @@ const RegisterForm = ({
     const checkUsername = (value) => {
         if (value.length < 1) {
             setErrors('username', 'Un nom d\'utilisateur doit être renseigné');
+            return;
         }
         else if (value.length > 0 && value.length < 4) {
             setErrors('username', 'Le nom d\'utilisateur doit contenir au moins 4 caractères');
-        }
+          return;
+          }
         else if (value.length > 30) {
             setErrors('username', 'Le nom d\'utilisateur doit contenir au maximum 30 caractères');
-        }
+          return;
+          }
         else {
             setErrors('username', '');
         }
@@ -78,6 +83,23 @@ const RegisterForm = ({
         return true;
     };
 
+    const checkEqualPassword = (value) => {
+      if (value.length < 1) {
+          setErrors('confirm_password', 'Vous devez confirmer votre mot de passe');
+          return false;
+      }
+      else if (value != password) {
+        setErrors('confirm_password', 'Le mot de passe ne correspond pas');
+        return false;
+      }
+      else {
+          setErrors('confirm_password', '');
+          return true;
+      }
+ 
+    };
+
+
     const handleChange = (evt) => {
         changeUserFieldRegister(evt.target.value, evt.target.name);
         switch (evt.target.name) {
@@ -90,19 +112,35 @@ const RegisterForm = ({
             case 'password':
               checkPassword(evt.target.value);
               break;
+            case 'confirm_password':
+              checkEqualPassword(evt.target.value);
+              break;
             default:
         }
     };
 
+    console.log('errors are', errors);
     const handleSubmit = (evt) => {
+        clearErrors();
+        setShowAlert(false);
         evt.preventDefault();
-        if (checkUsername && checkEmail && checkPassword) {
+        const errorsEmpty = Object.values(errors).every(error => (error === null || error === ''));
+        if (errorsEmpty) {
             registerUser();
+        } else {
+          setShowAlert(true);
         }
     };
 
     return (
         <div className="modal-register-form">
+          {showAlert && (
+            <div className="error-message">
+            <div className="error-message-text">
+                <p><span>Il y a eu un souci lors de l'enregistrement, merci de vérifier les champs du formulaire !</span></p>
+            </div>
+          </div>
+          )}
             {!isSignedUp && (
                 <button className="register-button btn btn-primary" variant="primary" onClick={() => {setShowRegister(true)}}>
                     Inscription
@@ -145,9 +183,11 @@ const RegisterForm = ({
                                     value={email}
                                     onChange={handleChange}
                                 />
+
                                 <div className="error-register-email">
                                     <p>{errors.email}</p>
                                 </div>
+
                                 <label htmlFor="password">Mot de passe</label>
                                 <input
                                     className="input-password"
@@ -157,21 +197,25 @@ const RegisterForm = ({
                                     value={password}
                                     onChange={handleChange}
                                 />
+
                                 <div className="error-register-password">
                                     <p>{errors.password}</p>
                                 </div>
-                                <label htmlFor="password">Mot de passe</label>
+
+                                <label htmlFor="password">Confirmer mot de passe</label>
                                 <input
                                     className="input-password-verif"
                                     type="password"
                                     placeholder="Veuillez retaper votre mot de passe"
-                                    name="password"
-                                    value={password}
+                                    name="confirm_password"
+                                    value={confirm_password}
                                     onChange={handleChange}
                                 />
-                                <div className="error-register-password">
-                                    <p>{errors.password}</p>
+
+                                <div className="error-register-confirm-password">
+                                    <p>{errors.confirm_password}</p>
                                 </div>
+
                                 <div className="register-form-btn">
                                     <button
                                         className="register-button-submit"

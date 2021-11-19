@@ -1,13 +1,12 @@
-@import 'src/styles/vars';
-
+@import "src/styles/vars";
 
 .modal-header {
-    border-bottom: 1px solid transparent!important;
+    border-bottom: 1px solid transparent !important;
     text-transform: uppercase;
     font-size: 0.9em;
 
     .close {
-        color: $dark-grey!important;
+        color: $dark-grey !important;
     }
 }
 
@@ -36,14 +35,12 @@ button.btn.btn-primary.login-button {
 
     &:hover {
         background-color: $purple;
-        box-shadow:
-            0 2.9px 10px rgba(0, 0, 0, 0.035),
+        box-shadow: 0 2.9px 10px rgba(0, 0, 0, 0.035),
             0 23px 80px rgba(0, 0, 0, 0.07);
-        }
     }
+}
 
 .login-form {
-
     &-btn {
         display: flex;
         justify-content: center;
@@ -63,7 +60,7 @@ button.btn.btn-primary.login-button {
     .input-password {
         width: 100%;
         padding: 0.8em;
-        background-color: white!important;
+        background-color: white !important;
         border: none;
         border-bottom: 1px solid $purple;
         border-radius: 0;
@@ -85,7 +82,7 @@ button.btn.btn-primary.login-button {
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
-    input:-webkit-autofill:active  {
+    input:-webkit-autofill:active {
         -webkit-box-shadow: 0 0 0 30px white inset !important;
         box-shadow: 0 0 0 30px white inset !important;
     }
@@ -120,8 +117,13 @@ button.btn.btn-primary.login-button {
         }
     }
 
-    .error-email, .error-password {
+    .error-email,
+    .error-password {
         font-size: 0.8em;
         color: red;
     }
+}
+
+.error-login {
+    color: red;
 }

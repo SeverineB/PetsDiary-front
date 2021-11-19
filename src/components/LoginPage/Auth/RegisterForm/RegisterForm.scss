@@ -1,9 +1,8 @@
-@import 'src/styles/vars';
-
+@import "src/styles/vars";
 
 .modal-register-form-title {
-  color: $color-green-dark;
-  font-weight: bold;
+    color: $color-green-dark;
+    font-weight: bold;
 }
 
 .register-button.btn.btn-primary,
@@ -29,14 +28,12 @@
 
     &:hover {
         background-color: $purple;
-        box-shadow:
-            0 2.9px 10px rgba(0, 0, 0, 0.035),
+        box-shadow: 0 2.9px 10px rgba(0, 0, 0, 0.035),
             0 23px 80px rgba(0, 0, 0, 0.07);
-        }
     }
+}
 
 .register-form {
-
     &-btn {
         display: flex;
         justify-content: space-around;
@@ -58,7 +55,7 @@
     .input-password-verif {
         width: 100%;
         padding: 0.8em;
-        background-color: white!important;
+        background-color: white !important;
         border: none;
         border-bottom: 1px solid $color-green-light;
         border-radius: 0;
@@ -81,7 +78,7 @@
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
-    input:-webkit-autofill:active  {
+    input:-webkit-autofill:active {
         -webkit-box-shadow: 0 0 0 30px white inset !important;
         box-shadow: 0 0 0 30px white inset !important;
     }
@@ -116,9 +113,11 @@
         }
     }
 
-    .error-register-username, .error-register-email, .error-register-password {
+    .error-register-username,
+    .error-register-email,
+    .error-register-password,
+    .error-register-confirm-password {
         font-size: 0.8em;
         color: red;
     }
-
 }

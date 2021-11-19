@@ -29,7 +29,7 @@ const auth = (store) => (next) => (action) => {
         api.post('user/register', {
             username,
             email,
-            password,
+            password
         })
             .then((response) => {
                 console.log('Middleware USERS response', response.data);
@@ -38,8 +38,8 @@ const auth = (store) => (next) => (action) => {
                 }
             })
             .catch((error) => {
-            console.error('Il y a une erreur', error.response.data.message);
-            store.dispatch(registerFailed(error.response.data.message));
+              console.error('Il y a une erreur', error.response.data.message);
+              store.dispatch(registerFailed(error.response.data.message));
             })
             .finally(() => {
                 store.dispatch(finishLoading());
