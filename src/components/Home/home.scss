@@ -1,4 +1,4 @@
-@import 'src/styles/vars';
+@import "src/styles/vars";
 
 .home-container {
     position: relative;
@@ -9,7 +9,7 @@
     gap: 1em;
     align-items: center;
     padding-bottom: 3em;
-    background-color: #F8FBFE;
+    background-color: #f8fbfe;
     padding: 1rem;
 
     @include m1024() {
@@ -20,12 +20,10 @@
         padding: 0;
     }
 
-    ;
-
     .alert {
         font-size: 0.9em;
         padding: 0;
-        margin-bottom: 0.2em;
+        margin-bottom: 0.3em;
         opacity: 0;
 
         p {
@@ -58,8 +56,6 @@
                 text-align: center;
             }
 
-            ;
-
             &-text {
                 font-size: 1.2rem;
                 margin: 0;
@@ -74,14 +70,10 @@
             min-height: 50%;
         }
 
-        ;
-
         .flex-row {
             @include m767() {
                 justify-content: flex-start;
             }
-
-            ;
         }
 
         .add-pet-button {
@@ -132,32 +124,22 @@
                 grid-row-gap: 0.5em;
             }
 
-            ;
-
             @include m1024() {
                 grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             }
-
-            ;
 
             @include m1200() {
                 padding: 1em;
                 grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             }
 
-            ;
-
             @include m1600() {
                 grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
             }
 
-            ;
-
             @include m1900() {
                 grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             }
-
-            ;
         }
     }
 
@@ -169,8 +151,6 @@
             min-height: 50%;
             width: 45%;
         }
-
-        ;
 
         .events-list {
             display: flex;
@@ -192,8 +172,6 @@
                     font-size: 1em;
                     //height: 5em;
                 }
-
-                ;
 
                 &-date {
                     font-weight: bold;
