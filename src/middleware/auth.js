@@ -32,13 +32,11 @@ const auth = (store) => (next) => (action) => {
             password
         })
             .then((response) => {
-                console.log('Middleware USERS response', response.data);
                 if (response.status === 200) {
                     store.dispatch(registerSuccess());
                 }
             })
             .catch((error) => {
-              console.error('Il y a une erreur', error.response.data.message);
               store.dispatch(registerFailed(error.response.data.message));
             })
             .finally(() => {
@@ -65,7 +63,6 @@ const auth = (store) => (next) => (action) => {
                 store.dispatch(loginSuccess());
             })
             .catch((error) => {
-                console.log('Mais noooon c\'est pas bon !', error.message);
                 store.dispatch(loginFailed(error.response.data.message));
             })
             .finally(() => {
@@ -80,12 +77,10 @@ const auth = (store) => (next) => (action) => {
           withCredentials: true,
         })
         .then((response) => {
-            console.log('Utilisateur déconnecté');
             localStorage.removeItem('username');
             store.dispatch(userConnected(false));
         })
         .catch((error) => {
-          console.log('Mais noooon c\'est pas bon !', error.message);
         });
       next(action);
       break;
@@ -97,13 +92,10 @@ const auth = (store) => (next) => (action) => {
           withCredentials: true,
         })
         .then((response) => {
-          console.log('je suis bien connecté');
-          console.log('response dans check front ', response);
           /* store.dispatch(saveUser(response.data)); */
           store.dispatch(userConnected(true));
         })
         .catch((error) => {
-          console.log('error', error.message);
           store.dispatch(userConnected(false));
         });
       break;

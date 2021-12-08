@@ -120,7 +120,6 @@ const RegisterForm = ({
         }
     };
 
-    console.log('errors are', errors);
     const handleSubmit = (evt) => {
         clearErrors();
         setShowAlert(false);

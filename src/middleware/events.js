@@ -107,7 +107,7 @@ switch (action.type) {
                 withCredentials: true,
             })
             .then((response) => {
-                console.log(response)
+                /* console.log(response) */
 
             })
             .catch((error) => {
